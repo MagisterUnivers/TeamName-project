@@ -1,5 +1,9 @@
 @import-normalize;
 
+:root {
+  --mainBlackBody: #0A0A11;
+}
+
 *,
 *:before,
 *:after {
@@ -9,6 +13,7 @@
 body {
   font-family: sans-serif;
   line-height: 1.5;
+  background-color: var(--mainBlackBody);
 }
 
 h1,
@@ -31,4 +36,27 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
