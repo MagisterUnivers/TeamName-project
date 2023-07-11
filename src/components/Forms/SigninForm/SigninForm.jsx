@@ -41,6 +41,11 @@ const SigninForm = () => {
     password: '',
   };
 
+  const handleEye = () => {
+    const input = document.querySelector('#password');
+    input.type = input.type === 'password' ? 'text' : 'password';
+  };
+
   const InputField1 = ({ name, placeholder, type }) => {
     const [field, meta] = useField(name);
     const showError = meta.touched && meta.error;
@@ -117,13 +122,16 @@ const SigninForm = () => {
                 </StyledHolder>
                 <StyledHolder>
                   <InputField1
+                    id="password"
                     name="password"
                     type="password"
                     placeholder="qwerty12345"
                   />
                 </StyledHolder>
               </StyledTaker>
-              <StyledBtn type="submit">Log in</StyledBtn>
+              <StyledBtn onClick={handleEye} type="button">
+                Log in
+              </StyledBtn>
             </StyledForm>
           )}
         </Formik>
