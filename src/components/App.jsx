@@ -4,6 +4,8 @@ import { PrivateRoute } from '../routes/PrivateRoute';
 import { PublicRoute } from '../routes/PublicRoute';
 import { Suspense, lazy } from 'react';
 import Spinner from './Spinner/Spinner';
+import GlobalStyles from './GlobalStyles';
+import { useEffect } from 'react';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -11,8 +13,21 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 
 export const App = () => {
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href =
+      'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap';
+    link.rel = 'stylesheet';
+
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
   return (
     <>
+      <GlobalStyles />
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="/" element={<WelcomePage />} />

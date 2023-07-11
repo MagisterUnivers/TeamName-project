@@ -4,9 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from 'components/App';
 import axios from 'axios';
 import './index.css';
-// import '@fontsource/Manrope/400.css';
-// import '@fontsource/Manrope/500.css';
-// import '@fontsource/Manrope/600.css';
 
 axios.defaults.baseURL = '';
 // better to create instance instead of base  thing
