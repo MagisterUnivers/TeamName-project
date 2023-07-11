@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/123.dfb35844.chunk.js","mappings":"iKAMA,UAJoB,WAClB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,eACd,C","sources":["pages/WelcomePage/WelcomePage.jsx"],"sourcesContent":["import React from 'react';\n\nconst WelcomePage = () => {\n  return <div>WelcomePage</div>;\n};\n\nexport default WelcomePage;\n"],"names":["_jsx","children"],"sourceRoot":""}
