@@ -6,6 +6,7 @@ import { Suspense, lazy } from 'react';
 import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
+import TestPage from 'pages/TestPage/TestPage';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -47,6 +48,7 @@ export const App = () => {
               </PublicRoute>
             }
           />
+          <Route path="/test" element={<TestPage />} />
 
           <Route path="/main" element={<MainLayout />}>
             <Route
