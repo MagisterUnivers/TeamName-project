@@ -1,10 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from 'components/App';
-import './index.css';
+import axios from 'axios';
+import '@fontsource/Manrope/400.css';
+import '@fontsource/Manrope/500.css';
+import '@fontsource/Manrope/600.css';
+
+axios.defaults.baseURL = '';
+// better to create instance instead of base  thing
+
+const instance = axios.create({
+  baseURL: '',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer Token',
+  },
+});
+
+axios.defaults.instance = instance;
+// like this
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="/TeamName-project">
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
