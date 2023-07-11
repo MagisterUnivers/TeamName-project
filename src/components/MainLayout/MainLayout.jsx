@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header/Header';
+import Header from '../Header/Header';
 
 export const MainLayout = () => {
   /**
@@ -34,6 +34,7 @@ export const MainLayout = () => {
         }}
       >
         <Outlet />
+        <h2>This is text test</h2>
       </main>
     </>
   );
