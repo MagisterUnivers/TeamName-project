@@ -1,5 +1,13 @@
 @import-normalize;
-
+:root {
+  /* Colors */
+  --main-bgr-color: #0a0a11;
+  --btn-hover-color: #161f37;
+  --main-text-color: #f3f3f3;
+  --correct-state-color: #3cbc81;
+  --error-state-color: #da1414;
+  --pagination-accent-color: #4070cd80;
+}
 *,
 *:before,
 *:after {
@@ -7,8 +15,10 @@
 }
 
 body {
+  color: var(--main-text-color);
   font-family: sans-serif;
   line-height: 1.5;
+  background-color: var(--main-bgr-color);
 }
 
 h1,
