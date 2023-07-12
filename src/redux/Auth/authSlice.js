@@ -4,17 +4,15 @@ import {
   logoutThunk,
   refreshThunk,
   registrationThunk,
+  verifyThunk,
 } from './authOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
   user: { name: '', email: '' },
-  data: {
-    accessToken: null,
-    refreshToken: null,
-  },
+  accessToken: null,
   online: false,
-  loading: true,
+  loading: false,
 };
 
 const authSlice = createSlice({
@@ -32,8 +30,6 @@ const authSlice = createSlice({
     },
     [registrationThunk.fulfilled]: (state, { payload }) => {
       state.user = payload.user;
-      state.data = payload.data;
-      state.online = true;
       state.loading = false;
       Loading.remove();
     },
@@ -86,6 +82,21 @@ const authSlice = createSlice({
       state.online = true;
       state.loading = false;
       state.data = payload.data;
+      Loading.remove();
+    },
+    [refreshThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [verifyThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your email...');
+    },
+    [verifyThunk.fulfilled]: (state, { payload }) => {
+      state.online = true;
+      state.loading = false;
+      state.accessToken = payload.token;
       Loading.remove();
     },
     [refreshThunk.rejected]: (state, { payload }) => {

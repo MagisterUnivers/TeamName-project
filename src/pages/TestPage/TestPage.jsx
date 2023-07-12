@@ -1,3 +1,4 @@
+import { Container } from '../../components/Container/Container';
 import FollowUs from 'components/FollowUs/FollowUs';
 import Header from 'components/Header/Header';
 
@@ -7,10 +8,14 @@ import React from 'react';
 const TestPage = () => {
   return (
     <>
-    <Header/>
+      <Header />
       {/* <Nav /> */}
-      
-      <FollowUs />
+      {/* <Navigation/>
+      <UserLogo/> */}
+      <Container>
+        {' '}
+        <FollowUs />
+      </Container>
     </>
   );
 };
