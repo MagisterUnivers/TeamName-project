@@ -1,3 +1,4 @@
+import { Container } from 'components/Container';
 import FollowUs from 'components/FollowUs/FollowUs';
 import Navigation from 'components/Navigation/Navigation';
 import UserLogo from 'components/UserLogo/UserLogo';
@@ -8,9 +9,12 @@ const TestPage = () => {
   return (
     <>
       {/* <Nav /> */}
-      <Navigation/>
-      <UserLogo/>
-      <FollowUs />
+      {/* <Navigation/>
+      <UserLogo/> */}
+      <Container>
+        {' '}
+        <FollowUs />
+      </Container>
     </>
   );
 };
