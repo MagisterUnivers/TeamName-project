@@ -9,16 +9,22 @@ const instance = axios.create({
   baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer YOUR_TOKEN',
   },
 });
 
 const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
-const clearToken = () => {
-  axios.defaults.headers.common.Authorization = ``;
+const clearToken = token => {
+  instance.defaults.headers.common['Authorization'] = ``;
 };
+
+// const setToken = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+// const clearToken = () => {
+//   axios.defaults.headers.common.Authorization = ``;
+// };
 
 export const registrationThunk = createAsyncThunk(
   '@@auth/registration',
