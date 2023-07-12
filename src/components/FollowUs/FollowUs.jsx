@@ -3,41 +3,43 @@ import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg'
 import { ReactComponent as InstagramIcon } from '../../assets/icons/instagram.svg';
 import { ReactComponent as YoutubeIcon } from '../../assets/icons/youtube.svg';
 
-import s from './FollowUs.module.css';
+import { StyledLink, StyledList, getStyledIcon } from './FollowUs.styled';
+
+const StyledFacebookIcon = getStyledIcon(FacebookIcon);
+const StyledInstagramIcon = getStyledIcon(InstagramIcon);
+const StyledYoutubeIcon = getStyledIcon(YoutubeIcon);
+
 const FollowUs = () => {
   return (
-    <ul className={s.list}>
+    <StyledList>
       <li>
-        <a
-          className={s.link}
+        <StyledLink
           href="https://fb.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FacebookIcon className={s.icon} />
-        </a>
+          <StyledFacebookIcon />
+        </StyledLink>
       </li>
       <li>
-        <a
-          className={s.link}
+        <StyledLink
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <InstagramIcon className={s.icon} />
-        </a>
+          <StyledInstagramIcon />
+        </StyledLink>
       </li>
       <li>
-        <a
-          className={s.link}
+        <StyledLink
           href="https://youtube.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <YoutubeIcon className={s.icon} />
-        </a>
-      </li>
-    </ul>
+          <StyledYoutubeIcon />
+        </StyledLink>
+      </li>{' '}
+    </StyledList>
   );
 };
 
