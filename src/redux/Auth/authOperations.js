@@ -3,22 +3,35 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 
 //defaultURL
-axios.defaults.baseURL = 'https://goose-tracker-backend.p.goit.global/';
+// axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
-// axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/';
+const instance = axios.create({
+  baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
-const clearToken = () => {
-  axios.defaults.headers.common.Authorization = ``;
+const clearToken = token => {
+  instance.defaults.headers.common['Authorization'] = ``;
 };
+
+// const setToken = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+// const clearToken = () => {
+//   axios.defaults.headers.common.Authorization = ``;
+// };
 
 export const registrationThunk = createAsyncThunk(
   '@@auth/registration',
   async credentials => {
     try {
-      const res = await axios.post('user/register', credentials);
+      const res = await instance.post('users/register', credentials);
+      console.log(res);
       // setToken(res.data);
       return res.data;
     } catch (error) {
@@ -45,7 +58,7 @@ export const loginThunk = createAsyncThunk(
   '@@auth/login',
   async credentials => {
     try {
-      const res = await axios.post('user/login', credentials);
+      const res = await instance.post('user/login', credentials);
       setToken(res.data.data.accessToken);
       return res.data;
     } catch (error) {
@@ -71,7 +84,7 @@ export const loginThunk = createAsyncThunk(
 
 export const logoutThunk = createAsyncThunk('@@auth/logout', async _ => {
   try {
-    await axios.get('user/logout');
+    await instance.get('user/logout');
     clearToken();
   } catch (error) {
     const errorMessage = error.response.data.message;
@@ -85,7 +98,7 @@ export const refreshThunk = createAsyncThunk(
     const refreshToken = thunkAPI.getState().auth.data.refreshToken;
     try {
       setToken(refreshToken);
-      const res = await axios.post('user/refresh');
+      const res = await instance.post('user/refresh');
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;

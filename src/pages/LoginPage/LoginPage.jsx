@@ -1,7 +1,14 @@
+import SigninForm from 'components/Forms/SigninForm/SigninForm';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <>
+      <SigninForm />
+      <Link />
+    </>
+  );
 };
 
 export default LoginPage;
