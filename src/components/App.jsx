@@ -7,7 +7,7 @@ import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
 import TestPage from 'pages/TestPage/TestPage';
-import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
