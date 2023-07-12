@@ -1,0 +1,48 @@
+.navLink {
+  display: inline-block;
+  position: relative;
+  color: var(--main-text-color);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(22.4 / 14);
+  &:global.active {
+    font-weight: 700;
+    text-decoration: underline;
+    &:after {
+      display: none;
+    }
+  }
+}
+.navLink:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.navLink:hover:after {
+  width: 100%;
+  left: 0;
+}
+.listItem:not(:last-of-type) {
+  margin-bottom: 14px;
+}
+.listItem {
+  height: 23px;
+}
+@media screen and (min-width: 768px) {
+  .listItem:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .listItem:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+}

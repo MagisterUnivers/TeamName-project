@@ -6,6 +6,8 @@ import { Suspense, lazy } from 'react';
 import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
+import TestPage from 'pages/TestPage/TestPage';
+import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -40,13 +42,14 @@ export const App = () => {
             }
           />
           <Route
-            path="/login"
+            path="/signin"
             element={
               <PublicRoute>
                 <LoginPage />
               </PublicRoute>
             }
           />
+          <Route path="/test" element={<TestPage />} />
 
           <Route path="/main" element={<MainLayout />}>
             <Route
@@ -57,11 +60,12 @@ export const App = () => {
             <Route
               path="drinks"
               element={<PrivateRoute>{/* drinksPage */}</PrivateRoute>}
-            ></Route>
+            />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <PreviewDrinks />
       </Suspense>
     </>
   );
