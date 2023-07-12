@@ -35,7 +35,11 @@ const SigninForm = () => {
   };
 
   const handleSubmit = values => {
-    dispatch(loginThunk(values)).then(() => navigate('/drinks'));
+    dispatch(loginThunk(values)).then(res => {
+      if (res.payload && res.payload.status === 200) {
+        navigate('/signin');
+      }
+    });
   };
 
   return (

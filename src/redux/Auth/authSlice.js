@@ -57,8 +57,8 @@ const authSlice = createSlice({
       Loading.remove();
     },
     [loginThunk.fulfilled]: (state, { payload }) => {
-      state.user = { id: payload.id, name: payload.name, email: payload.email };
-      state.data = payload.data;
+      state.user = payload?.user;
+      state.accessToken = payload?.token;
 
       state.online = true;
       state.loading = false;
