@@ -20,6 +20,10 @@ export const StyledItem = styled.li`
   &:hover{
     background-color: #161F37;
   }
+
+  &:active{
+    background-color: #161F37;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
