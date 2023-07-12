@@ -1,0 +1,31 @@
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
+
+export const NavContainer = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+export const StyledItem = styled.li`
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover{
+    background-color: #161F37;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  color: #f3f3f3;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+`;
