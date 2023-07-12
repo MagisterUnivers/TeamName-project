@@ -1,8 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledDiv = styled.div`
-background-color: #0A0A11;
-display: flex;
-justify-content: center;
-align-items: center;
-`
+export const SummaryWrapper = styled.div`
+  position: absolute;
+  top: 240px;
+  left: 20px;
+
+  @media screen and (min-width: 768px) {
+    top: 331px;
+    left: 64px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 204px;
+    left: 100px;
+  }
+`;
