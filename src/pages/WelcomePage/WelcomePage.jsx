@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 // import { useSelector } from 'react-redux';
-import { BaseDiv, PicturedWrapper, SummaryWrapper, WelcomeTitle, WelcomeText, ButtonsBlock } from './WelcomPage.styled';
+import { BaseDiv, PicturedWrapper, SummaryWrapper, WelcomeTitle, WelcomeText, ButtonsBlock, RegistrationNavLink, SignInNavLink } from './WelcomPage.styled';
 
 const WelcomePage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -52,9 +52,11 @@ const WelcomePage = () => {
         <WelcomeTitle>Welcome to the app!</WelcomeTitle>
         <WelcomeText>This app offers more than just a collection of recipes - it is designed to be your very own digital cookbook. You can easily save and retrieve your own recipes at any time.</WelcomeText>
         <ButtonsBlock>
-        <button type="button">Registration</button>
-        <button type="button">Sign in</button>
-        </ButtonsBlock>
+        {/* <button type="button">Registration</button>
+        <button type="button">Sign in</button> */}
+        <RegistrationNavLink to="/register">Registration</RegistrationNavLink>
+        <SignInNavLink to="/login">Sign in</SignInNavLink>
+            </ButtonsBlock>
       </SummaryWrapper>
     </BaseDiv>
   );
