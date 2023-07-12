@@ -76,7 +76,7 @@ export const App = () => {
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-          <PreviewDrinks />
+          {/* <PreviewDrinks /> */}
         </Suspense>
       </ThemeProvider>
     </>
