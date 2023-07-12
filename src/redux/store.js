@@ -18,7 +18,7 @@ const persistConfig = {
   key: 'data',
   version: 1,
   storage,
-  whitelist: ['data', 'userInfo', 'user', 'online'],
+  whitelist: ['accessToken', 'userInfo', 'user', 'online'],
 };
 
 // const persistConfigForTheme = {
