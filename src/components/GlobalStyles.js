@@ -16,15 +16,17 @@ const GlobalStyles = createGlobalStyle`
 *,
 *:before,
 *:after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  color: var(--main-text-color);
+  color: ${props => props.theme.textColor};
   font-family: 'Manrope', sans-serif;
   line-height: 1.5;
 
-  background-color: var(--main-bgr-color);
+  background-color: ${props => props.theme.bgrColor};
 }
 
 h1,
