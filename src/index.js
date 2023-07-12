@@ -8,18 +8,18 @@ import { App } from 'components/App';
 import axios from 'axios';
 import './index.css';
 
-axios.defaults.baseURL = '';
+// axios.defaults.baseURL = '';
 // better to create instance instead of base  thing
 
-const instance = axios.create({
-  baseURL: '',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: 'Bearer Token',
-  },
-});
+// const instance = axios.create({
+//   baseURL: '',
+//   headers: {
+//     'Content-Type': 'application/json',
+//     Authorization: 'Bearer Token',
+//   },
+// });
 
-axios.defaults.instance = instance;
+// axios.defaults.instance = instance;
 // like this
 
 ReactDOM.createRoot(document.getElementById('root')).render(

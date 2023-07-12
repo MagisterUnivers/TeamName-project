@@ -3,9 +3,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 
 //defaultURL
-// axios.defaults.baseURL = 'http://localhost:3001/';
-
-// axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/';
+axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -18,7 +16,7 @@ export const registrationThunk = createAsyncThunk(
   '@@auth/registration',
   async credentials => {
     try {
-      const res = await axios.post('http://localhost:3001/users/register', credentials);
+      const res = await axios.post('users/register', credentials);
       console.log(res);
       // setToken(res.data);
       return res.data;
