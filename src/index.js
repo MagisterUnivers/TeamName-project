@@ -5,8 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from 'components/App';
-import axios from 'axios';
-import './index.css';
+// import axios from 'axios';
 
 // axios.defaults.baseURL = '';
 // better to create instance instead of base  thing
