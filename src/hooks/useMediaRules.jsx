@@ -1,14 +1,12 @@
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from 'react-responsive';
 
 export const useMediaRules = () => {
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
-  
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({
-    query: "(min-width: 769px) and (max-width: 1440px)",
+    query: '(min-width: 768px) and (max-width: 1439px)',
   });
-  const isDesktop = useMediaQuery({ query: "(min-width: 1441px)" });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
-  return { isMobile, isTablet, isDesktop };
+  return { isMobile, isTablet, isDesktop, isRetina };
 };
