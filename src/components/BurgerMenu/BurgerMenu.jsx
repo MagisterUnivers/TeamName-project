@@ -1,4 +1,4 @@
-import Logo from 'components/Logo/Logo';
+import { Logo } from 'components/Logo/Logo';
 import {
   BurgerMenuContainer,
   CloseButton,
@@ -15,7 +15,7 @@ const BurgerMenu = ({ onClose }) => {
         <Logo />
         <UserLogoWrp>
           <UserLogo />
-          <CloseButton onClick={()=> onClose()}>
+          <CloseButton onClick={() => onClose()}>
             <svg
               width="32"
               height="32"

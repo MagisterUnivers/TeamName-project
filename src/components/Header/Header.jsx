@@ -1,4 +1,4 @@
-import Logo from 'components/Logo/Logo';
+import { Logo } from 'components/Logo/Logo';
 import Navigation from 'components/Navigation/Navigation';
 import UserLogo from 'components/UserLogo/UserLogo';
 import { useMediaRules } from 'hooks/useMediaRules';
