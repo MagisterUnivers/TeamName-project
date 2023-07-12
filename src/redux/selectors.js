@@ -15,3 +15,5 @@ export const selectIsTaskExist = state => state.calendar.tasks;
 export const selectTasks = state => state.calendar.monthDatesMap;
 
 export const selectMonthDateMap = state => state.calendar.monthDatesMap;
+
+export const selectCocktails = state => state.cocktails.cocktails;

@@ -1,19 +1,23 @@
-import { Container } from '../../components/Container/Container';
-import FollowUs from 'components/FollowUs/FollowUs';
-import Navigation from 'components/Navigation/Navigation';
-import { Nav } from 'components/Nav/Nav';
-import React from 'react';
-import { Logo } from 'components/Logo/Logo';
+import DrinksList from '../../components/DrinksList/DrinksList';
+import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
+import Paginator from 'components/Paginator/Paginator';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 
 const TestPage = () => {
+  const dispatch = useDispatch();
+  const category = encodeURIComponent('Cocktail');
+  useEffect(() => {
+    dispatch(getCocktailsByCategoryThunk(category));
+  }, [dispatch, category]);
+
   return (
     <>
-      <Nav />
-
-      <Container>
-        <Logo />
-        <FollowUs />
-      </Container>
+      <h1>Drinks</h1>
+      <DrinksSearch />
+      <DrinksList />
+      <Paginator />
     </>
   );
 };

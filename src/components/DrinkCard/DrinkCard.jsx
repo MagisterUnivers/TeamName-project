@@ -7,16 +7,19 @@ import {
   Ingredients,
   Ingredientswrapper,
 } from './Styles-DrinkCard';
-import drink from './exampledrink.jpg';
+import { Link } from 'react-router-dom';
+// import drink from './exampledrink.jpg';
 
-const DrinkCard = () => {
+const DrinkCard = ({ cocktail }) => {
   return (
     <Card>
-      <Image src={drink} alt="some drink" />
-      <Ingredientswrapper>
-        <Drinkingreds>Some Ingredients</Drinkingreds>
-        <Ingredients>Ingredients</Ingredients>
-      </Ingredientswrapper>
+      <Link to={`/recipes/${cocktail._id}`}>
+        <Image src={cocktail.drinkThumb} alt="{cocktail.drink}" />
+        <Ingredientswrapper>
+          <Drinkingreds>{cocktail.drink}</Drinkingreds>
+          <Ingredients>Ingredients</Ingredients>
+        </Ingredientswrapper>
+      </Link>
     </Card>
   );
 };
