@@ -7,6 +7,10 @@ export const NavContainer = styled.nav`
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  @media screen and (min-width: 1440px) {
+    height: auto;
+  }
 `;
 
 export const StyledItem = styled.li`

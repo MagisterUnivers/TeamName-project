@@ -16,6 +16,7 @@ const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const VerificationPage = lazy(() => import('pages/VerificationPage/VerificationPage'));
 
 export const App = () => {
   useEffect(() => {
@@ -60,6 +61,14 @@ export const App = () => {
                 </PublicRoute>
               }
             />
+             <Route
+            path=":verificationToken"
+            element={
+              <PublicRoute>
+                <VerificationPage />
+              </PublicRoute>
+            }
+          />
             <Route path="/test" element={<TestPage />} />
 
             <Route path="/main" element={<MainLayout />}>

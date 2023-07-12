@@ -107,3 +107,32 @@ export const refreshThunk = createAsyncThunk(
     }
   }
 );
+
+export const verifyThunk = createAsyncThunk(
+  '@@auth/verify',
+  async verificationToken => {
+    try {
+      const res = await axios.get(`http://localhost:3001/users/verify/${verificationToken}`);
+      console.log(res);
+      // setToken(res.data);
+      return res.data;
+    } catch (error) {
+      const errorMessage = error.response.data.message;
+      // Notiflix.Notify.failure('Respond from server is ' + errorMessage);
+
+      setTimeout(() => {
+        if (error) {
+          Notiflix.Report.warning(
+            'Loading took more than 5 seconds',
+            'Loading seems stuck, or there was a server error. Please, check your data, and then try to "Log In" again.',
+            'GOT IT',
+            () => {
+              window.location.reload();
+            }
+          );
+        }
+      }, 5000);
+      // return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
