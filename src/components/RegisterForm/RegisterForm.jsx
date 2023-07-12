@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { registrationThunk } from 'redux/Auth/authOperations';
 import * as Yup from 'yup';
 import {
@@ -19,10 +19,21 @@ import {
   StyledAiOutlineEyeInvisible,
   StyledPasswordDiv,
 } from './RegisterForm.styled';
+import { useSearchParams } from "react-router-dom";
+import { verifyThunk } from 'redux/Auth/authOperations';
+
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const verificationToken = searchParams.get("verificationToken");
+
+    useEffect(() => {
+      if (verificationToken === null) return;
+        dispatch(verifyThunk(verificationToken))
+    }, [ verificationToken, dispatch])
 
   const openPassword = () => {
     const input = document.querySelector('#password');

@@ -6,7 +6,8 @@ import Notiflix from 'notiflix';
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
 const instance = axios.create({
-  baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
+  // baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
+  baseURL: 'http://localhost:3001/',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -31,7 +32,7 @@ export const registrationThunk = createAsyncThunk(
   async credentials => {
     try {
       const res = await instance.post('users/register', credentials);
-      console.log(res);
+      Notiflix.Report.success('We sent you an email.')
       // setToken(res.data);
       return res.data;
     } catch (error) {
@@ -118,7 +119,7 @@ export const verifyThunk = createAsyncThunk(
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;
-      // Notiflix.Notify.failure('Respond from server is ' + errorMessage);
+      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
 
       setTimeout(() => {
         if (error) {
