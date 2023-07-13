@@ -6,9 +6,15 @@ export const ThemeButton = ({ isDarkTheme, setIsDarkTheme }) => {
         setIsDarkTheme(!isDarkTheme)
     }
   return (
-      <StyledButton onClick={toggleTheme}>
-          {isDarkTheme? <StyledSunIcon/>: <StyledMoonIcon/>}
-
-      </StyledButton>
-  )
+    <StyledButton
+      title={isDarkTheme ? 'switch to light theme' : 'switch to dark theme'}
+      onClick={toggleTheme}
+    >
+      {isDarkTheme ? (
+        <StyledSunIcon title="switch to light theme" />
+      ) : (
+        <StyledMoonIcon title="switch to dark theme" />
+      )}
+    </StyledButton>
+  );
 }
