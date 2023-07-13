@@ -31,8 +31,7 @@ export const App = () => {
     };
   }, []);
 
-  const [theme, setTheme] = useState('dark');
-  const isDarkTheme = theme === 'dark';
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   return (
     <>
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -40,10 +39,7 @@ export const App = () => {
         <GlobalStyles />
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route
-              path="/"
-              element={<WelcomePage theme={theme} setTheme={setTheme} />}
-            />
+            <Route path="/" element={<WelcomePage />} />
             <Route
               path="/register"
               element={
@@ -60,7 +56,16 @@ export const App = () => {
                 </PublicRoute>
               }
             />
-            <Route path="/test" element={<TestPage />} />
+            <Route
+              path="/test"
+              element={
+                <TestPage
+                  isDarkTheme={isDarkTheme}
+                  setIsDarkTheme={setIsDarkTheme}
+                />
+              }
+            />
+            {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
               <Route
                 path="cocktails"
