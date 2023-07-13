@@ -1,7 +1,7 @@
-import DrinksList from '../../components/DrinksList/DrinksList';
-import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
-import Paginator from 'components/Paginator/Paginator';
+import { Container } from '../../components/Container/Container';
+// import Navigation from 'components/Navigation/Navigation';
 import React, { useEffect } from 'react';
+import { FollowUs, Nav, Logo } from 'components';
 import { useDispatch } from 'react-redux';
 import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 
@@ -14,10 +14,13 @@ const TestPage = () => {
 
   return (
     <>
-      <h1>Drinks</h1>
-      <DrinksSearch />
-      <DrinksList />
-      <Paginator />
+      <Nav />
+
+      <Container>
+        <Logo />
+        <FollowUs />
+        <div style={{ height: '300vh' }}></div>
+      </Container>
     </>
   );
 };
