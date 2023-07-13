@@ -98,10 +98,12 @@ export const RegistrationNavLink = styled(NavLink)`
   font-style: normal;
   font-weight: 600;
   line-height: 1.13;
+  transition: box-shadow 0.3s ease;
   &:hover {
     text-decoration: underline;
+    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
   }
-  @media screen and (min-width: 768px) {
+   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.28;
     padding: 18px 44px;
@@ -117,8 +119,10 @@ export const SignInNavLink = styled(NavLink)`
   font-style: normal;
   font-weight: 600;
   line-height: 1.28;
+  transition: box-shadow 0.3s ease;
   &:hover {
     text-decoration: underline;
+    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
   }
   @media screen and (min-width: 768px) {
     font-size: 16px;
