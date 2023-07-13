@@ -17,6 +17,7 @@ const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'))
 
 export const App = () => {
   useEffect(() => {
@@ -74,6 +75,10 @@ export const App = () => {
                 element={<PrivateRoute>{/* drinksPage */}</PrivateRoute>}
               />
             </Route>
+            <Route
+                path="add"
+                element={<PrivateRoute>{<AddRecipePage/>}</PrivateRoute>}
+              />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
