@@ -16,3 +16,5 @@ export const selectTasks = state => state.calendar.monthDatesMap;
 export const selectIsClicked = state => state.auth.isClicked;
 
 export const selectMonthDateMap = state => state.calendar.monthDatesMap;
+
+export const selectCocktails = state => state.cocktails.cocktails;

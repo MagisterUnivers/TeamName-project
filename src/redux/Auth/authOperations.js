@@ -6,7 +6,7 @@ import { selectUserLoading } from 'redux/selectors';
 //defaultURL
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
   // baseURL: 'http://localhost:3001/',
   headers: {

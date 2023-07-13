@@ -11,6 +11,7 @@ import TestPage from 'pages/TestPage/TestPage';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
+import DrinksPage from 'pages/DrinksPage/DrinksPage';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
