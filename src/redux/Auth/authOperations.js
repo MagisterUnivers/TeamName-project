@@ -6,8 +6,8 @@ import Notiflix from 'notiflix';
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
 export const instance = axios.create({
-  // baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
+  // baseURL: 'http://localhost:3001/',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -32,7 +32,7 @@ export const registrationThunk = createAsyncThunk(
   async credentials => {
     try {
       const res = await instance.post('users/register', credentials);
-      Notiflix.Report.success('We sent you an email.')
+      Notiflix.Report.success('We sent you an email.');
       // setToken(res.data);
       return res.data;
     } catch (error) {
@@ -55,6 +55,7 @@ export const registrationThunk = createAsyncThunk(
     }
   }
 );
+
 export const loginThunk = createAsyncThunk(
   '@@auth/login',
   async credentials => {
@@ -113,7 +114,9 @@ export const verifyThunk = createAsyncThunk(
   '@@auth/verify',
   async verificationToken => {
     try {
-      const res = await axios.get(`http://localhost:3001/users/verify/${verificationToken}`);
+      const res = await axios.get(
+        `http://localhost:3001/users/verify/${verificationToken}`
+      );
       console.log(res);
       // setToken(res.data);
       return res.data;
@@ -136,4 +139,4 @@ export const verifyThunk = createAsyncThunk(
       // return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
