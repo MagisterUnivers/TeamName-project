@@ -3,14 +3,15 @@ import React from 'react';
 import { Cardwrapper, Section, SectionTitle } from './Styles-PreviewDrinks';
 import DrinkCard from 'components/DrinkCard/DrinkCard';
 
-const PreviewDrinks = () => {
+const PreviewDrinks = ({ title, mockData = [] }) => {
   return (
     <Section>
-      <SectionTitle>SectionTitle</SectionTitle>
+      <SectionTitle>{title}</SectionTitle>
+
       <Cardwrapper>
-        <DrinkCard />
-        <DrinkCard />
-        <DrinkCard />
+        {mockData.map(cocktail => (
+          <DrinkCard cocktail={cocktail} key={cocktail._id} />
+        ))}
       </Cardwrapper>
     </Section>
   );
