@@ -21,7 +21,7 @@ import {
   StyledAiOutlineEye,
   StyledAiOutlineEyeInvisible,
   StyledPasswordDiv,
-} from './SigninForm.styled';
+} from '../../RegisterForm/RegisterForm.styled';
 
 const SigninForm = () => {
   const navigate = useNavigate();
