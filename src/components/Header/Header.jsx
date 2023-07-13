@@ -11,11 +11,10 @@ import {
 } from './HeaderStyled';
 import BurgerMenu from 'components/BurgerMenu/BurgerMenu';
 
-const Header = () => {
+export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
   const { isDesktop } = useMediaRules();
-  console.log(isDesktop);
 
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
@@ -73,4 +72,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+

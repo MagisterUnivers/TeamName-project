@@ -112,6 +112,12 @@ export const StyledButton = styled.button`
   line-height: calc (18 / 14);
   margin-bottom: 14px;
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 18px 169px;

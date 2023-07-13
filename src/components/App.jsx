@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router';
-import { MainLayout } from './MainLayout/MainLayout';
 import { PrivateRoute } from '../routes/PrivateRoute';
 import { PublicRoute } from '../routes/PublicRoute';
 import { Suspense, lazy, useState } from 'react';
@@ -11,7 +10,7 @@ import TestPage from 'pages/TestPage/TestPage';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
-import DrinksPage from 'pages/DrinksPage/DrinksPage';
+import { SharedLayout } from 'components';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -32,8 +31,7 @@ export const App = () => {
     };
   }, []);
 
-  const [theme, setTheme] = useState('dark');
-  const isDarkTheme = theme === 'dark';
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   return (
     <>
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -41,10 +39,7 @@ export const App = () => {
         <GlobalStyles />
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route
-              path="/"
-              element={<WelcomePage theme={theme} setTheme={setTheme} />}
-            />
+            <Route path="/" element={<WelcomePage />} />
             <Route
               path="/register"
               element={
@@ -61,21 +56,27 @@ export const App = () => {
                 </PublicRoute>
               }
             />
-            <Route path="/test" element={<TestPage />} />
-
-            <Route path="/main" element={<MainLayout />}>
+            <Route
+              path="/test"
+              element={
+                <TestPage
+                  isDarkTheme={isDarkTheme}
+                  setIsDarkTheme={setIsDarkTheme}
+                />
+              }
+            />
+            {/* <Route path="/main" element={<MainLayout />}> */}
+            <Route path="/main" element={<SharedLayout />}>
               <Route
                 path="cocktails"
                 element={<PrivateRoute>{/* cocktailsPage */}</PrivateRoute>}
               />
-
               <Route
                 path="drinks"
                 element={<PrivateRoute>{/* drinksPage */}</PrivateRoute>}
-              />
+              />{' '}
             </Route>
-
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />{' '}
           </Routes>
           {/* <PreviewDrinks /> */}
         </Suspense>

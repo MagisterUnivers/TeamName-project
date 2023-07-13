@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../Header/Header';
 
-export const MainLayout = () => {
+import { Header,Footer } from 'components';
+
+export const SharedLayout = () => {
   /**
     |============================
     | 
@@ -27,15 +28,10 @@ export const MainLayout = () => {
   return (
     <>
       <Header />
-      <main
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-      >
+      <main>
         <Outlet />
-        <h2>This is text test</h2>
       </main>
+      <Footer />
     </>
   );
 };

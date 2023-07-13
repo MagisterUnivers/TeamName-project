@@ -2,7 +2,7 @@ import SigninForm from 'components/Forms/SigninForm/SigninForm';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { BaseDiv, PicturedWrapper } from '../WelcomePage/WelcomPage.styled';
-import { SummaryWrapper } from './LoginPage.styled';
+import { SummaryWrapper } from '../RegisterPage/RegisterPage.styled';
 
 const LoginPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
