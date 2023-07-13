@@ -13,6 +13,7 @@ const initialState = {
   accessToken: null,
   online: false,
   loading: false,
+  isClicked: false,
 };
 
 const authSlice = createSlice({
@@ -21,6 +22,14 @@ const authSlice = createSlice({
   reducers: {
     clearError: state => {
       state.error = null;
+    },
+    handleEyeClick: state => {
+      state.isClicked = !state.isClicked;
+      const openPassword = () => {
+        const input = document.querySelector('#password');
+        input.type = input.type === 'password' ? 'text' : 'password';
+      };
+      openPassword();
     },
   },
   extraReducers: {
@@ -48,8 +57,8 @@ const authSlice = createSlice({
       Loading.remove();
     },
     [loginThunk.fulfilled]: (state, { payload }) => {
-      state.user = { id: payload.id, name: payload.name, email: payload.email };
-      state.data = payload.data;
+      state.user = payload?.user;
+      state.accessToken = payload?.token;
 
       state.online = true;
       state.loading = false;
@@ -108,4 +117,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { clearError } = authSlice.actions;
+export const { clearError, handleEyeClick } = authSlice.actions;

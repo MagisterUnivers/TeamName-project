@@ -1,143 +1,141 @@
 import React from 'react';
-import { Formik, ErrorMessage, useField } from 'formik';
-import * as Yup from 'yup';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { loginThunk } from 'redux/Auth/authOperations';
 import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
+import { selectIsClicked } from 'redux/selectors';
+import { handleEyeClick } from 'redux/Auth/authSlice';
 import {
-  Rel,
-  StyledBtn,
-  StyledDoneLogo,
-  StyledErrorLogo,
-  StyledField,
+  StyledButton,
+  StyledError,
   StyledForm,
-  StyledHolder,
-  StyledLabel,
-  StyledTaker,
+  StyledFormInsight,
+  StyledIconChecked,
+  StyledIconError,
+  StyledInput,
+  StyledInputWrap,
   StyledTitle,
-  StyledWrapper,
+  StyledInnerDiv,
+  StyledMessage,
+  StyledAiOutlineEye,
+  StyledAiOutlineEyeInvisible,
+  StyledPasswordDiv,
 } from './SigninForm.styled';
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .max(15, 'Length must be less then 15')
-    .required('Your name is required'),
-  email: Yup.string()
-    .email('Invalid e-mail')
-    .required('Your e-mail is required'),
-  birthday: Yup.date().nullable(),
-  phone: Yup.string()
-    .matches(/^\+380\d{9}$/, 'Enter your phone number in format +380')
-    .nullable(),
-  skype: Yup.string().max(16, 'Length must be less then 16').nullable(),
-});
 
 const SigninForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isClicked = useSelector(selectIsClicked);
 
-  const initialValues = {
-    email: '',
-    password: '',
-  };
+  console.log(isClicked);
 
-  const handleEye = () => {
-    const input = document.querySelector('#password');
-    input.type = input.type === 'password' ? 'text' : 'password';
-  };
-
-  const InputField1 = ({ name, placeholder, type }) => {
-    const [field, meta] = useField(name);
-    const showError = meta.touched && meta.error;
-    const className = showError ? 'error' : 'success';
-    return (
-      <>
-        {/* <StyledLabel
-          htmlFor={name}
-          style={{
-            color: showError ? 'red' : 'green' || 'black',
-          }}
-        >
-          {name.slice(0, 1).toUpperCase() + name.slice(1)} */}
-        {/* </StyledLabel> */}
-        <Rel>
-          <StyledField
-            type={type ?? 'text'}
-            id={name}
-            name={name}
-            placeholder={placeholder}
-            className={className}
-            {...field}
-          />
-          {showError && meta.touched && <StyledErrorLogo $show={'true'} />}
-          {!showError && meta.touched && <StyledDoneLogo $showerror={''} />}
-          {showError && meta.touched && (
-            <ErrorMessage
-              name={name}
-              component="p"
-              className="error-message"
-              style={{
-                fontSize: '12px',
-                lineHeight: 'calc(14/12)',
-                marginTop: '8px',
-                color: 'red',
-              }}
-            />
-          )}
-          {!showError && meta.touched && (
-            <p
-              style={{
-                fontSize: '12px',
-                lineHeight: 'calc(14/12)',
-                marginTop: '8px',
-                color: 'green',
-              }}
-            >
-              This is a CORRECT {name}
-            </p>
-          )}
-        </Rel>
-      </>
-    );
+  const openPassword = () => {
+    dispatch(handleEyeClick());
   };
 
   const handleSubmit = values => {
-    // dispatch(loginThunk(values)).then(() => navigate('/main/calendar'));
+    dispatch(loginThunk(values)).then(res => {
+      if (res.payload && res.payload.status === 200) {
+        navigate('/signin');
+      }
+    });
   };
 
   return (
-    <div>
-      <StyledWrapper>
-        <StyledTitle>Sign in</StyledTitle>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {() => (
-            <StyledForm>
-              <StyledTaker>
-                <StyledHolder>
-                  <InputField1 name="email" placeholder="nadiia@gmail.com" />
-                </StyledHolder>
-                <StyledHolder>
-                  <InputField1
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="qwerty12345"
+    <StyledForm
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      validationSchema={Yup.object({
+        email: Yup.string()
+          .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
+          .required('Required'),
+        password: Yup.string()
+          .required('No password provided.')
+          .min(6, 'Password is too short - should be 6 chars minimum.')
+          .max(16, 'Password is too long - should be 16 chars maximum.')
+          .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+            'Password must contain 1 lowercase, 1 uppercase letter and 1 number.'
+          ),
+      })}
+      onSubmit={values => {
+        dispatch(loginThunk(values));
+      }}
+    >
+      {({ errors, touched }) => (
+        <StyledFormInsight>
+          <StyledTitle>Sign in</StyledTitle>
+          <StyledInnerDiv>
+            <StyledInputWrap>
+              <StyledInput
+                type="email"
+                name="email"
+                placeholder="Email"
+                className={
+                  touched.email && !errors.email
+                    ? 'valid-border'
+                    : errors.email && touched.email
+                    ? 'invalid-border'
+                    : ''
+                }
+              />
+              {errors.email && touched.email && (
+                <div>
+                  <StyledIconError color="red" />{' '}
+                  <StyledError name="email" component="div" />
+                </div>
+              )}
+              {touched.email && !errors.email && (
+                <div>
+                  <StyledIconChecked color="green" />{' '}
+                  <StyledMessage>This is an CORRECT email</StyledMessage>
+                </div>
+              )}
+            </StyledInputWrap>
+            <StyledInputWrap>
+              <StyledPasswordDiv>
+                <StyledInput
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className={
+                    touched.password && !errors.password
+                      ? 'valid-border'
+                      : errors.password && touched.password
+                      ? 'invalid-border'
+                      : ''
+                  }
+                />
+                {touched.password && !isClicked ? (
+                  <StyledAiOutlineEyeInvisible
+                    color="#F3F3F3"
+                    onClick={openPassword}
                   />
-                </StyledHolder>
-              </StyledTaker>
-              <StyledBtn onClick={handleEye} type="button">
-                Log in
-              </StyledBtn>
-            </StyledForm>
-          )}
-        </Formik>
-      </StyledWrapper>
-      <AuthNavigate isLoginForm={true} />
-    </div>
+                ) : touched.password && isClicked ? (
+                  <StyledAiOutlineEye color="#F3F3F3" onClick={openPassword} />
+                ) : (
+                  ''
+                )}
+              </StyledPasswordDiv>
+              {errors.password && touched.password && (
+                <StyledError name="password" component="div" />
+              )}
+              {touched.password && !errors.password && (
+                <StyledMessage>This is an CORRECT password</StyledMessage>
+              )}
+            </StyledInputWrap>
+          </StyledInnerDiv>
+          <StyledButton type="submit" onClick={handleSubmit}>
+            Sign In
+          </StyledButton>
+          <AuthNavigate />
+        </StyledFormInsight>
+      )}
+    </StyledForm>
   );
 };
 

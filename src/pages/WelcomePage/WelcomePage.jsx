@@ -12,7 +12,7 @@ import {
 } from './WelcomPage.styled';
 
 const WelcomePage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1439px)',
   });
@@ -65,7 +65,7 @@ const WelcomePage = () => {
         </WelcomeText>
         <ButtonsBlock>
           <RegistrationNavLink to="/register">Registration</RegistrationNavLink>
-          <SignInNavLink to="/login">Sign in</SignInNavLink>
+          <SignInNavLink to="/signin">Sign in</SignInNavLink>
         </ButtonsBlock>
       </SummaryWrapper>
     </BaseDiv>
