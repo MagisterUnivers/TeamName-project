@@ -67,6 +67,7 @@ export const loginThunk = createAsyncThunk(
       console.log(res);
       return res.data;
     } catch (error) {
+      console.log(error);
       setTimeout(() => {
         if (!loading) {
           Notiflix.Report.warning(

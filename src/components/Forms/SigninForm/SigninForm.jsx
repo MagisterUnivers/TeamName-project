@@ -28,18 +28,8 @@ const SigninForm = () => {
   const dispatch = useDispatch();
   const isClicked = useSelector(selectIsClicked);
 
-  console.log(isClicked);
-
   const openPassword = () => {
     dispatch(handleEyeClick());
-  };
-
-  const handleSubmit = values => {
-    dispatch(loginThunk(values)).then(res => {
-      if (res.payload && res.payload.status === 200) {
-        navigate('/signin');
-      }
-    });
   };
 
   return (
@@ -62,7 +52,11 @@ const SigninForm = () => {
           ),
       })}
       onSubmit={values => {
-        dispatch(loginThunk(values));
+        dispatch(loginThunk(values)).then(res => {
+          if (res.payload && res.payload.status === 200) {
+            navigate('/signin');
+          }
+        });
       }}
     >
       {({ errors, touched }) => (
@@ -129,9 +123,7 @@ const SigninForm = () => {
               )}
             </StyledInputWrap>
           </StyledInnerDiv>
-          <StyledButton type="submit" onClick={handleSubmit}>
-            Sign In
-          </StyledButton>
+          <StyledButton type="submit">Sign In</StyledButton>
           <AuthNavigate />
         </StyledFormInsight>
       )}
