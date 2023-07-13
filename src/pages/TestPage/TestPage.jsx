@@ -1,9 +1,17 @@
 import { Container } from '../../components/Container/Container';
-import Navigation from 'components/Navigation/Navigation';
-import React from 'react';
-import { FollowUs, Nav,Logo } from 'components';
+// import Navigation from 'components/Navigation/Navigation';
+import React, { useEffect } from 'react';
+import { FollowUs, Nav, Logo } from 'components';
+import { useDispatch } from 'react-redux';
+import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 
 const TestPage = () => {
+  const dispatch = useDispatch();
+  const category = encodeURIComponent('Cocktail');
+  useEffect(() => {
+    dispatch(getCocktailsByCategoryThunk(category));
+  }, [dispatch, category]);
+
   return (
     <>
       <Nav />

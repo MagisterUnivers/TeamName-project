@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Card = styled.div`
+export const Card = styled.li`
   max-width: 400px;
-  backgrond: transparent;
+  background: transparent;
 `;
 
 export const Image = styled.img`

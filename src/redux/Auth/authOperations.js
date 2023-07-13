@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
+import { selectUserLoading } from 'redux/selectors';
 
 //defaultURL
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
   // baseURL: 'http://localhost:3001/',
   headers: {
@@ -32,7 +33,7 @@ export const registrationThunk = createAsyncThunk(
   async credentials => {
     try {
       const res = await instance.post('users/register', credentials);
-      Notiflix.Report.success('We sent you an email.')
+      Notiflix.Report.success('We sent you an email.');
       // setToken(res.data);
       return res.data;
     } catch (error) {
@@ -55,16 +56,20 @@ export const registrationThunk = createAsyncThunk(
     }
   }
 );
+
 export const loginThunk = createAsyncThunk(
   '@@auth/login',
-  async credentials => {
+  async (credentials, thunkAPI) => {
+    const loading = selectUserLoading(thunkAPI.getState());
     try {
-      const res = await instance.post('user/login', credentials);
-      setToken(res.data.data.accessToken);
+      const res = await instance.post('users/login', credentials);
+      setToken(res.data.token);
+      console.log(res);
       return res.data;
     } catch (error) {
+      console.log(error);
       setTimeout(() => {
-        if (error) {
+        if (!loading) {
           Notiflix.Report.warning(
             'Loading took more than 5 seconds',
             'Loading seems stuck, or there was a server error. Please, check your data, and then try to "Log In" again.',
@@ -78,7 +83,7 @@ export const loginThunk = createAsyncThunk(
 
       const errorMessage = error.response.data.message;
       Notiflix.Notify.failure('Respond from server is ' + errorMessage);
-      // return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -113,7 +118,9 @@ export const verifyThunk = createAsyncThunk(
   '@@auth/verify',
   async verificationToken => {
     try {
-      const res = await axios.get(`http://localhost:3001/users/verify/${verificationToken}`);
+      const res = await instance.get(
+        `http://localhost:3001/users/verify/${verificationToken}`
+      );
       console.log(res);
       // setToken(res.data);
       return res.data;
@@ -136,4 +143,4 @@ export const verifyThunk = createAsyncThunk(
       // return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
