@@ -118,9 +118,7 @@ export const verifyThunk = createAsyncThunk(
   '@@auth/verify',
   async verificationToken => {
     try {
-      const res = await instance.get(
-        `http://localhost:3001/users/verify/${verificationToken}`
-      );
+      const res = await instance.get(`/users/verify/${verificationToken}`);
       console.log(res);
       // setToken(res.data);
       return res.data;
