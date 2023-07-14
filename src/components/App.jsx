@@ -11,7 +11,7 @@ import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
 
-// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';  // by Igor
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -82,9 +82,9 @@ export const App = () => {
           </Routes>
 
           {/* <PreviewDrinks title="Ordinary Drink" mockData={mockData} />
-            <PreviewDrinks title="Cocktail" mockData={mockData} />
-            <PreviewDrinks title="Shake" mockData={mockData} />
-            <PreviewDrinks title="Other/Unknow" mockData={mockData} /> */}
+          <PreviewDrinks title="Cocktail" mockData={mockData} />
+          <PreviewDrinks title="Shake" mockData={mockData} />
+          <PreviewDrinks title="Other/Unknow" mockData={mockData} /> */}
         </Suspense>
       </ThemeProvider>
     </>

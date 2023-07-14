@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCocktailsByCategoryThunk } from './cocktailsOperations.js';
+import {
+  getCocktailsByCategoryThunk,
+  getCocktailsByFourCategoryThunk,
+} from './cocktailsOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
@@ -21,6 +24,21 @@ const cocktailsSlice = createSlice({
       Loading.remove();
     },
     [getCocktailsByCategoryThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+
+    [getCocktailsByFourCategoryThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+    [getCocktailsByFourCategoryThunk.fulfilled]: (state, { payload }) => {
+      state.cocktails = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getCocktailsByFourCategoryThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();
