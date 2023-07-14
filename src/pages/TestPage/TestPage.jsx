@@ -1,21 +1,32 @@
+// import DrinksList from '../../components/DrinksList/DrinksList';
+// import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
+// import Paginator from 'components/Paginator/Paginator';
+import { ThemeButton } from 'components/ThemeButton/ThemeButton';
 import { Container } from '../../components/Container/Container';
-import FollowUs from 'components/FollowUs/FollowUs';
-import Header from 'components/Header/Header';
+// import Navigation from 'components/Navigation/Navigation';
+import React, { useEffect } from 'react';
+import { FollowUs, Nav, Logo } from 'components';
+import { useDispatch } from 'react-redux';
+import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 
-// import { Nav } from 'components/Nav/Nav';
-import React from 'react';
+const TestPage = props => {
+  console.log(props);
+  const dispatch = useDispatch();
+  const category = encodeURIComponent('Cocktail');
+  useEffect(() => {
+    dispatch(getCocktailsByCategoryThunk(category));
+  }, [dispatch, category]);
 
-const TestPage = () => {
   return (
     <>
-    <Header />
-     <Container>
-     
-     </Container>
-      {/* <Container>
-        {' '}
+      <ThemeButton {...props} />
+      <Nav />
+
+      <Container>
+        <Logo />
         <FollowUs />
-      </Container> */}
+        <div style={{ height: '300vh' }}></div>
+      </Container>
     </>
   );
 };

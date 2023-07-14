@@ -1,29 +1,24 @@
-import { NavLink } from 'react-router-dom';
-import s from './Nav.module.css';
+import { navRoutes } from 'constants/navRoutes';
+
+import { StyledListItem, StyledNavButton, StyledNavLink } from './Nav.styled';
+import { useLocation } from 'react-router';
+
 export const Nav = () => {
+  const location = useLocation()
+  console.log(location);
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    };
+
   return (
     <nav>
       <ul>
-        <li className={s.listItem}>
-          <NavLink className={s.navLink} to="/drinks">
-            Drinks
-          </NavLink>
-        </li>
-        <li className={s.listItem}>
-          <NavLink className={s.navLink} to="/add">
-            Add recipes
-          </NavLink>
-        </li>
-        <li className={s.listItem}>
-          <NavLink className={s.navLink} to="/my">
-            My recipes
-          </NavLink>
-        </li>
-        <li className={s.listItem}>
-          <NavLink className={s.navLink} to="/favorite">
-            Favorites
-          </NavLink>
-        </li>
+        {navRoutes.map(({ name, route }) => <StyledListItem>
+          {location.pathname === route ? <StyledNavButton type='button' onClick={scrollToTop}>{name}</StyledNavButton> :          <StyledNavLink to={route}>{name }</StyledNavLink>}
+        </StyledListItem>)}
       </ul>
     </nav>
   );

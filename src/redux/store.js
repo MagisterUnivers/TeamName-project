@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/authSlice';
+import { cocktailsReducer } from './Cocktails/cocktailsSlice';
 // import { userInfoReducer } from './UserInfo/userInfoSlice';
 // import { calendarEventsReducer } from './CalendarEvents/calendarEventsSlice';
 
@@ -33,6 +34,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authReducer),
     // userInfo: persistReducer(persistConfigForTheme, userInfoReducer),
     // calendar: calendarEventsReducer,
+    cocktails: cocktailsReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

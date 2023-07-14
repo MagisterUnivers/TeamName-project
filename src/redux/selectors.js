@@ -13,5 +13,12 @@ export const selectUserInfoEmail = state => state.userInfo.email;
 export const selectTheme = state => state.userInfo.theme;
 export const selectIsTaskExist = state => state.calendar.tasks;
 export const selectTasks = state => state.calendar.monthDatesMap;
-
+export const selectIsClicked = state => state.auth.isClicked;
 export const selectMonthDateMap = state => state.calendar.monthDatesMap;
+
+//Cocktails
+export const selectCocktails = state => state.cocktails.cocktails;
+export const selectCategories = state => state.cocktails.categories;
+export const selectGlasses = state => state.cocktails.glasses;
+export const selectIngredients = state => state.cocktails.ingredients;
+export const selectSearch = state => state.cocktails.search;

@@ -1,4 +1,4 @@
-import Logo from 'components/Logo/Logo';
+import { Logo } from 'components/Logo/Logo';
 import Navigation from 'components/Navigation/Navigation';
 import UserLogo from 'components/UserLogo/UserLogo';
 import { useMediaRules } from 'hooks/useMediaRules';
@@ -11,11 +11,10 @@ import {
 import BurgerMenu from 'components/BurgerMenu/BurgerMenu';
 import BurgerMenuButton from 'components/BurgerMenu/Button/Button';
 
-const Header = () => {
+export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
   const { isDesktop } = useMediaRules();
-  console.log(isDesktop);
 
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
@@ -38,4 +37,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+

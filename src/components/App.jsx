@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router';
-import { MainLayout } from './MainLayout/MainLayout';
 import { PrivateRoute } from '../routes/PrivateRoute';
 import { PublicRoute } from '../routes/PublicRoute';
 import { Suspense, lazy, useState } from 'react';
@@ -7,16 +6,16 @@ import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
 import TestPage from 'pages/TestPage/TestPage';
-import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
+import { SharedLayout } from 'components';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
-const VerificationPage = lazy(() => import('pages/VerificationPage/VerificationPage'));
 
 export const App = () => {
   useEffect(() => {
@@ -32,8 +31,7 @@ export const App = () => {
     };
   }, []);
 
-  const [theme, setTheme] = useState('dark');
-  const isDarkTheme = theme === 'dark';
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   return (
     <>
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -41,10 +39,7 @@ export const App = () => {
         <GlobalStyles />
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route
-              path="/"
-              element={<WelcomePage theme={theme} setTheme={setTheme} />}
-            />
+            <Route path="/" element={<WelcomePage />} />
             <Route
               path="/register"
               element={
@@ -61,31 +56,29 @@ export const App = () => {
                 </PublicRoute>
               }
             />
-             <Route
-            path=":verificationToken"
-            element={
-              <PublicRoute>
-                <VerificationPage />
-              </PublicRoute>
-            }
-          />
-            <Route path="/test" element={<TestPage />} />
-
-            <Route path="/main" element={<MainLayout />}>
+            <Route
+              path="/test"
+              element={
+                <TestPage
+                  isDarkTheme={isDarkTheme}
+                  setIsDarkTheme={setIsDarkTheme}
+                />
+              }
+            />
+            {/* <Route path="/main" element={<MainLayout />}> */}
+            <Route path="/main" element={<SharedLayout />}>
               <Route
                 path="cocktails"
                 element={<PrivateRoute>{/* cocktailsPage */}</PrivateRoute>}
               />
-
               <Route
                 path="drinks"
                 element={<PrivateRoute>{/* drinksPage */}</PrivateRoute>}
-              />
+              />{' '}
             </Route>
-
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />{' '}
           </Routes>
-          <PreviewDrinks />
+          {/* <PreviewDrinks /> */}
         </Suspense>
       </ThemeProvider>
     </>

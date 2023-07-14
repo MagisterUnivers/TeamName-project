@@ -1,7 +1,12 @@
-import { useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { registrationThunk } from 'redux/Auth/authOperations';
 import * as Yup from 'yup';
+import { useSearchParams } from 'react-router-dom';
+import { verifyThunk } from 'redux/Auth/authOperations';
+import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
+import { handleEyeClick } from 'redux/Auth/authSlice';
+import { selectIsClicked } from 'redux/selectors';
 import {
   StyledButton,
   StyledError,
@@ -12,7 +17,6 @@ import {
   StyledInput,
   StyledInputWrap,
   StyledTitle,
-  StyledNavLink,
   StyledInnerDiv,
   StyledMessage,
   StyledAiOutlineEye,
@@ -22,12 +26,18 @@ import {
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [isClicked, setIsClicked] = useState(false);
+  const isClicked = useSelector(selectIsClicked);
+
+  const [searchParams] = useSearchParams();
+  const verificationToken = searchParams.get('verificationToken');
+
+  useEffect(() => {
+    if (verificationToken === null) return;
+    dispatch(verifyThunk(verificationToken));
+  }, [verificationToken, dispatch]);
 
   const openPassword = () => {
-    const input = document.querySelector('#password');
-    input.type = input.type === 'password' ? 'text' : 'password';
-    setIsClicked(!isClicked);
+    dispatch(handleEyeClick());
   };
 
   return (
@@ -132,9 +142,16 @@ const RegisterForm = () => {
                       : ''
                   }
                 />
-                {touched.password && !isClicked ? <StyledAiOutlineEyeInvisible color="#F3F3F3" onClick={openPassword} /> : touched.password && isClicked ? <StyledAiOutlineEye color="#F3F3F3" onClick={openPassword} />
-                : ''}
-                
+                {touched.password && !isClicked ? (
+                  <StyledAiOutlineEyeInvisible
+                    color="#F3F3F3"
+                    onClick={openPassword}
+                  />
+                ) : touched.password && isClicked ? (
+                  <StyledAiOutlineEye color="#F3F3F3" onClick={openPassword} />
+                ) : (
+                  ''
+                )}
               </StyledPasswordDiv>
               {errors.password && touched.password && (
                 <StyledError name="password" component="div" />
@@ -145,7 +162,7 @@ const RegisterForm = () => {
             </StyledInputWrap>
           </StyledInnerDiv>
           <StyledButton type="submit">Sign Up</StyledButton>
-          <StyledNavLink to="/login">Sign In</StyledNavLink>
+          <AuthNavigate />
         </StyledFormInsight>
       )}
     </StyledForm>
