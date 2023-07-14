@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { ModalWrapper, CloseButton } from './UserInfoModal.styled';
+import { ModalWrapper, CloseButton, UserWrapper } from './UserInfoModal.styled';
 
 const UserInfoModal = ({ onClose }) => {
   const [photo, setPhoto] = useState('');
   const [username, setUsername] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ваша логіка для відправки даних
-    // Наприклад, виклик функції для відправки даних на сервер
-    // після успішної відповіді викликаємо onClose() для закриття модального вікна
+
     onClose();
   };
 
@@ -37,7 +35,7 @@ const UserInfoModal = ({ onClose }) => {
          <CloseButton onClick={onClose}>
         <img src="../../../../public/images/close.svg" alt="Close" />
       </CloseButton>
-      <div className="modal-content">
+      <UserWrapper className="modal-content">
         <h2>Add/Change User</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="photo">Photo:</label>
@@ -60,7 +58,7 @@ const UserInfoModal = ({ onClose }) => {
 
           <button type="submit">Submit</button>
         </form>
-      </div>
+      </UserWrapper>
     </ModalWrapper>
   );
 };
