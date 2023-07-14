@@ -1,3 +1,4 @@
+import { devices } from 'constants/breakpoints';
 import styled from 'styled-components';
 
 export const HeaderWrp = styled.div`
@@ -6,12 +7,20 @@ export const HeaderWrp = styled.div`
   position: fixed;
   z-index: 1000;
   background-color: ${props => props.theme.bgrColor};
+  padding-top: 16px;
+  padding-bottom: 15px;
+
+  @media ${devices.tablet}{
+    padding-top: 20px;
+    padding-bottom: 19px;
+  }
 `;
 
 export const HeaderContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -36,10 +45,3 @@ export const UserLogoWrp = styled.div`
   align-items: center;
 `;
 
-// export const BurgerMenuButton = styled.button`
-//   width: 32px;
-//   height: 32px;
-//   border: none;
-//   background-color: transparent;
-//   cursor: pointer;
-// `;

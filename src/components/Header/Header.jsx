@@ -6,12 +6,12 @@ import {
   UserLogoWrp,
 } from './HeaderStyled';
 
-import { Navigation, Logo, UserLogo, BurgerMenu, BurgerMenuButton } from 'components';
+import { Navigation, Logo, UserLogo, BurgerMenu, BurgerMenuButton, ThemeButton } from 'components';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
-  const { isDesktop } = useMediaRules();
+  const { isDesktop, isMobile } = useMediaRules();
   console.log(isDesktop);
 
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
@@ -24,6 +24,7 @@ export const Header = () => {
           <Logo />
           {isDesktop && <Navigation />}
           <UserLogoWrp>
+         {!isMobile && <ThemeButton/>}
             <UserLogo />
             {!isDesktop && (
               <BurgerMenuButton
@@ -34,7 +35,7 @@ export const Header = () => {
           </UserLogoWrp>
         </HeaderContainer>
       </HeaderWrp>{' '}
-      <BurgerMenu showBurgerMenu={showBurgerMenu} />
+     {!isDesktop && <BurgerMenu showBurgerMenu={showBurgerMenu}/>}
     </>
   );
 };
