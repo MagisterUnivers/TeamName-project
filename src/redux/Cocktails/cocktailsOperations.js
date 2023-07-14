@@ -7,7 +7,7 @@ export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await instance.get('api/recipes/category-list');
+      const res = await instance.get('recipes/category-list');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -20,7 +20,7 @@ export const getCocktailsByCategoryThunk = createAsyncThunk(
   async (category, { rejectWithValue }) => {
     try {
       const res = await instance.get(
-        `api/recipes/${encodeURIComponent(category)}`
+        `recipes/${encodeURIComponent(category)}`
       );
       return res.data;
     } catch (error) {
@@ -34,7 +34,7 @@ export const getCocktailByIdThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await instance.get(
-        `api/recipes/id/${id}`
+        `recipes/id/${id}`
       );
       return res.data;
     } catch (error) {
@@ -53,7 +53,7 @@ export const searchAllDrinksThunk = createAsyncThunk(
       search.chosenCategory && (params.category = search.chosenCategory);
       search.chosenIngredient && (params.ingredient = search.chosenIngredient);
       search.query && (params.query = search.query);
-      const res = await instance.get('api/search', {
+      const res = await instance.get('search', {
         params,
       });
       return res.data;
@@ -69,7 +69,7 @@ export const getIngredientsListThunk = createAsyncThunk(
   '@@cocktails/ingredientsList',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await instance.get('api/ingredients/list');
+      const res = await instance.get('ingredients/list');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -83,7 +83,7 @@ export const getAllGlassesThunk = createAsyncThunk(
   '@@cocktails/glassesList',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await instance.get('api/glass');
+      const res = await instance.get('glass');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
