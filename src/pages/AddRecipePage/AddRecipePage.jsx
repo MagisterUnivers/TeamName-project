@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import RecipeDescriptionFields from '../../components/RecipeDescriptionFields/RecipeDescriptionFields';
 import { useSelector } from 'react-redux';
-import { selectCategory, selectGlass } from '../../redux/selectors';
+import { selectCategories, selectGlasses } from '../../redux/selectors';
 
 import { useDispatch } from 'react-redux';
-import { getCategoriesListThunk } from 'redux/Cocktails/cocktailsOperations';
+import { getCategoriesListThunk, getAllGlassesThunk } from 'redux/Cocktails/cocktailsOperations';
 
 const AddRecipePage = () => {
-  const drinksCategory = useSelector(selectCategory);
-  const drinksGlass = useSelector(selectGlass);
+  const drinksCategory = useSelector(selectCategories);
+  const drinksGlass = useSelector(selectGlasses);
   const [imgURL, setImageURL] = useState('');
   const [imgData, setImageData] = useState(null);
   const [itemTitleRecipe, setItemTitleRecipe] = useState('');
@@ -20,6 +20,10 @@ const AddRecipePage = () => {
 
   useEffect(() => {
     dispatch(getCategoriesListThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllGlassesThunk());
   }, [dispatch]);
 
   const handleOnImgSelect = async e => {
@@ -46,7 +50,7 @@ const AddRecipePage = () => {
         handleOnTitleRecipe={setItemTitleRecipe}
         handleOnAboutRecipe={setAboutRecipe}
         handleOnCategory={setCategory}
-        handleOnGlassRecipe={setGlass}
+        handleOnGlass={setGlass}
         categoryList={drinksCategory}
         glassList={drinksGlass}
       />

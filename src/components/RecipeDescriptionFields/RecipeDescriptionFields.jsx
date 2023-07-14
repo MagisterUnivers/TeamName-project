@@ -26,6 +26,30 @@ const RecipeDescriptionFields = ({
   categoryList,
   glassList,
 }) => {
+  const styles = {
+    menuList: base => ({
+      ...base,
+      height: '200px',
+      '::-webkit-scrollbar': {
+        width: '8px',
+        height: '110px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: 'transparent',
+        margin: '5px',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: '#434D67',
+        height: '110px',
+        width: '8px',
+        borderRadius: '20px',
+        padding: '20px',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: '#434D67',
+      },
+    }),
+  };
   const { imgURL, itemTitleRecipe, aboutRecipe, category, glass } = dataField;
 
   return (
@@ -97,6 +121,7 @@ const RecipeDescriptionFields = ({
                   options={categoryList.map(category => {
                     return { value: category._id, label: category.category };
                   })}
+                  styles={styles}
                   isSearchable={true}
                   value={category}
                   classNamePrefix="react-select"
@@ -111,6 +136,7 @@ const RecipeDescriptionFields = ({
                   options={glassList.map(glass => {
                     return { value: glass._id, label: glass.title };
                   })}
+                  styles={styles}
                   isSearchable={true}
                   value={glass}
                   classNamePrefix="react-select"

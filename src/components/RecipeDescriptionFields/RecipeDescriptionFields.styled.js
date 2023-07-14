@@ -19,42 +19,6 @@ export const StyledFormInsight = styled(Form)`
   }
 `;
 
-// export const StyledLabel = styled.label`
-//   color: rgba(243, 243, 243, 0.5);
-//   font-size: 14px;
-//   font-style: normal;
-//   font-weight: 400;
-//   line-height: normal;
-//   letter-spacing: -0.28px;
-
-//   position: absolute;
-//   pointer-events: none;
-//   left: 0;
-//   top: -10%;
-//   transition: 0.2s ease all;
-// `;
-
-// export const StyledInput = styled(Field)`
-//   width: 100%;
-//   height: 34px;
-//   border: none;
-//   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
-//   background-color: transparent;
-//   outline: none;
-//   color: rgba(243, 243, 243, 0.5);
-//   padding: 10px;
-//   padding-bottom: 5px;
-
-//   &:focus ~ label,
-//   &:hover ~ label {
-//     transform: translateY(-50%) scale(0.9);
-//   }
-
-//   @media screen and (min-width: 768px) {
-//     height: 41px;
-//   }
-// `;
-
 export const StyledField = styled(Field)`
   width: 100%;
   height: 34px;
@@ -190,14 +154,6 @@ export const StyledLabelSelect = styled.label`
   cursor: pointer;
 `;
 
-// export const StyledSelect = styled(Select)`
-
-// color: #f3f3f3;
-//   font-size: 14px;
-//   font-style: normal;
-//   font-weight: 400;
-//   line-height: calc(14 / 14);`
-
 export const StyledSelect = styled(Select)`
   & .react-select__control {
     /* width: 123px;
@@ -212,7 +168,6 @@ export const StyledSelect = styled(Select)`
     &--is-focused,
     &--menu-is-open {
       outline: none;
-      //border: 1px solid transparent;
     }
 
     &:focus,
@@ -221,7 +176,6 @@ export const StyledSelect = styled(Select)`
     &::selection {
       outline: none;
       border-color: transparent;
-      //box-shadow: 0 0 0 1px transparent;
     }
   }
 
@@ -234,6 +188,7 @@ export const StyledSelect = styled(Select)`
     text-align: right;
     letter-spacing: -0.02em;
     color: black;
+    color: #f3f3f3;
 
     @media (min-width: 768px) {
       font-size: 16px;
@@ -259,17 +214,20 @@ export const StyledSelect = styled(Select)`
     &::selection {
       outline: none;
       border-color: transparent;
-      //box-shadow: 0 0 0 1px transparent;
     }
   }
   // стилизует выпадающий список ================
   & .react-select__menu-list {
     margin-top: 0;
     padding: 0;
-    height: 140px;
+    height: 170px;
     text-align: left;
-    border-radius: 6px;
+    border-radius: 20px;
     color: #f3f3f3;
+
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 
     @media (min-width: 768px) {
       height: 170px;
@@ -292,9 +250,10 @@ export const StyledSelect = styled(Select)`
   // стилизует опции внутри списка ================
   & .react-select__option {
     color: #f3f3f3;
-    font-size: 14px;
+    font-size: 12px;
+    font-style: normal;
     font-weight: 400;
-    line-height: calc(18 / 14);
+    line-height: calc(16 / 12);
     background-color: #161f37;
 
     &:focus,
@@ -318,20 +277,20 @@ export const StyledSelect = styled(Select)`
     padding: 0;
     color: #f3f3f3;
     outline: none;
-    transition: transform 0.2s;
+    /* transition: transform 0.2s; */
     align-items: center;
 
     &:focus,
     &:hover,
     &::selection,
-    &:active {
+    &:active
+   {
       padding: 0;
-      transform: rotate(180deg);
+      /* transform: rotate(180deg); */
       color: #f3f3f3;
       outline: none;
     }
   }
-
   // =========================================
 
   & .react-select__indicator-separator {
@@ -344,8 +303,5 @@ export const StyledSelect = styled(Select)`
     font-style: normal;
     font-weight: 400;
     line-height: calc(14 / 14);
-  }
-  & .css-5kkxb2-requiredInput-RequiredInput {
-    display: none;
   }
 `;
