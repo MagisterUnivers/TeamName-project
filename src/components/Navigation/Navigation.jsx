@@ -3,7 +3,7 @@ import { NavContainer, StyledItem, StyledLink  } from "./Navigation.styled"
 import { useMediaRules } from "../../hooks/useMediaRules";
 import styled from 'styled-components';
 
-const Navigation = () => {
+export const Navigation = () => {
   const { isDesktop } = useMediaRules();
 
   const StyledList = styled.ul`
@@ -37,4 +37,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+

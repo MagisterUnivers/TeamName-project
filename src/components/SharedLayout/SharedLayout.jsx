@@ -28,7 +28,7 @@ export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <main>
+      <main style={{width:'100%', height:'90vh'}}>
         <Outlet />
       </main>
       <Footer />

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
-  position: fixed;
-  z-index: 100;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
     width: 768px;
@@ -23,13 +23,11 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderWrp = styled.div`
-  max-width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+  position: fixed;
+  z-index: 1000;
+
 
   @media screen and (min-width: 768px) {
    
