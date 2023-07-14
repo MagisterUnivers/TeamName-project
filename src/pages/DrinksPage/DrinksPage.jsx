@@ -17,7 +17,7 @@ const DrinksPage = () => {
     <>
       <h1>Drinks</h1>
       <DrinksSearch />
-      <DrinksList />
+      <DrinksList categoryDefault={category} />
       <Paginator />
     </>
   );
