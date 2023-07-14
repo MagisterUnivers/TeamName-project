@@ -2,10 +2,10 @@ import styled, { keyframes} from 'styled-components';
 
 const slideIn = keyframes`
   0% {
-    transform: translateY(-100%);
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(-100%);
   }
 `;
 
@@ -30,7 +30,7 @@ export const BurgerMenuContainer = styled.div`
   flex-direction: column;
   animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
   animation-name: ${({ showBurgerMenu }) => (showBurgerMenu ? slideOut : slideIn)};
 
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavContainer, StyledItem, StyledLink  } from "./NavigationStyled"
+import { NavContainer, StyledItem, StyledLink  } from "./Navigation.styled"
 import { useMediaRules } from "../../hooks/useMediaRules";
 import styled from 'styled-components';
 
@@ -30,7 +30,7 @@ const Navigation = () => {
           <StyledLink to="my">My recipes</StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink to="favorite">Fovorites</StyledLink>
+          <StyledLink to="favorite">Favorites</StyledLink>
         </StyledItem>
       </StyledList>
     </NavContainer>
