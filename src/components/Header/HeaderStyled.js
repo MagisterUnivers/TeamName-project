@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const HeaderWrp = styled.div`
+  width: 100%;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+  position: fixed;
+  z-index: 1000;
+  background-color: ${props => props.theme.bgrColor};
+`;
+
 export const HeaderContainer = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -8,7 +16,6 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   @media screen and (min-width: 768px) {
     width: 768px;
     padding-left: 32px;
@@ -22,22 +29,6 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const HeaderWrp = styled.div`
-  width: 100%;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
-  position: fixed;
-  z-index: 1000;
-
-
-  @media screen and (min-width: 768px) {
-   
-  }
-
-  @media screen and (min-width: 1440px) {
-    /* max-width: 1440px; */
-    /* padding: 22px 100px; */
-  }
-`;
 
 export const UserLogoWrp = styled.div`
   display: flex;

@@ -17,22 +17,25 @@ export const Header = () => {
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
   return (
-    <HeaderWrp>
-      <HeaderContainer>
-        <Logo />
-        {isDesktop && <Navigation />}
-        <UserLogoWrp>
-          <UserLogo />
-          {!isDesktop && (
-            <BurgerMenuButton
-              showBurgerMenu={showBurgerMenu}
-              onClose={toggleBurgerMenu}
-            />
-          )}
-        </UserLogoWrp>
-      </HeaderContainer>
+    <>
+      {' '}
+      <HeaderWrp>
+        <HeaderContainer>
+          <Logo />
+          {isDesktop && <Navigation />}
+          <UserLogoWrp>
+            <UserLogo />
+            {!isDesktop && (
+              <BurgerMenuButton
+                showBurgerMenu={showBurgerMenu}
+                onClose={toggleBurgerMenu}
+              />
+            )}
+          </UserLogoWrp>
+        </HeaderContainer>
+      </HeaderWrp>{' '}
       <BurgerMenu showBurgerMenu={showBurgerMenu} />
-    </HeaderWrp>
+    </>
   );
 };
 
