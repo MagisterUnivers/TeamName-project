@@ -8,14 +8,14 @@ import React from 'react';
 const TestPage = () => {
   return (
     <>
-      <Header />
-      {/* <Nav /> */}
-      {/* <Navigation/>
-      <UserLogo/> */}
-      <Container>
+    <Header />
+     <Container>
+     
+     </Container>
+      {/* <Container>
         {' '}
         <FollowUs />
-      </Container>
+      </Container> */}
     </>
   );
 };
