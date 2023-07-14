@@ -39,10 +39,7 @@ const TestPage = props => {
         <FollowUs />
         <div style={{ height: '300vh' }}></div>
 
-        <PreviewDrinks
-          title={ordinaryDrink.category}
-          ordinaryDrink={ordinaryDrink}
-        />
+        <PreviewDrinks title="Ordinary Drink" ordinaryDrink={ordinaryDrink} />
         <PreviewDrinks title="Cocktail" mockData={mockData} />
         <PreviewDrinks title="Shake" mockData={mockData} />
         <PreviewDrinks title="Other/Unknow" mockData={mockData} />
