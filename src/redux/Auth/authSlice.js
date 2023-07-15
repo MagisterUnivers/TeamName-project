@@ -108,7 +108,7 @@ const authSlice = createSlice({
       state.accessToken = payload.token;
       Loading.remove();
     },
-    [refreshThunk.rejected]: (state, { payload }) => {
+    [verifyThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();
