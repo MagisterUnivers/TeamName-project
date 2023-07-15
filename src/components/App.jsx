@@ -10,6 +10,8 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
+import DrinksPage from 'pages/DrinksPage/DrinksPage';
+import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
 
@@ -69,8 +71,12 @@ export const App = () => {
               />
               <Route
                 path="drinks"
-                element={<PrivateRoute>{/* drinksPage */}</PrivateRoute>}
-              />{' '}
+                element={<PrivateRoute>{<DrinksPage />}</PrivateRoute>}
+              />
+              <Route
+                path="my"
+                element={<PrivateRoute>{<MyRecipesPage />}</PrivateRoute>}
+              />
             </Route>
             <Route
               path="add"
