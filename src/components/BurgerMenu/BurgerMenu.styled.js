@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 
 export const BurgerMenuContainer = styled.div`
-  background-color: red;
+  background-color:  #0A0A11;
   min-width: 100%;
   height: calc(100vh - 72px);
   position: relative;
