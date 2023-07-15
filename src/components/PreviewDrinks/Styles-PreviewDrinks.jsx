@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Section = styled.div`
   max-width: 100%;
-  background-color: black;
+  margin-bottom: 80px;
+
+  overflow: hidden;
 `;
 
 export const SectionTitle = styled.p`
@@ -15,43 +17,15 @@ export const SectionTitle = styled.p`
 `;
 
 export const Cardwrapper = styled.div`
-  display: flex;
+  display: grid;
   gap: 20px;
-  justify-content: space-between;
+  grid-template-columns: repeat(1, 1fr);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
-
-// export const Drinktitle = styled.p`
-//   margin-bottom: 24px;
-//   color: #f3f3f3;
-//   font-family: Manrope, sans-serif;
-//   font-size: 28px;
-//   font-weight: 600;
-//   line-height: 32px;
-// `;
-
-// export const Image = styled.img`
-//   border-radius: 15px;
-//   display: block;
-//   width: 100%;
-// `;
-
-// export const Ingredientswrapper = styled.div`
-//   margin-top: 14px;
-//   display: flex;
-//   justify-content: space-between;
-// `;
-
-// export const Drinkingreds = styled.p`
-//   color: #f3f3f3;
-//   font-family: Manrope, sans-serif;
-//   font-size: 16px;
-//   font-weight: 500;
-//   line-height: 18px;
-// `;
-// export const Ingredients = styled.span`
-//   color: rgba(243, 243, 243, 0.5);
-//   font-family: Manrope, sans-serif;
-//   font-size: 14px;
-//   font-weight: 500;
-//   line-height: 18px;
-// `;

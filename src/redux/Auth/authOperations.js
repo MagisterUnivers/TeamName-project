@@ -119,7 +119,7 @@ export const verifyThunk = createAsyncThunk(
   async verificationToken => {
     try {
       const res = await instance.get(
-        `http://localhost:3001/users/verify/${verificationToken}`
+        `/users/verify/${verificationToken}`
       );
       console.log(res);
       // setToken(res.data);

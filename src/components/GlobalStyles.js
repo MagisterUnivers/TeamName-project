@@ -25,8 +25,8 @@ body {
   color: ${props => props.theme.textColor};
   font-family: 'Manrope', sans-serif;
   line-height: 1.5;
-
   background-color: ${props => props.theme.bgrColor};
+  transition: background-color 1s;
 }
 
 h1,

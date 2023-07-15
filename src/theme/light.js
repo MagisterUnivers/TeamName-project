@@ -1,6 +1,6 @@
 // some code
 export const lightTheme = {
-  textColor: 'red',
+  textColor: '#0A0A11',
   bgrColor: '#f3f3f3',
   btnHoverColor: '#161f37',
   correctStateColor: '#3cbc81',
