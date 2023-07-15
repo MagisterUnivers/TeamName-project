@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from 'redux/Auth/authOperations';
+import { instance } from 'api/instance';
 
 // Cocktails
 

@@ -1,23 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { instance } from 'api/instance';
 import Notiflix from 'notiflix';
-import { selectUserLoading } from 'redux/selectors';
+import { selectAuthAccessToken, selectUserLoading } from 'redux/selectors';
 
 //defaultURL
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
-export const instance = axios.create({
-  baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
-  // baseURL: 'http://localhost:3001/',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-const setToken = token => {
+export const setToken = token => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
-const clearToken = token => {
+export const clearToken = token => {
   instance.defaults.headers.common['Authorization'] = ``;
 };
 
@@ -101,10 +93,11 @@ export const logoutThunk = createAsyncThunk('@@auth/logout', async _ => {
 export const refreshThunk = createAsyncThunk(
   '@@auth/refresh',
   async (_, thunkAPI) => {
-    const refreshToken = thunkAPI.getState().auth.data.refreshToken;
+    // const refreshToken = thunkAPI.getState().auth.accessToken;
+    const refreshToken = selectAuthAccessToken(thunkAPI.getState());
+    setToken(refreshToken);
     try {
-      setToken(refreshToken);
-      const res = await instance.post('user/refresh');
+      const res = await instance.post('users/refresh');
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;
@@ -118,9 +111,7 @@ export const verifyThunk = createAsyncThunk(
   '@@auth/verify',
   async verificationToken => {
     try {
-      const res = await instance.get(
-        `/users/verify/${verificationToken}`
-      );
+      const res = await instance.get(`/users/verify/${verificationToken}`);
       console.log(res);
       // setToken(res.data);
       return res.data;
