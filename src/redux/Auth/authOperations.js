@@ -7,15 +7,15 @@ import { selectUserLoading } from 'redux/selectors';
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
 
 export const instance = axios.create({
-  baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
-  // baseURL: 'http://localhost:3001/',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  // baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
+  baseURL: 'http://localhost:3001/',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
 });
 
 const setToken = token => {
-  instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  instance.defaults.headers.common['Authorization'] = ` Bearer ${token}`;
 };
 const clearToken = token => {
   instance.defaults.headers.common['Authorization'] = ``;
@@ -64,7 +64,6 @@ export const loginThunk = createAsyncThunk(
     try {
       const res = await instance.post('users/login', credentials);
       setToken(res.data.token);
-      console.log(res);
       return res.data;
     } catch (error) {
       console.log(error);

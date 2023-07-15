@@ -1,9 +1,9 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import Select from 'react-select';
 import styled from 'styled-components';
 
-export const StyledForm = styled(Formik)``;
-export const StyledFormInsight = styled(Form)`
+
+export const StyledFormInsight = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;

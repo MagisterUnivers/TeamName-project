@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from 'redux/Auth/authOperations';
+import Notiflix from 'notiflix';
 
 // Cocktails
 
@@ -92,6 +93,18 @@ export const getAllGlassesThunk = createAsyncThunk(
 );
 
 // Own
+export const addRecipeThunk = createAsyncThunk(
+  '@@cocktails/addRecipe',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await instance.post('own', data);
+      Notiflix.Notify.success('Recipe added to collection successfully');
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
 
 // Favorites
 

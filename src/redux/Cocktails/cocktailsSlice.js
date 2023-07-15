@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addRecipeThunk,
   getAllGlassesThunk,
   getCategoriesListThunk,
   getCocktailByIdThunk,
@@ -124,7 +125,19 @@ const cocktailsSlice = createSlice({
     },
 
     // Own
-
+    [addRecipeThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are adding your recipe...');
+    },
+    [addRecipeThunk.fulfilled]: (state, { payload }) => {
+      state.cocktails = [...state.cocktails, payload];
+      Loading.remove();
+    },
+    [addRecipeThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
     // Favorites
 
     // Popular
