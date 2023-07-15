@@ -6,13 +6,15 @@ import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
 import TestPage from 'pages/TestPage/TestPage';
-// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
 import DrinksPage from 'pages/DrinksPage/DrinksPage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
+
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
+// import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -90,7 +92,11 @@ export const App = () => {
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-          {/* <PreviewDrinks /> */}
+
+          {/* <PreviewDrinks title="Ordinary Drink" mockData={mockData} />
+          <PreviewDrinks title="Cocktail" mockData={mockData} />
+          <PreviewDrinks title="Shake" mockData={mockData} />
+          <PreviewDrinks title="Other/Unknow" mockData={mockData} /> */}
         </Suspense>
       </ThemeProvider>
     </>
