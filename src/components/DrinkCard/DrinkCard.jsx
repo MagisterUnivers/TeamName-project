@@ -10,7 +10,8 @@ import {
 import { Link } from 'react-router-dom';
 // import drink from './exampledrink.jpg';
 
-const DrinkCard = ({ cocktail }) => {
+const DrinkCard = ({ cocktail, my }) => {
+  console.log(cocktail);
   return (
     <Card>
       <Link to={`/recipes/${cocktail._id}`}>
@@ -19,6 +20,8 @@ const DrinkCard = ({ cocktail }) => {
           <Drinkingreds>{cocktail.drink}</Drinkingreds>
           <Ingredients>Ingredients</Ingredients>
         </Ingredientswrapper>
+        {my && <button>See recipe</button>}
+        {my && <button>See recipe</button>}
       </Link>
     </Card>
   );

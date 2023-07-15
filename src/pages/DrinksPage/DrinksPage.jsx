@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import DrinksList from '../../components/DrinksList/DrinksList';
 import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
 import Paginator from 'components/Paginator/Paginator';
 import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
+import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
+import { selectAuthAccessToken, selectAuthToken } from 'redux/selectors';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -12,10 +14,11 @@ const DrinksPage = () => {
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(category));
   }, [dispatch, category]);
-
+  const token = useSelector(selectAuthAccessToken);
+  console.log(token);
   return (
     <>
-      <h1>Drinks</h1>
+      <MainPageTitle title={'Drinks'} />
       <DrinksSearch />
       <DrinksList categoryDefault={category} />
       <Paginator />

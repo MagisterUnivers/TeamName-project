@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  getAllGlassesThunk,
   getCategoriesListThunk,
   getIngredientsListThunk,
   searchAllDrinksThunk,
@@ -10,11 +11,13 @@ import { SelectStyled, InputStyled } from './DrinksSearch.styled';
 import {
   selectCategories,
   selectIngredients,
+  selectPage,
   selectSearch,
 } from 'redux/selectors';
 import {
   setChosenCategory,
   setChosenIngredient,
+  setPage,
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
 
@@ -22,6 +25,7 @@ const DrinksSearch = ({ categoryDefault }) => {
   const dispatch = useDispatch();
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
+  const page = useSelector(selectPage);
 
   const search = useSelector(selectSearch);
 
@@ -34,8 +38,13 @@ const DrinksSearch = ({ categoryDefault }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (search) dispatch(searchAllDrinksThunk(search));
-  }, [dispatch, search]);
+    dispatch(getAllGlassesThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    // if (search.query || search.chosenCategory || search.chosenIngredient||)
+    dispatch(searchAllDrinksThunk({ search, page }));
+  }, [dispatch, search, page]);
 
   const styles = {
     menuList: base => ({
@@ -66,9 +75,11 @@ const DrinksSearch = ({ categoryDefault }) => {
       <InputStyled
         type="text"
         name="query"
+        value={search.query}
         placeholder="Enter the text"
         onChange={e => {
           dispatch(setQuery(e.target.value));
+          dispatch(setPage(1));
         }}
       />
       <SelectStyled
@@ -82,6 +93,7 @@ const DrinksSearch = ({ categoryDefault }) => {
         classNamePrefix="react-select"
         onChange={e => {
           dispatch(setChosenCategory(e.label));
+          dispatch(setPage(1));
         }}
         required
       />
@@ -96,6 +108,7 @@ const DrinksSearch = ({ categoryDefault }) => {
         classNamePrefix="react-select"
         onChange={e => {
           dispatch(setChosenIngredient(e.label));
+          dispatch(setPage(1));
         }}
         required
       />

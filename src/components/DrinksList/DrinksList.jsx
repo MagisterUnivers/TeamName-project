@@ -7,7 +7,7 @@ const DrinksList = () => {
   const cocktails = useSelector(selectCocktails);
   return (
     <ul>
-      {cocktails.length > 1 &&
+      {cocktails &&
         cocktails.map(cocktail => (
           <DrinkCard key={cocktail._id} cocktail={cocktail} />
         ))}

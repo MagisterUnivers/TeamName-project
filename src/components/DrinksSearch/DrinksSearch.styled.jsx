@@ -76,7 +76,7 @@ export const SelectStyled = styled(Select)`
     padding-top: 18px;
     padding-bottom: 18px;
     padding-left: 24px;
-    text-align: center;
+    text-align: left;
     font-size: 14px;
     font-weight: 400;
     line-height: calc(18 / 14);
