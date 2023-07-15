@@ -19,9 +19,7 @@ export const getCocktailsByCategoryThunk = createAsyncThunk(
   '@@cocktails/byCategory',
   async (category, { rejectWithValue }) => {
     try {
-      const res = await instance.get(
-        `recipes/${encodeURIComponent(category)}`
-      );
+      const res = await instance.get(`recipes/${encodeURIComponent(category)}`);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -33,9 +31,7 @@ export const getCocktailByIdThunk = createAsyncThunk(
   '@@cocktails/byId',
   async (id, { rejectWithValue }) => {
     try {
-      const res = await instance.get(
-        `recipes/id/${id}`
-      );
+      const res = await instance.get(`recipes/id/${id}`);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -84,6 +80,21 @@ export const getAllGlassesThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await instance.get('glass');
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+// Drinks
+
+export const getCocktailsByFourCategoryThunk = createAsyncThunk(
+  '@@cocktails/category',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await instance.get('recipes/main-page/');
+      console.log(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);

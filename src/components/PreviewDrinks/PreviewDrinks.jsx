@@ -2,15 +2,19 @@ import React from 'react';
 
 import { Cardwrapper, Section, SectionTitle } from './Styles-PreviewDrinks';
 import DrinkCard from 'components/DrinkCard/DrinkCard';
+import { Link } from 'react-router-dom';
 
-const PreviewDrinks = () => {
+const PreviewDrinks = ({ title, ordinaryDrink = [] }) => {
   return (
     <Section>
-      <SectionTitle>SectionTitle</SectionTitle>
+      <Link to={`/recipes/encodeURIComponent(${title})`}>
+        <SectionTitle>{title}</SectionTitle>
+      </Link>
+
       <Cardwrapper>
-        <DrinkCard />
-        <DrinkCard />
-        <DrinkCard />
+        {ordinaryDrink.map(cocktail => (
+          <DrinkCard cocktail={cocktail} key={cocktail._id} />
+        ))}
       </Cardwrapper>
     </Section>
   );

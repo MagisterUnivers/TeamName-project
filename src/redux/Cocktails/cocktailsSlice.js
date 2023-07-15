@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  getCocktailsByCategoryThunk,
+  getCocktailsByFourCategoryThunk,
   getAllGlassesThunk,
   getCategoriesListThunk,
   getCocktailByIdThunk,
-  getCocktailsByCategoryThunk,
   getIngredientsListThunk,
   searchAllDrinksThunk,
 } from './cocktailsOperations.js';
@@ -118,6 +119,22 @@ const cocktailsSlice = createSlice({
       Loading.remove();
     },
     [getAllGlassesThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+
+    // Drinks
+    [getCocktailsByFourCategoryThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+    [getCocktailsByFourCategoryThunk.fulfilled]: (state, { payload }) => {
+      state.cocktails = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getCocktailsByFourCategoryThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();
