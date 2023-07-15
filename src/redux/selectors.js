@@ -6,7 +6,7 @@ export const selectIsOnline = state => state.auth.online;
 export const selectUserLoading = state => state.auth.loading;
 export const selectAuthError = state => state.auth.error;
 export const selectAuthToken = state => state.auth.data;
-export const selectAuthAccessToken = state => state.auth.data.accessToken;
+export const selectAuthAccessToken = state => state.auth.accessToken;
 export const selectAuthRefreshToken = state => state.auth.data.refreshToken;
 export const selectUserInfo = state => state.userInfo;
 export const selectUserInfoEmail = state => state.userInfo.email;

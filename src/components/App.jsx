@@ -18,7 +18,7 @@ const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
-const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'))
+const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'));
 
 export const App = () => {
   useEffect(() => {
@@ -34,7 +34,7 @@ export const App = () => {
     };
   }, []);
 
-const theme = useSelector(selectTheme)
+  const theme = useSelector(selectTheme);
   return (
     <>
       <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
@@ -58,13 +58,7 @@ const theme = useSelector(selectTheme)
                 </PublicRoute>
               }
             />
-            <Route
-              path="/test"
-              element={
-                <TestPage
-                />
-              }
-            />
+            <Route path="/test" element={<TestPage />} />
             {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
               <Route
@@ -77,9 +71,9 @@ const theme = useSelector(selectTheme)
               />{' '}
             </Route>
             <Route
-                path="add"
-                element={<PrivateRoute>{<AddRecipePage/>}</PrivateRoute>}
-              />
+              path="add"
+              element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
+            />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
