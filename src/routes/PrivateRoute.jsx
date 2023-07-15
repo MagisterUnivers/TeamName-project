@@ -6,7 +6,7 @@ export const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const isOnline = useSelector(selectIsOnline);
   if (!isOnline) {
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/signin" state={{ from: location }} />;
   }
 
   return children;

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
 import { PrivateRoute } from '../routes/PrivateRoute';
 import { PublicRoute } from '../routes/PublicRoute';
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy } from 'react';
 import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
@@ -11,6 +11,8 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -32,11 +34,10 @@ export const App = () => {
     };
   }, []);
 
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+const theme = useSelector(selectTheme)
   return (
     <>
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        {' '}
+      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <GlobalStyles />
         <Suspense fallback={<Spinner />}>
           <Routes>
@@ -61,8 +62,6 @@ export const App = () => {
               path="/test"
               element={
                 <TestPage
-                  isDarkTheme={isDarkTheme}
-                  setIsDarkTheme={setIsDarkTheme}
                 />
               }
             />
