@@ -6,8 +6,7 @@ import { instance, setToken } from 'redux/Auth/authOperations';
 export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
-    const state = getState();
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
@@ -24,9 +23,7 @@ export const getCategoriesListThunk = createAsyncThunk(
 export const getCocktailsByCategoryThunk = createAsyncThunk(
   '@@cocktails/byCategory',
   async (category, { rejectWithValue, getState }) => {
-    const state = getState();
-    console.log(state.auth.accessToken)
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
@@ -43,9 +40,7 @@ export const getCocktailsByCategoryThunk = createAsyncThunk(
 export const getCocktailByIdThunk = createAsyncThunk(
   '@@cocktails/byId',
   async (id, { rejectWithValue, getState }) => {
-    const state = getState();
-    console.log(state.auth.accessToken)
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
@@ -64,9 +59,7 @@ export const getCocktailByIdThunk = createAsyncThunk(
 export const searchAllDrinksThunk = createAsyncThunk(
   '@@cocktails/search',
   async ({search, page}, { rejectWithValue, getState }) => {
-    const state = getState();
-    console.log(state.auth.accessToken)
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
@@ -91,9 +84,7 @@ export const searchAllDrinksThunk = createAsyncThunk(
 export const getIngredientsListThunk = createAsyncThunk(
   '@@cocktails/ingredientsList',
   async (_, { rejectWithValue, getState }) => {
-    const state = getState();
-    console.log(state.auth.accessToken)
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
@@ -112,9 +103,7 @@ export const getIngredientsListThunk = createAsyncThunk(
 export const getAllGlassesThunk = createAsyncThunk(
   '@@cocktails/glassesList',
   async (_, { rejectWithValue, getState }) => {
-    const state = getState();
-    console.log(state.auth.accessToken)
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
@@ -132,10 +121,14 @@ export const getAllGlassesThunk = createAsyncThunk(
 
 export const getCocktailsByFourCategoryThunk = createAsyncThunk(
   '@@cocktails/category',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().auth.accessToken;
+    if (!token) {
+      return rejectWithValue();
+    }
+   setToken(token);
     try {
       const res = await instance.get('recipes/main-page/');
-      console.log(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -148,8 +141,7 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
 export const getAllOwnDrinks = createAsyncThunk(
   '@@cocktails/ownCocktails',
   async (_, { rejectWithValue, getState }) => {
-    const state = getState();
-    const token = state.auth.accessToken;
+    const token = getState().auth.accessToken;
     if (!token) {
       return rejectWithValue();
     }
