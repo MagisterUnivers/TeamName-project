@@ -1,49 +1,19 @@
-import { Logo } from 'components/Logo/Logo';
-import {
-  BurgerMenuContainer,
-  CloseButton,
-  HeaderWrp,
-  UserLogoWrp,
-} from './BurgerMenuStyled';
-import UserLogo from 'components/UserLogo/UserLogo';
-import Navigation from 'components/Navigation/Navigation';
+import { NameStyled } from 'components/UserLogo/UserLogoStyled';
+import { BurgerMenuContainer } from './BurgerMenu.styled';
+import { Navigation, ThemeButton } from 'components';
+import { useMediaRules } from 'hooks/useMediaRules';
 
-const BurgerMenu = ({ onClose }) => {
+export const BurgerMenu = ({ showBurgerMenu }) => {
+  const { isMobile } = useMediaRules();
   return (
-    <BurgerMenuContainer>
-      <HeaderWrp>
-        <Logo />
-        <UserLogoWrp>
-          <UserLogo />
-          <CloseButton onClick={() => onClose()}>
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M24 8L8 24"
-                stroke="#F3F3F3"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M8 8L24 24"
-                stroke="#F3F3F3"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </CloseButton>
-        </UserLogoWrp>
-      </HeaderWrp>
+    <BurgerMenuContainer showBurgerMenu={showBurgerMenu}>
       <Navigation />
+      {isMobile && (
+        <div className="themeWrp">
+          <NameStyled>Switch Theme: </NameStyled>
+          <ThemeButton />
+        </div>
+      )}
     </BurgerMenuContainer>
   );
 };
-
-export default BurgerMenu;
