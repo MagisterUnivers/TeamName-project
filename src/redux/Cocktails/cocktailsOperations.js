@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance, setToken } from 'redux/Auth/authOperations';
+import { setToken } from 'redux/Auth/authOperations';
 import { selectAuthAccessToken } from 'redux/selectors';
+import { instance } from 'api/instance';
 
 // Cocktails
 
@@ -11,7 +12,7 @@ export const getCategoriesListThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('recipes/category-list');
       return res.data;
@@ -28,7 +29,7 @@ export const getCocktailsByCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get(`recipes/${encodeURIComponent(category)}`);
       return res.data;
@@ -45,7 +46,7 @@ export const getCocktailByIdThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get(`recipes/id/${id}`);
       return res.data;
@@ -59,12 +60,12 @@ export const getCocktailByIdThunk = createAsyncThunk(
 
 export const searchAllDrinksThunk = createAsyncThunk(
   '@@cocktails/search',
-  async ({search, page}, { rejectWithValue, getState }) => {
+  async ({ search, page }, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const params = {};
       search.chosenCategory && (params.category = search.chosenCategory);
@@ -89,7 +90,7 @@ export const getIngredientsListThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('ingredients/list');
       return res.data;
@@ -108,7 +109,7 @@ export const getAllGlassesThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('glass');
       return res.data;
@@ -127,7 +128,7 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('recipes/main-page/');
       return res.data;
@@ -146,7 +147,7 @@ export const getAllOwnDrinks = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('own');
       return res.data;
