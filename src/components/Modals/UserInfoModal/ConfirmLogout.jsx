@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "redux/users/usersOperation"
-import { ModalWrapper, ModalContent, CancelButton } from './ConfirmLogout.styled';
+import { ModalWrapper, ModalContent, CancelButton, LogOutLink } from './ConfirmLogout.styled';
 
 const ConfirmLogout = ({id, onClose})=>{
     const dispatch=useDispatch();
