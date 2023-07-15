@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from 'components/App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <PersistGate loading={null} persistor={persistor}>
       <Provider store={store}>
         <BrowserRouter basename="/TeamName-project">
@@ -15,5 +15,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </Provider>
     </PersistGate>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
