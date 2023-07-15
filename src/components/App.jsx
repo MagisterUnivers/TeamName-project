@@ -11,12 +11,14 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme } from 'theme/dark';
 import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
+import DrinksPage from 'pages/DrinksPage/DrinksPage';
+import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
-const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'))
+const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'));
 
 export const App = () => {
   useEffect(() => {
@@ -74,13 +76,17 @@ export const App = () => {
               />
               <Route
                 path="drinks"
-                element={<PrivateRoute>{/* drinksPage */}</PrivateRoute>}
-              />{' '}
+                element={<PrivateRoute>{<DrinksPage />}</PrivateRoute>}
+              />
+              <Route
+                path="my"
+                element={<PrivateRoute>{<MyRecipesPage />}</PrivateRoute>}
+              />
             </Route>
             <Route
-                path="add"
-                element={<PrivateRoute>{<AddRecipePage/>}</PrivateRoute>}
-              />
+              path="add"
+              element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
+            />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

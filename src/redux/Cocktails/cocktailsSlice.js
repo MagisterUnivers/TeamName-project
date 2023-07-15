@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getAllGlassesThunk,
+  getAllOwnDrinks,
   getCategoriesListThunk,
   getCocktailByIdThunk,
   getCocktailsByCategoryThunk,
@@ -133,6 +134,22 @@ const cocktailsSlice = createSlice({
     },
 
     // Own
+    [getAllOwnDrinks.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+    [getAllOwnDrinks.fulfilled]: (state, { payload }) => {
+      state.cocktails = payload.cocktails;
+      state.totalHits = payload.totalHits;
+      state.page = payload.page;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getAllOwnDrinks.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
 
     // Favorites
 

@@ -5,6 +5,7 @@ import DrinksList from '../../components/DrinksList/DrinksList';
 import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
 import Paginator from 'components/Paginator/Paginator';
 import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
+import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const DrinksPage = () => {
 
   return (
     <>
-      <h1>Drinks</h1>
+      <MainPageTitle title={'Drinks'} />
       <DrinksSearch />
       <DrinksList categoryDefault={category} />
       <Paginator />
