@@ -55,7 +55,7 @@ const RegisterForm = () => {
           )
           .required('Required'),
         email: Yup.string()
-          .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
+          .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'This is an ERROR email')
           .required('Required'),
         password: Yup.string()
           .required('No password provided.')

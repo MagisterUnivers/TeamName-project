@@ -37,7 +37,7 @@ export const NameStyled = styled.p`
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1, 28;
+  line-height: 1,28;
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1, 5;
