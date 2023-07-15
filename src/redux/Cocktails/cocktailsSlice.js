@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  getCocktailsByCategoryThunk,
+  getCocktailsByFourCategoryThunk,
   getAllGlassesThunk,
+  getAllOwnDrinks,
   getCategoriesListThunk,
   getCocktailByIdThunk,
-  getCocktailsByCategoryThunk,
   getIngredientsListThunk,
   searchAllDrinksThunk,
 } from './cocktailsOperations.js';
@@ -15,6 +17,8 @@ const initialState = {
   ingredients: [],
   glasses: [],
   search: { query: '', chosenCategory: '', chosenIngredient: '' },
+  totalHits: null,
+  page: 1,
 };
 
 const cocktailsSlice = createSlice({
@@ -29,6 +33,9 @@ const cocktailsSlice = createSlice({
     },
     setChosenIngredient: (state, { payload }) => {
       state.search.chosenIngredient = payload;
+    },
+    setPage: (state, { payload }) => {
+      state.page = payload;
     },
   },
   extraReducers: {
@@ -52,7 +59,9 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailsByCategoryThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload;
+      state.cocktails = payload.cocktails;
+      state.totalHits = payload.totalHits;
+      state.page = payload.page;
       state.loading = false;
       Loading.remove();
     },
@@ -82,7 +91,9 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [searchAllDrinksThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload;
+      state.cocktails = payload.cocktails;
+      state.totalHits = payload.totalHits;
+      state.page = payload.page;
       state.loading = false;
       Loading.remove();
     },
@@ -123,7 +134,39 @@ const cocktailsSlice = createSlice({
       Loading.remove();
     },
 
+    // Drinks
+    [getCocktailsByFourCategoryThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+    [getCocktailsByFourCategoryThunk.fulfilled]: (state, { payload }) => {
+      state.cocktails = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getCocktailsByFourCategoryThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+
     // Own
+    [getAllOwnDrinks.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+    [getAllOwnDrinks.fulfilled]: (state, { payload }) => {
+      state.cocktails = payload.cocktails;
+      state.totalHits = payload.totalHits;
+      state.page = payload.page;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getAllOwnDrinks.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
 
     // Favorites
 
@@ -131,6 +174,6 @@ const cocktailsSlice = createSlice({
   },
 });
 
-export const { setQuery, setChosenCategory, setChosenIngredient } =
+export const { setQuery, setChosenCategory, setChosenIngredient, setPage } =
   cocktailsSlice.actions;
 export const cocktailsReducer = cocktailsSlice.reducer;
