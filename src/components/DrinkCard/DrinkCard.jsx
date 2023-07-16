@@ -8,10 +8,9 @@ import {
   Ingredientswrapper,
 } from './Styles-DrinkCard';
 import { Link } from 'react-router-dom';
-// import drink from './exampledrink.jpg';
 
 const DrinkCard = ({ cocktail, my }) => {
-  console.log(cocktail);
+  // console.log(cocktail);
   return (
     <Card>
       <Link to={`/recipes/${cocktail._id}`}>

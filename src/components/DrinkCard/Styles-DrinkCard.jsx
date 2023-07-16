@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Card = styled.li`
-  max-width: 400px;
+export const Card = styled.div`
+  /* max-width: 400px;
   background: transparent;
-  list-style: none;
+  list-style: none; */
 `;
 
 export const Image = styled.img`
