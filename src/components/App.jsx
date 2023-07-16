@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
 import { PrivateRoute } from '../routes/PrivateRoute';
 import { PublicRoute } from '../routes/PublicRoute';
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy } from 'react';
 import Spinner from './Spinner/Spinner';
 import GlobalStyles from './GlobalStyles';
 import { useEffect } from 'react';
@@ -12,6 +12,8 @@ import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
 import DrinksPage from 'pages/DrinksPage/DrinksPage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
 
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
@@ -36,11 +38,10 @@ export const App = () => {
     };
   }, []);
 
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const theme = useSelector(selectTheme);
   return (
     <>
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        {' '}
+      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <GlobalStyles />
         <Suspense fallback={<Spinner />}>
           <Routes>
@@ -61,15 +62,7 @@ export const App = () => {
                 </PublicRoute>
               }
             />
-            <Route
-              path="/test"
-              element={
-                <TestPage
-                  isDarkTheme={isDarkTheme}
-                  setIsDarkTheme={setIsDarkTheme}
-                />
-              }
-            />
+            <Route path="/test" element={<TestPage />} />
             {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
               <Route
@@ -84,11 +77,16 @@ export const App = () => {
                 path="my"
                 element={<PrivateRoute>{<MyRecipesPage />}</PrivateRoute>}
               />
+              <Route
+                path="add"
+                element={<PrivateRoute>{<AddRecipePage/>}</PrivateRoute>}
+              />
+              <Route
+                path="my"
+                element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
+              />
             </Route>
-            <Route
-              path="add"
-              element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
-            />
+            
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

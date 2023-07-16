@@ -1,17 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance, setToken } from 'redux/Auth/authOperations';
+import { setToken, instance } from 'redux/Auth/authOperations';
 import { selectAuthAccessToken } from 'redux/selectors';
+// import { instance } from 'api/instance';
+import Notiflix from 'notiflix';
 
 // Cocktails
 
 export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
-    const token = selectAuthAccessToken(getState());
-    if (!token) {
-      return rejectWithValue();
-    }
-   setToken(token);
+    // const token = selectAuthAccessToken(getState());
+    // if (!token) {
+    //   return rejectWithValue();
+    // }
+    // setToken(token);
     try {
       const res = await instance.get('recipes/category-list');
       return res.data;
@@ -28,7 +30,7 @@ export const getCocktailsByCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get(`recipes/${encodeURIComponent(category)}`);
       return res.data;
@@ -45,7 +47,7 @@ export const getCocktailByIdThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get(`recipes/id/${id}`);
       return res.data;
@@ -59,12 +61,12 @@ export const getCocktailByIdThunk = createAsyncThunk(
 
 export const searchAllDrinksThunk = createAsyncThunk(
   '@@cocktails/search',
-  async ({search, page}, { rejectWithValue, getState }) => {
+  async ({ search, page }, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const params = {};
       search.chosenCategory && (params.category = search.chosenCategory);
@@ -89,7 +91,7 @@ export const getIngredientsListThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('ingredients/list');
       return res.data;
@@ -108,7 +110,7 @@ export const getAllGlassesThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('glass');
       return res.data;
@@ -127,7 +129,7 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('recipes/main-page/');
       return res.data;
@@ -138,6 +140,23 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
 );
 
 // Own
+export const addRecipeThunk = createAsyncThunk(
+  '@@cocktails/addRecipe',
+  async (data, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      const res = await instance.post('own', data);
+      Notiflix.Notify.success('Recipe added to collection successfully');
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
 
 export const getAllOwnDrinks = createAsyncThunk(
   '@@cocktails/ownCocktails',
@@ -146,7 +165,7 @@ export const getAllOwnDrinks = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-   setToken(token);
+    setToken(token);
     try {
       const res = await instance.get('own');
       return res.data;

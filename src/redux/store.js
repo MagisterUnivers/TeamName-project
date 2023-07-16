@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/authSlice';
 import { cocktailsReducer } from './Cocktails/cocktailsSlice';
+import { userInfoReducer } from './UserInfo/userInfoSlice';
 // import { userInfoReducer } from './UserInfo/userInfoSlice';
 // import { calendarEventsReducer } from './CalendarEvents/calendarEventsSlice';
 
@@ -29,12 +30,13 @@ const persistConfig = {
 //   whitelist: ['theme'],
 // };
 
+
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    // userInfo: persistReducer(persistConfigForTheme, userInfoReducer),
-    // calendar: calendarEventsReducer,
-    cocktails: cocktailsReducer
+    cocktails: cocktailsReducer,
+    userInfo: userInfoReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
