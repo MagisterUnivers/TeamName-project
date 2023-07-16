@@ -62,9 +62,9 @@ export const App = () => {
                 </PublicRoute>
               }
             />
-            <Route path="/test" element={<TestPage />} />
             {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
+              <Route path="test" element={<TestPage />} />
               <Route
                 path="cocktails"
                 element={<PrivateRoute>{/* cocktailsPage */}</PrivateRoute>}
@@ -79,10 +79,9 @@ export const App = () => {
               />
               <Route
                 path="add"
-                element={<PrivateRoute>{<AddRecipePage/>}</PrivateRoute>}
+                element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
             </Route>
-            
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

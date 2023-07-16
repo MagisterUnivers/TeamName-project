@@ -129,9 +129,9 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-    setToken(token);
     try {
-      const res = await instance.get('recipes/main-page/');
+      setToken(token);
+      const res = await instance.get('recipes/main-page');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
