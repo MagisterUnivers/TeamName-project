@@ -247,7 +247,7 @@ export const StyledSelect = styled(Select)`
 
   // стилизует опции внутри списка ================
   & .react-select__option {
-    color: rgba(243, 243, 243, 0.40);
+    /* color: rgba(243, 243, 243, 0.40); */
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
