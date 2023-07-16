@@ -8,8 +8,9 @@ import {
   addRecipeThunk,
 } from 'redux/Cocktails/cocktailsOperations';
 import { Formik } from 'formik';
-import { StyledForm } from './AddRecipeForm.styled';
+import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
+import AddYourCocktail from 'components/Buttons/AddYourCocktail/AddYourCocktail';
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ const AddRecipeForm = () => {
   };
 
   return (
+    <>
     <Formik
       initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }}
       onSubmit={handleOnSubmit}
@@ -86,9 +88,10 @@ const AddRecipeForm = () => {
           categoryList={drinksCategory}
           glassList={drinksGlass}
         />
-        <button type="submit">Add</button>
+        <StyledAddButton type="submit">Add</StyledAddButton>
       </StyledForm>
     </Formik>
+    </>
   );
 };
 
