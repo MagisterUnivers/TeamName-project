@@ -91,7 +91,6 @@ const AddRecipeForm = () => {
         <StyledAddButton type="submit">Add</StyledAddButton>
       </StyledForm>
     </Formik>
-    <AddYourCocktail/>
     </>
   );
 };
