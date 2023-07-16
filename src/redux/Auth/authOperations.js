@@ -56,7 +56,6 @@ export const loginThunk = createAsyncThunk(
     try {
       const res = await instance.post('users/login', credentials);
       setToken(res.data.token);
-      console.log(res);
       return res.data;
     } catch (error) {
       console.log(error);

@@ -43,6 +43,12 @@ export const SharedLayout = () => {
 
   useEffect(() => {
     loadDataOnlyOnce();
+
+    return () =>
+      //argument
+      {
+        //some code
+      }; // exit (window.close) func
   }, [loadDataOnlyOnce]);
 
   return (
