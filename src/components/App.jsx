@@ -14,6 +14,7 @@ import DrinksPage from 'pages/DrinksPage/DrinksPage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
+import { SPTestPage } from 'pages';
 
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
@@ -65,6 +66,8 @@ export const App = () => {
             {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
               <Route path="test" element={<TestPage />} />
+              <Route path="test2" element={<SPTestPage />} />
+
               <Route
                 path="cocktails"
                 element={<PrivateRoute>{/* cocktailsPage */}</PrivateRoute>}

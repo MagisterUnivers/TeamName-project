@@ -60,6 +60,11 @@ a {
 
 button {
   cursor: pointer;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
 }
 `;
 
