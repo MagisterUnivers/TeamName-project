@@ -24,19 +24,19 @@ const TestPage = () => {
 
   return (
     <>
-      <ThemeButton {...props} />
+      {/* <ThemeButton {...props} />
       <Nav />
 
       <Container>
         <Logo />
         <FollowUs />
-        <div style={{ height: '300vh' }}></div>
+        <div style={{ height: '300vh' }}></div> */}
 
-        <PreviewDrinks title="Ordinary Drink" ordinaryDrink={ordinaryDrink} />
-        <PreviewDrinks title="Cocktail" mockData={mockData} />
-        <PreviewDrinks title="Shake" mockData={mockData} />
-        <PreviewDrinks title="Other/Unknow" mockData={mockData} />
-      </Container>
+      <PreviewDrinks title="Ordinary Drink" ordinaryDrink={ordinaryDrink} />
+      <PreviewDrinks title="Cocktail" mockData={mockData} />
+      <PreviewDrinks title="Shake" mockData={mockData} />
+      <PreviewDrinks title="Other/Unknow" mockData={mockData} />
+      {/* </Container> */}
     </>
   );
 };

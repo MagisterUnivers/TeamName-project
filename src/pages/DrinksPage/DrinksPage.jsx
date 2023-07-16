@@ -7,6 +7,7 @@ import Paginator from 'components/Paginator/Paginator';
 import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 import { selectAuthAccessToken, selectAuthToken } from 'redux/selectors';
+import { Footer } from 'components';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const DrinksPage = () => {
       <DrinksSearch />
       <DrinksList categoryDefault={category} />
       <Paginator />
+      <Footer />
     </>
   );
 };

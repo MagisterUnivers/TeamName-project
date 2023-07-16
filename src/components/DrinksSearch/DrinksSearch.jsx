@@ -117,3 +117,8 @@ const DrinksSearch = ({ categoryDefault }) => {
 };
 
 export default DrinksSearch;
+
+// option: (provided, state) => ({
+//   ...provided,
+//   color: state.isSelected ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
+// }),
