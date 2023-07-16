@@ -125,7 +125,6 @@ const RecipeDescriptionFields = ({
               classNamePrefix="react-select"
               onChange={handleOnGlass}
               placeholder="Highball glass"
-              
             />
           </StyledWrapperSelect>
         </StyledFildWrapper>
