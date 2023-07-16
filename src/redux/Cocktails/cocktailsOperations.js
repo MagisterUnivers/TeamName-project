@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setToken, instance } from 'redux/Auth/authOperations';
+import { setToken } from 'redux/Auth/authOperations';
 import { selectAuthAccessToken } from 'redux/selectors';
-// import { instance } from 'api/instance';
+import { instance } from 'api/instance';
 import Notiflix from 'notiflix';
 
 // Cocktails
