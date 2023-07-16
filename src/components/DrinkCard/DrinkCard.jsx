@@ -1,17 +1,21 @@
 import React from 'react';
 
 import {
+  AboutStyled,
+  ButtonsWrapper,
   Card,
   Drinkingreds,
   Image,
   Ingredients,
   Ingredientswrapper,
-} from './Styles-DrinkCard';
+} from './DrinkCard.styled';
 import { Link } from 'react-router-dom';
+import DeleteButton from 'components/Buttons/DeleteButton/DeleteButton';
+import SeeButton from 'components/Buttons/SeeButton/SeeButton';
 // import drink from './exampledrink.jpg';
 
 const DrinkCard = ({ cocktail, my }) => {
-  console.log(cocktail);
+  console.log(cocktail.instructions);
   return (
     <Card>
       <Link to={`/recipes/${cocktail._id}`}>
@@ -20,9 +24,12 @@ const DrinkCard = ({ cocktail, my }) => {
           <Drinkingreds>{cocktail.drink}</Drinkingreds>
           <Ingredients>Ingredients</Ingredients>
         </Ingredientswrapper>
-        {my && <button>See recipe</button>}
-        {my && <button>See recipe</button>}
       </Link>
+      {my && <AboutStyled>{cocktail.about}</AboutStyled>}
+      <ButtonsWrapper>
+        {my && <SeeButton id={cocktail._id} />}
+        {my && <DeleteButton id={cocktail._id} />}
+      </ButtonsWrapper>
     </Card>
   );
 };
