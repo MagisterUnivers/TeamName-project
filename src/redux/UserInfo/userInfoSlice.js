@@ -3,6 +3,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { updateThemeThunk } from './userOperations';
 
 const initialState = {
+  user: { name: '', email: '' },
+  avatarURL: '',
   theme: 'dark',
 };
 

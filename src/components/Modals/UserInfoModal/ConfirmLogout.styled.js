@@ -71,7 +71,7 @@ export const CancelButton = styled.button`
   }
 `;
 
-export const LogOutLink = styled(NavLink)`
+export const LogOutButton = styled.button`
   display: block;
   padding: 12px 45px;
   margin-top: 20px;

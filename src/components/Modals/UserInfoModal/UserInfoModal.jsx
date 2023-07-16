@@ -1,29 +1,21 @@
 import React, { useState } from 'react';
-import { ModalWrapper, CloseButton, UserWrapper } from './UserInfoModal.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { ModalWrapper, CloseButton, UserAvatarWrapper, ContentWrapper, AvatarFrame, AddAvatarButton, StyledFormInsight, StyledForm, StyledIconError, StyledIconChecked } from './UserInfoModal.styled';
+import { StyledError, StyledInput, StyledInputWrap, StyledMessage } from 'components/RegisterForm/RegisterForm.styled';
+import { updateUserInfo } from 'redux/UserInfo/userOperations';
+import { selectUserInfoAvatar, selectUserInfoName } from 'redux/selectors';
 
 const UserInfoModal = ({ onClose }) => {
-  const [photo, setPhoto] = useState('');
-  const [username, setUsername] = useState('');
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    onClose();
-  };
-
-  const handleInputChange = (e) => {
-    if (e.target.name === 'photo') {
-      setPhoto(e.target.value);
-    } else if (e.target.name === 'username') {
-      setUsername(e.target.value);
-    }
-  };
+  const dispatch = useDispatch();
+  const UserName = useSelector(selectUserInfoName);
+  const UserAvatar = useSelector(selectUserInfoAvatar);
 
   const handleModalClick = (e) => {
     if (e.target.classList.contains('modal')) {
       onClose();
     }
   };
-
   const handleKeyDown = (e) => {
     if (e.key === 'Escape') {
       onClose();
@@ -31,34 +23,64 @@ const UserInfoModal = ({ onClose }) => {
   };
 
   return (
-    <ModalWrapper className="modal" onClick={handleModalClick} onKeyDown={handleKeyDown}>
+    <ModalWrapper onClick={handleModalClick} onKeyDown={handleKeyDown}>
+      <ContentWrapper>
          <CloseButton onClick={onClose}>
         <img src="../../../../public/images/close.svg" alt="Close" />
       </CloseButton>
-      <UserWrapper className="modal-content">
-        <h2>Add/Change User</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="photo">Photo:</label>
-          <input
-            type="text"
-            id="photo"
-            name="photo"
-            value={photo}
-            onChange={handleInputChange}
-          />
+      <StyledForm
+            initialValues={{
+             avatarURL: UserAvatar || '', 
+             name: UserName || '',
+                 }}
+                 validationSchema={Yup.object({
+                  avatarURL: Yup.string(),
+                  name: Yup.string()
+          .matches(
+            /^[a-zA-Zа-яА-Я0-9]+$/,
+            'Name can only contain letters or numbers.'
+          ),
+                })}
+                onSubmit={values => {
+                  dispatch(updateUserInfo(values));
+                }}         
+      >
+        {({ errors, touched }) => (
+      <StyledFormInsight>
+      <UserAvatarWrapper>
+    <AvatarFrame src='' alt="avatar"/>
+    <AddAvatarButton/>
+      </UserAvatarWrapper>
+          <StyledInputWrap>
+              <StyledInput
+                type="text"
+                name="name"
+                placeholder="Name"
+                className={
+                  touched.name && !errors.name
+                    ? 'valid-border'
+                    : errors.name && touched.name
+                    ? 'invalid-border'
+                    : ''
+                }
+              />
+              {errors.name && touched.name && (
+                <div>
+                  <StyledIconError color="red" />{' '}
+                  <StyledError name="name" component="div" />
+                </div>
+              )}
+              {touched.name && !errors.name && (
+                <div>
+                  <StyledIconChecked color="green" />{' '}
+                  <StyledMessage>This is an CORRECT name</StyledMessage>
+                </div>
+              )}
+            </StyledInputWrap>
 
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={handleInputChange}
-          />
-
-          <button type="submit">Submit</button>
-        </form>
-      </UserWrapper>
+            </StyledFormInsight>)}
+            </StyledForm>
+      </ContentWrapper>
     </ModalWrapper>
   );
 };
