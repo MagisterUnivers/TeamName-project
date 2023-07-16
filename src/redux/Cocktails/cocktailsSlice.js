@@ -3,7 +3,6 @@ import {
   getCocktailsByCategoryThunk,
   getCocktailsByFourCategoryThunk,
   getAllGlassesThunk,
-  getAllOwnDrinks,
   getCategoriesListThunk,
   getCocktailByIdThunk,
   getIngredientsListThunk,

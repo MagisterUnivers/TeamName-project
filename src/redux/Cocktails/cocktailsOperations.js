@@ -131,7 +131,7 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
     }
     setToken(token);
     try {
-      const res = await instance.get('recipes/main-page/');
+      const res = await instance.get('recipes/main-page');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -158,7 +158,7 @@ export const addRecipeThunk = createAsyncThunk(
   }
 );
 
-export const getAllOwnDrinks = createAsyncThunk(
+export const getAllOwnDrinksThunk = createAsyncThunk(
   '@@cocktails/ownCocktails',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());

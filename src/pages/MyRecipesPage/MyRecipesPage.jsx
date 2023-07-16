@@ -9,7 +9,7 @@ import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 const MyRecipesPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllOwnDrinks());
+    dispatch(getAllOwnDrinksThunk());
   }, [dispatch]);
 
   return (
