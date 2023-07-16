@@ -40,6 +40,8 @@ const RegisterForm = () => {
     dispatch(handleEyeClick());
   };
 
+  
+
   return (
     <StyledForm
       initialValues={{
@@ -50,12 +52,12 @@ const RegisterForm = () => {
       validationSchema={Yup.object({
         name: Yup.string()
           .matches(
-            /^[a-zA-Zа-яА-Я0-9]+$/,
+            /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
             'Name can only contain letters or numbers.'
           )
           .required('Required'),
         email: Yup.string()
-          .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'This is an ERROR email')
+          .matches(/^[a-zA-Z0-9.~+_-]+@[^\s@]+\.[^\s@]+$/, 'This is an ERROR email')
           .required('Required'),
         password: Yup.string()
           .required('No password provided.')
@@ -66,12 +68,13 @@ const RegisterForm = () => {
             'Password must contain 1 lowercase, 1 uppercase letter and 1 number.'
           ),
       })}
-      validateOnChange={true}
+      // validateOnChange={true}
       onSubmit={values => {
         dispatch(registrationThunk(values));
       }}
+      
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleChange, setFieldTouched}) => (
         <StyledFormInsight>
           <StyledTitle>Registration</StyledTitle>
           <StyledInnerDiv>
@@ -80,6 +83,10 @@ const RegisterForm = () => {
                 type="text"
                 name="name"
                 placeholder="Name"
+                onChange={(e) => {
+                  setFieldTouched('name')
+                  handleChange(e)
+                }}
                 className={
                   touched.name && !errors.name
                     ? 'valid-border'
@@ -107,6 +114,10 @@ const RegisterForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                onChange={(e) => {
+                  setFieldTouched('email')
+                  handleChange(e)
+                }}
                 className={
                   touched.email && !errors.email
                     ? 'valid-border'
@@ -134,6 +145,10 @@ const RegisterForm = () => {
                   id="password"
                   type="password"
                   name="password"
+                  onChange={(e) => {
+                    setFieldTouched('password')
+                    handleChange(e)
+                  }}
                   placeholder="Password"
                   className={
                     touched.password && !errors.password
