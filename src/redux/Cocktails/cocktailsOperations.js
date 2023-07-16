@@ -2,17 +2,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setToken } from 'redux/Auth/authOperations';
 import { selectAuthAccessToken } from 'redux/selectors';
 import { instance } from 'api/instance';
+import Notiflix from 'notiflix';
 
 // Cocktails
 
 export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
-    const token = selectAuthAccessToken(getState());
-    if (!token) {
-      return rejectWithValue();
-    }
-    setToken(token);
+    // const token = selectAuthAccessToken(getState());
+    // if (!token) {
+    //   return rejectWithValue();
+    // }
+    // setToken(token);
     try {
       const res = await instance.get('recipes/category-list');
       return res.data;
@@ -128,9 +129,9 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-    setToken(token);
     try {
-      const res = await instance.get('recipes/main-page/');
+      setToken(token);
+      const res = await instance.get('recipes/main-page');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -139,6 +140,31 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
 );
 
 // Own
+export const addRecipeThunk = createAsyncThunk(
+  '@@cocktails/addRecipe',
+  async (data, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      let res = null;
+      if (data.get('drinkThumb')) {
+        res = await instance.post('own', data, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+      } else {
+        res = await instance.post('own', data);
+      }
+
+      Notiflix.Notify.success('Recipe added to collection successfully');
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
 
 export const getAllOwnDrinks = createAsyncThunk(
   '@@cocktails/ownCocktails',
