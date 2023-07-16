@@ -66,6 +66,7 @@ const RegisterForm = () => {
             'Password must contain 1 lowercase, 1 uppercase letter and 1 number.'
           ),
       })}
+      validateOnChange={true}
       onSubmit={values => {
         dispatch(registrationThunk(values));
       }}

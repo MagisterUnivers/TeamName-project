@@ -8,6 +8,7 @@ import {
   getCocktailByIdThunk,
   getIngredientsListThunk,
   searchAllDrinksThunk,
+  addRecipeThunk,
 } from './cocktailsOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
@@ -151,23 +152,19 @@ const cocktailsSlice = createSlice({
     },
 
     // Own
-    [getAllOwnDrinks.pending]: (state, { payload }) => {
+    [addRecipeThunk.pending]: (state, { payload }) => {
       state.loading = true;
-      Loading.hourglass('We are validating your data...');
+      Loading.hourglass('We are adding your recipe...');
     },
-    [getAllOwnDrinks.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
-      state.totalHits = payload.totalHits;
-      state.page = payload.page;
-      state.loading = false;
+    [addRecipeThunk.fulfilled]: (state, { payload }) => {
+      state.cocktails = [...state.cocktails, payload];
       Loading.remove();
     },
-    [getAllOwnDrinks.rejected]: (state, { payload }) => {
+    [addRecipeThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();
     },
-
     // Favorites
 
     // Popular

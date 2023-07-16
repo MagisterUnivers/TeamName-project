@@ -1,10 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from 'api/instance';
+// import { instance } from 'api/instance';
+import axios from 'axios';
 import Notiflix from 'notiflix';
 import { selectAuthAccessToken, selectUserLoading } from 'redux/selectors';
 
 //defaultURL
 // axios.defaults.baseURL = 'https://cocktails-backend-cwrh.onrender.com/';
+
+export const instance = axios.create({
+  // baseURL: 'https://cocktails-backend-cwrh.onrender.com/',
+  baseURL: 'http://localhost:3001/',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
+});
 
 export const setToken = token => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -56,7 +65,6 @@ export const loginThunk = createAsyncThunk(
     try {
       const res = await instance.post('users/login', credentials);
       setToken(res.data.token);
-      console.log(res);
       return res.data;
     } catch (error) {
       console.log(error);
