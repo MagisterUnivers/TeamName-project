@@ -20,8 +20,8 @@ const AddRecipeForm = () => {
   const [imgData, setImageData] = useState(null);
   const [itemTitleRecipe, setItemTitleRecipe] = useState('');
   const [aboutRecipe, setAboutRecipe] = useState('');
-  const [category, setCategory] = useState(null);
-  const [glass, setGlass] = useState(null);
+  const [category, setCategory] = useState({ label: 'Cocktail' });
+  const [glass, setGlass] = useState({ label: 'Highball glass' });
 
   useEffect(() => {
     dispatch(getCategoriesListThunk());
@@ -50,21 +50,25 @@ const AddRecipeForm = () => {
   };
 
   const handleOnSubmit = () => {
-
     const formData = new FormData();
-    formData.append('drinkThumb', imgData);
+    if (imgData) {
+      formData.append('drinkThumb', imgData);
+    }
     formData.append('drink', itemTitleRecipe);
     formData.append('about', aboutRecipe);
     formData.append('category', category.label);
     formData.append('glass', glass.label);
-    
-    dispatch(addRecipeThunk(formData))
+
+    dispatch(addRecipeThunk(formData));
     // resetForm();
     // navigate('/my', { replace: true });
-  }
+  };
 
   return (
-    <Formik initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }} onSubmit={handleOnSubmit}>
+    <Formik
+      initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }}
+      onSubmit={handleOnSubmit}
+    >
       <StyledForm autoComplete="off">
         <RecipeDescriptionFields
           dataField={{

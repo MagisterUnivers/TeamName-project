@@ -1,18 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setToken } from 'redux/Auth/authOperations';
+import { setToken, instance } from 'redux/Auth/authOperations';
 import { selectAuthAccessToken } from 'redux/selectors';
-import { instance } from 'api/instance';
+// import { instance } from 'api/instance';
+import Notiflix from 'notiflix';
 
 // Cocktails
 
 export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
-    const token = selectAuthAccessToken(getState());
-    if (!token) {
-      return rejectWithValue();
-    }
-    setToken(token);
+    // const token = selectAuthAccessToken(getState());
+    // if (!token) {
+    //   return rejectWithValue();
+    // }
+    // setToken(token);
     try {
       const res = await instance.get('recipes/category-list');
       return res.data;
@@ -141,7 +142,12 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
 // Own
 export const addRecipeThunk = createAsyncThunk(
   '@@cocktails/addRecipe',
-  async (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
     try {
       const res = await instance.post('own', data);
       Notiflix.Notify.success('Recipe added to collection successfully');

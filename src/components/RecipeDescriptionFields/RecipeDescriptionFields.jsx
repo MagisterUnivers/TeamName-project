@@ -27,10 +27,10 @@ const RecipeDescriptionFields = ({
   const styles = {
     menuList: base => ({
       ...base,
-      height: '200px',
+      height: '80px',
       '::-webkit-scrollbar': {
-        width: '8px',
-        height: '110px',
+        width: '5px',
+        height: '80px',
       },
       '::-webkit-scrollbar-track': {
         background: 'transparent',
@@ -38,8 +38,8 @@ const RecipeDescriptionFields = ({
       },
       '::-webkit-scrollbar-thumb': {
         background: '#434D67',
-        height: '110px',
-        width: '8px',
+        height: '80px',
+        width: '5px',
         borderRadius: '20px',
         padding: '20px',
       },
@@ -105,12 +105,12 @@ const RecipeDescriptionFields = ({
                 return { value: category._id, label: category.category };
               })}
               styles={styles}
-              isSearchable={true}
+              isSearchable={false}
               value={category}
               classNamePrefix="react-select"
               onChange={handleOnCategory}
               placeholder="Cocktail"
-              required
+              
             />
           </StyledWrapperSelect>
           <StyledWrapperSelect>
@@ -120,12 +120,12 @@ const RecipeDescriptionFields = ({
                 return { value: glass._id, label: glass.title };
               })}
               styles={styles}
-              isSearchable={true}
+              isSearchable={false}
               value={glass}
               classNamePrefix="react-select"
               onChange={handleOnGlass}
               placeholder="Highball glass"
-              required
+              
             />
           </StyledWrapperSelect>
         </StyledFildWrapper>

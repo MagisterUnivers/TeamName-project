@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from 'api/instance';
+// import { instance } from 'api/instance';
+import axios from 'axios';
 import Notiflix from 'notiflix';
 import { selectAuthAccessToken, selectUserLoading } from 'redux/selectors';
 
@@ -14,8 +15,8 @@ export const instance = axios.create({
   // },
 });
 
-const setToken = token => {
-  instance.defaults.headers.common['Authorization'] = ` Bearer ${token}`;
+export const setToken = token => {
+  instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 export const clearToken = token => {
   instance.defaults.headers.common['Authorization'] = ``;
