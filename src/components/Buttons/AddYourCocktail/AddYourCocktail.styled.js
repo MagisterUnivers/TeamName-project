@@ -1,11 +1,9 @@
-import styled from 'styled-components';
-import { Form } from 'formik';
-import { StyledButton } from 'components/RegisterForm/RegisterForm.styled';
+import { StyledButton } from "components/RegisterForm/RegisterForm.styled";
+import styled from "styled-components";
 
-export const StyledForm = styled(Form)``;
 
 export const StyledAddButton = styled(StyledButton)`
-  width: 107px;
+  width: 152px;
   height: 46px;
   display: flex;
   justify-content: center;
@@ -14,7 +12,7 @@ export const StyledAddButton = styled(StyledButton)`
   padding: 0;
 
   @media screen and (min-width: 768px) {
-    width: 118px;
+    width: 170px;
     height: 54px;
   }
 `;
