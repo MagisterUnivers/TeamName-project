@@ -149,7 +149,15 @@ export const addRecipeThunk = createAsyncThunk(
     }
     setToken(token);
     try {
-      const res = await instance.post('own', data);
+      let res = null;
+      if (data.get('drinkThumb')) {
+        res = await instance.post('own', data, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+      } else {
+        res = await instance.post('own', data);
+      }
+
       Notiflix.Notify.success('Recipe added to collection successfully');
       return res.data;
     } catch (error) {
