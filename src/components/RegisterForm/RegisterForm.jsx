@@ -40,7 +40,22 @@ const RegisterForm = () => {
     dispatch(handleEyeClick());
   };
 
-  
+  // useEffect(() => {
+  // const input = document.querySelector('#password');
+
+  // const togglePasswordVisibility = () => {
+  // if (input.type === 'password') {
+  // const dummyText = Array(input.value.length + 1).join('*');
+  // input.value = dummyText;
+  // }
+  // };
+
+  // input.addEventListener('keyup', togglePasswordVisibility);
+
+  // return () => {
+  // input.removeEventListener('keyup', togglePasswordVisibility);
+  // };
+  // }, []);
 
   return (
     <StyledForm
@@ -57,7 +72,10 @@ const RegisterForm = () => {
           )
           .required('Required'),
         email: Yup.string()
-          .matches(/^[a-zA-Z0-9.~+_-]+@[^\s@]+\.[^\s@]+$/, 'This is an ERROR email')
+          .matches(
+            /^[a-zA-Z0-9.~+_-]+@[^\s@]+\.[^\s@]+$/,
+            'This is an ERROR email'
+          )
           .required('Required'),
         password: Yup.string()
           .required('No password provided.')
@@ -72,9 +90,8 @@ const RegisterForm = () => {
       onSubmit={values => {
         dispatch(registrationThunk(values));
       }}
-      
     >
-      {({ errors, touched, handleChange, setFieldTouched}) => (
+      {({ errors, touched, handleChange, setFieldTouched }) => (
         <StyledFormInsight>
           <StyledTitle>Registration</StyledTitle>
           <StyledInnerDiv>
@@ -83,9 +100,9 @@ const RegisterForm = () => {
                 type="text"
                 name="name"
                 placeholder="Name"
-                onChange={(e) => {
-                  setFieldTouched('name')
-                  handleChange(e)
+                onChange={e => {
+                  setFieldTouched('name');
+                  handleChange(e);
                 }}
                 className={
                   touched.name && !errors.name
@@ -114,9 +131,9 @@ const RegisterForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                onChange={(e) => {
-                  setFieldTouched('email')
-                  handleChange(e)
+                onChange={e => {
+                  setFieldTouched('email');
+                  handleChange(e);
                 }}
                 className={
                   touched.email && !errors.email
@@ -143,11 +160,11 @@ const RegisterForm = () => {
               <StyledPasswordDiv>
                 <StyledInput
                   id="password"
-                  type="password"
+                  type={isClicked ? 'text' : 'password'}
                   name="password"
-                  onChange={(e) => {
-                    setFieldTouched('password')
-                    handleChange(e)
+                  onChange={e => {
+                    setFieldTouched('password');
+                    handleChange(e);
                   }}
                   placeholder="Password"
                   className={
