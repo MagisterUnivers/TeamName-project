@@ -7,7 +7,7 @@ export const BurgerMenuContainer = styled.div`
   background-color:  #0A0A11;
   min-width: 100%;
   height: calc(100vh - 72px);
-  position: relative;
+  position: absolute;
   z-index: 90;
   display: flex;
   justify-content: center;

@@ -12,6 +12,8 @@ import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
 import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { nanoid } from '@reduxjs/toolkit';
+
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,15 @@ const AddRecipeForm = () => {
   const [category, setCategory] = useState({ label: 'Cocktail' });
   const [glass, setGlass] = useState({ label: 'Highball glass' });
   const [instructions, setInstructions] = useState([]);
+  const [cocktailIngredientsList, setCocktailIngredientsList] = useState([
+    {
+      _id: nanoid(),
+      id: '',
+      name: '',
+      unitQuantity: '',
+      unit: '',
+    }
+  ])
 
   useEffect(() => {
     dispatch(getCategoriesListThunk());
@@ -41,6 +52,15 @@ const AddRecipeForm = () => {
     setCategory(null);
     setGlass(null);
     setInstructions('');
+    setCocktailIngredientsList([
+      {
+        _id: nanoid(),
+      id: '',
+      name: '',
+      unitQuantity: '',
+      unit: '',
+      }
+    ])
   };
 
   const handleOnImgSelect = async e => {
@@ -59,6 +79,55 @@ const AddRecipeForm = () => {
     console.log(instructions);
   }
 
+  const handleIncIngredients = () => {
+    const ingredient = {
+      _id: nanoid(),
+      id: '',
+      name: '',
+      unitQuantity: '',
+      unit: '',
+    };
+    setCocktailIngredientsList(p => [...p, ingredient])
+  };
+
+  const handleDecIngredient = () => {
+    const newIngredientsList = [...cocktailIngredientsList];
+    newIngredientsList.shift();
+    setCocktailIngredientsList(newIngredientsList);
+  };
+
+  
+  const handleDeleteIngredient = index => {
+    const newIngredientsList = [...cocktailIngredientsList];
+    newIngredientsList.splice(index, 1);
+    setCocktailIngredientsList(newIngredientsList);
+  };
+
+  const handleOnChangeIngredientName = (e, i) => {
+    const tmpList = [...cocktailIngredientsList];
+    tmpList[i].id = e.value;
+    tmpList[i].name = e.label;
+    setCocktailIngredientsList(tmpList);
+  };
+
+  const handleOnChangeIngredientUnit = (e, i) => {
+    const tmpList = [...cocktailIngredientsList];
+    tmpList[i].unit = e.value;
+    setCocktailIngredientsList(tmpList);
+  };
+
+  const handleOnChangeUnitQuantity = (e, i) => {
+    let tmpData = e.currentTarget.value;
+    if (tmpData < 0) {
+      tmpData = 0;
+      e.currentTarget.value = 0;
+    }
+    const tmpList = [...cocktailIngredientsList];
+    tmpList[i].unitCount = tmpData;
+    setCocktailIngredientsList(tmpList);
+  };
+
+
   const handleOnSubmit = () => {
     const formData = new FormData();
     if (imgData) {
@@ -69,6 +138,7 @@ const AddRecipeForm = () => {
     formData.append('category', category.label);
     formData.append('glass', glass.label);
     formData.append('instructions', instructions);
+    formData.append('ingredientsList', cocktailIngredientsList);
 
     dispatch(addRecipeThunk(formData));
     // resetForm();
@@ -98,7 +168,15 @@ const AddRecipeForm = () => {
           categoryList={drinksCategory}
           glassList={drinksGlass}
         />
-        <RecipeIngredientsFields/>
+        <RecipeIngredientsFields 
+          cocktailIngredientList={cocktailIngredientsList}
+          handleIncIngredient={handleIncIngredients}
+          handleDecIngredient={handleDecIngredient}
+          handleOnDeleteIngredient={handleDeleteIngredient}
+          handleOnChangeIngredientName={handleOnChangeIngredientName}
+          handleOnChangeIngredientUnit={handleOnChangeIngredientUnit}
+          handleOnChangeUnitQuantity={handleOnChangeUnitQuantity}
+          />
         <RecipePreparationFields
               dataField={instructions}
               handleOnInstructions={handleOnInstructions}

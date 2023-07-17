@@ -1,7 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectIngredients } from 'redux/selectors';
-import { FieldsInputWrp, FormWrapper, IngredientsItem, TitleStyled, TitleWrp, UnitWrp, IngredientUnit, SelectIngredientStyled, UnitQuantity, DeleteButton, CloseIconButton } from './RecipeIngredientsFields.styled';
+import {
+  FieldsInputWrp,
+  FormWrapper,
+  IngredientsItem,
+  TitleStyled,
+  TitleWrp,
+  UnitWrp,
+  IngredientUnit,
+  SelectIngredientStyled,
+  UnitQuantity,
+  DeleteButton,
+  CloseIconButton,
+} from './RecipeIngredientsFields.styled';
 import Counter from './Counter/Counter';
 import { listUnits } from './ListUnits.constants';
 
@@ -10,9 +22,9 @@ export const RecipeIngredientsFields = ({
   handleIncIngredient,
   handleDecIngredient,
   handleOnDeleteIngredient,
-  handleOnChangeIngName,
-  handleOnChangeIngUnit,
-  handleOnChangeUnitCount,
+  handleOnChangeIngredientName,
+  handleOnChangeIngredientUnit,
+  handleOnChangeUnitQuantity,
 }) => {
   const ingredientsList = useSelector(selectIngredients);
 
@@ -20,26 +32,30 @@ export const RecipeIngredientsFields = ({
     <FormWrapper>
       <TitleWrp>
         <TitleStyled>Ingredients</TitleStyled>
-        <Counter/>
+        <Counter
+          handleInc={handleIncIngredient}
+          handleDec={handleDecIngredient}
+          list={cocktailIngredientList}
+        />
       </TitleWrp>
       <ul>
-        { cocktailIngredientList?.map((el, index) => (
-          <IngredientsItem  key={el._id}>
+        {cocktailIngredientList?.map((el, index) => (
+          <IngredientsItem key={el._id}>
             <FieldsInputWrp>
-            <SelectIngredientStyled
-            options={ingredientsList}
-            isSearchable={true}
-            classNamePrefix="react-select"
-            // onChange={evt => handleOnChangeIngSelector(evt, index)}
-            required
-            />
-            <UnitWrp>
-              <UnitQuantity
+              <SelectIngredientStyled
+                options={ingredientsList}
+                isSearchable={true}
+                classNamePrefix="react-select"
+                onChange={evt => handleOnChangeIngredientName(evt, index)}
+                required
+              />
+              <UnitWrp>
+                <UnitQuantity
                   type="number"
                   min="0"
-                  // onChange={e => {
-                  //   handleOnChangeUnitQuantity(e, index);
-                  // }}
+                  onChange={e => {
+                    handleOnChangeUnitQuantity(e, index);
+                  }}
                   name={`uniCount${index}`}
                   placeholder="0"
                 />
@@ -47,24 +63,20 @@ export const RecipeIngredientsFields = ({
                   options={listUnits}
                   isSearchable={false}
                   classNamePrefix="react-select"
-                  // onChange={e => {
-                  //   handleOnChangeIngUnit(e, index);
-                  // }}
+                  onChange={e => {
+                    handleOnChangeIngredientUnit(e, index);
+                  }}
                   required
-                  />
-            </UnitWrp>
+                />
+              </UnitWrp>
             </FieldsInputWrp>
-            <DeleteButton 
-            // onClick={handleOnDeleteIngredient}
-            >
-                  <CloseIconButton />
-                </DeleteButton>
+            <DeleteButton onClick={handleOnDeleteIngredient(index)}>
+              <CloseIconButton />
+            </DeleteButton>
           </IngredientsItem>
-          )   
-        )};
+        ))}
+        ;
       </ul>
     </FormWrapper>
   );
 };
-
-
