@@ -78,6 +78,7 @@ export const StyledInput = styled(Field)`
   @media screen and (min-width: 768px) {
     height: 56px;
     padding: 14px 24px;
+    padding-right: 50px;
     font-size: 17px;
     line-height: calc(18 / 17);
   }
