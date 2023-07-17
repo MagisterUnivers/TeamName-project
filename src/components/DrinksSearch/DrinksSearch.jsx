@@ -8,7 +8,11 @@ import {
   getIngredientsListThunk,
   searchAllDrinksThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import { SelectStyled, InputStyled } from './DrinksSearch.styled';
+import {
+  SelectStyled,
+  InputStyled,
+  SerachWrapperStyled,
+} from './DrinksSearch.styled';
 import {
   selectCategories,
   selectIngredients,
@@ -61,7 +65,7 @@ const DrinksSearch = ({ categoryName }) => {
   // }
   console.log(categoryName);
   return (
-    <>
+    <SerachWrapperStyled>
       <InputStyled
         type="text"
         name="query"
@@ -72,7 +76,6 @@ const DrinksSearch = ({ categoryName }) => {
           dispatch(setPage(1));
         }}
       />
-      ;
       <Select
         styles={{
           control: (baseStyles, state) => ({
@@ -85,6 +88,7 @@ const DrinksSearch = ({ categoryName }) => {
             boxShadow: 'none',
             borderRadius: '200px',
             cursor: 'pointer',
+            marginBottom: '14px',
           }),
           // @media ${devices.tablet} {
           //   width: 199px,
@@ -177,7 +181,7 @@ const DrinksSearch = ({ categoryName }) => {
         }}
         required
       />
-    </>
+    </SerachWrapperStyled>
   );
 };
 

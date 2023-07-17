@@ -2,9 +2,22 @@ import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 import Select from 'react-select';
 
+export const SerachWrapperStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${devices.tablet} {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  @media ${devices.desktop} {
+  }
+`;
+
 export const InputStyled = styled.input`
   width: 335px;
   height: 54px;
+  margin-bottom: 14px;
   background: transparent;
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.800000011920929;
@@ -21,6 +34,7 @@ export const InputStyled = styled.input`
   @media ${devices.tablet} {
     width: 199px;
     height: 56px;
+    margin-bottom: 40px;
   }
 
   @media ${devices.desktop} {
