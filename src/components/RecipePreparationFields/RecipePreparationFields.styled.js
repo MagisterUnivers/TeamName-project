@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-export const FormWrapper = styled.div``;
+export const FormWrapper = styled.div`
+margin-bottom: 20px`;
 
 export const StyledTitle = styled.h2`
   color: #f3f3f3;
@@ -33,6 +34,7 @@ export const StyledTextArea = styled(Field)`
   line-height: calc(18 / 14);
   font-weight: 400;
   margin: 0;
+  transition: border-color 400ms ease;
 
   &::placeholder {
     color: rgba(243, 243, 243, 0.5);
@@ -48,11 +50,6 @@ export const StyledTextArea = styled(Field)`
     display: block;
     margin-top: 20px;
   }
-  /* &::-webkit-scrollbar-track {
-    background-color: transparent;
-    display: block;
-    padding-top: 20px;
-  } */
 
   &::-webkit-scrollbar-thumb {
     background-color: rgba(243, 243, 243, 0.5);
