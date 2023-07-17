@@ -49,7 +49,6 @@ export const SharedLayout = () => {
     <>
       <Header />
       <main style={{ width: '100%', height: '90vh' }}>
-        <RecipeIngredientsFields/>
         <Outlet />
       </main>
       <Footer />
