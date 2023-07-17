@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const PreviewDrinks = ({ title, ordinaryDrink = [] }) => {
   return (
     <Section>
-      <Link to={`/recipes/encodeURIComponent(${title})`}>
+      <Link to={`/drinks/encodeURIComponent(${title})`}>
         <SectionTitle>{title}</SectionTitle>
       </Link>
 

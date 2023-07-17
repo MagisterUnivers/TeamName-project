@@ -6,24 +6,27 @@ import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
 import Paginator from 'components/Paginator/Paginator';
 import { getCocktailsByCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
-import { selectAuthAccessToken, selectAuthToken } from 'redux/selectors';
-import { Footer } from 'components';
+import { useParams } from 'react-router';
+import { setChosenCategory } from 'redux/Cocktails/cocktailsSlice';
 
 const DrinksPage = () => {
+  const { categoryName } = useParams();
   const dispatch = useDispatch();
-  const category = encodeURIComponent('Cocktail');
+  dispatch(setChosenCategory(categoryName));
+
+  if (!categoryName) {
+    dispatch(setChosenCategory('Cocktail'));
+  }
   useEffect(() => {
-    dispatch(getCocktailsByCategoryThunk(category));
-  }, [dispatch, category]);
-  const token = useSelector(selectAuthAccessToken);
-  console.log(token);
+    dispatch(getCocktailsByCategoryThunk(categoryName));
+  }, [dispatch, categoryName]);
+
   return (
     <>
       <MainPageTitle title={'Drinks'} />
-      <DrinksSearch />
-      <DrinksList categoryDefault={category} />
+      <DrinksSearch categoryName={categoryName} />
+      <DrinksList categoryName={categoryName} />
       <Paginator />
-      <Footer />
     </>
   );
 };
