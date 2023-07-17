@@ -11,7 +11,7 @@ import {
 const RecipePreparation = () => {
   const cocktails = useSelector(selectCocktails);
 
-  console.log(cocktails, 'state / selector');
+  // console.log(cocktails, 'state / selector');
 
   if (!cocktails) {
     console.log('Empty');
