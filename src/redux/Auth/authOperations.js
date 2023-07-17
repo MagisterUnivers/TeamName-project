@@ -56,7 +56,6 @@ export const loginThunk = createAsyncThunk(
     try {
       const res = await instance.post('users/login', credentials);
       setToken(res.data.token);
-      console.log(res);
       return res.data;
     } catch (error) {
       console.log(error);
@@ -98,6 +97,22 @@ export const refreshThunk = createAsyncThunk(
     setToken(refreshToken);
     try {
       const res = await instance.post('users/refresh');
+      return res.data;
+    } catch (error) {
+      const errorMessage = error.response.data.message;
+      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
+      // return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getCurrentUserThunk = createAsyncThunk(
+  '@@auth/current',
+  async (_, thunkAPI) => {
+    const refreshToken = selectAuthAccessToken(thunkAPI.getState());
+    setToken(refreshToken);
+    try {
+      const res = await instance.get('users/current');
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;

@@ -68,14 +68,17 @@ export const StyledInput = styled(Field)`
   opacity: 0.800000011920929;
   background-color: transparent;
   padding: 18px 24px;
+  padding-right: 50px;
   color: rgba(243, 243, 243, 0.5);
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
+ 
 
   @media screen and (min-width: 768px) {
     height: 56px;
     padding: 14px 24px;
+    padding-right: 50px;
     font-size: 17px;
     line-height: calc(18 / 17);
   }

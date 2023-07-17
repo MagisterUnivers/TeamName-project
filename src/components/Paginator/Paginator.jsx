@@ -4,7 +4,7 @@ import { Pagination } from '@mui/material';
 import { selectPage, selectTotalHits } from 'redux/selectors';
 
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
-import { Wrapper } from './Paginator.styled';
+import { Wrapper, WrapperGeneralStyled } from './Paginator.styled';
 
 const Paginator = () => {
   let page = useSelector(selectPage);
@@ -14,7 +14,7 @@ const Paginator = () => {
   const pageQuantity = Math.ceil(totalHits / limit);
   console.log(pageQuantity);
   return (
-    <>
+    <WrapperGeneralStyled>
       {pageQuantity > 1 && (
         <Pagination
           count={pageQuantity}
@@ -26,7 +26,7 @@ const Paginator = () => {
           sx={{ marginY: 3, marginX: 'auto' }}
         />
       )}
-    </>
+    </WrapperGeneralStyled>
   );
 };
 

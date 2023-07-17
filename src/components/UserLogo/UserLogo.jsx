@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { NameStyled, UserAvatar, UserAvatarWrp, UserLogoWrp } from './UserLogoStyled';
+import {
+  NameStyled,
+  UserAvatar,
+  UserAvatarWrp,
+  UserLogoWrp,
+} from './UserLogoStyled';
 import { UserLogoModal } from 'components';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/selectors';
-
-
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);
@@ -20,7 +23,5 @@ export const UserLogo = () => {
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
       {showUserLogoModal && <UserLogoModal/>}
     </UserLogoWrp>
-  )
+  );
 };
-
-
