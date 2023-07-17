@@ -20,6 +20,7 @@ const initialState = {
   search: { query: '', chosenCategory: '', chosenIngredient: '' },
   totalHits: null,
   page: 1,
+  loading: false,
 };
 
 const cocktailsSlice = createSlice({
@@ -73,6 +74,7 @@ const cocktailsSlice = createSlice({
     },
     [getCocktailByIdThunk.pending]: (state, { payload }) => {
       state.loading = true;
+      state.cocktails = [];
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailByIdThunk.fulfilled]: (state, { payload }) => {

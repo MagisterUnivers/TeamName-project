@@ -1,7 +1,7 @@
-// // import React, { useEffect } from 'react';
-// // import { FollowUs, Nav, Logo } from 'components';
-// // import { useDispatch, useSelector } from 'react-redux';
-// // import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
+// import React, { useEffect } from 'react';
+// import { FollowUs, Nav, Logo } from 'components';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 
 // import PreviewDrinks from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 
@@ -30,14 +30,14 @@
 //     return item.category === 'Other/Unknown';
 //   });
 
-// //   useEffect(() => {
-// //     dispatch(getCocktailsByFourCategoryThunk());
-// //   }, []);
+//   useEffect(() => {
+//     dispatch(getCocktailsByFourCategoryThunk());
+//   }, []);
 
-// //   return (
-// //     <>
-// //       {/* <ThemeButton {...props} />
-// //       <Nav /> */}
+//   return (
+//     <>
+//       {/* <ThemeButton {...props} />
+//       <Nav /> */}
 
 //       <Container>
 //         {/* <Logo />
@@ -53,4 +53,4 @@
 //   );
 // };
 
-// // export default TestPage;
+// export default TestPage;

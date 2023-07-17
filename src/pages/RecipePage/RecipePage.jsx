@@ -1,27 +1,28 @@
-// import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useParams } from 'react-router';
-// import { useSelector } from 'react-redux';
+import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
+import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
+import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import { getCocktailByIdThunk } from 'redux/Cocktails/cocktailsOperations';
+import { selectCocktailsIsLoading } from 'redux/selectors';
 
-// import { getCocktailByIdThunk } from 'redux/Cocktails/cocktailsOperations';
-// import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
-// import { selectCocktails } from 'redux/selectors';
-// import DrinkCard from 'components/DrinkCard/DrinkCard';
+export const RecipePage = ({ id }) => {
+  // we must get id with props
+  const dispatch = useDispatch();
+  const loading = useSelector(selectCocktailsIsLoading);
+  const idQuery = useParams();
 
-// const RecipePage = () => {
-//   const { drinkId } = useParams();
-//   const dispatch = useDispatch();
-//   const cocktail = useSelector(selectCocktails);
-//   useEffect(() => {
-//     dispatch(getCocktailByIdThunk(drinkId));
-//   }, [dispatch, drinkId]);
+  useEffect(() => {
+    // fetch recipe
+    dispatch(getCocktailByIdThunk(idQuery.id));
+  }, []); // eslint-disable-line
 
-//   return (
-//     <>
-//       <MainPageTitle title={'A Drink'} />
-//       <DrinkCard id={drinkId} cocktail={cocktail} />
-//     </>
-//   );
-// };
-
-// export default RecipePage;
+  return (
+    <>
+      <RecipePageHero />
+      {!loading && <RecipeIngredientsList />}
+      <RecipePreparation />
+    </>
+  );
+};
