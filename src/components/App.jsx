@@ -15,7 +15,11 @@ import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
 import HomePage from 'pages/HomePage/HomePage';
-import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
+import { RecipePage } from 'pages/RecipePage/RecipePage';
+
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
+// import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -74,6 +78,7 @@ export const App = () => {
                 path="drinks/:categoryName"
                 element={<PrivateRoute>{<DrinksPage />}</PrivateRoute>}
               />
+              <Route path="recipe/:id" element={<RecipePage />} />
 
               <Route
                 path="my"
@@ -85,7 +90,7 @@ export const App = () => {
               />
               <Route
                 path="my"
-                element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
+                // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
             </Route>

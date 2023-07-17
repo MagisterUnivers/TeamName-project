@@ -18,10 +18,8 @@ const PreviewDrinks = ({ title, data = [] }) => {
       </Link>
       <Cardwrapper>
         <Swiper
-          // spaceBetween={50}
-          // slidesPerView={3}
           autoplay={{
-            delay: 2500,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           rewind={true}
@@ -42,8 +40,8 @@ const PreviewDrinks = ({ title, data = [] }) => {
           }}
         >
           {data.map(cocktail => (
-            <SwiperSlide>
-              <DrinkCard cocktail={cocktail} key={cocktail._id} />
+            <SwiperSlide key={cocktail._id}>
+              <DrinkCard cocktail={cocktail} />
             </SwiperSlide>
           ))}
         </Swiper>
