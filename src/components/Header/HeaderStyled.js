@@ -1,11 +1,12 @@
 import { devices } from 'constants/breakpoints';
 import styled from 'styled-components';
 
-export const HeaderWrp = styled.div`
+export const HeaderWrp = styled.header`
   width: 100%;
   border-bottom: 1px solid rgba(243, 243, 243, 0.2);
   position: fixed;
   z-index: 1000;
+  top: 0;
   background-color: ${props => props.theme.bgrColor};
   padding-top: 16px;
   padding-bottom: 15px;
