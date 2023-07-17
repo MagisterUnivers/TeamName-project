@@ -17,7 +17,7 @@ import drink from './defaultimg.jpg';
 const DrinkCard = ({ cocktail, my }) => {
   return (
     <Card>
-      <Link to={`/recipes/${cocktail._id}`}>
+      <Link to={`/main/recipe/${cocktail._id}`}>
         <Image
           src={cocktail.drinkThumb}
           alt={cocktail.drink}
