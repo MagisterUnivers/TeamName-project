@@ -40,8 +40,8 @@ const PreviewDrinks = ({ title, data = [] }) => {
           }}
         >
           {data.map(cocktail => (
-            <SwiperSlide>
-              <DrinkCard cocktail={cocktail} key={cocktail._id} />
+            <SwiperSlide key={cocktail._id}>
+              <DrinkCard cocktail={cocktail} />
             </SwiperSlide>
           ))}
         </Swiper>

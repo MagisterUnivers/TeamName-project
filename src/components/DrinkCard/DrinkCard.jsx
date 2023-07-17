@@ -15,8 +15,6 @@ import SeeButton from 'components/Buttons/SeeButton/SeeButton';
 import drink from './defaultimg.jpg';
 
 const DrinkCard = ({ cocktail, my }) => {
-  console.log(cocktail.drinkThumb);
-
   return (
     <Card>
       <Link to={`/recipes/${cocktail._id}`}>
