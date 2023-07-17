@@ -12,14 +12,21 @@ import {
 import { Link } from 'react-router-dom';
 import DeleteButton from 'components/Buttons/DeleteButton/DeleteButton';
 import SeeButton from 'components/Buttons/SeeButton/SeeButton';
-// import drink from './exampledrink.jpg';
+import drink from './defaultimg.jpg';
 
 const DrinkCard = ({ cocktail, my }) => {
-  console.log(cocktail.instructions);
+  console.log(cocktail.drinkThumb);
+
   return (
     <Card>
       <Link to={`/recipes/${cocktail._id}`}>
-        <Image src={cocktail.drinkThumb} alt="{cocktail.drink}" />
+        <Image
+          src={cocktail.drinkThumb}
+          alt={cocktail.drink}
+          onError={e => {
+            e.currentTarget.src = drink;
+          }}
+        />
         <Ingredientswrapper>
           <Drinkingreds>{cocktail.drink}</Drinkingreds>
           <Ingredients>Ingredients</Ingredients>

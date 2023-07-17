@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 
-export const Card = styled.div`
-  /* max-width: 400px;
-  background: transparent;
-  list-style: none; */
-`;
+export const Card = styled.div``;
 
 export const Image = styled.img`
+  background-image: url('./defaultimg.jpg');
   border-radius: 15px;
   display: block;
   width: 100%;

@@ -18,10 +18,8 @@ const PreviewDrinks = ({ title, data = [] }) => {
       </Link>
       <Cardwrapper>
         <Swiper
-          // spaceBetween={50}
-          // slidesPerView={3}
           autoplay={{
-            delay: 2500,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           rewind={true}
