@@ -54,7 +54,7 @@ const EditProfileModal = () => {
       {isConfirmLogoutOpen && (
         <ConfirmLogoutModal onClose={() => setIsConfirmLogoutOpen(false)} />
       )}
-      {isUserInfoOpen && <UserInfoModal onClose={() => setIsUserInfoOpen(false)} />}
+      {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
     </ModalWrapper>
   );
 };
