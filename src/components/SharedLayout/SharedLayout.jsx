@@ -61,7 +61,7 @@ export const SharedLayout = () => {
           <Outlet />
         </Container>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
