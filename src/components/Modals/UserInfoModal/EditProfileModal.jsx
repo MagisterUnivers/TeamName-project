@@ -41,7 +41,7 @@ const EditProfileModal = () => {
       <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
         <ChangeProfileButton
           onClick={() => {
-            setIsChangeProfileOpen(true);
+            // setIsChangeProfileOpen(true);
             handleOpenUserInfo();
           }}
         >
