@@ -10,7 +10,7 @@ import {
 import { Formik } from 'formik';
 import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
-import AddYourCocktail from 'components/Buttons/AddYourCocktail/AddYourCocktail';
+import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ const AddRecipeForm = () => {
   const [aboutRecipe, setAboutRecipe] = useState('');
   const [category, setCategory] = useState({ label: 'Cocktail' });
   const [glass, setGlass] = useState({ label: 'Highball glass' });
+  const [instructions, setInstructions] = useState([]);
 
   useEffect(() => {
     dispatch(getCategoriesListThunk());
@@ -38,6 +39,7 @@ const AddRecipeForm = () => {
     setAboutRecipe('');
     setCategory(null);
     setGlass(null);
+    setInstructions('');
   };
 
   const handleOnImgSelect = async e => {
@@ -49,6 +51,12 @@ const AddRecipeForm = () => {
     });
     reader.readAsDataURL(localFile);
   };
+  const handleOnInstructions = e => {
+    const text = e.target.value;
+    const lines = text.split('\n');
+    setInstructions(lines);
+    console.log(instructions);
+  }
 
   const handleOnSubmit = () => {
     const formData = new FormData();
@@ -59,6 +67,7 @@ const AddRecipeForm = () => {
     formData.append('about', aboutRecipe);
     formData.append('category', category.label);
     formData.append('glass', glass.label);
+    formData.append('instructions', instructions);
 
     dispatch(addRecipeThunk(formData));
     // resetForm();
@@ -88,6 +97,10 @@ const AddRecipeForm = () => {
           categoryList={drinksCategory}
           glassList={drinksGlass}
         />
+        <RecipePreparationFields
+              dataField={instructions}
+              handleOnInstructions={handleOnInstructions}
+            />
         <StyledAddButton type="submit">Add</StyledAddButton>
       </StyledForm>
     </Formik>

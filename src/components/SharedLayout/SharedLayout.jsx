@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom';
 
 import { Header, Footer } from 'components';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthAccessToken } from 'redux/selectors';
 import { useCallback, useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/authOperations';
+import { Container } from 'components/Container/Container';
 
 export const SharedLayout = () => {
   /**
@@ -54,8 +56,10 @@ export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <main style={{ width: '100%', height: '90vh' }}>
-        <Outlet />
+      <main>
+        <Container>
+          <Outlet />
+        </Container>
       </main>
       <Footer />
     </>

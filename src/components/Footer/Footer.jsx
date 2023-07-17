@@ -1,6 +1,19 @@
+import React from 'react';
+
+import { FollowUs } from '../FollowUs/FollowUs';
+import SubscribeForm from '../Forms/SubscribeForm';
+import { Logo, Navigation } from 'components';
 
 export const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <footer>
+      <Logo />
+      <Navigation />
+      <FollowUs />
+      <SubscribeForm />
+      <p>&#169;2023 Drink Master. All rights reserved.</p>
+      <p>Privacy Policy</p>
+      <p>Terms of Service</p>
+    </footer>
+  );
 };
-
-

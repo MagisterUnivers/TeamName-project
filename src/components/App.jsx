@@ -15,9 +15,12 @@ import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
 import { SPTestPage } from 'pages';
+import HomePage from 'pages/HomePage/HomePage';
+import { RecipePage } from 'pages/RecipePage/RecipePage';
 
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
+// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -67,15 +70,18 @@ export const App = () => {
             <Route path="/main" element={<SharedLayout />}>
               <Route path="test" element={<TestPage />} />
               <Route path="test2" element={<SPTestPage />} />
+              <Route path="home" element={<HomePage />} />
 
               <Route
                 path="cocktails"
                 element={<PrivateRoute>{/* cocktailsPage */}</PrivateRoute>}
               />
               <Route
-                path="drinks"
+                path="drinks/:categoryName"
                 element={<PrivateRoute>{<DrinksPage />}</PrivateRoute>}
               />
+              <Route path="recipe/:id" element={<RecipePage />} />
+
               <Route
                 path="my"
                 element={<PrivateRoute>{<MyRecipesPage />}</PrivateRoute>}
@@ -84,15 +90,15 @@ export const App = () => {
                 path="add"
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
+              <Route
+                path="my"
+                // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
+                element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
+              />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-
-          {/* <PreviewDrinks title="Ordinary Drink" mockData={mockData} />
-          <PreviewDrinks title="Cocktail" mockData={mockData} />
-          <PreviewDrinks title="Shake" mockData={mockData} />
-          <PreviewDrinks title="Other/Unknow" mockData={mockData} /> */}
         </Suspense>
       </ThemeProvider>
     </>
