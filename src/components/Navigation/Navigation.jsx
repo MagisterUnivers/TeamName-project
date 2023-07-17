@@ -14,12 +14,12 @@ export const Navigation = () => {
     justify-content: center;
   `;
 
-    display: flex;
-    flex-direction: ${isDesktop ? 'row' : 'column'};
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-  `;
+  // display: flex;
+  // flex-direction: ${isDesktop ? 'row' : 'column'};
+  // gap: 16px;
+  // align-items: center;
+  // justify-content: center;
+
   return (
     <NavContainer>
       <StyledList>
