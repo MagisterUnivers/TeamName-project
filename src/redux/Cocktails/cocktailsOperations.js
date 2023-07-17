@@ -9,11 +9,11 @@ import Notiflix from 'notiflix';
 export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
-    // const token = selectAuthAccessToken(getState());
-    // if (!token) {
-    //   return rejectWithValue();
-    // }
-    // setToken(token);
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
     try {
       const res = await instance.get('recipes/category-list');
       return res.data;
@@ -166,7 +166,7 @@ export const addRecipeThunk = createAsyncThunk(
   }
 );
 
-export const getAllOwnDrinks = createAsyncThunk(
+export const getAllOwnDrinksThunk = createAsyncThunk(
   '@@cocktails/ownCocktails',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
