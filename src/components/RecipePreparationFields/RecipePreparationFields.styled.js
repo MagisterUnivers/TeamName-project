@@ -34,6 +34,7 @@ export const StyledTextArea = styled(Field)`
   line-height: calc(18 / 14);
   font-weight: 400;
   margin: 0;
+  transition: border-color 400ms ease;
 
   &::placeholder {
     color: rgba(243, 243, 243, 0.5);
