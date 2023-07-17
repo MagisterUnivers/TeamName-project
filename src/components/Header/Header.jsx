@@ -7,6 +7,7 @@ import {
 } from './HeaderStyled';
 
 import { Navigation, Logo, UserLogo, BurgerMenu, BurgerMenuButton, ThemeButton } from 'components';
+import Counter from 'components/RecipeIngredientsFields/Counter/Counter';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
