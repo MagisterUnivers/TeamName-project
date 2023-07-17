@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { FollowUs } from '../FollowUs/FollowUs';
-import SubscribeForm from '../Forms/SubscribeForm';
-import { Logo, Navigation } from 'components';
+import { Logo, Navigation, SubscribeForm } from 'components';
 
 export const Footer = () => {
   return (
