@@ -15,6 +15,7 @@ import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
 import HomePage from 'pages/HomePage/HomePage';
+import { RecipePage } from 'pages/RecipePage/RecipePage';
 
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
@@ -84,6 +85,7 @@ export const App = () => {
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
             </Route>
+            <Route path="recipe/:id" element={<RecipePage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
