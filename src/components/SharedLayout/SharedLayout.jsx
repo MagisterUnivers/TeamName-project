@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { Header, Footer } from 'components';
+import { Header, Footer, RecipeIngredientsFields } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthAccessToken } from 'redux/selectors';
 import { useCallback, useEffect } from 'react';
@@ -49,6 +49,7 @@ export const SharedLayout = () => {
     <>
       <Header />
       <main style={{ width: '100%', height: '90vh' }}>
+        <RecipeIngredientsFields/>
         <Outlet />
       </main>
       <Footer />
