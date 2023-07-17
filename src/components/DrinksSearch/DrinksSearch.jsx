@@ -29,8 +29,7 @@ const DrinksSearch = ({ categoryName }) => {
   const page = useSelector(selectPage);
 
   const search = useSelector(selectSearch);
-  const category = search.chosenCategory;
-  console.log(category);
+
   useEffect(() => {
     dispatch(getCategoriesListThunk());
   }, [dispatch]);

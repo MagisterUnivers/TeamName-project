@@ -18,7 +18,7 @@ const DrinkCard = ({ cocktail, my }) => {
   console.log(cocktail.instructions);
   return (
     <Card>
-      <Link to={`/recipes/${cocktail._id}`}>
+      <Link to={`/main/drinks/id/${cocktail._id}`}>
         <Image src={cocktail.drinkThumb} alt="{cocktail.drink}" />
         <Ingredientswrapper>
           <Drinkingreds>{cocktail.drink}</Drinkingreds>

@@ -13,7 +13,7 @@ const PreviewDrinks = ({ title, data = [] }) => {
 
   return (
     <Section>
-      <Link to={`/drinks/${linkTransform}`}>
+      <Link to={`/main/drinks/${linkTransform}`}>
         <SectionTitle>{title}</SectionTitle>
       </Link>
       <Cardwrapper>
