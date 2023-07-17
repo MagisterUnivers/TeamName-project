@@ -2,7 +2,13 @@ import styled from 'styled-components';
 import { Form } from 'formik';
 import { StyledButton } from 'components/RegisterForm/RegisterForm.styled';
 
-export const StyledForm = styled(Form)``;
+export const StyledForm = styled(Form)`
+  margin-bottom: 80px;
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 0;
+  }
+`;
 
 export const StyledAddButton = styled(StyledButton)`
   width: 107px;
