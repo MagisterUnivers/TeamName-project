@@ -1,8 +1,9 @@
-import { Container, SubscribeForm } from "components"
+import { Container, Nav, Navigation, SubscribeForm } from "components"
 
 export const SPTestPage = () => {
     return (
-      <Container><SubscribeForm/></Container>
+      <Container><SubscribeForm />
+      <Nav/></Container>
     
   )
 }

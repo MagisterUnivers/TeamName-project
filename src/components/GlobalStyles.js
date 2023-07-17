@@ -66,6 +66,19 @@ button {
 input {
   font-family: inherit;
 }
+.subscribe__validation {
+  h5 {
+border-bottom: 1px solid ${props => props.theme.textColor} !important;  }
+  ul {
+    list-style: square;
+    font-size: 13px;
+    margin-left: 27px;
+    color: ${props => props.theme.textColor};
+  }
+  a:hover{
+    transform: scale(1.1);
+  }
+}
 `;
 
 export default GlobalStyles;
