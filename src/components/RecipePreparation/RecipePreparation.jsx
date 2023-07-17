@@ -6,6 +6,7 @@ import {
   StyledContentWrapper,
   StyledTextWrapper,
   StyledImage,
+  StyledAboutSubtitle,
 } from './RecipePreparation.styled';
 
 const RecipePreparation = () => {
@@ -30,12 +31,14 @@ const RecipePreparation = () => {
                 : require('../../assets/img/testPNG.png')
             }
             alt="ingredient thumb"
-            width={631}
+            width={335}
             height={430}
           />
           <StyledTextWrapper>
-            <p>About</p>
-            <p>Preparation: 1) something 2) something2</p>
+            <StyledAboutSubtitle>About</StyledAboutSubtitle>
+            <StyledAboutSubtitle>
+              Preparation: 1) something 2) something2
+            </StyledAboutSubtitle>
           </StyledTextWrapper>
         </StyledContentWrapper>
       </section>

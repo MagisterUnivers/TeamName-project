@@ -78,6 +78,7 @@ export const App = () => {
                 path="drinks/:categoryName"
                 element={<PrivateRoute>{<DrinksPage />}</PrivateRoute>}
               />
+              <Route path="recipe/:id" element={<RecipePage />} />
 
               <Route
                 path="my"
@@ -92,7 +93,6 @@ export const App = () => {
                 // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
-              <Route path="recipe/:id" element={<RecipePage />} />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />

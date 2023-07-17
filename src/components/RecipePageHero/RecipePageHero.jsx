@@ -1,5 +1,12 @@
 import { useSelector } from 'react-redux';
 import { selectCocktails } from 'redux/selectors';
+import {
+  StyledGlassServi,
+  StyledTitle,
+  StyledAboutContent,
+  StyledButton,
+  StyledImage,
+} from './RecipePageHero.styled';
 
 const RecipePageHero = () => {
   const cocktails = useSelector(selectCocktails);
@@ -13,10 +20,13 @@ const RecipePageHero = () => {
 
   return (
     <>
-      <p>{cocktails.glass}</p>
-      <h2>{cocktails.drink}</h2>
-      <p>{cocktails.about ? cocktails.about : 'sample about'}</p>
-      <img
+      <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
+      <StyledTitle>{cocktails.drink}</StyledTitle>
+      <StyledAboutContent>
+        {cocktails.about ? cocktails.about : 'sample about'}
+      </StyledAboutContent>
+      <StyledButton>Add recipe to favorite</StyledButton>
+      <StyledImage
         src={cocktails.drinkThumb}
         alt="cocktail thumb"
         width={400}

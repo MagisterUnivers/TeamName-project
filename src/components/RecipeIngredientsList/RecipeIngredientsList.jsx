@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import { selectCocktails } from 'redux/selectors';
 import {
   StyledCardWrapper,
+  StyledGlassServi,
+  StyledImage,
   StyledListWrapper,
   StyledTextWrapper,
 } from './RecipeIngredientsList.styled';
@@ -18,13 +20,13 @@ const RecipeIngredientsList = () => {
 
   return (
     <div style={{ marginTop: 100 }}>
-      <p style={{ marginBottom: 24 }}>Ingredients</p>
+      <StyledGlassServi>Ingredients</StyledGlassServi>
       <StyledListWrapper>
         {cocktails.ingredients &&
           cocktails.ingredients.map((item, i) => {
             return (
               <StyledCardWrapper key={i}>
-                <img
+                <StyledImage
                   src={
                     item.ingredientThumb
                       ? item.ingredientThumb
