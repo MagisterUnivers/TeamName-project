@@ -47,6 +47,10 @@ const RecipeDescriptionFields = ({
         background: '#434D67',
       },
     }),
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
+    }),
   };
   const { imgURL, itemTitleRecipe, aboutRecipe, category, glass } = dataField;
 
@@ -125,7 +129,6 @@ const RecipeDescriptionFields = ({
               classNamePrefix="react-select"
               onChange={handleOnGlass}
               placeholder="Highball glass"
-              
             />
           </StyledWrapperSelect>
         </StyledFildWrapper>

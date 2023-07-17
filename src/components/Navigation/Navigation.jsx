@@ -13,11 +13,18 @@ export const Navigation = () => {
     align-items: center;
     justify-content: center;
   `;
+
+    display: flex;
+    flex-direction: ${isDesktop ? 'row' : 'column'};
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  `;
   return (
     <NavContainer>
       <StyledList>
         <StyledItem>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="home">Home</StyledLink>
         </StyledItem>
         <StyledItem>
           <StyledLink to="drinks/Cocktail">Drinks</StyledLink>

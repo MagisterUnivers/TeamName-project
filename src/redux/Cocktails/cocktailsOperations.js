@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setToken, instance } from 'redux/Auth/authOperations';
+import { setToken } from 'redux/Auth/authOperations';
 import { selectAuthAccessToken } from 'redux/selectors';
-// import { instance } from 'api/instance';
+import { instance } from 'api/instance';
 import Notiflix from 'notiflix';
 
 // Cocktails
@@ -129,8 +129,8 @@ export const getCocktailsByFourCategoryThunk = createAsyncThunk(
     if (!token) {
       return rejectWithValue();
     }
-    setToken(token);
     try {
+      setToken(token);
       const res = await instance.get('recipes/main-page');
       return res.data;
     } catch (error) {
@@ -149,7 +149,15 @@ export const addRecipeThunk = createAsyncThunk(
     }
     setToken(token);
     try {
-      const res = await instance.post('own', data);
+      let res = null;
+      if (data.get('drinkThumb')) {
+        res = await instance.post('own', data, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+      } else {
+        res = await instance.post('own', data);
+      }
+
       Notiflix.Notify.success('Recipe added to collection successfully');
       return res.data;
     } catch (error) {
