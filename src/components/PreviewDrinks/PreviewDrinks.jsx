@@ -13,7 +13,7 @@ const PreviewDrinks = ({ title, data = [] }) => {
 
   return (
     <Section>
-      <Link to={`/drinks/${linkTransform}`}>
+      <Link to={`/main/drinks/${linkTransform}`}>
         <SectionTitle>{title}</SectionTitle>
       </Link>
       <Cardwrapper>
@@ -49,18 +49,6 @@ const PreviewDrinks = ({ title, data = [] }) => {
         </Swiper>
       </Cardwrapper>
     </Section>
-
-    // <Section>
-    // <Link to={`/drinks/${linkTransform}`}>
-    //   <SectionTitle>{title}</SectionTitle>
-    // </Link>
-
-    // <Cardwrapper>
-    // {data.map(cocktail => (
-    //     <DrinkCard cocktail={cocktail} key={cocktail._id} />
-    // ))}
-    //   </Cardwrapper>
-    // </Section>
   );
 };
 
