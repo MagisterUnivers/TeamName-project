@@ -74,7 +74,7 @@ const cocktailsSlice = createSlice({
     },
     [getCocktailByIdThunk.pending]: (state, { payload }) => {
       state.loading = true;
-      // state.cocktails = [];
+      state.cocktails = [];
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailByIdThunk.fulfilled]: (state, { payload }) => {

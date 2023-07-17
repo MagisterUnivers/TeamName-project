@@ -17,11 +17,11 @@ const RecipeIngredientsList = () => {
   }
 
   return (
-    cocktails && (
-      <div style={{ marginTop: 100 }}>
-        <p style={{ marginBottom: 24 }}>Ingredients</p>
-        <StyledListWrapper>
-          {cocktails.ingredients.map((item, i) => {
+    <div style={{ marginTop: 100 }}>
+      <p style={{ marginBottom: 24 }}>Ingredients</p>
+      <StyledListWrapper>
+        {cocktails.ingredients &&
+          cocktails.ingredients.map((item, i) => {
             return (
               <StyledCardWrapper key={i}>
                 <img
@@ -41,9 +41,8 @@ const RecipeIngredientsList = () => {
               </StyledCardWrapper>
             );
           })}
-        </StyledListWrapper>
-      </div>
-    )
+      </StyledListWrapper>
+    </div>
   );
 };
 
