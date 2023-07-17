@@ -18,6 +18,10 @@ export const PicturedWrapper = styled.img`
   background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
+  .no-click {
+  pointer-events: none;
+  user-select: none;
+}
 `;
 export const SummaryWrapper = styled.div`
   position: absolute;

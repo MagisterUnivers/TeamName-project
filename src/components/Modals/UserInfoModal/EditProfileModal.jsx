@@ -7,9 +7,10 @@ import {
 } from './EditProfileModal.styled';
 import ConfirmLogoutModal from './ConfirmLogout';
 import UserInfoModal from './UserInfoModal';
+import pencilIcon from './edit-2.svg';
 
 const EditProfileModal = () => {
-  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
+  const [setIsChangeProfileOpen] = useState(false);
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
 
@@ -26,6 +27,7 @@ const EditProfileModal = () => {
     if (e.target === e.currentTarget) {
       setIsChangeProfileOpen(false);
     }
+    e.stopPropagation();
   };
 
   const handleKeyDown = (e) => {
@@ -43,16 +45,16 @@ const EditProfileModal = () => {
             handleOpenUserInfo();
           }}
         >
-          Change Profile
-          <img src="./edit-2.svg" alt="pencil" width="14" />
+          Edit profile
+          <img src={pencilIcon} alt="pencil" width="14"/>
         </ChangeProfileButton>
         <LogOutButton onClick={handleConfirmLogout}>Log out</LogOutButton>
       </ModalContent>
 
       {isConfirmLogoutOpen && (
-        <ConfirmLogoutModal onCloseModal={setIsConfirmLogoutOpen} />
+        <ConfirmLogoutModal onClose={() => setIsConfirmLogoutOpen(false)} />
       )}
-      {isUserInfoOpen && <UserInfoModal onCloseModal={setIsUserInfoOpen} />}
+      {isUserInfoOpen && <UserInfoModal onClose={() => setIsUserInfoOpen(false)} />}
     </ModalWrapper>
   );
 };

@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logoutThunk } from 'redux/Auth/authOperations';
 import {
   ModalWrapper,
   ModalContent,
-  CancelButton,
   LogOutButton,
+  CloseButton,
+  ModalText,
+  ButtonWrapper,
 } from './ConfirmLogout.styled';
-import { CloseButton } from './UserInfoModal.styled';
+
+import XIcon from './x.svg';
 
 const ConfirmLogout = ({ id, onClose }) => {
   const dispatch = useDispatch();
@@ -22,14 +25,17 @@ const ConfirmLogout = ({ id, onClose }) => {
 
   return (
     <ModalWrapper>
+       <ModalContent>
       <CloseButton onClick={onClose}>
-        <img src="../../../../public/images/close.svg" alt="Close" />
+        <img src={XIcon} alt="Close" width={24}/>
       </CloseButton>
-      <ModalContent>
+      <ModalText>
         Are you sure you want to log out?
+        </ModalText>
+        <ButtonWrapper>
         <LogOutButton onClick={handleDelete}>Log out</LogOutButton>
-        <CancelButton onClick={onClose}>Cancel</CancelButton>
-        
+        <LogOutButton onClick={onClose}>Cancel</LogOutButton>
+        </ButtonWrapper>
       </ModalContent>
       `
     </ModalWrapper>

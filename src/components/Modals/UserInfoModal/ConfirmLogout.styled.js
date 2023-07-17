@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);;
@@ -16,14 +15,34 @@ export const ModalWrapper = styled.div`
 export const ModalContent = styled.div`
   background-color: var(--btn-hover-color);
   border-radius: 8px;
-  width: 177px;
-height: 134px;
+  width: 335px;
+height: 193px;
   margin: 0;
   padding: 0;
-  /* @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 500px;
-    height: 426px;
-  } */
+    height: 215px;
+
+  }
+`;
+
+export const CloseButton = styled.button`
+margin-top: 14px;
+margin-left: 297px;
+margin-bottom: 12px;
+   background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 24px;
+  height: 24px;
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+    margin-top: 18px;
+margin-left: 450px;
+margin-right: 0;
+  }
 `;
 export const ModalText = styled.h1`
 color: var(--main-text-color);
@@ -33,58 +52,43 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.29; 
 letter-spacing: -0.28px;
-  /* @media screen and (min-width: 768px) {
-    width: 500px;
-    height: 426px;
-  } */
-`;
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  width: 24px;
-  height: 24px;
-  @media screen and (min-width: 768px) {
-    width: 32px;
-    height: 32px;
-  }
-`;
-export const CancelButton = styled.button`
-  display: block;
-  padding: 12px 45px;
-  margin-top: 20px;
-  border-radius: 42px;
-  background-color: var(--main-text-color);
-  color: var(--btn-hover-color);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.29;
-  transition: box-shadow 0.3s ease;
-  &:hover {
-    text-decoration: underline;
-    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
+margin-bottom: 25px;
+@media screen and (min-width: 768px) {
+  font-size: 18px;
+  line-height: 1.33; 
   }
 `;
 
-export const LogOutButton = styled.button`
-  display: block;
-  padding: 12px 45px;
-  margin-top: 20px;
-  border-radius: 42px;
-  background-color: var(--main-text-color);
-  color: var(--btn-hover-color);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.29;
-  transition: box-shadow 0.3s ease;
-  &:hover {
-    text-decoration: underline;
-    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
+export const ButtonWrapper = styled.div`
+width: 285px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+  margin: 25px;
+  padding: 0;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+    margin-top: 12px;
+    margin-left: 50px;
   }
 `;
+export const LogOutButton = styled.button`
+  display: block;
+  padding: 16px 41px;
+  border-radius: 42px;
+  background-color: #434D67;
+  color: var(--main-text-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.13;
+  transition: background-color 0.5s ease;
+  &:hover {
+    background-color: var(--main-text-color);
+  color: var(--btn-hover-color);
+  }
+  @media screen and (min-width: 768px) {
+    padding: 18px 69px;
+  }
+`;
+

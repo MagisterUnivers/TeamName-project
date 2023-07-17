@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { ModalWrapper, CloseButton, UserAvatarWrapper, ContentWrapper, AvatarFrame, AddAvatarButton, StyledFormInsight, StyledForm, StyledIconError, StyledIconChecked } from './UserInfoModal.styled';
 import { StyledError, StyledInput, StyledInputWrap, StyledMessage } from 'components/RegisterForm/RegisterForm.styled';
-import { updateUserInfo } from 'redux/UserInfo/userOperations';
+import { updateUserThunk} from 'redux/UserInfo/userOperations';
 import { selectUserInfoAvatar, selectUserInfoName } from 'redux/selectors';
 
 const UserInfoModal = ({ onClose }) => {
@@ -42,7 +42,7 @@ const UserInfoModal = ({ onClose }) => {
           ),
                 })}
                 onSubmit={values => {
-                  dispatch(updateUserInfo(values));
+                  dispatch(updateUserThunk(values));
                 }}         
       >
         {({ errors, touched }) => (
