@@ -11,6 +11,7 @@ import { Formik } from 'formik';
 import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
+import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
@@ -97,6 +98,7 @@ const AddRecipeForm = () => {
           categoryList={drinksCategory}
           glassList={drinksGlass}
         />
+        <RecipeIngredientsFields/>
         <RecipePreparationFields
               dataField={instructions}
               handleOnInstructions={handleOnInstructions}

@@ -2,12 +2,12 @@ import { Field, ErrorMessage } from 'formik';
 import Select from 'react-select';
 import styled from 'styled-components';
 
-
 export const StyledFormInsight = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
   align-items: center;
+  margin-bottom: 80px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -16,6 +16,7 @@ export const StyledFormInsight = styled.div`
   }
   @media screen and (min-width: 1440px) {
     gap: 40px;
+    justify-content: start;
   }
 `;
 
@@ -28,14 +29,13 @@ export const StyledField = styled(Field)`
   outline: none;
   color: rgba(243, 243, 243, 0.5);
   padding-bottom: 14px;
-
-  color: rgba(243, 243, 243, 0.5);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
   cursor: pointer;
+  transition: border-color 400ms ease;
 
   @media (min-width: 768px) {
     padding-bottom: 18px;
@@ -47,6 +47,7 @@ export const StyledField = styled(Field)`
   &:hover,
   &::selection {
     outline: none;
+    border-color: #f3f3f3;
   }
 `;
 
@@ -83,6 +84,7 @@ export const StyledFildWrapper = styled.div`
   flex-direction: column;
   gap: 34px;
   width: 335px;
+
   @media screen and (min-width: 768px) {
     gap: 40px;
     width: 352px;
@@ -138,9 +140,18 @@ export const StyledWrapperSelect = styled.div`
   height: 34px;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  transition: border-color 400ms ease;
+
   @media (min-width: 768px) {
     padding-bottom: 18px;
     height: 41px;
+  }
+  &:focus,
+  &:active,
+  &:hover,
+  &::selection {
+    outline: none;
+    border-color: #f3f3f3;
   }
 `;
 
@@ -198,7 +209,7 @@ export const StyledSelect = styled(Select)`
   & .react-select__value-container {
     padding: 0;
     align-items: start;
-    
+
     // стилизует контейнер ================
   }
   // =========================================
@@ -207,7 +218,7 @@ export const StyledSelect = styled(Select)`
     box-shadow: none;
     outline: none;
     border-color: transparent;
-    
+
     // box-shadow: none;
 
     &:focus,
@@ -226,7 +237,7 @@ export const StyledSelect = styled(Select)`
     text-align: left;
     border-radius: 20px;
     color: #f3f3f3;
-   
+
     margin-top: 8px;
     margin-bottom: 8px;
   }
@@ -286,8 +297,7 @@ export const StyledSelect = styled(Select)`
     &:focus,
     &:hover,
     &::selection,
-    &:active
-   {
+    &:active {
       padding: 0;
       /* transform: rotate(180deg); */
       color: #f3f3f3;
