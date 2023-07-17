@@ -14,8 +14,12 @@ export const Ingredientswrapper = styled.div`
   margin-top: 14px;
   display: flex;
   justify-content: space-between;
+  ${props =>
+    props.position === 'my'
+      ? `flex-direction: column; gap: 4px;`
+      : `flex-direction: row`}
 `;
-
+// || 'favorites'
 export const Drinkingreds = styled.p`
   color: #f3f3f3;
   font-family: Manrope, sans-serif;

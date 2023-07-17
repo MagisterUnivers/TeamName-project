@@ -2,22 +2,19 @@ import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 import Select from 'react-select';
 
-export const SerachWrapperStyled = styled.div`
+export const SearchWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 14px;
   @media ${devices.tablet} {
     flex-direction: row;
     gap: 8px;
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 
 export const InputStyled = styled.input`
   width: 335px;
   height: 54px;
-  margin-bottom: 14px;
   background: transparent;
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.800000011920929;
@@ -34,7 +31,6 @@ export const InputStyled = styled.input`
   @media ${devices.tablet} {
     width: 199px;
     height: 56px;
-    margin-bottom: 40px;
   }
 
   @media ${devices.desktop} {
@@ -54,17 +50,16 @@ export const SelectStyled = styled(Select)`
     box-shadow: none;
     border-radius: 200px;
     cursor: pointer;
+    &--is-focused {
+      outline: none;
+      cursor: text;
+    }
     @media ${devices.tablet} {
       width: 199px;
       height: 56px;
     }
 
     @media ${devices.desktop} {
-    }
-    &--is-focused,
-    &--menu-is-open {
-      outline: none;
-      cursor: pointer;
     }
 
     &:focus,
@@ -78,11 +73,23 @@ export const SelectStyled = styled(Select)`
     // стилизует текст placeholder
     padding-top: 18px;
     padding-bottom: 18px;
-    padding-left: 20px;
+    padding-left: 24px;
     color: #f3f3f3;
     font-size: 14px;
     font-weight: 400;
     line-height: calc(18 / 14);
+    @media ${devices.tablet} {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      font-size: 17px;
+      line-height: calc(26 / 17);
+    }
+  }
+  & .react-select__input-container {
+    // стилизует текст при прямом вводе ================
+    color: #f3f3f3;
+    padding-left: 24px;
+    margin-right: 24px;
   }
   // стилизует инпут выпадающего списка ================
   & .react-select__single-value {
@@ -95,6 +102,15 @@ export const SelectStyled = styled(Select)`
     font-weight: 400;
     line-height: calc(18 / 14);
     color: #f3f3f3;
+    &:focus-within {
+      color: #f3f3f3;
+    }
+    @media ${devices.tablet} {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      font-size: 17px;
+      line-height: calc(26 / 17);
+    }
   }
 
   & .react-select__value-container {
@@ -106,7 +122,7 @@ export const SelectStyled = styled(Select)`
     box-shadow: none;
     outline: none;
     border-color: transparent;
-
+    border-radius: 20px;
     &:focus,
     &:active,
     &:hover,
@@ -118,32 +134,39 @@ export const SelectStyled = styled(Select)`
 
   // стилизует выпадающий список ================
   & .react-select__menu-list {
-    padding-left: 24px;
-    margin-right: 8px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    max-height: 335px;
     border-radius: 20px;
+    width: 314px;
+    @media ${devices.tablet} {
+      height: 405px;
+      width: 177px;
+    }
   }
 
   & .react-select__menu {
     margin: 4px;
+    padding-left: 14px;
     width: 335px;
     border-radius: 20px;
     background-color: #161f37;
+
+    @media ${devices.tablet} {
+      width: 199px;
+      max-height: 405px;
+    }
   }
 
   // стилизует опции внутри списка ================
   & .react-select__option {
-    /* color: rgba(243, 243, 243, 0.40); */
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: calc(16 / 12);
+    line-height: calc(18 / 14);
     background-color: #161f37;
 
-    @media (min-width: 1440px) {
-      font-size: 14px;
-      line-height: calc(18 / 14);
+    @media ${devices.tablet} {
+      font-size: 17px;
+      line-height: calc(26 / 17);
     }
 
     &:focus,
@@ -152,13 +175,15 @@ export const SelectStyled = styled(Select)`
     &::selection {
       color: #f3f3f3;
       background-color: #161f37;
+      cursor: pointer;
     }
   }
   // =========================================
 
   // стилизует стрелочку выпадающего списка ================
   & .react-select__indicators {
-    padding-right: 24px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
   & .react-select__dropdown-indicator {
