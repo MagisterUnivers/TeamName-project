@@ -6,7 +6,7 @@ export const PublicRoute = ({ children }) => {
   const location = useLocation();
   const isOnline = useSelector(selectIsOnline);
   // const isOnline = false;
-  const fromPage = location.state?.from.pathname || '/main/drinks';
+  const fromPage = location.state?.from.pathname || '/main/home';
   // fix up line
   if (isOnline) {
     return <Navigate to={fromPage} />;

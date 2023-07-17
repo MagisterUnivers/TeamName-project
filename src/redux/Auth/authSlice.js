@@ -28,6 +28,12 @@ const authSlice = createSlice({
       const openPassword = () => {
         const input = document.querySelector('#password');
         input.type = input.type === 'password' ? 'text' : 'password';
+        // input.addEventListener('keyup', () => {
+        //   if (input.type === 'password') {
+        //     const dummyText = Array(input.value.length).fill('*').join('');
+        //     input.innerHTML = dummyText;
+        //   }
+        // });
       };
       openPassword();
     },
