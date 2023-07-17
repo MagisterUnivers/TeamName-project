@@ -8,6 +8,7 @@ export const StyledFormInsight = styled.div`
   flex-direction: column;
   gap: 40px;
   align-items: center;
+  margin-bottom: 80px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -16,6 +17,7 @@ export const StyledFormInsight = styled.div`
   }
   @media screen and (min-width: 1440px) {
     gap: 40px;
+    justify-content: start;
   }
 `;
 
@@ -83,6 +85,7 @@ export const StyledFildWrapper = styled.div`
   flex-direction: column;
   gap: 34px;
   width: 335px;
+
   @media screen and (min-width: 768px) {
     gap: 40px;
     width: 352px;
