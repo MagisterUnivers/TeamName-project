@@ -200,6 +200,7 @@ const cocktailsSlice = createSlice({
       // state.cocktails.push(payload);
       console.log(payload);
       state.cocktails = payload;
+      state.backup = payload;
       state.loading = false;
       Loading.remove();
     },

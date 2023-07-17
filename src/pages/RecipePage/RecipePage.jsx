@@ -35,7 +35,7 @@ export const RecipePage = ({ id }) => {
 
   const handleSend = () => {
     filter = favoriteFilter(contact, user);
-    if (!filter) dispatch(removeFromFavoriteThunk(contact._id));
+    if (filter) dispatch(removeFromFavoriteThunk(contact._id));
     else dispatch(addToFavoriteThunk(contact._id));
   };
 
