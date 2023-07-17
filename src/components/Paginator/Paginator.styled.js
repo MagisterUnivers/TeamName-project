@@ -1,5 +1,22 @@
 import { Pagination } from '@mui/material';
 import styled from 'styled-components';
+import { devices } from 'constants/breakpoints';
+
+export const WrapperGeneralStyled = styled.div`
+display:flex;
+justify-content:center;
+   margin-top: 40px;
+  margin-bottom: 80px;
+  @media ${devices.tablet} {
+    margin-top: 80px;
+  margin-bottom: 140px;
+  }
+
+  @media ${devices.desktop} {
+  }
+  &::placeholder {
+    color: #f3f3f3;
+  }`;
 
 export const Wrapper = styled(Pagination)`
   display: flex;
@@ -7,8 +24,7 @@ export const Wrapper = styled(Pagination)`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 50px;
-
+  
 //arrows
   & .MuiPaginationItem-icon {
     fill: rgba(243, 243, 243, 0.30);;

@@ -1,45 +1,56 @@
-import React, { useEffect } from 'react';
-import { FollowUs, Nav, Logo } from 'components';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
+// import React, { useEffect } from 'react';
+// import { FollowUs, Nav, Logo } from 'components';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 
-import PreviewDrinks from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
-import { mockData } from '../../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
-import { selectCocktails } from 'redux/selectors';
-import { Container } from 'components/Container/Container';
+// import PreviewDrinks from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 
-const TestPage = () => {
-  const dispatch = useDispatch();
-  // const category = encodeURIComponent('Cocktail');
-  const category = useSelector(selectCocktails);
-  const ordinaryDrink = category.filter(item => {
-    return item.category === 'Ordinary Drink';
-  });
-  const abc = ordinaryDrink[0];
+// import { selectCocktails } from 'redux/selectors';
+// import { Container } from 'components/Container/Container';
 
-  console.log(abc);
+// const TestPage = () => {
+//   const dispatch = useDispatch();
+//   // const category = encodeURIComponent('Cocktail');
+//   const category = useSelector(selectCocktails);
+//   //   console.log(category);
 
-  useEffect(() => {
-    dispatch(getCocktailsByFourCategoryThunk());
-  }, []);
+//   const ordinaryDrink = category.filter(item => {
+//     return item.category === 'Ordinary Drink';
+//   });
 
-  return (
-    <>
-      {/* <ThemeButton {...props} />
-      <Nav /> */}
+//   const cocktail = category.filter(item => {
+//     return item.category === 'Cocktail';
+//   });
 
-      <Container>
-        <Logo />
-        <FollowUs />
-        <div style={{ height: '300vh' }}></div>
+//   const shake = category.filter(item => {
+//     return item.category === 'Shake';
+//   });
 
-        <PreviewDrinks title="Ordinary Drink" ordinaryDrink={ordinaryDrink} />
-        <PreviewDrinks title="Cocktail" mockData={mockData} />
-        <PreviewDrinks title="Shake" mockData={mockData} />
-        <PreviewDrinks title="Other/Unknow" mockData={mockData} />
-      </Container>
-    </>
-  );
-};
+//   const other = category.filter(item => {
+//     return item.category === 'Other/Unknown';
+//   });
 
-export default TestPage;
+//   useEffect(() => {
+//     dispatch(getCocktailsByFourCategoryThunk());
+//   }, []);
+
+//   return (
+//     <>
+//       {/* <ThemeButton {...props} />
+//       <Nav /> */}
+
+//       <Container>
+//         {/* <Logo />
+//         <FollowUs />
+//         <div style={{ height: '300vh' }}></div> */}
+
+//         <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
+//         <PreviewDrinks title="Cocktail" data={cocktail} />
+//         <PreviewDrinks title="Shake" data={shake} />
+//         <PreviewDrinks title="Other/Unknown" data={other} />
+//       </Container>
+//     </>
+//   );
+// };
+
+// export default TestPage;

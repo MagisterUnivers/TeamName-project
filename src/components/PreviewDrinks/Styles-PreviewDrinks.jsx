@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Section = styled.div`
   max-width: 100%;
-  margin-bottom: 80px;
+  margin-top: 80px;
 
   overflow: hidden;
 `;
@@ -17,15 +17,15 @@ export const SectionTitle = styled.p`
 `;
 
 export const Cardwrapper = styled.div`
-  display: grid;
+  /* display: grid;
   gap: 20px;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr); */
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
-  }
+  } */
 `;

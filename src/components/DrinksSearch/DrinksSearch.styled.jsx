@@ -2,9 +2,22 @@ import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 import Select from 'react-select';
 
+export const SerachWrapperStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${devices.tablet} {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  @media ${devices.desktop} {
+  }
+`;
+
 export const InputStyled = styled.input`
   width: 335px;
   height: 54px;
+  margin-bottom: 14px;
   background: transparent;
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.800000011920929;
@@ -21,6 +34,7 @@ export const InputStyled = styled.input`
   @media ${devices.tablet} {
     width: 199px;
     height: 56px;
+    margin-bottom: 40px;
   }
 
   @media ${devices.desktop} {
@@ -120,17 +134,22 @@ export const SelectStyled = styled(Select)`
 
   // стилизует опции внутри списка ================
   & .react-select__option {
-    color: #f3f3f3;
-    font-size: 14px;
+    /* color: rgba(243, 243, 243, 0.40); */
+    font-size: 12px;
+    font-style: normal;
     font-weight: 400;
-    line-height: calc(18 / 14);
+    line-height: calc(16 / 12);
     background-color: #161f37;
+
+    @media (min-width: 1440px) {
+      font-size: 14px;
+      line-height: calc(18 / 14);
+    }
+
     &:focus,
     &:active,
     &:hover,
     &::selection {
-      /* color: ${props =>
-        props.$hovered ? 'rgba(243, 243, 243, 0.40)' : '#f3f3f3'}; */
       color: #f3f3f3;
       background-color: #161f37;
     }

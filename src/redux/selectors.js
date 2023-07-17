@@ -20,6 +20,7 @@ export const selectMonthDateMap = state => state.calendar.monthDatesMap;
 
 //Cocktails
 export const selectCocktails = state => state.cocktails.cocktails;
+export const selectCocktailsIsLoading = state => state.loading;
 export const selectCategories = state => state.cocktails.categories;
 export const selectGlasses = state => state.cocktails.glasses;
 export const selectIngredients = state => state.cocktails.ingredients;
