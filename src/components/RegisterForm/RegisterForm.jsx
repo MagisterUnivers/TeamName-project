@@ -40,8 +40,6 @@ const RegisterForm = () => {
     dispatch(handleEyeClick());
   };
 
-  
-
   return (
     <StyledForm
       initialValues={{
