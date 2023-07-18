@@ -11,7 +11,7 @@ import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
 import RecipeDescriptionFields from '../../RecipeDescriptionFields/RecipeDescriptionFields';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
-import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipeIngredientsFields } from 'components';
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();

@@ -3,6 +3,7 @@
 export * from './SharedLayout/SharedLayout';
 export * from './Header/Header';
 export * from './Footer/Footer';
+export * from './Container/Container';
 
 //  Components
 
@@ -23,3 +24,7 @@ export * from './Modals/UserLogoModal/UserLogoModal';
 // AddRecipePage
 
 export * from './RecipeIngredientsFields/RecipeIngredientsFields';
+
+// Subscribe Form
+
+export * from './Forms/SubscribeForm/SubscribeForm';
