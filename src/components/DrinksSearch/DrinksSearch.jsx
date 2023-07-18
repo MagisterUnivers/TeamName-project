@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 
 import { styled } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 
 import { useDispatch, useSelector } from 'react-redux';
 // import Select from 'react-select';
@@ -142,7 +142,7 @@ const DrinksSearch = ({ categoryName }) => {
           aria-label="search"
           onSubmit
         >
-          <SearchIcon />
+          {/* <SearchIcon /> */}
         </IconButton>
       </PaperStyled>
       {/* <form onSubmit={handleSubmit}>
