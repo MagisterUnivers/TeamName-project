@@ -11,7 +11,7 @@ import { Formik } from 'formik';
 import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
-import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const AddRecipeForm = () => {
     const lines = text.split('\n');
     setInstructions(lines);
     console.log(instructions);
-  }
+  };
 
   const handleOnSubmit = () => {
     const formData = new FormData();
@@ -77,35 +77,35 @@ const AddRecipeForm = () => {
 
   return (
     <>
-    <Formik
-      initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }}
-      onSubmit={handleOnSubmit}
-    >
-      <StyledForm autoComplete="off">
-        <RecipeDescriptionFields
-          dataField={{
-            imgURL,
-            itemTitleRecipe,
-            aboutRecipe,
-            category,
-            glass,
-          }}
-          handleOnImgSelect={handleOnImgSelect}
-          handleOnTitleRecipe={setItemTitleRecipe}
-          handleOnAboutRecipe={setAboutRecipe}
-          handleOnCategory={setCategory}
-          handleOnGlass={setGlass}
-          categoryList={drinksCategory}
-          glassList={drinksGlass}
-        />
-        <RecipeIngredientsFields/>
-        <RecipePreparationFields
-              dataField={instructions}
-              handleOnInstructions={handleOnInstructions}
-            />
-        <StyledAddButton type="submit">Add</StyledAddButton>
-      </StyledForm>
-    </Formik>
+      <Formik
+        initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }}
+        onSubmit={handleOnSubmit}
+      >
+        <StyledForm autoComplete="off">
+          <RecipeDescriptionFields
+            dataField={{
+              imgURL,
+              itemTitleRecipe,
+              aboutRecipe,
+              category,
+              glass,
+            }}
+            handleOnImgSelect={handleOnImgSelect}
+            handleOnTitleRecipe={setItemTitleRecipe}
+            handleOnAboutRecipe={setAboutRecipe}
+            handleOnCategory={setCategory}
+            handleOnGlass={setGlass}
+            categoryList={drinksCategory}
+            glassList={drinksGlass}
+          />
+          <RecipeIngredientsFields />
+          <RecipePreparationFields
+            dataField={instructions}
+            handleOnInstructions={handleOnInstructions}
+          />
+          <StyledAddButton type="submit">Add</StyledAddButton>
+        </StyledForm>
+      </Formik>
     </>
   );
 };

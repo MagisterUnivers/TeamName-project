@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 import Select from 'react-select';
+import { Paper } from '@mui/material';
 
 export const SearchWrapperStyled = styled.div`
   display: flex;
@@ -11,10 +12,21 @@ export const SearchWrapperStyled = styled.div`
     gap: 8px;
   }
 `;
+export const PaperStyled = styled(Paper)`
+  & .MuiPaper-root {
+    background-color: #2a2525;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  & .MuiButtonBase-root-MuiIconButton-root {
+    color: rgba(0, 0, 0, 0.87);
+  }
+`;
 
 export const InputStyled = styled.input`
+  padding: 10px 30px;
   width: 335px;
   height: 54px;
+  padding-left: 30px;
   background: transparent;
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.800000011920929;

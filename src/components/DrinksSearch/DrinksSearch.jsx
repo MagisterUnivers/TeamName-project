@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+
+import { styled } from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
+
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   getAllGlassesThunk,
   getCategoriesListThunk,
@@ -13,6 +21,7 @@ import {
   InputStyled,
   SerachWrapperStyled,
   SearchWrapperStyled,
+  PaperStyled,
 } from './DrinksSearch.styled';
 import {
   selectCategories,
@@ -26,35 +35,16 @@ import {
   setPage,
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
+import { useNavigate } from 'react-router';
+import { red } from '@mui/material/colors';
 
 const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
   const page = useSelector(selectPage);
-
   const search = useSelector(selectSearch);
-
-  useEffect(() => {
-    dispatch(getCategoriesListThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getIngredientsListThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getAllGlassesThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    // if (search.query || search.chosenCategory || search.chosenIngredient||)
-    dispatch(searchAllDrinksThunk({ search, page }));
-    dispatch(setChosenCategory(''));
-    dispatch(setChosenIngredient(''));
-    dispatch(setQuery(''));
-  }, [dispatch, search, page]);
-
+  const navigate = useNavigate();
   // function customTheme(theme) {
   //   return {
   //     ...theme,
@@ -97,23 +87,84 @@ const DrinksSearch = ({ categoryName }) => {
       padding: '0px',
     }),
   };
-
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (search.query.trim() === '') {
+      Notify.warning('Write something.', {
+        fontSize: '16px',
+        width: '350px',
+        padding: '10px',
+      });
+      return;
+    }
+    dispatch(searchAllDrinksThunk({ search, page }));
+    // navigate(
+    //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
+    // );
+  };
   return (
     <SearchWrapperStyled>
-      <InputStyled
-        type="text"
-        name="query"
-        value={search.query}
-        placeholder="Enter the text"
-        onChange={e => {
-          dispatch(setQuery(e.target.value));
-          dispatch(setPage(1));
+      <PaperStyled
+        component="form"
+        sx={{
+          p: '2px 4px',
+          display: 'flex',
+          alignItems: 'right',
+          maxWidth: 335,
+          maxHeight: 54,
+          background: 'transparent',
+          border: '1px solid rgba(243, 243, 243, 0.2)',
+          borderRadius: 200,
+          // paddingleft: 24,
+          // paddingTop: 18,
+          // paddingBottom: 18,
+          color: '#f3f3f3',
+          fontSize: 14,
+          fonWeight: 400,
+          lineHeight: 'calc(18 / 14)',
+          opacity: 0.800000011920929,
         }}
-      />
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Enter the text"
+          inputProps={{ 'aria-label': 'Enter the text' }}
+          label="Controlled"
+          value={search.query}
+          onSubmit={e => {
+            dispatch(setQuery(e.target.value));
+            dispatch(setPage(1));
+          }}
+        />
+        <IconButton
+          type="button"
+          sx={{ p: '10px', color: '#F3F3F3' }}
+          aria-label="search"
+          onSubmit
+        >
+          <SearchIcon />
+        </IconButton>
+      </PaperStyled>
+      {/* <form onSubmit={handleSubmit}>
+        <InputStyled
+          type="text"
+          name="query"
+          autocomplete="off"
+          value={search.query}
+          placeholder="Enter the text"
+          onChange={e => {
+            dispatch(setQuery(e.target.value));
+            dispatch(setPage(1));
+          }}
+        />
+        <button type="submit">Search</button>
+      </form> */}
+
       <SelectStyled
         // theme={customTheme}
         styles={styles}
         name="category"
+        value={search.category}
         options={categoriesList.map(category => {
           return { value: category._id, label: category.category };
         })}
@@ -122,6 +173,7 @@ const DrinksSearch = ({ categoryName }) => {
         isSearchable={true}
         autoFocus
         isClearable
+        backspaceRemovesValue
         classNamePrefix="react-select"
         onChange={e => {
           dispatch(setChosenCategory(e.label));
@@ -131,6 +183,7 @@ const DrinksSearch = ({ categoryName }) => {
       />
       <SelectStyled
         styles={styles}
+        value={search.ingredient}
         name="ingredient"
         options={ingredientsList.map(ingredient => {
           return { value: ingredient._id, label: ingredient.title };
@@ -140,10 +193,10 @@ const DrinksSearch = ({ categoryName }) => {
         autoFocus
         isClearable
         classNamePrefix="react-select"
-        onChange={e => {
-          dispatch(setChosenIngredient(e.label));
-          dispatch(setPage(1));
-        }}
+        // onChange={e => {
+        //   dispatch(setChosenIngredient(e.label));
+        //   dispatch(setPage(1));
+        // }}
         required
       />
     </SearchWrapperStyled>
