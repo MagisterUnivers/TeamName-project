@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIngredients } from 'redux/selectors';
 import {
   FieldsInputWrp,
@@ -13,37 +13,50 @@ import {
   UnitQuantity,
   DeleteButton,
   CloseIconButton,
+  StyledIngredientsList,
 } from './RecipeIngredientsFields.styled';
 import Counter from './Counter/Counter';
 import { listUnits } from './ListUnits.constants';
+import { getIngredientsListThunk } from 'redux/Cocktails/cocktailsOperations';
 
 export const RecipeIngredientsFields = ({
   cocktailIngredientList,
-  handleIncIngredient,
-  handleDecIngredient,
+  handleIncIngredients,
+  handleDecIngredients,
   handleOnDeleteIngredient,
   handleOnChangeIngredientName,
   handleOnChangeIngredientUnit,
   handleOnChangeUnitQuantity,
 }) => {
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+   dispatch(getIngredientsListThunk());
+  }, [dispatch]);
+
   const ingredientsList = useSelector(selectIngredients);
+  console.log(ingredientsList);
+
 
   return (
     <FormWrapper>
       <TitleWrp>
         <TitleStyled>Ingredients</TitleStyled>
         <Counter
-          handleInc={handleIncIngredient}
-          handleDec={handleDecIngredient}
-          list={cocktailIngredientList}
+          handleIncIngredients={handleIncIngredients}
+          handleDecIngredients={handleDecIngredients}
+          cocktailIngredientList={cocktailIngredientList}
         />
       </TitleWrp>
-      <ul>
+      <StyledIngredientsList>
         {cocktailIngredientList?.map((el, index) => (
           <IngredientsItem key={el._id}>
             <FieldsInputWrp>
               <SelectIngredientStyled
-                options={ingredientsList}
+                options={ingredientsList.map(ing => {
+                  return {value: ing._id, label:  ing.title}
+                })}
+      
                 isSearchable={true}
                 classNamePrefix="react-select"
                 onChange={evt => handleOnChangeIngredientName(evt, index)}
@@ -70,13 +83,12 @@ export const RecipeIngredientsFields = ({
                 />
               </UnitWrp>
             </FieldsInputWrp>
-            <DeleteButton onClick={handleOnDeleteIngredient(index)}>
+            <DeleteButton onClick={()=> handleOnDeleteIngredient(index)}>
               <CloseIconButton />
             </DeleteButton>
           </IngredientsItem>
         ))}
-        ;
-      </ul>
+      </StyledIngredientsList>
     </FormWrapper>
   );
 };

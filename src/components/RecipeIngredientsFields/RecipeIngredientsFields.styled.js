@@ -5,21 +5,19 @@ import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 44px;
-
-  width: 343px;
+  margin-bottom: 80px;
+  width: 335px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 100px;
   }
   @media screen and (min-width: 1440px) {
-    width: 609px;
+    width: 540px;
+    margin-right: auto;
   }
 `;
 
@@ -27,57 +25,82 @@ export const TitleWrp = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 24px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
-  }
+  margin-bottom: 40px;
 `;
+
 export const TitleStyled = styled.h3`
   font-weight: 600;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: -0.24px;
+  font-size: 28px;
+  line-height: 1.14;
   color: ${props => props.theme.textColor};
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+    line-height: 1.1;
+  }
 `;
+
+export const StyledIngredientsList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+  }
+`;
+
 export const FieldsInputWrp = styled.div`
   display: flex;
+  gap: 8px;
+  margin-right: 8px;
+
+
+  @media screen and (min-width: 768px){
+    gap: 14px;
+    margin-right: 188px;
+  }
+
+  @media screen and (min-width: 1440px){
+    margin-right: 40px;
+  }
 `;
 
 export const IngredientsItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  margin-bottom: 18px;
+  
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 24px;
+    justify-content: space-between;
   }
 `;
 
 export const SelectIngredientStyled = styled(Select)`
   & .react-select__control {
-    margin-right: 14px;
+    /* margin-right: 14px; */
 
-    width: 190px;
-    height: 53px;
-
-    background: var(--input-bg);
-
-    border: none;
+    width: 200px;
+    height: 50px;
+    background: transparent;
+    border-radius: 200px;
+    border: 1px solid rgba(243, 243, 243, 0.5);
+    opacity: 0.800000011920929;
     outline: none;
     box-shadow: none;
-    border-radius: 6px;
 
     @media (min-width: 768px) {
-      margin-right: 32px;
+      gap: 14px;
+      width: 332px;
+      height: 56px;
+      padding: 10px 24px;
 
-      width: 398px;
-      height: 59px;
+      //font-size: 17px;
+    }
 
-      //font-size: 18px;
+    @media screen and (min-width: 1440px){
+      width: 316px;
     }
 
     &--is-focused,
@@ -91,7 +114,7 @@ export const SelectIngredientStyled = styled(Select)`
     &:hover,
     &::selection {
       outline: none;
-      //border-color: transparent;
+       border-color: #f3f3f3;
       //box-shadow: 0 0 0 1px transparent;
     }
   }
@@ -103,7 +126,7 @@ export const SelectIngredientStyled = styled(Select)`
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: var(--black);
+    color: rgba(243, 243, 243, 0.5);
     opacity: 0.5;
 
     @media (min-width: 768px) {
@@ -174,7 +197,7 @@ export const SelectIngredientStyled = styled(Select)`
     color: rgba(0, 0, 0, 0.5);
 
     background-color: var(--white);
-    transition: color  var(--transition-function);
+    transition: color var(--transition-function);
 
     @media (min-width: 768px) {
       font-size: 14px;
@@ -225,7 +248,7 @@ export const SelectIngredientStyled = styled(Select)`
   }
 `;
 
-export const UnitWrp= styled.div`
+export const UnitWrp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -259,7 +282,7 @@ export const UnitQuantity = styled.input`
   background-color: var(--input-bg);
   border-radius: 6px 0 0 6px;
 
-  transition: color  var(--transition-function);
+  transition: color var(--transition-function);
 
   @media (min-width: 768px) {
     width: 52px;
@@ -389,7 +412,7 @@ export const IngredientUnit = styled(Select)`
     text-align: center;
 
     background-color: var(--white);
-    transition: color  var(--transition-function);
+    transition: color var(--transition-function);
 
     @media (min-width: 768px) {
       font-size: 14px;
@@ -419,7 +442,7 @@ export const IngredientUnit = styled(Select)`
     color: var(--primary-green);
     outline: none;
 
-    transition: color  var(--transition-function);
+    transition: color var(--transition-function);
 
     &:focus,
     &:active,
@@ -471,6 +494,3 @@ export const DeleteButton = styled.button`
     height: 20px;
   }
 `;
-
-
-

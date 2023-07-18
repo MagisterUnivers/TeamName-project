@@ -7,6 +7,8 @@ import { selectAuthAccessToken } from 'redux/selectors';
 import { useCallback, useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/authOperations';
 import { Container } from 'components/Container/Container';
+import AddRecipeForm from 'components/Forms/AddRecipeForm/AddRecipeForm';
+
 
 export const SharedLayout = () => {
   /**
@@ -55,9 +57,10 @@ export const SharedLayout = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>
         <Container>
+          <AddRecipeForm/>
           <Outlet />
         </Container>
       </main>

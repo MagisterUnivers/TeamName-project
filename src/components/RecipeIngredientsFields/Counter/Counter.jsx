@@ -3,30 +3,23 @@ import { ReactComponent as iconPlus } from '../../../assets/icons/plus.svg';
 import { CounterWrp, StyledButton, getStyledIcon } from './Counter.styled';
 
 const Counter = ({
-  handleInc,
-  handleDec,
-  list
+  handleIncIngredients,
+  handleDecIngredients,
+  cocktailIngredientList
 }) => {
   // const [counter, setCounter] = useState(3);
 
   const StyledIconMinus = getStyledIcon(iconMinus);
   const StyledIconPlus = getStyledIcon(iconPlus);
-
-  // const handleAddCounter = () => {
-  //   setCounter(p => p + 1);
-  // };
-
-  // const handleMinusCounter = () => {
-  //   setCounter(p => p - 1);
-  // };
+  console.log(cocktailIngredientList);
 
   return (
     <CounterWrp>
-      <StyledButton onClick={handleDec}>
+      <StyledButton onClick={()=> handleDecIngredients()}>
         <StyledIconMinus />
       </StyledButton>
-      <p>{list.length}</p>
-      <StyledButton onClick={handleInc}>
+      <p>{cocktailIngredientList.length }</p>
+      <StyledButton onClick={()=> handleIncIngredients()}>
         <StyledIconPlus />
       </StyledButton>
     </CounterWrp>

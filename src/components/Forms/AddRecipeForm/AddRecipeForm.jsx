@@ -11,7 +11,7 @@ import { Formik } from 'formik';
 import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import { useNavigate } from 'react-router';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
-import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipeIngredientsFields } from 'components';
 import { nanoid } from '@reduxjs/toolkit';
 
 
@@ -27,15 +27,7 @@ const AddRecipeForm = () => {
   const [category, setCategory] = useState({ label: 'Cocktail' });
   const [glass, setGlass] = useState({ label: 'Highball glass' });
   const [instructions, setInstructions] = useState([]);
-  const [cocktailIngredientsList, setCocktailIngredientsList] = useState([
-    {
-      _id: nanoid(),
-      id: '',
-      name: '',
-      unitQuantity: '',
-      unit: '',
-    }
-  ])
+  const [cocktailIngredientsList, setCocktailIngredientsList] = useState([])
 
   useEffect(() => {
     dispatch(getCategoriesListThunk());
@@ -44,6 +36,15 @@ const AddRecipeForm = () => {
   useEffect(() => {
     dispatch(getAllGlassesThunk());
   }, [dispatch]);
+
+  useEffect(()=> {
+    setCocktailIngredientsList([{   
+      _id: nanoid(),
+    name: 'Lem',
+    unitQuantity: '1',
+    unit: 'cl',
+    }])
+  }, []);
 
   const resetForm = () => {
     setImageURL('');
@@ -55,7 +56,6 @@ const AddRecipeForm = () => {
     setCocktailIngredientsList([
       {
         _id: nanoid(),
-      id: '',
       name: '',
       unitQuantity: '',
       unit: '',
@@ -72,6 +72,7 @@ const AddRecipeForm = () => {
     });
     reader.readAsDataURL(localFile);
   };
+  
   const handleOnInstructions = e => {
     const text = e.target.value;
     const lines = text.split('\n');
@@ -80,19 +81,23 @@ const AddRecipeForm = () => {
   }
 
   const handleIncIngredients = () => {
-    const ingredient = {
-      _id: nanoid(),
-      id: '',
-      name: '',
-      unitQuantity: '',
-      unit: '',
-    };
-    setCocktailIngredientsList(p => [...p, ingredient])
+    console.log(cocktailIngredientsList);
+    setCocktailIngredientsList(p => {
+      return [...p, {
+        id: nanoid(),
+        name: '',
+        unitQuantity: '',
+        unit: '',
+      }]
+    });
+    return;
   };
+
+  console.log(cocktailIngredientsList);
 
   const handleDecIngredient = () => {
     const newIngredientsList = [...cocktailIngredientsList];
-    newIngredientsList.shift();
+    newIngredientsList.pop();
     setCocktailIngredientsList(newIngredientsList);
   };
 
@@ -170,8 +175,8 @@ const AddRecipeForm = () => {
         />
         <RecipeIngredientsFields 
           cocktailIngredientList={cocktailIngredientsList}
-          handleIncIngredient={handleIncIngredients}
-          handleDecIngredient={handleDecIngredient}
+          handleIncIngredients={handleIncIngredients}
+          handleDecIngredients={handleDecIngredient}
           handleOnDeleteIngredient={handleDeleteIngredient}
           handleOnChangeIngredientName={handleOnChangeIngredientName}
           handleOnChangeIngredientUnit={handleOnChangeIngredientUnit}

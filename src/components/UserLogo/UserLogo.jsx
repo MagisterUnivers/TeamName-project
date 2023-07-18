@@ -18,7 +18,7 @@ export const UserLogo = () => {
   return (
     <UserLogoWrp onClick={()=> setShowUserLogoModal(!showUserLogoModal)}>
        <UserAvatarWrp>
-       <UserAvatar src={user?.avatar || 'useravatar_plug.png'} alt="avatar" />
+       <UserAvatar src={user?.avatar || require('../../assets/img/useravatar_plug.png')} alt="avatar" />
        </UserAvatarWrp>
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
       {showUserLogoModal && <UserLogoModal/>}
