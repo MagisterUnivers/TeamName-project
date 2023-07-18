@@ -107,6 +107,22 @@ export const refreshThunk = createAsyncThunk(
   }
 );
 
+export const getCurrentUserThunk = createAsyncThunk(
+  '@@auth/current',
+  async (_, thunkAPI) => {
+    const refreshToken = selectAuthAccessToken(thunkAPI.getState());
+    setToken(refreshToken);
+    try {
+      const res = await instance.get('users/current');
+      return res.data;
+    } catch (error) {
+      const errorMessage = error.response.data.message;
+      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
+      // return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const verifyThunk = createAsyncThunk(
   '@@auth/verify',
   async verificationToken => {
@@ -135,3 +151,9 @@ export const verifyThunk = createAsyncThunk(
     }
   }
 );
+export const setSubscription =
+  async credentials => {
+    const res = await instance.patch('users/subscription', credentials);
+    return res.data;
+  }
+

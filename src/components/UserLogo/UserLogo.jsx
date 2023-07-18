@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
-import { NameStyled, UserAvatar, UserAvatarWrp, UserLogoWrp } from './UserLogoStyled';
+import {
+  NameStyled,
+  UserAvatar,
+  UserAvatarWrp,
+  UserLogoWrp,
+} from './UserLogoStyled';
 // import { UserLogoModal } from 'components';
 // {тимчасово підключила свою модалку, з логікою виконання. Олена};
-import EditProfileModal from 'components/Modals/UserInfoModal/EditProfileModal';
+// import EditProfileModal from 'components/Modals/UserInfoModal/EditProfileModal';
+// import {
+//   NameStyled,
+//   UserAvatar,
+//   UserAvatarWrp,
+//   UserLogoWrp,
+// } from './UserLogoStyled';
+import { UserLogoModal } from 'components';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/selectors';
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);
+  const user = useSelector(selectUser);
 
   return (
     <UserLogoWrp onClick={() => setShowUserLogoModal(!showUserLogoModal)}>
       <UserAvatarWrp>
         <UserAvatar
-          src={require('../../assets/img/useravatar_plug.png')}
+          src={user?.avatar || require('../../assets/img/useravatar_plug.png')}
           alt="avatar"
         />
       </UserAvatarWrp>
-      <NameStyled>Name</NameStyled>
-      {/* {showUserLogoModal && <UserLogoModal/>} тимчасово відключила цю модалку */}
-      {showUserLogoModal && <EditProfileModal/>}
+      <NameStyled>{user?.name || 'no Name'}</NameStyled>
+      {showUserLogoModal && <UserLogoModal />}
     </UserLogoWrp>
   );
 };
