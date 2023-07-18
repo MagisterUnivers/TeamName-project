@@ -11,7 +11,7 @@ export const StyledContainer = styled.div`
 
   background-image: url(${heroimg});
   background-repeat: no-repeat;
-  background-position: top 0px left 10%;
+  background-position: top 0px right -200px;
 
   @media screen and (min-width: 768px) {
     width: 768px;
@@ -20,7 +20,7 @@ export const StyledContainer = styled.div`
     padding-right: 32px;
     padding-bottom: 140px;
 
-    background-position: top 0px left 500%;
+    background-position: top 0px right -200px;
   }
 
   @media screen and (min-width: 1240px) {
@@ -29,6 +29,6 @@ export const StyledContainer = styled.div`
     padding-left: 100px;
     padding-right: 100px;
 
-    background-position: top 0px left 100%;
+    background-position: top 0px left 750px;
   }
 `;
