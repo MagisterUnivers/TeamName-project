@@ -37,14 +37,14 @@ const AddRecipeForm = () => {
     dispatch(getAllGlassesThunk());
   }, [dispatch]);
 
-  useEffect(()=> {
-    setCocktailIngredientsList([{   
-      _id: nanoid(),
-    name: 'Lem',
-    unitQuantity: '1',
-    unit: 'cl',
-    }])
-  }, []);
+  // useEffect(()=> {
+  //   setCocktailIngredientsList([{   
+  //   id: nanoid(),
+  //   title: 'Lem',
+  //   unitQuantity: '1',
+  //   unit: 'cl',
+  //   }])
+  // }, []);
 
   const resetForm = () => {
     setImageURL('');
@@ -53,14 +53,7 @@ const AddRecipeForm = () => {
     setCategory(null);
     setGlass(null);
     setInstructions('');
-    setCocktailIngredientsList([
-      {
-        _id: nanoid(),
-      name: '',
-      unitQuantity: '',
-      unit: '',
-      }
-    ])
+    setCocktailIngredientsList([])
   };
 
   const handleOnImgSelect = async e => {
@@ -85,7 +78,7 @@ const AddRecipeForm = () => {
     setCocktailIngredientsList(p => {
       return [...p, {
         id: nanoid(),
-        name: '',
+        title: '',
         unitQuantity: '',
         unit: '',
       }]
@@ -102,7 +95,7 @@ const AddRecipeForm = () => {
   };
 
   
-  const handleDeleteIngredient = index => {
+  const handleDeleteIngredient = (index) => {
     const newIngredientsList = [...cocktailIngredientsList];
     newIngredientsList.splice(index, 1);
     setCocktailIngredientsList(newIngredientsList);
@@ -110,8 +103,14 @@ const AddRecipeForm = () => {
 
   const handleOnChangeIngredientName = (e, i) => {
     const tmpList = [...cocktailIngredientsList];
-    tmpList[i].id = e.value;
-    tmpList[i].name = e.label;
+    // tmpList[i].id = e.value;
+    // tmpList[i].title = e.label;
+    console.log(tmpList);
+    tmpList[i] = {
+      ...tmpList[i],
+      id: e.value,
+      title: e.label
+    }
     setCocktailIngredientsList(tmpList);
   };
 
@@ -128,10 +127,18 @@ const AddRecipeForm = () => {
       e.currentTarget.value = 0;
     }
     const tmpList = [...cocktailIngredientsList];
-    tmpList[i].unitCount = tmpData;
+    tmpList[i].unitQuantity = tmpData;
     setCocktailIngredientsList(tmpList);
   };
-
+  
+  const newIngredientsList = cocktailIngredientsList.map(obj => {
+    return {
+    _id: obj.id,
+    title: obj.title,
+    measure: `${obj.unitQuantity} ${obj.unit}`
+  }
+  })
+  console.log(newIngredientsList);
 
   const handleOnSubmit = () => {
     const formData = new FormData();
@@ -143,7 +150,7 @@ const AddRecipeForm = () => {
     formData.append('category', category.label);
     formData.append('glass', glass.label);
     formData.append('instructions', instructions);
-    formData.append('ingredientsList', cocktailIngredientsList);
+    formData.append('ingredients', JSON.stringify(newIngredientsList));
 
     dispatch(addRecipeThunk(formData));
     // resetForm();

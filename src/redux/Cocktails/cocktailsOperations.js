@@ -10,11 +10,12 @@ export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
-    if (!token) {
-      return rejectWithValue();
-    }
-    setToken(token);
+    // if (!token) {
+    //   return rejectWithValue();
+    // }
+   
     try {
+      setToken(token);
       const res = await instance.get('recipes/category-list');
       return res.data;
     } catch (error) {
@@ -88,11 +89,12 @@ export const getIngredientsListThunk = createAsyncThunk(
   '@@cocktails/ingredientsList',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
-    if (!token) {
-      return rejectWithValue();
-    }
-    setToken(token);
+    // if (!token) {
+    //   return rejectWithValue();
+    // }
+
     try {
+      setToken(token);
       const res = await instance.get('ingredients/list');
       return res.data;
     } catch (error) {

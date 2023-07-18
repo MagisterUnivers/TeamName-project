@@ -89,6 +89,7 @@ export const SelectIngredientStyled = styled(Select)`
     opacity: 0.800000011920929;
     outline: none;
     box-shadow: none;
+   
 
     @media (min-width: 768px) {
       gap: 14px;
@@ -123,11 +124,13 @@ export const SelectIngredientStyled = styled(Select)`
   & .react-select__single-value {
     // стилизует текст ================
     text-align: left;
+    width: 200px;
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(243, 243, 243, 0.5);
-    opacity: 0.5;
+    color: rgba(243, 243, 243, 1);
+   
+    
 
     @media (min-width: 768px) {
       font-size: 18px;
@@ -137,6 +140,8 @@ export const SelectIngredientStyled = styled(Select)`
   & .react-select__value-container {
     // стилизует контейнер ================
     padding-left: 12px;
+    width: 192px;
+   
     @media (min-width: 768px) {
       padding-left: 14px;
     }
@@ -147,6 +152,7 @@ export const SelectIngredientStyled = styled(Select)`
     box-shadow: none;
     outline: none;
     border-color: transparent;
+    
 
     &:focus,
     &:active,
@@ -162,28 +168,37 @@ export const SelectIngredientStyled = styled(Select)`
   & .react-select__menu-list {
     margin-top: 0;
     padding: 0;
-
+    width: 185px;
     height: 160px;
-
     border-radius: 6px;
+    color: white;
 
     @media (min-width: 768px) {
       font-size: 14px;
+      width: 332px
+    }
+
+    @media screen and (min-width: 1440px){
+      width: 316px;
     }
   }
 
   & .react-select__menu {
     margin: 0;
     padding: 8px 0 8px 6px;
-
     width: 192px;
-
     border-radius: 6px;
-    background-color: var(--white);
+    background-color: #161f37;
+    color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
+   
 
     @media (min-width: 768px) {
-      width: 398px;
+      width: 332px;
+    }
+
+    @media screen and (min-width: 1440px){
+      width: 316px;
     }
   }
 
@@ -194,9 +209,9 @@ export const SelectIngredientStyled = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(243, 243, 243, 0.4);
 
-    background-color: var(--white);
+    background-color: transparent;
     transition: color var(--transition-function);
 
     @media (min-width: 768px) {
@@ -207,7 +222,7 @@ export const SelectIngredientStyled = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color: var(--primary-green);
+      color: rgba(243, 243, 243, 1);
     }
   }
   // =========================================
@@ -252,41 +267,41 @@ export const UnitWrp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
   //gap: 5px;
 
   //margin-right: 10px;
-  padding: 0 5px;
+  padding: 16px 12px;
 
-  width: 100px;
-  height: 53px;
+  width: 101px;
+  height: 50px;
 
-  background: var(--input-bg);
-  border-radius: 6px;
+  background: transparent;
+  border-radius: 200px;
+    border: 1px solid rgba(243, 243, 243, 0.5);
+    opacity: 0.800000011920929;
 
   @media (min-width: 768px) {
-    width: 110px;
-    height: 59px;
+    width: 150px;
+    height: 56px;
+    padding: 15px 20px;
   }
 `;
 
 export const UnitQuantity = styled.input`
-  width: 50px;
-  height: 53px;
-  //padding-left: 5px;
-
+  width: 27px;
+  height: 27px;
   font-size: 14px;
-  text-align: right;
-  color: rgba(0, 0, 0, 0.5);
-
+  color: rgba(243, 243, 243, 1);
   border: none;
   background-color: var(--input-bg);
   border-radius: 6px 0 0 6px;
-
-  transition: color var(--transition-function);
+  text-align: center;
+  transition: color cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @media (min-width: 768px) {
-    width: 52px;
-    height: 59px;
+    width: 35px;
+    height: 35px;
     font-size: 18px;
   }
 
@@ -305,9 +320,7 @@ export const IngredientUnit = styled(Select)`
   & .react-select__control {
     width: 59px;
     height: 53px;
-
-    background-color: var(--input-bg);
-
+    background-color: transparent;
     border: none;
     outline: none;
     box-shadow: none;
@@ -340,7 +353,7 @@ export const IngredientUnit = styled(Select)`
     line-height: 1.5;
     letter-spacing: -0.02em;
     text-align: left;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(243, 243, 243, 1);
 
     @media (min-width: 768px) {
       width: 50px;
@@ -372,10 +385,9 @@ export const IngredientUnit = styled(Select)`
   & .react-select__menu-list {
     margin-top: 0;
     padding: 0;
-
     height: 104px;
-
     border-radius: 6px;
+    color: white;
 
     @media (min-width: 768px) {
       height: 114px;
@@ -384,15 +396,13 @@ export const IngredientUnit = styled(Select)`
   }
 
   & .react-select__menu {
-    margin-top: 0;
+    margin-top: -2px;
     margin-left: -26px;
     padding: 0;
-    border-radius: 6px;
-
     width: 84px;
-
     border-radius: 6px;
-    background-color: var(--white);
+    background-color: #161f37;
+    color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
 
     @media (min-width: 768px) {
@@ -408,7 +418,7 @@ export const IngredientUnit = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(243, 243, 243, 0.4);
     text-align: center;
 
     background-color: var(--white);
@@ -422,7 +432,7 @@ export const IngredientUnit = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color: var(--primary-green);
+      color:  rgba(243, 243, 243, 1);
     }
   }
   // =========================================
