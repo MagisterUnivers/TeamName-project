@@ -110,6 +110,7 @@ export const StyledImgLabel = styled.label`
   border-radius: 8px;
   background-color: rgba(22, 31, 55, 0.5);
   cursor: pointer;
+  transition: box-shadow 400ms ease;
 
   @media screen and (min-width: 768px) {
     width: 320px;
@@ -118,6 +119,12 @@ export const StyledImgLabel = styled.label`
   @media screen and (min-width: 1440px) {
     width: 400;
     height: 400;
+  }
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(76, 115, 146, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(76, 115, 146, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(76, 115, 146, 0.2);
   }
 `;
 
