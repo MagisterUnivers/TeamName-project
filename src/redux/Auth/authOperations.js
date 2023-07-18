@@ -134,3 +134,9 @@ export const verifyThunk = createAsyncThunk(
     }
   }
 );
+export const setSubscription =
+  async credentials => {
+    const res = await instance.patch('users/subscription', credentials);
+    return res.data;
+  }
+

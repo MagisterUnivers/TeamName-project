@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { loginThunk } from 'redux/Auth/authOperations';
+import { loginThunk, setSubscription } from 'redux/Auth/authOperations';
 import { StyledButton, StyledFormInsight, StyledInputSubscribe, StyledText } from './SubscribeForm.styled';
 import { Formik } from 'formik';
 import {  Report } from 'notiflix';
@@ -11,7 +11,28 @@ export const SubscribeForm = () => {
     const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
-
+const notiflixOptions = {
+  className: 'subscribe__validation',
+  svgSize: '66px',
+  plainText: false,
+  backgroundColor: theme.secondBgrColor,
+  messageMaxLength: 2000,
+  fontFamily: 'Manrope',
+  failure: {
+    svgColor: theme.textColor,
+    titleColor: theme.textColor,
+    messageColor: theme.textColor,
+    buttonColor: theme.bgrColor,
+    buttonBackground: theme.textColor,
+  },
+  success: {
+    svgColor: theme.textColor,
+    titleColor: theme.textColor,
+    messageColor: theme.textColor,
+    buttonColor: theme.bgrColor,
+    buttonBackground: theme.textColor,
+  },
+};
   return (
     <Formik
       initialValues={{
@@ -22,8 +43,26 @@ export const SubscribeForm = () => {
           .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
           .required('Required'),
       })}
-      onSubmit={values => {
-        alert('form submitted');
+      onSubmit={async values => {
+        try {
+          const data = await setSubscription(values);
+          Report.success(
+            'Success',
+            `You have successfully subscribed. <br/> We will send you newsletters at ${data.subscriptionEmail} `,
+
+            'Ok',
+            notiflixOptions
+          );
+
+    
+        } catch (error) {
+          Report.failure(
+            'Error',
+            `${error.response.status === 400? `${error.response.data.message}. <br/> If you wanna to change an email for receiving newsletter, contact with our Support service` : error.message}`,
+            'Ok',
+            notiflixOptions
+          );
+        }
       }}
       
     >
@@ -58,21 +97,8 @@ export const SubscribeForm = () => {
   <li>Two dogs (@@) in a row</li>
 </ul>`,
                   'Ok',
-                  {
-                    className: 'subscribe__validation',
-                    svgSize: '66px',
-                    plainText: false,
-                    backgroundColor: theme.secondBgrColor,
-                    messageMaxLength: 2000,
-                    fontFamily: 'Manrope',
-                    failure: {
-                      svgColor: theme.textColor,
-                      titleColor: theme.textColor,
-                      messageColor: theme.textColor,
-                      buttonColor: theme.bgrColor,
-                      buttonBackground: theme.textColor,
-                    },
-                  }
+                  notiflixOptions
+                  
                 );
               }
             }}
