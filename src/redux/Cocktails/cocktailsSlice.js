@@ -9,6 +9,7 @@ import {
   searchAllDrinksThunk,
   addRecipeThunk,
   getAllOwnDrinksThunk,
+  getAllFavoriteDrinksThunk,
   addToFavoriteThunk,
   removeFromFavoriteThunk,
 } from './cocktailsOperations.js';
@@ -189,7 +190,22 @@ const cocktailsSlice = createSlice({
       Loading.remove();
     },
 
-    // Favorites
+    [getAllFavoriteDrinksThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+    [getAllFavoriteDrinksThunk.fulfilled]: (state, { payload }) => {
+      state.cocktails = payload.cocktails;
+      state.totalHits = payload.totalHits;
+      state.page = payload.page;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getAllFavoriteDrinksThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
 
     [addToFavoriteThunk.pending]: (state, { payload }) => {
       state.loading = true;
