@@ -14,7 +14,7 @@ import DeleteButton from 'components/Buttons/DeleteButton/DeleteButton';
 import SeeButton from 'components/Buttons/SeeButton/SeeButton';
 import drink from './defaultimg.jpg';
 
-const DrinkCard = ({ cocktail, my }) => {
+const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
@@ -25,15 +25,15 @@ const DrinkCard = ({ cocktail, my }) => {
             e.currentTarget.src = drink;
           }}
         />
-        <Ingredientswrapper>
+        <Ingredientswrapper position={page}>
           <Drinkingreds>{cocktail.drink}</Drinkingreds>
           <Ingredients>Ingredients</Ingredients>
         </Ingredientswrapper>
       </Link>
-      {my && <AboutStyled>{cocktail.about}</AboutStyled>}
+      {page === 'my' && <AboutStyled>{cocktail.about}</AboutStyled>}
       <ButtonsWrapper>
-        {my && <SeeButton id={cocktail._id} />}
-        {my && <DeleteButton id={cocktail._id} />}
+        {page === 'my' && <SeeButton id={cocktail._id} />}
+        {page === 'my' && <DeleteButton id={cocktail._id} />}
       </ButtonsWrapper>
     </Card>
   );

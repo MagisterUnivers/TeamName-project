@@ -14,10 +14,15 @@ export const BaseDiv = styled.div`
 
 export const PicturedWrapper = styled.img`
   position: relative;
+
   margin-left: auto;
   background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
+  .no-click {
+  pointer-events: none;
+  user-select: none;
+}
 `;
 export const SummaryWrapper = styled.div`
   position: absolute;
@@ -92,16 +97,20 @@ export const RegistrationNavLink = styled(NavLink)`
   display: block;
   padding: 14px 40px;
   border-radius: 42px;
-  background: var(--main-text-color);
-  color: var(--btn-hover-color);
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  /* background: var(--main-text-color); */
+  color: var(--main-text-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.13;
-  &:hover {
-    text-decoration: underline;
+  transition: background-color 0.5s ease;
+    &:hover {
+      background-color: var(--main-text-color);
+  color: var(--btn-hover-color);
+    /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
   }
-  @media screen and (min-width: 768px) {
+   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.28;
     padding: 18px 44px;
@@ -117,8 +126,12 @@ export const SignInNavLink = styled(NavLink)`
   font-style: normal;
   font-weight: 600;
   line-height: 1.28;
+  transition: background-color 0.5s ease;
   &:hover {
-    text-decoration: underline;
+    background-color: var(--main-text-color);
+  color: var(--btn-hover-color);
+    /* text-decoration: underline;
+    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
   }
   @media screen and (min-width: 768px) {
     font-size: 16px;
