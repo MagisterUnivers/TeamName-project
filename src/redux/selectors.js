@@ -10,6 +10,8 @@ export const selectAuthAccessToken = state => state.auth.accessToken;
 export const selectAuthRefreshToken = state => state.auth.data.refreshToken;
 export const selectUserInfo = state => state.userInfo;
 export const selectUserInfoEmail = state => state.userInfo.email;
+export const selectUserInfoName = state => state.userInfo.user.name;
+export const selectUserInfoAvatar = state => state.userInfo.avatarURL;
 export const selectTheme = state => state.userInfo.theme;
 export const selectIsTaskExist = state => state.calendar.tasks;
 export const selectTasks = state => state.calendar.monthDatesMap;
