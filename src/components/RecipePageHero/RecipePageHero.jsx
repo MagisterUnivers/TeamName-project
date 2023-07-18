@@ -7,7 +7,6 @@ import {
   StyledImage,
 } from './RecipePageHero.styled';
 import { favoriteFilter } from 'components/utils/filter';
-import { useEffect } from 'react';
 import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 
 const RecipePageHero = ({ func }) => {
@@ -25,11 +24,6 @@ const RecipePageHero = ({ func }) => {
   //   console.log(filter);
   // }
 
-  useEffect(() => {
-    filter = favoriteFilter(cocktails, user);
-    console.log(filter, 'Filter');
-  }, [cocktails, user]);
-
   // if (!cocktails) {
   //   console.log('Empty');
   //   return null;
@@ -40,12 +34,12 @@ const RecipePageHero = ({ func }) => {
       <>
         {console.log(user.id, cocktails._id, 'ID')}
         <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
-        <MainPageTitle>{cocktails.drink}</MainPageTitle>
+        <MainPageTitle title={cocktails.drink} />
         <StyledAboutContent>
           {cocktails.about ? cocktails.about : 'sample about'}
         </StyledAboutContent>
         {console.log(filter, 'Filter before expression')}
-        {!filter ? (
+        {favoriteFilter(cocktails, user) ? (
           <StyledButton type="button" onClick={func}>
             Remove recipe from favorite
           </StyledButton>

@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select';
+// import Select from 'react-select';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   getAllGlassesThunk,

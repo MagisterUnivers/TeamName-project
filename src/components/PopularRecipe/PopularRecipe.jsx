@@ -5,6 +5,7 @@ import {
   StyledList,
   StyledListElement,
   StyledSubtitle,
+  StyledTextWrapper,
   StyledTitle,
   StyledWrapper,
 } from './PopularRecipe.styled';
@@ -18,6 +19,7 @@ const PopularRecipe = () => {
         <StyledTitle>Popular Recipe</StyledTitle>
         <StyledList>
           {data?.map(i => {
+            console.log(i.desc);
             return (
               <StyledListElement key={i.title}>
                 <StyledImage
@@ -26,8 +28,10 @@ const PopularRecipe = () => {
                   width={90}
                   height={90}
                 />
-                <StyledSubtitle subtitleMain={true}>{i.title}</StyledSubtitle>
-                <StyledSubtitle subtitleMain={false}>{i.desc}</StyledSubtitle>
+                <StyledTextWrapper>
+                  <StyledSubtitle text={false}>{i.title}</StyledSubtitle>
+                  <StyledSubtitle text={true}>{i.desc}</StyledSubtitle>
+                </StyledTextWrapper>
               </StyledListElement>
             );
           })}
