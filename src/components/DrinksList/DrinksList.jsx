@@ -12,7 +12,7 @@ const DrinksList = () => {
       <DrinkListStyled>
         {cocktails.length !== 0 ? (
           cocktails.map(cocktail => (
-            <DrinkCard key={cocktail._id} cocktail={cocktail} />
+            <DrinkCard key={cocktail._id} cocktail={cocktail} page={'drinks'} />
           ))
         ) : (
           <NotFound
