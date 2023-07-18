@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux';
 import { selectCocktails, selectUser } from 'redux/selectors';
 import {
   StyledGlassServi,
-  StyledTitle,
   StyledAboutContent,
   StyledButton,
   StyledImage,
 } from './RecipePageHero.styled';
 import { favoriteFilter } from 'components/utils/filter';
 import { useEffect } from 'react';
+import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 
 const RecipePageHero = ({ func }) => {
   const cocktails = useSelector(selectCocktails);
@@ -35,7 +35,7 @@ const RecipePageHero = ({ func }) => {
       <>
         {console.log(user.id, cocktails._id, 'ID')}
         <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
-        <StyledTitle>{cocktails.drink}</StyledTitle>
+        <MainPageTitle>{cocktails.drink}</MainPageTitle>
         <StyledAboutContent>
           {cocktails.about ? cocktails.about : 'sample about'}
         </StyledAboutContent>
