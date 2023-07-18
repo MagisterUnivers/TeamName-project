@@ -9,7 +9,7 @@ import {
   searchAllDrinksThunk,
   addRecipeThunk,
   getAllOwnDrinksThunk,
-  getAllFavoriteDrinksThunk
+  getAllFavoriteDrinksThunk,
   addToFavoriteThunk,
   removeFromFavoriteThunk,
 } from './cocktailsOperations.js';

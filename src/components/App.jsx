@@ -92,9 +92,9 @@ export const App = () => {
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
               <Route
-                path="my"
+                path="favorite"
                 // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
-                element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
+                element={<PrivateRoute>{<FavoritePage />}</PrivateRoute>}
               />
             </Route>
 
