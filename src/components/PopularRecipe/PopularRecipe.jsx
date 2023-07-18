@@ -20,7 +20,12 @@ const PopularRecipe = () => {
           {data?.map(i => {
             return (
               <StyledListElement key={i.title}>
-                <StyledImage src={i.src} />
+                <StyledImage
+                  src={require('../../assets/img/Popular90x90.png')}
+                  alt="popular thumb"
+                  width={90}
+                  height={90}
+                />
                 <StyledSubtitle subtitleMain={true}>{i.title}</StyledSubtitle>
                 <StyledSubtitle subtitleMain={false}>{i.desc}</StyledSubtitle>
               </StyledListElement>
