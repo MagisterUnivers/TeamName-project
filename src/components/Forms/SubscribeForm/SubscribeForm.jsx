@@ -58,7 +58,7 @@ const notiflixOptions = {
         } catch (error) {
           Report.failure(
             'Error',
-            `${error.response.status === 400? `${error.response.data.message}. <br/> If you wanna to change an email for receiving newsletter, contact with our Support service` : error.message}`,
+            `${error.response.status === 409? `${error.response.data.message} <br/> Please, contact with our Support service` : error.message}`,
             'Ok',
             notiflixOptions
           );
