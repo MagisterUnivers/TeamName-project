@@ -7,7 +7,6 @@ import {
   StyledImage,
 } from './RecipePageHero.styled';
 import { favoriteFilter } from 'components/utils/filter';
-import { useEffect } from 'react';
 import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 
 const RecipePageHero = ({ func }) => {
@@ -35,7 +34,7 @@ const RecipePageHero = ({ func }) => {
       <>
         {console.log(user.id, cocktails._id, 'ID')}
         <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
-        <MainPageTitle>{cocktails.drink}</MainPageTitle>
+        <MainPageTitle title={cocktails.drink} />
         <StyledAboutContent>
           {cocktails.about ? cocktails.about : 'sample about'}
         </StyledAboutContent>
