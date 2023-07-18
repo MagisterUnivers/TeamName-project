@@ -65,7 +65,7 @@ const WelcomePage = () => {
         </WelcomeText>
         <ButtonsBlock>
           <RegistrationNavLink to="/register">Registration</RegistrationNavLink>
-          <SignInNavLink to="/signin">Sign in</SignInNavLink>
+          <SignInNavLink to="/signin">Sign In</SignInNavLink>
         </ButtonsBlock>
       </SummaryWrapper>
     </BaseDiv>

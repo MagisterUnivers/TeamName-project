@@ -61,5 +61,4 @@ background-color: transparent;
 border: none;
 outline: none;
 cursor: pointer;
-
 `
