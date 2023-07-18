@@ -1,12 +1,21 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCocktails, selectPage, selectSearch } from 'redux/selectors';
 import DrinkCard from 'components/DrinkCard/DrinkCard';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectCocktails } from 'redux/selectors';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import NotFound from 'components/NotFound/NotFound';
+import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 
 const DrinksList = () => {
+  const dispatch = useDispatch();
   const cocktails = useSelector(selectCocktails);
+  const page = useSelector(selectPage);
+  const search = useSelector(selectSearch);
+
+  useEffect(() => {
+    // if (search.query || search.chosenCategory || search.chosenIngredient||)
+    dispatch(searchAllDrinksThunk({ search, page }));
+  }, [dispatch, search, page]);
   return (
     <Section>
       <DrinkListStyled>
