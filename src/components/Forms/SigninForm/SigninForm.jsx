@@ -61,7 +61,7 @@ const SigninForm = () => {
     >
       {({ errors, touched }) => (
         <StyledFormInsight>
-          <StyledTitle>Sign in</StyledTitle>
+          <StyledTitle>Sign In</StyledTitle>
           <StyledInnerDiv>
             <StyledInputWrap>
               <StyledInput
