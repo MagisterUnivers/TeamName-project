@@ -7,7 +7,7 @@ const AuthNavigate = () => {
   return (
     <>
       {location.pathname === '/register' ? (
-        <StyledNavLink to="/signin">Sign in</StyledNavLink>
+        <StyledNavLink to="/signin">Sign In</StyledNavLink>
       ) : (
         <StyledNavLink to="/register">Registration</StyledNavLink>
       )}

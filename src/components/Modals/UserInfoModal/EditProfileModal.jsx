@@ -10,7 +10,7 @@ import UserInfoModal from './UserInfoModal';
 import pencilIcon from './edit-2.svg';
 
 const EditProfileModal = () => {
-  const [setIsChangeProfileOpen] = useState(false);
+  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
 
@@ -20,12 +20,15 @@ const EditProfileModal = () => {
   };
 
   const handleConfirmLogout = () => {
+    setIsChangeProfileOpen(false);
     setIsConfirmLogoutOpen(true);
   };
 
   const handleModalClick = (e) => {
     if (e.target === e.currentTarget) {
       setIsChangeProfileOpen(false);
+      setIsConfirmLogoutOpen(false);
+      setIsUserInfoOpen(false);
     }
     e.stopPropagation();
   };
@@ -37,11 +40,10 @@ const EditProfileModal = () => {
   };
 
   return (
-    <ModalWrapper>
+    <ModalWrapper >
       <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
         <ChangeProfileButton
           onClick={() => {
-            // setIsChangeProfileOpen(true);
             handleOpenUserInfo();
           }}
         >
@@ -52,7 +54,7 @@ const EditProfileModal = () => {
       </ModalContent>
 
       {isConfirmLogoutOpen && (
-        <ConfirmLogoutModal onClose={() => setIsConfirmLogoutOpen(false)} />
+        <ConfirmLogoutModal onClose={handleConfirmLogout} />
       )}
       {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
     </ModalWrapper>

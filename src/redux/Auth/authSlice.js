@@ -78,7 +78,7 @@ const authSlice = createSlice({
     },
     [logoutThunk.fulfilled]: (state, { payload }) => {
       state.user = { name: '', email: '' };
-      state.data = { accessToken: '', refreshToken: '' };
+      state.accessToken = '';
       state.online = false;
       state.loading = false;
       state.error = null;
