@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  getCurrentUserThunk,
   loginThunk,
   logoutThunk,
   refreshThunk,
@@ -9,7 +10,7 @@ import {
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
-  user: { name: '', email: '' },
+  user: { name: '', email: '', id: '' },
   accessToken: null,
   online: false,
   loading: false,
@@ -115,6 +116,21 @@ const authSlice = createSlice({
       Loading.remove();
     },
     [verifyThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getCurrentUserThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your email...');
+    },
+    [getCurrentUserThunk.fulfilled]: (state, { payload }) => {
+      state.online = true;
+      state.loading = false;
+      state.user.id = payload._id;
+      Loading.remove();
+    },
+    [getCurrentUserThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();

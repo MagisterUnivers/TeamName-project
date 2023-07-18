@@ -12,7 +12,7 @@ const MyRecipesList = () => {
       <MyRecipesListStyled>
         {cocktails.length !== 0 ? (
           cocktails.map(cocktail => (
-            <DrinkCard key={cocktail._id} my={'own'} cocktail={cocktail} />
+            <DrinkCard key={cocktail._id} page={'my'} cocktail={cocktail} />
           ))
         ) : (
           <NotFound message={"You haven't added any cocktail recipes yet"} />

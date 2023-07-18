@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-import { Header, Footer } from 'components';
 
+import { Header, Footer} from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthAccessToken } from 'redux/selectors';
 import { useCallback, useEffect } from 'react';

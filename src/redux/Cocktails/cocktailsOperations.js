@@ -182,7 +182,6 @@ export const getAllOwnDrinksThunk = createAsyncThunk(
     }
   }
 );
-// Favorites
 
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
   '@@cocktails/favorite',
@@ -194,6 +193,40 @@ export const getAllFavoriteDrinksThunk = createAsyncThunk(
     setToken(token);
     try {
       const res = await instance.get('favorite');
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const addToFavoriteThunk = createAsyncThunk(
+  '@@cocktails/favorite',
+  async (id, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      const res = await instance.post(`/favorite/${id}`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const removeFromFavoriteThunk = createAsyncThunk(
+  '@@cocktails/favorite',
+  async (id, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      const res = await instance.delete(`/favorite/${id}`);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
