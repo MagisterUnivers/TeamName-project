@@ -25,11 +25,6 @@ const RecipePageHero = ({ func }) => {
   //   console.log(filter);
   // }
 
-  useEffect(() => {
-    filter = favoriteFilter(cocktails, user);
-    console.log(filter, 'Filter');
-  }, [cocktails, user]);
-
   // if (!cocktails) {
   //   console.log('Empty');
   //   return null;
@@ -45,7 +40,7 @@ const RecipePageHero = ({ func }) => {
           {cocktails.about ? cocktails.about : 'sample about'}
         </StyledAboutContent>
         {console.log(filter, 'Filter before expression')}
-        {!filter ? (
+        {favoriteFilter(cocktails, user) ? (
           <StyledButton type="button" onClick={func}>
             Remove recipe from favorite
           </StyledButton>
