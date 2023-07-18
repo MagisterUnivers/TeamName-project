@@ -3,7 +3,9 @@ import PopularRecipe from 'components/PopularRecipe/PopularRecipe';
 
 export const SPTestPage = () => {
   return (
-    <Container><SubscribeForm />
-    <Nav/></Container>
+    <Container>
+      <SubscribeForm />
+      <Nav />
+    </Container>
   );
 };
