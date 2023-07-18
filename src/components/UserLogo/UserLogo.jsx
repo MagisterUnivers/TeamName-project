@@ -23,13 +23,10 @@ export const UserLogo = () => {
   const user = useSelector(selectUser);
 
   return (
-    <UserLogoWrp onClick={() => setShowUserLogoModal(!showUserLogoModal)}>
-      <UserAvatarWrp>
-        <UserAvatar
-          src={user?.avatar || require('../../assets/img/useravatar_plug.png')}
-          alt="avatar"
-        />
-      </UserAvatarWrp>
+    <UserLogoWrp onClick={()=> setShowUserLogoModal(!showUserLogoModal)}>
+       <UserAvatarWrp>
+       <UserAvatar src={user?.avatar || require('../../assets/img/useravatar_plug.png')} alt="avatar" />
+       </UserAvatarWrp>
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
       {showUserLogoModal && <UserLogoModal />}
     </UserLogoWrp>

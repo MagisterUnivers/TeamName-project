@@ -26,6 +26,7 @@ cursor: pointer;
 
 export const CounterWrp = styled.div`
 width: 104px;
+height: 38px;
 padding: 10px 16px;
 display: flex;
 gap: 16px;
