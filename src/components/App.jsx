@@ -12,6 +12,7 @@ import { lightTheme } from 'theme/light';
 import { SharedLayout } from 'components';
 import DrinksPage from 'pages/DrinksPage/DrinksPage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
+import FavoritePage from 'pages/FavoritePage/FavoritePage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
 import HomePage from 'pages/HomePage/HomePage';
@@ -89,9 +90,9 @@ export const App = () => {
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
               <Route
-                path="my"
+                path="favorite"
                 // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
-                element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
+                element={<PrivateRoute>{<FavoritePage />}</PrivateRoute>}
               />
             </Route>
 
