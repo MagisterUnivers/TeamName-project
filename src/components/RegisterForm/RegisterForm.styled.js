@@ -69,11 +69,14 @@ export const StyledInput = styled(Field)`
   background-color: transparent;
   padding: 18px 24px;
   padding-right: 50px;
-  color: rgba(243, 243, 243, 0.5);
+  color: #f3f3f3;
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
- 
+
+  &::placeholder {
+    color: rgba(243, 243, 243, 0.5);
+  }
 
   @media screen and (min-width: 768px) {
     height: 56px;
