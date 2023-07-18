@@ -45,7 +45,7 @@ const RecipePageHero = ({ func }) => {
           {cocktails.about ? cocktails.about : 'sample about'}
         </StyledAboutContent>
         {console.log(filter, 'Filter before expression')}
-        {filter ? (
+        {!filter ? (
           <StyledButton type="button" onClick={func}>
             Remove recipe from favorite
           </StyledButton>
