@@ -90,11 +90,6 @@ export const App = () => {
                 path="add"
                 element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
               />
-              <Route
-                path="my"
-                // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
-                element={<PrivateRoute>{<AddRecipePage />}</PrivateRoute>}
-              />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />
