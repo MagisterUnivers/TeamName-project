@@ -146,7 +146,7 @@ const DrinksSearch = ({ categoryName }) => {
           aria-label="search"
           onSubmit
         >
-          <SearchIcon />
+          {/* <SearchIcon /> */}
         </IconButton>
       </PaperStyled>
       {/* <form onSubmit={handleSubmit}>
