@@ -5,6 +5,7 @@ import {
   logoutThunk,
   refreshThunk,
   registrationThunk,
+  updateUserThunk,
   verifyThunk,
 } from './authOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -78,6 +79,7 @@ const authSlice = createSlice({
     },
     [logoutThunk.fulfilled]: (state, { payload }) => {
       state.user = { name: '', email: '', avatarURL: '' };
+      state.userInfo = { name: '', email: '', avatarURL: '' };
       state.accessToken = '';
       state.online = false;
       state.loading = false;
@@ -131,6 +133,22 @@ const authSlice = createSlice({
       Loading.remove();
     },
     [getCurrentUserThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [updateUserThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+
+    [updateUserThunk.fulfilled]: (state, { payload }) => {
+      state.user = payload.user;
+      state.avatarURL = payload.avatarURL;
+      state.loading = false;
+      Loading.remove();
+    },
+    [updateUserThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();
