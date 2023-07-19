@@ -21,6 +21,7 @@ const initialState = {
   categories: [],
   ingredients: [],
   glasses: [],
+  searchResults:[],
   search: { query: '', chosenCategory: '', chosenIngredient: '' },
   totalHits: null,
   page: 1,
@@ -101,7 +102,8 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [searchAllDrinksThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
+      console.log(payload)
+      state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;
@@ -179,7 +181,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getAllOwnDrinksThunk.fulfilled]: (state, { payload }) => {
-      state.own = payload.own;
+      state.own = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;

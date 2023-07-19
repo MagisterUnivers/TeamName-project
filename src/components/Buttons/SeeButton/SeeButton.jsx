@@ -6,7 +6,7 @@ import { SeeButtonStyled } from './SeeButton.styled';
 const SeeButton = ({ _id }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/recipe/${_id}`);
+    navigate(`/main/recipe/${_id}`);
   };
   return <SeeButtonStyled onClick={handleClick}>See recipe</SeeButtonStyled>;
 };

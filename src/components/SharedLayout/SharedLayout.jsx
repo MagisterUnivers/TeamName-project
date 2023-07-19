@@ -1,14 +1,17 @@
 import { Outlet } from 'react-router-dom';
 
-
-import { Header, Footer} from 'components';
+import { Header, Footer } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthAccessToken } from 'redux/selectors';
-import { useCallback, useEffect } from 'react';
+import {
+  selectAuthAccessToken,
+  selectRender,
+  selectTheme,
+  selectUserArray,
+} from 'redux/selectors';
+import { useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/authOperations';
 import { Container } from 'components/Container/Container';
-
-
+import { getCurrentUserThunk } from 'redux/UserInfo/userOperations';
 
 export const SharedLayout = () => {
   /**
@@ -35,25 +38,15 @@ export const SharedLayout = () => {
 
   const dispatch = useDispatch();
   const token = useSelector(selectAuthAccessToken);
-  // let digit = useRef(0); //eslint-disable-line
-
-  const loadDataOnlyOnce = useCallback(() => {
-    dispatch(refreshThunk(token));
-  }, [dispatch, token]);
-
-  // useEffect(() => {
-  //   if (digit < 1) dispatch(refreshThunk(token)).then(() => (digit += 1));
-  // }, []); //eslint-disable-line
+  const user = useSelector(selectUserArray);
+  const isFirstRender = useSelector(selectRender);
+  // const theme = useSelector(selectTheme);
 
   useEffect(() => {
-    loadDataOnlyOnce();
-
-    return () =>
-      //argument
-      {
-        //some code
-      }; // exit (window.close) func
-  }, [loadDataOnlyOnce]);
+    dispatch(refreshThunk(token));
+    console.log(user);
+    if (isFirstRender) dispatch(getCurrentUserThunk());
+  }, []); // eslint-disable-line
 
   return (
     <>
