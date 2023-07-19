@@ -9,16 +9,10 @@ import {
   getCategoriesListThunk,
   getCocktailsByCategoryThunk,
   getIngredientsListThunk,
-  searchAllDrinksThunk,
 } from 'redux/Cocktails/cocktailsOperations';
 import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
 import { setChosenCategory } from 'redux/Cocktails/cocktailsSlice';
-import {
-  selectCategories,
-  selectIngredients,
-  selectPage,
-  selectSearch,
-} from 'redux/selectors';
+import { selectCategories, selectIngredients } from 'redux/selectors';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -34,9 +28,6 @@ const DrinksPage = () => {
   if (ingredientsList.length === 0) {
     dispatch(getIngredientsListThunk());
   }
-  // if (!categoryName) {
-  //   dispatch(setChosenCategory('Cocktail'));
-  // }
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(categoryName));
   }, [dispatch, categoryName]);
@@ -45,7 +36,7 @@ const DrinksPage = () => {
     <>
       <MainPageTitle title={'Drinks'} />
       <DrinksSearch categoryName={categoryName} />
-      <DrinksList categoryName={categoryName} />
+      <DrinksList />
       <Paginator />
     </>
   );

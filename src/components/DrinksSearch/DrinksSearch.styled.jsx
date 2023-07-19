@@ -3,36 +3,41 @@ import { devices } from 'constants/breakpoints';
 import Select from 'react-select';
 import { Paper } from '@mui/material';
 
-export const SearchWrapperStyled = styled.div`
+export const SearchFormStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
   @media ${devices.tablet} {
     flex-direction: row;
+    align-items: baseline;
     gap: 8px;
   }
 `;
-export const PaperStyled = styled(Paper)`
-  & .MuiPaper-root {
-    background-color: #2a2525;
-    color: rgba(0, 0, 0, 0.87);
-  }
-  & .MuiButtonBase-root-MuiIconButton-root {
-    color: rgba(0, 0, 0, 0.87);
-  }
+// export const PaperStyled = styled(Paper)`
+//   & .MuiPaper-root {
+//     background-color: #2a2525;
+//     color: rgba(0, 0, 0, 0.87);
+//   }
+//   & .MuiButtonBase-root-MuiIconButton-root {
+//     color: rgba(0, 0, 0, 0.87);
+//   }
+// `;
+export const QueryFormStyled = styled.form`
+  display: flex;
+  align-items: center;
 `;
-
 export const InputStyled = styled.input`
-  padding: 10px 30px;
-  width: 335px;
-  height: 54px;
-  padding-left: 30px;
+  width: 290px;
+  height: 50px;
   background: transparent;
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.800000011920929;
   outline: none;
   box-shadow: none;
   border-radius: 200px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
   padding-left: 24px;
   padding-top: 18px;
   padding-bottom: 18px;
@@ -41,17 +46,53 @@ export const InputStyled = styled.input`
   font-weight: 400;
   line-height: calc(18 / 14);
   @media ${devices.tablet} {
-    width: 199px;
+    width: 210px;
     height: 56px;
+    padding-left: 32px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 17px;
+    line-height: calc(26 / 17);
   }
 
-  @media ${devices.desktop} {
-  }
   &::placeholder {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 4px;
     color: #f3f3f3;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: calc(18 / 14);
+    @media ${devices.tablet} {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      padding-left: 8px;
+      font-size: 17px;
+      line-height: calc(26 / 17);
+    }
   }
 `;
+export const StyledSearchButton = styled.button`
+  width: 0px;
+  height: 50px;
+  border-top-right-radius: 200px;
+  border-bottom-right-radius: 200px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  border-left: 0;
+  background: transparent;
+  opacity: 0.800000011920929;
+  outline: none;
+  box-shadow: none;
+  padding-right: 44px;
+  padding-top: 14px;
+  padding-bottom: 28px;
 
+  @media ${devices.tablet} {
+    width: 0px;
+    height: 56px;
+    padding-top: 17px;
+  }
+`;
 export const SelectStyled = styled(Select)`
   & .react-select__control {
     width: 335px;

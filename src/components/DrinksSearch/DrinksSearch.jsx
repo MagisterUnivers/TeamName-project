@@ -1,21 +1,19 @@
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+
+import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 import {
   SelectStyled,
   InputStyled,
-  SerachWrapperStyled,
-  SearchWrapperStyled,
-  PaperStyled,
+  StyledSearchButton,
+  SearchFormStyled,
+  QueryFormStyled,
 } from './DrinksSearch.styled';
 import {
   selectCategories,
   selectIngredients,
-  selectPage,
   selectSearch,
 } from 'redux/selectors';
 import {
@@ -24,22 +22,16 @@ import {
   setPage,
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
-import { useEffect } from 'react';
-// import { useNavigate } from 'react-router';
 
 const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState();
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
-  const page = useSelector(selectPage);
   const search = useSelector(selectSearch);
-  // const navigate = useNavigate();
-  // function customTheme(theme) {
-  //   return {
-  //     ...theme,
-  //     colors: { ...theme.colors, primary25: 'orange', primary: 'orange' },
-  //   };
-  // }
+
+  // const navigate
+  //creating options for the dropdowns
   const categoriesListOptions = categoriesList.map(category => {
     return { value: category._id, label: category.category };
   });
@@ -47,7 +39,6 @@ const DrinksSearch = ({ categoryName }) => {
     value: '100',
     label: 'All categories',
   });
-
   const ingredientsListOptions = ingredientsList.map(ingredient => {
     return { value: ingredient._id, label: ingredient.title };
   });
@@ -55,6 +46,7 @@ const DrinksSearch = ({ categoryName }) => {
     value: '100',
     label: 'All ingredients',
   });
+  //styling scrollbar and color in the dropdown
   const styles = {
     menuList: base => ({
       ...base,
@@ -81,29 +73,11 @@ const DrinksSearch = ({ categoryName }) => {
       ...provided,
       color: state.isSelected ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
     }),
-    clearIndicator: prevStyle => ({
-      ...prevStyle,
-
-      ':hover': {
-        color: 'rgba(168, 31, 31)',
-      },
-      padding: '0px',
-    }),
   };
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   if (search.query.trim() === '') {
-  //     Notify.warning('Write something.', {
-  //       fontSize: '16px',
-  //       width: '350px',
-  //       padding: '10px',
-  //     });
-  //     return;
-  //   }
-  // navigate(
-  //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
-  // );
-  // };
+
+  const handleChangeQuery = e => {
+    setSearchQuery(e.target.value);
+  };
   const handleChangeCategory = e => {
     if (e.label !== 'All categories') {
       dispatch(setChosenCategory(e.label));
@@ -120,10 +94,24 @@ const DrinksSearch = ({ categoryName }) => {
       dispatch(setChosenIngredient(''));
     }
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (searchQuery.trim() === '') {
+      Notify.warning('Write something.', {
+        fontSize: '16px',
+        width: '350px',
+        padding: '10px',
+      });
+    }
 
+    dispatch(setQuery(searchQuery));
+    // navigate(
+    //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
+    // );
+  };
   return (
-    <SearchWrapperStyled>
-      <PaperStyled
+    <SearchFormStyled>
+      {/* <PaperStyled
         component="form"
         sx={{
           p: '2px 4px',
@@ -146,38 +134,45 @@ const DrinksSearch = ({ categoryName }) => {
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
+          name="query"
           placeholder="Enter the text"
           inputProps={{ 'aria-label': 'Enter the text' }}
           label="Controlled"
           value={search.query}
-          onSubmit={e => {
-            dispatch(setQuery(e.target.value));
-            dispatch(setPage(1));
-          }}
+          onСhange={handleChangeQuery}
         />
         <IconButton
-          type="button"
+          type="submit"
           sx={{ p: '10px', color: '#F3F3F3' }}
           aria-label="search"
-          onSubmit
         >
           <SearchIcon />
         </IconButton>
-      </PaperStyled>
-      {/* <form onSubmit={handleSubmit}>
+      </PaperStyled> */}
+
+      {/* <form class="search-form">
+    <div class="search-form__wrapper">
+    <button class="search-form__btn" type="submit" aria-label="Search">
+        <svg class="search-form__img" width="24" height="24">
+          <use href="./img/sprite.svg#icon-search"></use>
+        </svg>
+    </button>
+    <input class="search-form__input" type="text" name="search" placeholder="Search |">
+    </div>
+</form> */}
+      <QueryFormStyled onSubmit={handleSubmit}>
         <InputStyled
           type="text"
           name="query"
+          value={searchQuery}
           autocomplete="off"
-          value={search.query}
           placeholder="Enter the text"
-          onChange={e => {
-            dispatch(setQuery(e.target.value));
-            dispatch(setPage(1));
-          }}
+          onChange={handleChangeQuery}
         />
-        <button type="submit">Search</button>
-      </form> */}
+        <StyledSearchButton type="submit">
+          <SearchIcon />
+        </StyledSearchButton>
+      </QueryFormStyled>
 
       <SelectStyled
         // theme={customTheme}
@@ -205,7 +200,7 @@ const DrinksSearch = ({ categoryName }) => {
         onChange={handleChangeIngredient}
         required
       />
-    </SearchWrapperStyled>
+    </SearchFormStyled>
   );
 };
 

@@ -21,7 +21,7 @@ const DrinksList = () => {
     // if (search.query || search.chosenCategory || search.chosenIngredient||)
     dispatch(searchAllDrinksThunk({ search, page }));
   }, [dispatch, search, page]);
-  console.log(searchResults);
+
   return (
     <Section>
       <DrinkListStyled>
