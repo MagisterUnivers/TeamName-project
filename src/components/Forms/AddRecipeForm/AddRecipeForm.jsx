@@ -156,7 +156,7 @@ export const AddRecipeForm = () => {
 
     dispatch(addRecipeThunk(formData));
     resetForm();
-    navigate('/my');
+    navigate('/main/my');
   };
 
   return (
