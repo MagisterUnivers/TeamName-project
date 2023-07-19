@@ -17,11 +17,13 @@ const ConfirmLogout = ({ id, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleDelete = () => {
-    dispatch(logoutThunk()).then(res => {
+    dispatch(logoutThunk())
+      .unwrap()
+      .then(res => {
       console.log('Response:', res);
-        if (res.payload && res.payload.status === 204) {
+        if (res && res.status === 204) {
           navigate('/');
-  }});
+  }});  
   };
 
   return (
