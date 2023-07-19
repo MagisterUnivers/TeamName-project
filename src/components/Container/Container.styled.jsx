@@ -25,7 +25,7 @@ export const StyledContainer = styled.div`
   }
 
   @media ${devices.desktop} {
-    width: 1240px;
+    width: 1440px;
     padding-top: 244px;
     padding-left: 100px;
     padding-right: 100px;
