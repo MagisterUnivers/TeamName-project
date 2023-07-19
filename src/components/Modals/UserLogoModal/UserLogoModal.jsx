@@ -1,25 +1,88 @@
-import React from 'react';
-import { ReactComponent as iconEdit } from '../../../assets/icons/edit.svg';
-import { InputWrp, ModalBody, Overlay, getStyledIcon } from './UserLogoModal.styled';
-import LogoutBtn from 'components/Buttons/LogoutBtn/LogoutBtn';
+// import React from 'react';
+// import { ReactComponent as iconEdit } from '../../../assets/icons/edit.svg';
+// import { InputWrp, ModalBody, Overlay, getStyledIcon } from './UserLogoModal.styled';
+// import LogoutBtn from 'components/Buttons/LogoutBtn/LogoutBtn';
 
-export const UserLogoModal = () => {
+// export const UserLogoModal = () => {
+//   const StyledIconEdit = getStyledIcon(iconEdit)
+//   return (
+//    <Overlay>
+//     <ModalBody>
+//       <InputWrp>
+//       Edit profile
+//       <StyledIconEdit/>
+//       </InputWrp>
+//       <LogoutBtn/>
+//     </ModalBody>
+//    </Overlay>
+//   )
+// };
 
-  const StyledIconEdit = getStyledIcon(iconEdit)
+import React, { useState } from 'react';
+import {
+  ChangeProfileButton,
+  LogOutButton,
+  ModalContent,
+  ModalWrapper,
+} from './UserLogoModal.styled';
+
+import pencilIcon from '../UserInfoModal/edit-2.svg';
+import ConfirmLogout from '../UserInfoModal/ConfirmLogout';
+import UserInfoModal from '../UserInfoModal/UserInfoModal';
+
+const UserLogoModal = () => {
+  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
+  const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
+  const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
+
+  const handleOpenUserInfo = () => {
+    setIsChangeProfileOpen(false);
+    setIsUserInfoOpen(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setIsChangeProfileOpen(false);
+    setIsConfirmLogoutOpen(true);
+  };
+
+  const handleModalClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsChangeProfileOpen(false);
+      setIsConfirmLogoutOpen(false);
+      setIsUserInfoOpen(false);
+    }
+    e.stopPropagation();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      setIsChangeProfileOpen(false);
+    }
+  };
 
   return (
-   <Overlay>
-    <ModalBody>
-      <InputWrp>
-      Edit profile
-      <StyledIconEdit/>
-      </InputWrp>
-      <LogoutBtn/>
-    </ModalBody>
-   </Overlay>
+    <ModalWrapper >
+      <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
+        <ChangeProfileButton
+          onClick={() => {
+            handleOpenUserInfo();
+          }}
+        >
+          Edit profile
+          <img src={pencilIcon} alt="pencil" width="14"/>
+        </ChangeProfileButton>
+        <LogOutButton onClick={handleConfirmLogout}>Log out</LogOutButton>
+      </ModalContent>
 
-
-  )
+      {isConfirmLogoutOpen && (
+        <ConfirmLogout onClose={handleConfirmLogout} />
+      )}
+      {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
+    </ModalWrapper>
+  );
 };
+
+export default UserLogoModal;
+
 
 

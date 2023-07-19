@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
   ModalWrapper,
@@ -20,14 +21,12 @@ import {
   StyledIconError,
 } from 'components/RegisterForm/RegisterForm.styled';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import { selectUserInfoAvatar, selectUserInfoName } from 'redux/selectors';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
 
 const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const UserName = useSelector(selectUserInfoName);
-  const UserAvatar = useSelector(selectUserInfoAvatar);
+  const user = useSelector(selectUser);
 
   const handleModalClick = e => {
     if (e.target.classList.contains('modal')) {
@@ -39,7 +38,10 @@ const UserInfoModal = ({ onClose }) => {
       onClose();
     }
   };
-
+  const handleInputFocus = e => {
+    e.stopPropagation();
+  };
+  console.log(user.avatarURL);
   return (
     <ModalWrapper onClick={handleModalClick} onKeyDown={handleKeyDown}>
       <ContentWrapper>
@@ -48,8 +50,8 @@ const UserInfoModal = ({ onClose }) => {
         </CloseButton>
         <StyledForm
           initialValues={{
-            avatarURL: UserAvatar || '',
-            name: UserName || '',
+            avatarURL: user?.avatarURL || '',
+            name: user?.name || '',
           }}
           validationSchema={Yup.object({
             avatarURL: Yup.string(),
@@ -58,14 +60,15 @@ const UserInfoModal = ({ onClose }) => {
               'Name can only contain letters or numbers.'
             ),
           })}
-          onSubmit={values => {
+          onSubmit={(values, { setSubmitting }) => {
             dispatch(updateUserThunk(values));
+            setSubmitting(false);
           }}
         >
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-                <AvatarFrame />
+                <AvatarFrame src={user.avatar} alt="avatar" />
                 <AddAvatarButton src={AddIcon} alt="plus" width={28} />
               </UserAvatarWrapper>
               <StyledInput
@@ -76,6 +79,7 @@ const UserInfoModal = ({ onClose }) => {
                   setFieldTouched('name');
                   handleChange(e);
                 }}
+                onFocus={handleInputFocus}
                 className={
                   touched.name && !errors.name
                     ? 'valid-border'
@@ -96,7 +100,7 @@ const UserInfoModal = ({ onClose }) => {
                   <StyledMessage>This is an CORRECT name</StyledMessage>
                 </div>
               )}
-              <SaveChangeButton>Save changes</SaveChangeButton>
+              <SaveChangeButton type="submit">Save changes</SaveChangeButton>
             </StyledFormInsight>
           )}
         </StyledForm>

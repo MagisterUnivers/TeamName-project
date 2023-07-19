@@ -82,8 +82,9 @@ export const loginThunk = createAsyncThunk(
 export const logoutThunk = createAsyncThunk('@@auth/logout', async _ => {
   try {
     await instance.post('users/logout');
+    localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
     clearToken();
-    localStorage.removeItem('userData');
   } catch (error) {
     const errorMessage = error.response.data.message;
     Notiflix.Notify.failure('Respond from server is ' + errorMessage);
