@@ -1,11 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { updateThemeThunk, updateUserThunk } from './userOperations';
+import {
+  getCurrentUserThunk,
+  updateThemeThunk,
+  updateUserThunk,
+} from './userOperations';
 
 const initialState = {
   user: { name: '', email: '' },
   avatarURL: '',
   theme: 'dark',
+  firstRender: true,
 };
 
 const userInfoSlice = createSlice({
@@ -39,9 +44,33 @@ const userInfoSlice = createSlice({
       state.user = payload.user;
       state.avatarURL = payload.avatarURL;
       state.loading = false;
-       Loading.remove();
+      Loading.remove();
     },
     [updateUserThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+    [getCurrentUserThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+
+    [getCurrentUserThunk.fulfilled]: (state, { payload }) => {
+      // console.log(payload, 'HELLOOOOOOOOOOOOO');
+      state.user = {
+        name: payload.name,
+        email: payload.email,
+        id: payload._id,
+      };
+
+      state.firstRender = false;
+      state.theme = payload.theme;
+
+      state.loading = false;
+      Loading.remove();
+    },
+    [getCurrentUserThunk.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
       Loading.remove();

@@ -23,20 +23,18 @@ const persistConfig = {
   whitelist: ['accessToken', 'userInfo', 'user', 'online'],
 };
 
-// const persistConfigForTheme = {
-//   key: 'theme',
-//   version: 2,
-//   storage,
-//   whitelist: ['theme'],
-// };
-
-
+const persistConfigForUserInfo = {
+  key: 'theme',
+  version: 2,
+  storage,
+  whitelist: ['theme', 'user', 'firstRender'],
+};
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
     cocktails: cocktailsReducer,
-    userInfo: userInfoReducer,
+    userInfo: persistReducer(persistConfigForUserInfo, userInfoReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
