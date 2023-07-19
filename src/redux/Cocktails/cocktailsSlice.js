@@ -43,7 +43,7 @@ const cocktailsSlice = createSlice({
       state.search.chosenIngredient = payload;
     },
     setPage: (state, { payload }) => {
-      state.page = payload;
+      state.page = payload.page;
     },
   },
   extraReducers: {
