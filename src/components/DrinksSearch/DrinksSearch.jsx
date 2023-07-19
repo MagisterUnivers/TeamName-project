@@ -45,7 +45,7 @@ const DrinksSearch = ({ categoryName }) => {
   });
   categoriesListOptions.unshift({
     value: '100',
-    label: 'No category',
+    label: 'All categories',
   });
 
   const ingredientsListOptions = ingredientsList.map(ingredient => {
@@ -53,9 +53,8 @@ const DrinksSearch = ({ categoryName }) => {
   });
   ingredientsListOptions.unshift({
     value: '100',
-    label: 'No ingredient',
+    label: 'All ingredients',
   });
-  console.log(categoriesListOptions);
   const styles = {
     menuList: base => ({
       ...base,
@@ -105,6 +104,22 @@ const DrinksSearch = ({ categoryName }) => {
   //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
   // );
   // };
+  const handleChangeCategory = e => {
+    if (e.label !== 'All categories') {
+      dispatch(setChosenCategory(e.label));
+      dispatch(setPage(1));
+    } else {
+      dispatch(setChosenCategory(''));
+    }
+  };
+  const handleChangeIngredient = e => {
+    if (e.label !== 'All ingredients') {
+      dispatch(setChosenIngredient(e.label));
+      dispatch(setPage(1));
+    } else {
+      dispatch(setChosenIngredient(''));
+    }
+  };
 
   return (
     <SearchWrapperStyled>
@@ -146,7 +161,7 @@ const DrinksSearch = ({ categoryName }) => {
           aria-label="search"
           onSubmit
         >
-          {/* <SearchIcon /> */}
+          <SearchIcon />
         </IconButton>
       </PaperStyled>
       {/* <form onSubmit={handleSubmit}>
@@ -175,10 +190,7 @@ const DrinksSearch = ({ categoryName }) => {
         isSearchable={true}
         autoFocus
         classNamePrefix="react-select"
-        onChange={e => {
-          dispatch(setChosenCategory(e.label));
-          dispatch(setPage(1));
-        }}
+        onChange={handleChangeCategory}
         required
       />
       <SelectStyled
@@ -190,10 +202,7 @@ const DrinksSearch = ({ categoryName }) => {
         isSearchable={true}
         autoFocus
         classNamePrefix="react-select"
-        onChange={e => {
-          dispatch(setChosenIngredient(e.label));
-          dispatch(setPage(1));
-        }}
+        onChange={handleChangeIngredient}
         required
       />
     </SearchWrapperStyled>
