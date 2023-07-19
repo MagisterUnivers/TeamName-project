@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const Section = styled.div`
   max-width: 100%;
-  margin-top: 80px;
-
+  margin-bottom: 80px;
   overflow: hidden;
 `;
 
