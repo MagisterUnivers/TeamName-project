@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import heroimg from './heroimg.jpg';
+import { devices } from 'constants/breakpoints';
 
 export const StyledContainer = styled.div`
   width: 100%;
@@ -13,18 +14,18 @@ export const StyledContainer = styled.div`
   background-repeat: no-repeat;
   background-position: top 0px right -200px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 768px;
     padding-top: 224px;
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 140px;
 
-    background-position: top 0px right -200px;
+    /* background-position: top 0px right -200px; */
   }
 
-  @media screen and (min-width: 1240px) {
-    width: 1440px;
+  @media ${devices.desktop} {
+    width: 1240px;
     padding-top: 244px;
     padding-left: 100px;
     padding-right: 100px;
