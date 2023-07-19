@@ -1,4 +1,3 @@
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import {
   BaseDiv,
@@ -11,7 +10,7 @@ import {
   SignInNavLink,
 } from './WelcomPage.styled';
 
-const WelcomePage = () => {
+export const WelcomePage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1439px)',
@@ -71,5 +70,3 @@ const WelcomePage = () => {
     </BaseDiv>
   );
 };
-
-export default WelcomePage;

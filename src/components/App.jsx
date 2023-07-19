@@ -1,23 +1,21 @@
 import { Route, Routes } from 'react-router';
-import { PrivateRoute } from '../routes/PrivateRoute';
-import { PublicRoute } from '../routes/PublicRoute';
-import { Suspense, lazy } from 'react';
-import Spinner from './Spinner/Spinner';
-import GlobalStyles from './GlobalStyles';
-import { useEffect } from 'react';
-import TestPage from 'pages/TestPage/TestPage';
-import { ThemeProvider } from 'styled-components';
-import { darkTheme } from 'theme/dark';
-import { lightTheme } from 'theme/light';
-import { SharedLayout } from 'components';
-import DrinksPage from 'pages/DrinksPage/DrinksPage';
-import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
-import FavoritePage from 'pages/FavoritePage/FavoritePage';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
-import { SPTestPage } from 'pages';
-import HomePage from 'pages/HomePage/HomePage';
-import { RecipePage } from 'pages/RecipePage/RecipePage';
+import { ThemeProvider } from 'styled-components';
+import { Suspense, lazy, useEffect } from 'react';
+import { Spinner, SharedLayout } from 'components';
+import { PublicRoute, PrivateRoute } from 'routes';
+import {
+  SPTestPage,
+  HomePage,
+  RecipePage,
+  TestPage,
+  DrinksPage,
+  MyRecipesPage,
+  FavoritePage,
+} from 'pages';
+import { darkTheme, lightTheme } from 'theme';
+import GlobalStyles from './GlobalStyles';
 
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend

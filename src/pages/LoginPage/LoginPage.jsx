@@ -1,10 +1,9 @@
-import SigninForm from 'components/Forms/SigninForm/SigninForm';
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { SigninForm } from 'components';
 import { BaseDiv, PicturedWrapper } from '../WelcomePage/WelcomPage.styled';
 import { SummaryWrapper } from '../RegisterPage/RegisterPage.styled';
 
-const LoginPage = () => {
+export const LoginPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1439.98px)',
@@ -56,5 +55,3 @@ const LoginPage = () => {
     </BaseDiv>
   );
 };
-
-export default LoginPage;

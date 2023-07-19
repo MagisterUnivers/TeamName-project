@@ -1,7 +1,12 @@
-import { FollowUs, AddRecipeForm, PopularRecipe, MainPageTitle } from 'components';
+import {
+  FollowUs,
+  AddRecipeForm,
+  PopularRecipe,
+  MainPageTitle,
+} from 'components';
 import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
 
-const AddRecipePage = () => {
+export const AddRecipePage = () => {
   return (
     <>
       <MainPageTitle title="Add recipe" />
@@ -15,5 +20,3 @@ const AddRecipePage = () => {
     </>
   );
 };
-
-export default AddRecipePage;

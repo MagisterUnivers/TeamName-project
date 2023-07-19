@@ -1,8 +1,10 @@
-import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
-import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
-import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
-import { favoriteFilter } from 'components/utils/filter';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import {
+  RecipePreparation,
+  RecipePageHero,
+  RecipeIngredientsList,
+} from 'components';
+import { favoriteFilter } from 'components/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { getCurrentUserThunk } from 'redux/Auth/authOperations';
@@ -28,15 +30,23 @@ export const RecipePage = ({ id }) => {
 
   useEffect(() => {
     // fetch recipe
-    dispatch(getCocktailByIdThunk(idQuery.id));
-    dispatch(getCurrentUserThunk());
+    dispatch(getCocktailByIdThunk(idQuery.id)); // 1
+    dispatch(getCurrentUserThunk()); // 2
     console.log(contact, 'Contact');
   }, []); // eslint-disable-line
 
   const handleSend = () => {
     filter = favoriteFilter(contact, user);
-    if (filter) {dispatch(removeFromFavoriteThunk(contact._id)); console.log('remove favorite');}
-    else {dispatch(addToFavoriteThunk(contact._id)).then(dispatch(getCocktailByIdThunk(idQuery.id))); console.log('add favorite');};
+    if (filter) {
+      dispatch(removeFromFavoriteThunk(contact._id)); // 3
+      console.log('remove favorite');
+    } else {
+      dispatch(addToFavoriteThunk(contact._id)).then(
+        // 4
+        dispatch(getCocktailByIdThunk(idQuery.id)) // 5
+      );
+      console.log('add favorite');
+    }
   };
 
   return (

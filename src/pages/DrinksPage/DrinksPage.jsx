@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-
-import DrinksList from '../../components/DrinksList/DrinksList';
-import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
-import Paginator from 'components/Paginator/Paginator';
+import { Paginator, DrinksSearch, DrinksList, MainPageTitle } from 'components';
 import {
   getCategoriesListThunk,
   getCocktailsByCategoryThunk,
   getIngredientsListThunk,
   searchAllDrinksThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import {MainPageTitle} from 'components';
 import { setChosenCategory } from 'redux/Cocktails/cocktailsSlice';
 import {
   selectCategories,
@@ -20,7 +16,7 @@ import {
   selectSearch,
 } from 'redux/selectors';
 
-const DrinksPage = () => {
+export const DrinksPage = () => {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   dispatch(setChosenCategory(categoryName));
@@ -50,5 +46,3 @@ const DrinksPage = () => {
     </>
   );
 };
-
-export default DrinksPage;

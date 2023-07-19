@@ -1,10 +1,9 @@
-import React from 'react';
-import RegisterForm from 'components/RegisterForm/RegisterForm';
 import { useMediaQuery } from 'react-responsive';
+import { RegisterForm } from 'components';
 import { BaseDiv, PicturedWrapper } from '../WelcomePage/WelcomPage.styled';
 import { SummaryWrapper } from './RegisterPage.styled';
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1439.98px)',
@@ -56,5 +55,3 @@ const RegisterPage = () => {
     </BaseDiv>
   );
 };
-
-export default RegisterPage;

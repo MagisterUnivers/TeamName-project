@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledAddButton } from './AddYourCocktail.styled';
 import { useNavigate } from 'react-router';
 
-const AddYourCocktail = () => {
+export const AddYourCocktail = () => {
   const navigate = useNavigate();
 
   return (
@@ -15,5 +15,3 @@ const AddYourCocktail = () => {
     </StyledAddButton>
   );
 };
-
-export default AddYourCocktail;

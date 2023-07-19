@@ -1,7 +1,3 @@
-import React from 'react';
-
-const Spinner = () => {
+export const Spinner = () => {
   return <div>Spinner</div>;
 };
-
-export default Spinner;

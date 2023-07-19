@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavContainer, StyledItem, StyledLink } from './Navigation.styled';
 import { useMediaRules } from '../../hooks/useMediaRules';
 import styled from 'styled-components';

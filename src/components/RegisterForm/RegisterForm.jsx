@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { registrationThunk } from 'redux/Auth/authOperations';
 import * as Yup from 'yup';
 import { useSearchParams } from 'react-router-dom';
 import { verifyThunk } from 'redux/Auth/authOperations';
-import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
+import { AuthNavigate } from 'components';
 import { handleEyeClick } from 'redux/Auth/authSlice';
 import { selectIsClicked } from 'redux/selectors';
 import {
@@ -24,7 +24,7 @@ import {
   StyledPasswordDiv,
 } from './RegisterForm.styled';
 
-const RegisterForm = () => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
   const isClicked = useSelector(selectIsClicked);
 
@@ -201,5 +201,3 @@ const RegisterForm = () => {
     </StyledForm>
   );
 };
-
-export default RegisterForm;

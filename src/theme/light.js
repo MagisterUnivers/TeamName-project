@@ -1,4 +1,3 @@
-// some code
 export const lightTheme = {
   textColor: '#0A0A11',
   bgrColor: '#f3f3f3',
