@@ -3,13 +3,14 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import styled from 'styled-components';
+import { devices } from 'constants/breakpoints';
 
 export const StyledForm = styled(Formik)``;
 export const StyledFormInsight = styled(Form)`
   max-width: 335px;
   height: auto;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     max-width: 400px;
   }
 `;
@@ -21,7 +22,7 @@ export const StyledTitle = styled.h2`
   letter-spacing: -0.56px;
   margin-bottom: 28px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     font-size: 40px;
     line-height: calc(44 / 40);
     letter-spacing: -0.8px;
@@ -31,7 +32,7 @@ export const StyledInputWrap = styled.div`
   width: 100%;
   position: relative;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     max-width: 400px;
   }
 `;
@@ -78,7 +79,7 @@ export const StyledInput = styled(Field)`
     color: rgba(243, 243, 243, 0.5);
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     height: 56px;
     padding: 14px 24px;
     padding-right: 50px;
@@ -125,7 +126,7 @@ export const StyledButton = styled.button`
     box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     padding: 18px 169px;
     font-size: 16px;
     line-height: calc (18 / 16);
@@ -147,7 +148,7 @@ export const StyledInnerDiv = styled.div`
   gap: 14px;
   margin-bottom: 28px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     margin-bottom: 40px;
   }
 `;

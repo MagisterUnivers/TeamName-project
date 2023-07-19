@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { devices } from 'constants/breakpoints';
 
 export const FormWrapper = styled.div`
 margin-bottom: 20px`;
@@ -12,7 +13,7 @@ color: ${props => props.theme.textColor};
   display: block;
   margin-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     font-size: 40px;
     line-height: calc(44 / 40);
   }
@@ -62,7 +63,7 @@ export const StyledTextArea = styled(Field)`
     background-color: #f3f3f3;
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 480px;
     padding: 14px 24px;
     font-size: 17px;
@@ -79,7 +80,7 @@ export const StyledDiv = styled.div`
   outline: none;
   overflow: hidden;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 480px;
   }
 `;

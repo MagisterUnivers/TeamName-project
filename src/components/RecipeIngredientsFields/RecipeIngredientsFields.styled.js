@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Select from 'react-select';
+import { devices } from 'constants/breakpoints';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 
 export const FormWrapper = styled.div`
@@ -10,12 +11,12 @@ export const FormWrapper = styled.div`
   margin-bottom: 80px;
   width: 335px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 704px;
     margin-left: 0;
     margin-right: 0;
   }
-  @media screen and (min-width: 1440px) {
+  @media ${devices.desktop} {
     width: 540px;
     margin-right: auto;
   }
@@ -34,7 +35,7 @@ export const TitleStyled = styled.h3`
   line-height: 1.14;
   color: ${props => props.theme.textColor};
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     font-size: 40px;
     line-height: 1.1;
   }
@@ -45,7 +46,7 @@ export const StyledIngredientsList = styled.ul`
   flex-direction: column;
   gap: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     gap: 24px;
   }
 `;
@@ -55,12 +56,12 @@ export const FieldsInputWrp = styled.div`
   gap: 8px;
   margin-right: 8px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     gap: 14px;
     margin-right: 188px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media ${devices.desktop} {
     margin-right: 40px;
   }
 `;
@@ -70,7 +71,7 @@ export const IngredientsItem = styled.li`
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     justify-content: space-between;
   }
 `;
@@ -99,7 +100,7 @@ export const SelectIngredientStyled = styled(Select)`
       //font-size: 17px;
     }
 
-    @media screen and (min-width: 1440px) {
+    @media ${devices.desktop} {
       width: 316px;
     }
 
@@ -174,7 +175,7 @@ export const SelectIngredientStyled = styled(Select)`
       width: 332px;
     }
 
-    @media screen and (min-width: 1440px) {
+    @media ${devices.desktop} {
       width: 316px;
     }
   }
@@ -192,7 +193,7 @@ export const SelectIngredientStyled = styled(Select)`
       width: 332px;
     }
 
-    @media screen and (min-width: 1440px) {
+    @media ${devices.desktop} {
       width: 316px;
     }
   }
@@ -481,7 +482,7 @@ export const CloseIconButton = styled(CloseIcon)`
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 20px;
     height: 20px;
   }
@@ -501,7 +502,7 @@ export const DeleteButton = styled.button`
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 20px;
     height: 20px;
   }
