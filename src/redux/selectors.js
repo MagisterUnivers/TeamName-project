@@ -1,5 +1,3 @@
-export const selectTodos = state => state.tasks.items;
-export const selectLoading = state => state.tasks.loading;
 export const selectFilter = state => state.filter;
 export const selectUser = state => state.auth.user;
 export const selectIsOnline = state => state.auth.online;
@@ -8,15 +6,16 @@ export const selectAuthError = state => state.auth.error;
 export const selectAuthToken = state => state.auth.data;
 export const selectAuthAccessToken = state => state.auth.accessToken;
 export const selectAuthRefreshToken = state => state.auth.data.refreshToken;
+export const selectIsClicked = state => state.auth.isClicked;
+
+// UserInfo
 export const selectUserInfo = state => state.userInfo;
 export const selectUserInfoEmail = state => state.userInfo.email;
 export const selectUserInfoName = state => state.userInfo.user.name;
 export const selectUserInfoAvatar = state => state.userInfo.avatarURL;
 export const selectTheme = state => state.userInfo.theme;
-export const selectIsTaskExist = state => state.calendar.tasks;
-export const selectTasks = state => state.calendar.monthDatesMap;
-export const selectIsClicked = state => state.auth.isClicked;
-export const selectMonthDateMap = state => state.calendar.monthDatesMap;
+export const selectUserArray = state => state.userInfo.user;
+export const selectRender = state => state.userInfo.firstRender;
 
 //Cocktails
 export const selectCocktails = state => state.cocktails.cocktails;
