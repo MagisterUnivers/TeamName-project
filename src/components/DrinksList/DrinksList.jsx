@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCocktails,
@@ -6,12 +6,11 @@ import {
   selectSearch,
   selectSearchResults,
 } from 'redux/selectors';
-import DrinkCard from 'components/DrinkCard/DrinkCard';
-import { DrinkListStyled, Section } from './DrinkList.styled';
-import NotFound from 'components/NotFound/NotFound';
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
+import { DrinkCard, NotFound } from 'components';
+import { DrinkListStyled, Section } from './DrinkList.styled';
 
-const DrinksList = () => {
+export const DrinksList = () => {
   const dispatch = useDispatch();
   const searchResults = useSelector(selectSearchResults);
   const page = useSelector(selectPage);
@@ -42,5 +41,3 @@ const DrinksList = () => {
     </Section>
   );
 };
-
-export default DrinksList;

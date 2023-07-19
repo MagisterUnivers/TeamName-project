@@ -1,7 +1,7 @@
 import { Container, Nav, SubscribeForm } from 'components';
-import PopularRecipe from 'components/PopularRecipe/PopularRecipe';
+import { PopularRecipe } from 'components';
 
-export const SPTestPage = () => {
+const SPTestPage = () => {
   return (
     <Container>
       <SubscribeForm />
@@ -9,3 +9,5 @@ export const SPTestPage = () => {
     </Container>
   );
 };
+
+export default SPTestPage;

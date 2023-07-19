@@ -23,7 +23,7 @@ import {
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
 
-const DrinksSearch = ({ categoryName }) => {
+export const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState();
   const ingredientsList = useSelector(selectIngredients);
@@ -204,8 +204,6 @@ const DrinksSearch = ({ categoryName }) => {
     </SearchFormStyled>
   );
 };
-
-export default DrinksSearch;
 
 // styles={{
 //   control: (baseStyles, state) => ({

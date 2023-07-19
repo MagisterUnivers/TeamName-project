@@ -47,11 +47,8 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
-
-import PreviewDrinks from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
-
+import { PreviewDrinks, HeroSection } from 'components';
 import { selectCocktails } from 'redux/selectors';
-import Hero from 'components/Hero/Hero';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -72,7 +69,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Hero />
+      <HeroSection />
       <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
       <PreviewDrinks title="Cocktail" data={cocktail} />
       <PreviewDrinks title="Shake" data={shake} />

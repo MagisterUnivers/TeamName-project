@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-const AuthNavigate = () => {
+export const AuthNavigate = () => {
   const location = useLocation();
 
   return (
@@ -14,8 +14,6 @@ const AuthNavigate = () => {
     </>
   );
 };
-
-export default AuthNavigate;
 
 export const StyledNavLink = styled(NavLink)`
   color: #f3f3f3;

@@ -1,11 +1,9 @@
 import { useSelect } from '@mui/base';
 import { useDispatch } from 'react-redux';
-
-import Paginator from 'components/Paginator/Paginator';
+import { Paginator, MyRecipesList, MainPageTitle } from 'components';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
 import { MainPageTitle } from 'components';
-import { selectOwn } from 'redux/selectors';
 
 const MyRecipesPage = () => {
   const dispatch = useDispatch();

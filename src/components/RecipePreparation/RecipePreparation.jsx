@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCocktails } from 'redux/selectors';
 import {
@@ -8,8 +7,9 @@ import {
   StyledImage,
   StyledAboutSubtitle,
 } from './RecipePreparation.styled';
+import { StyledSection } from 'components/Section/Section';
 
-const RecipePreparation = () => {
+export const RecipePreparation = () => {
   const cocktails = useSelector(selectCocktails);
 
   // console.log(cocktails, 'state / selector');
@@ -21,7 +21,7 @@ const RecipePreparation = () => {
 
   return (
     <>
-      <section style={{ marginTop: 100 }}>
+      <StyledSection lastsection="true">
         <StyledTitle>Recipe Preparation</StyledTitle>
         <StyledContentWrapper>
           <StyledImage
@@ -41,9 +41,7 @@ const RecipePreparation = () => {
             </StyledAboutSubtitle>
           </StyledTextWrapper>
         </StyledContentWrapper>
-      </section>
+      </StyledSection>
     </>
   );
 };
-
-export default RecipePreparation;

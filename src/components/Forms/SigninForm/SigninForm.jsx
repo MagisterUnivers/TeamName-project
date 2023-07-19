@@ -1,9 +1,8 @@
-import React from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { loginThunk } from 'redux/Auth/authOperations';
-import AuthNavigate from 'components/AuthNavigate/AuthNavigate';
+import { AuthNavigate } from 'components';
 import { selectIsClicked } from 'redux/selectors';
 import { handleEyeClick } from 'redux/Auth/authSlice';
 import {
@@ -23,7 +22,7 @@ import {
   StyledPasswordDiv,
 } from '../../RegisterForm/RegisterForm.styled';
 
-const SigninForm = () => {
+export const SigninForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isClicked = useSelector(selectIsClicked);
@@ -130,5 +129,3 @@ const SigninForm = () => {
     </StyledForm>
   );
 };
-
-export default SigninForm;

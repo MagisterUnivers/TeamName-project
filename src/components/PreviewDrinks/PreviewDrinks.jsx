@@ -1,14 +1,11 @@
-import React from 'react';
-
-import { Cardwrapper, Section, SectionTitle } from './Styles-PreviewDrinks';
-import DrinkCard from 'components/DrinkCard/DrinkCard';
 import { Link } from 'react-router-dom';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
+import { DrinkCard } from 'components';
+import { Cardwrapper, Section, SectionTitle } from './PreviewDrinks.styled';
 
-const PreviewDrinks = ({ title, data = [] }) => {
+export const PreviewDrinks = ({ title, data = [] }) => {
   const linkTransform = encodeURIComponent(title);
 
   return (
@@ -49,5 +46,3 @@ const PreviewDrinks = ({ title, data = [] }) => {
     </Section>
   );
 };
-
-export default PreviewDrinks;

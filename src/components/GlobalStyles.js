@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
- @import-normalize;
+ @import-normalize; // normalize (border-box)
 
 :root {
   /* Colors */

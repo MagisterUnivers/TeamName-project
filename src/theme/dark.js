@@ -1,5 +1,3 @@
-// some code
-
 export const darkTheme = {
   textColor: '#f3f3f3',
   bgrColor: '#0a0a11',
@@ -11,4 +9,8 @@ export const darkTheme = {
   errorStateColor: '#da1414',
   paginationAccentColor: '#4070cd80',
   sectionTagTitle: 'rgba(243, 243, 243, 0.5)',
+
+  // Andrii Recipe/:id
+  trueWhite: 'white',
+  trueBlack: 'black',
 };

@@ -1,14 +1,12 @@
 import { Wrapper, Image, Message } from './NotFound.styled';
-
-
 import cocktailTabDesc1 from './images/cocktailTabDesc1.png';
 import cocktailTabDesc2 from './images/cocktailTabDesc2.png';
 import cocktailMobile1 from './images/cocktailMobile1.png';
 import cocktailMobile2 from './images/cocktailMobile2.png';
 
-const NotFound = ({ message }) => {
+export const NotFound = ({ message }) => {
   return (
-        <Wrapper>
+    <Wrapper>
       <Image>
         <picture>
           <source
@@ -27,8 +25,6 @@ const NotFound = ({ message }) => {
         </picture>
       </Image>
       <Message>{message}</Message>
-        </Wrapper>
-     );
+    </Wrapper>
+  );
 };
-
-export default NotFound;

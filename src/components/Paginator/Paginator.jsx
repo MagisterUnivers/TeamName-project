@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from '@mui/material';
-
 import { selectPage, selectTotalHits } from 'redux/selectors';
-
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
 import { Wrapper, WrapperGeneralStyled } from './Paginator.styled';
 
-const Paginator = () => {
+export const Paginator = () => {
   let page = useSelector(selectPage);
   const dispatch = useDispatch();
   const totalHits = useSelector(selectTotalHits);
@@ -29,5 +27,3 @@ const Paginator = () => {
     </WrapperGeneralStyled>
   );
 };
-
-export default Paginator;

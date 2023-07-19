@@ -1,3 +1,5 @@
+import { Counter } from 'components';
+import { listUnits } from './ListUnits.constants';
 import {
   FieldsInputWrp,
   FormWrapper,
@@ -12,8 +14,6 @@ import {
   CloseIconButton,
   StyledIngredientsList,
 } from './RecipeIngredientsFields.styled';
-import Counter from './Counter/Counter';
-import { listUnits } from './ListUnits.constants';
 
 export const RecipeIngredientsFields = ({
   ingredientsList,
