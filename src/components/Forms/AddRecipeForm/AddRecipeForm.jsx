@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { nanoid } from '@reduxjs/toolkit';
+import { Formik } from 'formik';
 import { selectCategories, selectGlasses } from '../../../redux/selectors';
 import {
   getCategoriesListThunk,
   getAllGlassesThunk,
   addRecipeThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import { Formik } from 'formik';
 import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
-import { useNavigate } from 'react-router';
-import RecipeDescriptionFields from '../../RecipeDescriptionFields/RecipeDescriptionFields';
-import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
-import { RecipeIngredientsFields } from 'components';
-import { nanoid } from '@reduxjs/toolkit';
+import { RecipeDescriptionFields, RecipeIngredientsFields, RecipePreparationFields } from 'components';
 
-
-const AddRecipeForm = () => {
+export const AddRecipeForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const drinksCategory = useSelector(selectCategories);
@@ -27,7 +24,7 @@ const AddRecipeForm = () => {
   const [category, setCategory] = useState({ label: 'Cocktail' });
   const [glass, setGlass] = useState({ label: 'Highball glass' });
   const [instructions, setInstructions] = useState([]);
-  const [cocktailIngredientsList, setCocktailIngredientsList] = useState([])
+  const [cocktailIngredientsList, setCocktailIngredientsList] = useState([]);
 
   useEffect(() => {
     dispatch(getCategoriesListThunk());
@@ -37,15 +34,6 @@ const AddRecipeForm = () => {
     dispatch(getAllGlassesThunk());
   }, [dispatch]);
 
-  // useEffect(()=> {
-  //   setCocktailIngredientsList([{   
-  //   id: nanoid(),
-  //   title: 'Lem',
-  //   unitQuantity: '1',
-  //   unit: 'cl',
-  //   }])
-  // }, []);
-
   const resetForm = () => {
     setImageURL('');
     setItemTitleRecipe('');
@@ -53,7 +41,7 @@ const AddRecipeForm = () => {
     setCategory(null);
     setGlass(null);
     setInstructions('');
-    setCocktailIngredientsList([])
+    setCocktailIngredientsList([]);
   };
 
   const handleOnImgSelect = async e => {
@@ -65,28 +53,29 @@ const AddRecipeForm = () => {
     });
     reader.readAsDataURL(localFile);
   };
-  
+
   const handleOnInstructions = e => {
     const text = e.target.value;
     const lines = text.split('\n');
     setInstructions(lines);
     console.log(instructions);
-  }
+  };
 
   const handleIncIngredients = () => {
     console.log(cocktailIngredientsList);
     setCocktailIngredientsList(p => {
-      return [...p, {
-        id: nanoid(),
-        title: '',
-        unitQuantity: '',
-        unit: '',
-      }]
+      return [
+        ...p,
+        {
+          id: nanoid(),
+          title: '',
+          unitQuantity: '',
+          unit: '',
+        },
+      ];
     });
     return;
   };
-
-  console.log(cocktailIngredientsList);
 
   const handleDecIngredient = () => {
     const newIngredientsList = [...cocktailIngredientsList];
@@ -94,8 +83,7 @@ const AddRecipeForm = () => {
     setCocktailIngredientsList(newIngredientsList);
   };
 
-  
-  const handleDeleteIngredient = (index) => {
+  const handleDeleteIngredient = index => {
     const newIngredientsList = [...cocktailIngredientsList];
     newIngredientsList.splice(index, 1);
     setCocktailIngredientsList(newIngredientsList);
@@ -103,14 +91,12 @@ const AddRecipeForm = () => {
 
   const handleOnChangeIngredientName = (e, i) => {
     const tmpList = [...cocktailIngredientsList];
-    // tmpList[i].id = e.value;
-    // tmpList[i].title = e.label;
     console.log(tmpList);
     tmpList[i] = {
       ...tmpList[i],
       id: e.value,
-      title: e.label
-    }
+      title: e.label,
+    };
     setCocktailIngredientsList(tmpList);
   };
 
@@ -130,15 +116,14 @@ const AddRecipeForm = () => {
     tmpList[i].unitQuantity = tmpData;
     setCocktailIngredientsList(tmpList);
   };
-  
+
   const newIngredientsList = cocktailIngredientsList.map(obj => {
     return {
-    _id: obj.id,
-    title: obj.title,
-    measure: `${obj.unitQuantity} ${obj.unit}`
-  }
-  })
-  console.log(newIngredientsList);
+      _id: obj.id,
+      title: obj.title,
+      measure: `${obj.unitQuantity} ${obj.unit}`,
+    };
+  });
 
   const handleOnSubmit = () => {
     const formData = new FormData();
@@ -153,51 +138,49 @@ const AddRecipeForm = () => {
     formData.append('ingredients', JSON.stringify(newIngredientsList));
 
     dispatch(addRecipeThunk(formData));
-    // resetForm();
-    // navigate('/my', { replace: true });
+    resetForm();
+    navigate('/my');
   };
 
   return (
     <>
-    <Formik
-      initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }}
-      onSubmit={handleOnSubmit}
-    >
-      <StyledForm autoComplete="off">
-        <RecipeDescriptionFields
-          dataField={{
-            imgURL,
-            itemTitleRecipe,
-            aboutRecipe,
-            category,
-            glass,
-          }}
-          handleOnImgSelect={handleOnImgSelect}
-          handleOnTitleRecipe={setItemTitleRecipe}
-          handleOnAboutRecipe={setAboutRecipe}
-          handleOnCategory={setCategory}
-          handleOnGlass={setGlass}
-          categoryList={drinksCategory}
-          glassList={drinksGlass}
-        />
-        <RecipeIngredientsFields 
-          cocktailIngredientList={cocktailIngredientsList}
-          handleIncIngredients={handleIncIngredients}
-          handleDecIngredients={handleDecIngredient}
-          handleOnDeleteIngredient={handleDeleteIngredient}
-          handleOnChangeIngredientName={handleOnChangeIngredientName}
-          handleOnChangeIngredientUnit={handleOnChangeIngredientUnit}
-          handleOnChangeUnitQuantity={handleOnChangeUnitQuantity}
+      <Formik
+        initialValues={{ imgURL: '', itemTitleRecipe: '', aboutRecipe: '' }}
+        onSubmit={handleOnSubmit}
+      >
+        <StyledForm autoComplete="off">
+          <RecipeDescriptionFields
+            dataField={{
+              imgURL,
+              itemTitleRecipe,
+              aboutRecipe,
+              category,
+              glass,
+            }}
+            handleOnImgSelect={handleOnImgSelect}
+            handleOnTitleRecipe={setItemTitleRecipe}
+            handleOnAboutRecipe={setAboutRecipe}
+            handleOnCategory={setCategory}
+            handleOnGlass={setGlass}
+            categoryList={drinksCategory}
+            glassList={drinksGlass}
           />
-        <RecipePreparationFields
-              dataField={instructions}
-              handleOnInstructions={handleOnInstructions}
-            />
-        <StyledAddButton type="submit">Add</StyledAddButton>
-      </StyledForm>
-    </Formik>
+          <RecipeIngredientsFields
+            cocktailIngredientList={cocktailIngredientsList}
+            handleIncIngredients={handleIncIngredients}
+            handleDecIngredients={handleDecIngredient}
+            handleOnDeleteIngredient={handleDeleteIngredient}
+            handleOnChangeIngredientName={handleOnChangeIngredientName}
+            handleOnChangeIngredientUnit={handleOnChangeIngredientUnit}
+            handleOnChangeUnitQuantity={handleOnChangeUnitQuantity}
+          />
+          <RecipePreparationFields
+            dataField={instructions}
+            handleOnInstructions={handleOnInstructions}
+          />
+          <StyledAddButton type="submit">Add</StyledAddButton>
+        </StyledForm>
+      </Formik>
     </>
   );
 };
-
-export default AddRecipeForm;
