@@ -18,6 +18,8 @@ export const StyledAddButton = styled(StyledButton)`
   align-items: center;
   margin: 0;
   padding: 0;
+  background-color: ${props => props.theme.textColor};
+  color: ${props => props.theme.bgrColor};
 
   @media screen and (min-width: 768px) {
     width: 118px;

@@ -3,20 +3,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { nanoid } from '@reduxjs/toolkit';
 import { Formik } from 'formik';
-import { selectCategories, selectGlasses } from '../../../redux/selectors';
+import {
+  selectCategories,
+  selectGlasses,
+  selectIngredients,
+} from '../../../redux/selectors';
 import {
   getCategoriesListThunk,
   getAllGlassesThunk,
   addRecipeThunk,
+  getIngredientsListThunk,
 } from 'redux/Cocktails/cocktailsOperations';
 import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
-import { RecipeDescriptionFields, RecipeIngredientsFields, RecipePreparationFields } from 'components';
+import {
+  RecipeDescriptionFields,
+  RecipeIngredientsFields,
+  RecipePreparationFields,
+} from 'components';
 
 export const AddRecipeForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const drinksCategory = useSelector(selectCategories);
   const drinksGlass = useSelector(selectGlasses);
+  const ingredientsList = useSelector(selectIngredients);
   const [imgURL, setImageURL] = useState('');
   const [imgData, setImageData] = useState(null);
   const [itemTitleRecipe, setItemTitleRecipe] = useState('');
@@ -27,12 +37,19 @@ export const AddRecipeForm = () => {
   const [cocktailIngredientsList, setCocktailIngredientsList] = useState([]);
 
   useEffect(() => {
+    if (drinksCategory.length !== 0) return;
     dispatch(getCategoriesListThunk());
-  }, [dispatch]);
+  }, [dispatch, drinksCategory]);
 
   useEffect(() => {
+    if (drinksGlass.length !== 0) return;
     dispatch(getAllGlassesThunk());
-  }, [dispatch]);
+  }, [dispatch, drinksGlass]);
+
+  useEffect(() => {
+    if (ingredientsList.length !== 0) return;
+    dispatch(getIngredientsListThunk());
+  }, [dispatch, ingredientsList]);
 
   const resetForm = () => {
     setImageURL('');
@@ -173,6 +190,7 @@ export const AddRecipeForm = () => {
             handleOnChangeIngredientName={handleOnChangeIngredientName}
             handleOnChangeIngredientUnit={handleOnChangeIngredientUnit}
             handleOnChangeUnitQuantity={handleOnChangeUnitQuantity}
+            ingredientsList={ingredientsList}
           />
           <RecipePreparationFields
             dataField={instructions}

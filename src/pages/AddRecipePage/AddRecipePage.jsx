@@ -3,7 +3,7 @@ import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
 
 const AddRecipePage = () => {
   return (
-    <>А
+    <>
       <MainPageTitle title="Add recipe" />
       <StyledPageWrapper>
         <AddRecipeForm />

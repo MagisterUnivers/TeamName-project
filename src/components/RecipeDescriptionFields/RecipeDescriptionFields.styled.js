@@ -24,10 +24,11 @@ export const StyledField = styled(Field)`
   width: 100%;
   height: 34px;
   border: none;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  border-bottom: 1px solid;
+  border-color: ${props => props.theme.secondBorderColor};
   background-color: transparent;
   outline: none;
-  color: #f3f3f3;
+  color: ${props => props.theme.textColor};
   padding-bottom: 14px;
   font-size: 14px;
   font-style: normal;
@@ -47,11 +48,11 @@ export const StyledField = styled(Field)`
   &:hover,
   &::selection {
     outline: none;
-    border-color: #f3f3f3;
+    border-color: ${props => props.theme.hoverBorderColor};
   }
 
   &::placeholder {
-    color: rgba(243, 243, 243, 0.5);
+    color: ${props => props.theme.secondBorderColor};
   }
 `;
 
@@ -60,7 +61,7 @@ export const StyledError = styled(ErrorMessage)`
   font-size: 11px;
   font-weight: 400;
   line-height: calc (14 / 11);
-  color: #da1414;
+  color: ${props => props.theme.errorStateColor};
 `;
 
 export const StyledImgBtn = styled.div`
@@ -150,7 +151,8 @@ export const StyledWrapperSelect = styled.div`
   align-items: start;
   height: 34px;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  border-bottom: 1px solid;
+  border-color: ${props => props.theme.secondBorderColor};
   transition: border-color 400ms ease;
 
   @media (min-width: 768px) {
@@ -162,12 +164,12 @@ export const StyledWrapperSelect = styled.div`
   &:hover,
   &::selection {
     outline: none;
-    border-color: #f3f3f3;
+    border-color: ${props => props.theme.hoverBorderColor};
   }
 `;
 
 export const StyledLabelSelect = styled.label`
-  color: rgba(243, 243, 243, 0.5);
+  color: ${props => props.theme.secondBorderColor};
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -208,7 +210,7 @@ export const StyledSelect = styled(Select)`
     text-align: right;
     letter-spacing: -0.02em;
     color: black;
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     margin-top: 3px;
     padding-bottom: 3px;
 
@@ -269,7 +271,6 @@ export const StyledSelect = styled(Select)`
 
   // стилизует опции внутри списка ================
   & .react-select__option {
-    /* color: rgba(243, 243, 243, 0.40); */
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -300,7 +301,7 @@ export const StyledSelect = styled(Select)`
 
   & .react-select__dropdown-indicator {
     padding: 0;
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     outline: none;
     /* transition: transform 0.2s; */
     align-items: center;
@@ -311,7 +312,7 @@ export const StyledSelect = styled(Select)`
     &:active {
       padding: 0;
       /* transform: rotate(180deg); */
-      color: #f3f3f3;
+      color: ${props => props.theme.textColor};
       outline: none;
     }
   }
