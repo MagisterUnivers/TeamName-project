@@ -108,6 +108,7 @@ const DrinksSearch = ({ categoryName }) => {
     // navigate(
     //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
     // );
+    setSearchQuery('');
   };
   return (
     <SearchFormStyled>
