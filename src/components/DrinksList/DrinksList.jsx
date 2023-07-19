@@ -1,18 +1,37 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectCocktails,
+  selectPage,
+  selectSearch,
+  selectSearchResults,
+} from 'redux/selectors';
 import DrinkCard from 'components/DrinkCard/DrinkCard';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectCocktails } from 'redux/selectors';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import NotFound from 'components/NotFound/NotFound';
+import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 
 const DrinksList = () => {
-  const cocktails = useSelector(selectCocktails);
+  const dispatch = useDispatch();
+  const searchResults = useSelector(selectSearchResults);
+  const page = useSelector(selectPage);
+  const search = useSelector(selectSearch);
+
+  useEffect(() => {
+    // if (search.query || search.chosenCategory || search.chosenIngredient||)
+    dispatch(searchAllDrinksThunk({ search, page }));
+  }, [dispatch, search, page]);
+  console.log(searchResults);
   return (
     <Section>
       <DrinkListStyled>
-        {cocktails.length !== 0 ? (
-          cocktails.map(cocktail => (
-            <DrinkCard key={cocktail._id} cocktail={cocktail} page={'drinks'} />
+        {searchResults.length !== 0 ? (
+          searchResults.map(searchResult => (
+            <DrinkCard
+              key={searchResult._id}
+              cocktail={searchResult}
+              page={'drinks'}
+            />
           ))
         ) : (
           <NotFound

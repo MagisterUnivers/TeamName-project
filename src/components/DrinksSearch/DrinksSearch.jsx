@@ -1,21 +1,10 @@
-import React, { useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-
-import { styled } from '@mui/material/styles';
-// import SearchIcon from '@mui/icons-material/Search';
-
+import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
-// import Select from 'react-select';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import {
-  getAllGlassesThunk,
-  getCategoriesListThunk,
-  getIngredientsListThunk,
-  searchAllDrinksThunk,
-} from 'redux/Cocktails/cocktailsOperations';
+import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import {
   SelectStyled,
   InputStyled,
@@ -35,8 +24,8 @@ import {
   setPage,
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
-import { useNavigate } from 'react-router';
-import { red } from '@mui/material/colors';
+import { useEffect } from 'react';
+// import { useNavigate } from 'react-router';
 
 const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
@@ -44,14 +33,28 @@ const DrinksSearch = ({ categoryName }) => {
   const categoriesList = useSelector(selectCategories);
   const page = useSelector(selectPage);
   const search = useSelector(selectSearch);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // function customTheme(theme) {
   //   return {
   //     ...theme,
   //     colors: { ...theme.colors, primary25: 'orange', primary: 'orange' },
   //   };
   // }
+  const categoriesListOptions = categoriesList.map(category => {
+    return { value: category._id, label: category.category };
+  });
+  categoriesListOptions.unshift({
+    value: '100',
+    label: 'All categories',
+  });
 
+  const ingredientsListOptions = ingredientsList.map(ingredient => {
+    return { value: ingredient._id, label: ingredient.title };
+  });
+  ingredientsListOptions.unshift({
+    value: '100',
+    label: 'All ingredients',
+  });
   const styles = {
     menuList: base => ({
       ...base,
@@ -87,21 +90,37 @@ const DrinksSearch = ({ categoryName }) => {
       padding: '0px',
     }),
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (search.query.trim() === '') {
-      Notify.warning('Write something.', {
-        fontSize: '16px',
-        width: '350px',
-        padding: '10px',
-      });
-      return;
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   if (search.query.trim() === '') {
+  //     Notify.warning('Write something.', {
+  //       fontSize: '16px',
+  //       width: '350px',
+  //       padding: '10px',
+  //     });
+  //     return;
+  //   }
+  // navigate(
+  //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
+  // );
+  // };
+  const handleChangeCategory = e => {
+    if (e.label !== 'All categories') {
+      dispatch(setChosenCategory(e.label));
+      dispatch(setPage(1));
+    } else {
+      dispatch(setChosenCategory(''));
     }
-    dispatch(searchAllDrinksThunk({ search, page }));
-    // navigate(
-    //   `/main/drink/Cocktail?query=${search.query}&ingredient=${search.chosenIngredient}`
-    // );
   };
+  const handleChangeIngredient = e => {
+    if (e.label !== 'All ingredients') {
+      dispatch(setChosenIngredient(e.label));
+      dispatch(setPage(1));
+    } else {
+      dispatch(setChosenIngredient(''));
+    }
+  };
+
   return (
     <SearchWrapperStyled>
       <PaperStyled
@@ -142,7 +161,7 @@ const DrinksSearch = ({ categoryName }) => {
           aria-label="search"
           onSubmit
         >
-          {/* <SearchIcon /> */}
+          <SearchIcon />
         </IconButton>
       </PaperStyled>
       {/* <form onSubmit={handleSubmit}>
@@ -165,38 +184,25 @@ const DrinksSearch = ({ categoryName }) => {
         styles={styles}
         name="category"
         value={search.category}
-        options={categoriesList.map(category => {
-          return { value: category._id, label: category.category };
-        })}
+        options={categoriesListOptions}
         placeholder="All categories"
         defaultValue={{ label: categoryName, value: '0' }}
         isSearchable={true}
         autoFocus
-        isClearable
-        backspaceRemovesValue
         classNamePrefix="react-select"
-        onChange={e => {
-          dispatch(setChosenCategory(e.label));
-          dispatch(setPage(1));
-        }}
+        onChange={handleChangeCategory}
         required
       />
       <SelectStyled
         styles={styles}
         value={search.ingredient}
         name="ingredient"
-        options={ingredientsList.map(ingredient => {
-          return { value: ingredient._id, label: ingredient.title };
-        })}
+        options={ingredientsListOptions}
         placeholder="Ingredients"
         isSearchable={true}
         autoFocus
-        isClearable
         classNamePrefix="react-select"
-        // onChange={e => {
-        //   dispatch(setChosenIngredient(e.label));
-        //   dispatch(setPage(1));
-        // }}
+        onChange={handleChangeIngredient}
         required
       />
     </SearchWrapperStyled>
