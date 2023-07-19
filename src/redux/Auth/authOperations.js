@@ -99,6 +99,7 @@ export const refreshThunk = createAsyncThunk(
     setToken(refreshToken);
     try {
       const res = await instance.post('users/refresh');
+      console.log(res);
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;
@@ -111,8 +112,8 @@ export const refreshThunk = createAsyncThunk(
 export const getCurrentUserThunk = createAsyncThunk(
   '@@auth/current',
   async (_, thunkAPI) => {
-    const refreshToken = selectAuthAccessToken(thunkAPI.getState());
-    setToken(refreshToken);
+    // const refreshToken = selectAuthAccessToken(thunkAPI.getState());
+    // setToken(refreshToken);
     try {
       const res = await instance.get('users/current');
       return res.data;
@@ -152,9 +153,7 @@ export const verifyThunk = createAsyncThunk(
     }
   }
 );
-export const setSubscription =
-  async credentials => {
-    const res = await instance.patch('users/subscription', credentials);
-    return res.data;
-  }
-
+export const setSubscription = async credentials => {
+  const res = await instance.patch('users/subscription', credentials);
+  return res.data;
+};

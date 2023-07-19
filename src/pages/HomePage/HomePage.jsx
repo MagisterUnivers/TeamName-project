@@ -6,6 +6,7 @@ import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperat
 import PreviewDrinks from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 
 import { selectCocktails } from 'redux/selectors';
+import Hero from 'components/Hero/Hero';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const HomePage = () => {
 
   return (
     <>
+      <Hero />
       <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
       <PreviewDrinks title="Cocktail" data={cocktail} />
       <PreviewDrinks title="Shake" data={shake} />

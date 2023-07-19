@@ -27,7 +27,7 @@ export const StyledField = styled(Field)`
   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
   background-color: transparent;
   outline: none;
-  color: rgba(243, 243, 243, 0.5);
+  color: #f3f3f3;
   padding-bottom: 14px;
   font-size: 14px;
   font-style: normal;
@@ -48,6 +48,10 @@ export const StyledField = styled(Field)`
   &::selection {
     outline: none;
     border-color: #f3f3f3;
+  }
+
+  &::placeholder {
+    color: rgba(243, 243, 243, 0.5);
   }
 `;
 
