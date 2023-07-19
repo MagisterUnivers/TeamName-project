@@ -13,7 +13,7 @@ export const getCategoriesListThunk = createAsyncThunk(
     // if (!token) {
     //   return rejectWithValue();
     // }
-   
+
     try {
       setToken(token);
       const res = await instance.get('recipes/category-list');
@@ -238,3 +238,15 @@ export const removeFromFavoriteThunk = createAsyncThunk(
 );
 
 // Popular
+
+export const getPopularThunk = createAsyncThunk(
+  '@@cocktails/popular',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const res = await instance.get(`/popular-recipe/`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);

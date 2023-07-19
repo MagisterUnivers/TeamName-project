@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPopularThunk } from 'redux/Cocktails/cocktailsOperations';
 import {
   FollowUs,
   AddRecipeForm,
@@ -7,6 +10,12 @@ import {
 import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
 
 const AddRecipePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPopularThunk());
+  }, []); // eslint-disable-line
+
   return (
     <>
       <MainPageTitle title="Add recipe" />
