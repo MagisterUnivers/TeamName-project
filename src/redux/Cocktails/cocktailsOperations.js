@@ -159,10 +159,11 @@ export const addRecipeThunk = createAsyncThunk(
       } else {
         res = await instance.post('own', data);
       }
-
       Notiflix.Notify.success('Recipe added to collection successfully');
       return res.data;
     } catch (error) {
+      const errorMessage = error.response.data.message;
+      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
       return rejectWithValue(error.response.status);
     }
   }

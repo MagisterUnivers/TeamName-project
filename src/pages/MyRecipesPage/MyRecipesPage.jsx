@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Paginator from 'components/Paginator/Paginator';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
-import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
+import {MainPageTitle} from 'components';
 
 const MyRecipesPage = () => {
   const dispatch = useDispatch();

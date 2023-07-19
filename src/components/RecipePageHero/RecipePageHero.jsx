@@ -7,7 +7,7 @@ import {
   StyledImage,
 } from './RecipePageHero.styled';
 import { favoriteFilter } from 'components/utils/filter';
-import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
+import { MainPageTitle } from 'components';
 
 const RecipePageHero = ({ func }) => {
   const cocktails = useSelector(selectCocktails);

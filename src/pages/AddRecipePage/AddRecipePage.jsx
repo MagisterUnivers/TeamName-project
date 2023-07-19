@@ -1,7 +1,4 @@
-import { FollowUs } from 'components';
-import AddRecipeForm from 'components/Forms/AddRecipeForm/AddRecipeForm';
-import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
-import PopularRecipe from 'components/PopularRecipe/PopularRecipe';
+import { FollowUs, AddRecipeForm, PopularRecipe, MainPageTitle } from 'components';
 import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
 
 const AddRecipePage = () => {

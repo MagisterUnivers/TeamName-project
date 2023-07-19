@@ -4,6 +4,7 @@ export * from './SharedLayout/SharedLayout';
 export * from './Header/Header';
 export * from './Footer/Footer';
 export * from './Container/Container';
+export * from './MainPageTitle/MainPageTitle';
 
 //  Components
 
@@ -23,7 +24,11 @@ export * from './Modals/UserLogoModal/UserLogoModal';
 
 // AddRecipePage
 
+export * from './Forms/AddRecipeForm/AddRecipeForm';
 export * from './RecipeIngredientsFields/RecipeIngredientsFields';
+export * from './RecipeDescriptionFields/RecipeDescriptionFields';
+export * from './RecipePreparationFields/RecipePreparationFields';
+export * from './PopularRecipe/PopularRecipe';
 
 // Subscribe Form
 

@@ -10,7 +10,7 @@ import {
   StyledWrapper,
 } from './PopularRecipe.styled';
 
-const PopularRecipe = () => {
+export const PopularRecipe = () => {
   // fetch to get some popular cocktail
 
   return (
@@ -40,5 +40,3 @@ const PopularRecipe = () => {
     </>
   );
 };
-
-export default PopularRecipe;

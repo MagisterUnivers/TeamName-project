@@ -14,7 +14,7 @@ import {
 } from './RecipeDescriptionFields.styled';
 import { FiPlus } from 'react-icons/fi';
 
-const RecipeDescriptionFields = ({
+export const RecipeDescriptionFields = ({
   dataField,
   handleOnImgSelect,
   handleOnTitleRecipe,
@@ -137,7 +137,6 @@ const RecipeDescriptionFields = ({
   );
 };
 
-export default RecipeDescriptionFields;
 
 // validationSchema={Yup.object({
 //   itemTitleRecipe: Yup.string().required('Required'),

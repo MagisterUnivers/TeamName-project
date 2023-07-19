@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { devices } from 'constants/breakpoints';
 
 export const FormWrapper = styled.div`
 margin-bottom: 20px`;
 
 export const StyledTitle = styled.h2`
-  color: #f3f3f3;
+color: ${props => props.theme.textColor};
   font-size: 28px;
   font-weight: 600;
   line-height: calc(32 / 28);
   display: block;
   margin-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     font-size: 40px;
     line-height: calc(44 / 40);
   }
@@ -23,10 +24,11 @@ export const StyledTextArea = styled(Field)`
   height: 184px;
   padding: 16px 18px;
   border-radius: 20px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: 1px solid;
+  border-color: ${props => props.theme.secondBorderColor};
   opacity: 0.800000011920929;
   background-color: transparent;
-  color: #f3f3f3;
+  color: ${props => props.theme.textColor};
   outline: none;
   font-family: inherit;
   resize: none;
@@ -37,12 +39,12 @@ export const StyledTextArea = styled(Field)`
   transition: border-color 400ms ease;
 
   &::placeholder {
-    color: rgba(243, 243, 243, 0.5);
+    color: ${props => props.theme.secondBorderColor};
   }
 
   &:hover,
   &:focus {
-    border-color: #f3f3f3;
+    border-color: ${props => props.theme.hoverBorderColor};
   }
 
   &::-webkit-scrollbar {
@@ -61,7 +63,7 @@ export const StyledTextArea = styled(Field)`
     background-color: #f3f3f3;
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 480px;
     padding: 14px 24px;
     font-size: 17px;
@@ -78,7 +80,7 @@ export const StyledDiv = styled.div`
   outline: none;
   overflow: hidden;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 480px;
   }
 `;

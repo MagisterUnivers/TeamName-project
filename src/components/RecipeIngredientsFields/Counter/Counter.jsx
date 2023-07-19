@@ -11,12 +11,11 @@ const Counter = ({
 
   const StyledIconMinus = getStyledIcon(iconMinus);
   const StyledIconPlus = getStyledIcon(iconPlus);
-  console.log(cocktailIngredientList);
 
   return (
     <CounterWrp>
       <StyledButton onClick={()=> handleDecIngredients()}>
-        <StyledIconMinus />
+        <StyledIconMinus/>
       </StyledButton>
       <p>{cocktailIngredientList.length }</p>
       <StyledButton onClick={()=> handleIncIngredients()}>
