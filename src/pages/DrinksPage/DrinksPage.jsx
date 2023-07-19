@@ -11,7 +11,7 @@ import {
   getIngredientsListThunk,
   searchAllDrinksThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
+import {MainPageTitle} from 'components';
 import { setChosenCategory } from 'redux/Cocktails/cocktailsSlice';
 import {
   selectCategories,

@@ -6,7 +6,7 @@ import {
   StyledDiv,
 } from './RecipePreparationFields.styled';
 
-const RecipePreparationFields = ({ dataField, handleOnInstructions }) => {
+ export const RecipePreparationFields = ({ dataField, handleOnInstructions }) => {
   return (
     <FormWrapper>
       <StyledTitle>Recipe Preparation</StyledTitle>
@@ -23,5 +23,3 @@ const RecipePreparationFields = ({ dataField, handleOnInstructions }) => {
     </FormWrapper>
   );
 };
-
-export default RecipePreparationFields;

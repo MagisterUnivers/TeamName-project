@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 export const StyledMainPageTitle = styled.h1`
   color: #f3f3f3;
-  /* color: ${props => props.theme.bgrColor}; */
+  color: ${props => props.theme.textColor};
   font-size: 32px;
   font-weight: 600;
   line-height: calc(38 / 32);

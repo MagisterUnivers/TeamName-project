@@ -1,6 +1,7 @@
 import { Field, ErrorMessage } from 'formik';
 import Select from 'react-select';
 import styled from 'styled-components';
+import { devices } from 'constants/breakpoints';
 
 export const StyledFormInsight = styled.div`
   display: flex;
@@ -9,12 +10,12 @@ export const StyledFormInsight = styled.div`
   align-items: center;
   margin-bottom: 80px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     flex-direction: row;
     justify-content: center;
     gap: 32px;
   }
-  @media screen and (min-width: 1440px) {
+  @media ${devices.desktop} {
     gap: 40px;
     justify-content: start;
   }
@@ -24,10 +25,11 @@ export const StyledField = styled(Field)`
   width: 100%;
   height: 34px;
   border: none;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  border-bottom: 1px solid;
+  border-color: ${props => props.theme.secondBorderColor};
   background-color: transparent;
   outline: none;
-  color: #f3f3f3;
+  color: ${props => props.theme.textColor};
   padding-bottom: 14px;
   font-size: 14px;
   font-style: normal;
@@ -37,7 +39,7 @@ export const StyledField = styled(Field)`
   cursor: pointer;
   transition: border-color 400ms ease;
 
-  @media (min-width: 768px) {
+  @media ${devices.tablet} {
     padding-bottom: 18px;
     height: 41px;
   }
@@ -47,11 +49,11 @@ export const StyledField = styled(Field)`
   &:hover,
   &::selection {
     outline: none;
-    border-color: #f3f3f3;
+    border-color: ${props => props.theme.hoverBorderColor};
   }
 
   &::placeholder {
-    color: rgba(243, 243, 243, 0.5);
+    color: ${props => props.theme.secondBorderColor};
   }
 `;
 
@@ -60,7 +62,7 @@ export const StyledError = styled(ErrorMessage)`
   font-size: 11px;
   font-weight: 400;
   line-height: calc (14 / 11);
-  color: #da1414;
+  color: ${props => props.theme.errorStateColor};
 `;
 
 export const StyledImgBtn = styled.div`
@@ -89,11 +91,11 @@ export const StyledFildWrapper = styled.div`
   gap: 34px;
   width: 335px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     gap: 40px;
     width: 352px;
   }
-  @media screen and (min-width: 1440px) {
+  @media ${devices.desktop} {
     width: 393px;
   }
 `;
@@ -116,11 +118,11 @@ export const StyledImgLabel = styled.label`
   cursor: pointer;
   transition: box-shadow 400ms ease;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 320px;
     height: 320px;
   }
-  @media screen and (min-width: 1440px) {
+  @media ${devices.desktop} {
     width: 400;
     height: 400;
   }
@@ -150,10 +152,11 @@ export const StyledWrapperSelect = styled.div`
   align-items: start;
   height: 34px;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  border-bottom: 1px solid;
+  border-color: ${props => props.theme.secondBorderColor};
   transition: border-color 400ms ease;
 
-  @media (min-width: 768px) {
+  @media ${devices.tablet} {
     padding-bottom: 18px;
     height: 41px;
   }
@@ -162,12 +165,12 @@ export const StyledWrapperSelect = styled.div`
   &:hover,
   &::selection {
     outline: none;
-    border-color: #f3f3f3;
+    border-color: ${props => props.theme.hoverBorderColor};
   }
 `;
 
 export const StyledLabelSelect = styled.label`
-  color: rgba(243, 243, 243, 0.5);
+  color: ${props => props.theme.secondBorderColor};
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -201,18 +204,17 @@ export const StyledSelect = styled(Select)`
 
   // стилизует инпут выпадающего списка ================
   & .react-select__single-value {
-    // стилизует текст ================
     font-weight: 500;
     font-size: 14px;
     line-height: 1;
     text-align: right;
     letter-spacing: -0.02em;
     color: black;
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     margin-top: 3px;
     padding-bottom: 3px;
 
-    @media (min-width: 768px) {
+    @media ${devices.tablet} {
       font-size: 16px;
     }
   }
@@ -220,17 +222,12 @@ export const StyledSelect = styled(Select)`
   & .react-select__value-container {
     padding: 0;
     align-items: start;
-
-    // стилизует контейнер ================
   }
-  // =========================================
 
   & .react-select-container {
     box-shadow: none;
     outline: none;
     border-color: transparent;
-
-    // box-shadow: none;
 
     &:focus,
     &:active,
@@ -259,24 +256,23 @@ export const StyledSelect = styled(Select)`
     background-color: #161f37;
     color: #f3f3f3;
 
-    @media (min-width: 768px) {
+    @media ${devices.tablet} {
       width: 139px;
     }
-    @media (min-width: 1440px) {
+    @media ${devices.desktop} {
       width: 154px;
     }
   }
 
   // стилизует опции внутри списка ================
   & .react-select__option {
-    /* color: rgba(243, 243, 243, 0.40); */
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: calc(16 / 12);
     background-color: #161f37;
 
-    @media (min-width: 1440px) {
+    @media ${devices.desktop} {
       font-size: 14px;
       line-height: calc(18 / 14);
     }
@@ -289,7 +285,6 @@ export const StyledSelect = styled(Select)`
       background-color: #161f37;
     }
   }
-  // =========================================
 
   // стилизует стрелочку выпадающего списка ================
   & .react-select__indicators {
@@ -300,7 +295,7 @@ export const StyledSelect = styled(Select)`
 
   & .react-select__dropdown-indicator {
     padding: 0;
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     outline: none;
     /* transition: transform 0.2s; */
     align-items: center;
@@ -311,7 +306,7 @@ export const StyledSelect = styled(Select)`
     &:active {
       padding: 0;
       /* transform: rotate(180deg); */
-      color: #f3f3f3;
+      color: ${props => props.theme.textColor};
       outline: none;
     }
   }
