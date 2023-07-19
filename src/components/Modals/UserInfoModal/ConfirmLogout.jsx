@@ -18,9 +18,9 @@ const ConfirmLogout = ({ id, onClose }) => {
   const navigate = useNavigate();
   const handleDelete = () => {
     dispatch(logoutThunk()).then(res => {
-      console.log('Response:', res.payload);
+      console.log('Response:', res);
         if (res.payload && res.payload.status === 204) {
-          navigate('/signin');
+          navigate('/');
   }});
   };
 

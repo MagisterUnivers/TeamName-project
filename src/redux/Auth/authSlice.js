@@ -137,22 +137,6 @@ const authSlice = createSlice({
       state.loading = false;
       Loading.remove();
     },
-    [updateUserThunk.pending]: (state, { payload }) => {
-      state.loading = true;
-      Loading.hourglass('We are validating your data...');
-    },
-
-    [updateUserThunk.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
-      state.avatarURL = payload.avatarURL;
-      state.loading = false;
-      Loading.remove();
-    },
-    [updateUserThunk.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.loading = false;
-      Loading.remove();
-    },
   },
 });
 

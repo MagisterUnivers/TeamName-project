@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'redux/selectors';
+import { selectUserInfo } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
   ModalWrapper,
@@ -20,14 +20,14 @@ import {
   StyledMessage,
   StyledIconError,
 } from 'components/RegisterForm/RegisterForm.styled';
-// import { updateUserThunk } from 'redux/UserInfo/userOperations';
+import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
-import { updateUserThunk } from 'redux/Auth/authOperations';
+// import { updateUserThunk } from 'redux/Auth/authOperations';
 
 const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const user = useSelector(selectUserInfo);
 
   const handleModalClick = e => {
     if (e.target.classList.contains('modal')) {

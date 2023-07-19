@@ -3,10 +3,11 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import {
   getCurrentUserThunk,
   updateThemeThunk,
+  updateUserThunk,
   } from './userOperations';
 
 const initialState = {
-  user: { name: '', email: '' },
+  user: { name: '', email: '', avatarURL: '' },
   theme: 'dark',
   firstRender: true,
 };
@@ -33,7 +34,22 @@ const userInfoSlice = createSlice({
       // state.loading = false;
       Loading.remove();
     },
- 
+    [updateUserThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('We are validating your data...');
+    },
+
+    [updateUserThunk.fulfilled]: (state, { payload }) => {
+      state.user = payload.user;
+      state.avatarURL = payload.avatarURL;
+      state.loading = false;
+      Loading.remove();
+    },
+    [updateUserThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
     [getCurrentUserThunk.pending]: (state, { payload }) => {
       state.loading = true;
       Loading.hourglass('We are validating your data...');
