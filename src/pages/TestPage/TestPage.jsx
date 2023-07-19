@@ -8,7 +8,7 @@
 // import { selectCocktails } from 'redux/selectors';
 // import { Container } from 'components/Container/Container';
 
-// export const TestPage = () => {
+//  const TestPage = () => {
 //   const dispatch = useDispatch();
 //   // const category = encodeURIComponent('Cocktail');
 //   const category = useSelector(selectCocktails);
@@ -52,3 +52,5 @@
 //     </>
 //   );
 // };
+
+// export default TestPage

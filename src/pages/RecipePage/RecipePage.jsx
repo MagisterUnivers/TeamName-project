@@ -19,7 +19,7 @@ import {
   selectUser,
 } from 'redux/selectors';
 
-export const RecipePage = ({ id }) => {
+const RecipePage = ({ id }) => {
   // we must get id with props
   const dispatch = useDispatch();
   const loading = useSelector(selectCocktailsIsLoading);
@@ -58,3 +58,5 @@ export const RecipePage = ({ id }) => {
     </>
   );
 };
+
+export default RecipePage;

@@ -6,7 +6,7 @@ import {
 } from 'components';
 import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
 
-export const AddRecipePage = () => {
+const AddRecipePage = () => {
   return (
     <>
       <MainPageTitle title="Add recipe" />
@@ -20,3 +20,5 @@ export const AddRecipePage = () => {
     </>
   );
 };
+
+export default AddRecipePage;

@@ -3,7 +3,7 @@ import { SigninForm } from 'components';
 import { BaseDiv, PicturedWrapper } from '../WelcomePage/WelcomPage.styled';
 import { SummaryWrapper } from '../RegisterPage/RegisterPage.styled';
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1439.98px)',
@@ -55,3 +55,5 @@ export const LoginPage = () => {
     </BaseDiv>
   );
 };
+
+export default LoginPage;

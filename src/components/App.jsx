@@ -3,29 +3,30 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
 import { ThemeProvider } from 'styled-components';
 import { Suspense, lazy, useEffect } from 'react';
-import { Spinner, SharedLayout } from 'components';
 import { PublicRoute, PrivateRoute } from 'routes';
-import {
-  SPTestPage,
-  HomePage,
-  RecipePage,
-  TestPage,
-  DrinksPage,
-  MyRecipesPage,
-  FavoritePage,
-} from 'pages';
+import Spinner from './Spinner/Spinner';
+import SharedLayout from './SharedLayout/SharedLayout';
 import { darkTheme, lightTheme } from 'theme';
 import GlobalStyles from './GlobalStyles';
+import SPTestPage from 'pages/DONOTTOUCHPAGE/SPTestPage';
+import HomePage from 'pages/HomePage/HomePage';
+import DrinksPage from 'pages/DrinksPage/DrinksPage';
+import RecipePage from 'pages/RecipePage/RecipePage';
+import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
+import FavoritePage from 'pages/FavoritePage/FavoritePage';
+import TestPage from 'pages/TestPage/TestPage';
 
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
 // import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
 // import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
 
-const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
-const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
-const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
+const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
+const AddRecipePage = lazy(() =>
+  import('../pages/AddRecipePage/AddRecipePage')
+);
 
 export const App = () => {
   useEffect(() => {
@@ -67,7 +68,7 @@ export const App = () => {
             />
             {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
-              <Route path="test" element={<TestPage />} />
+              {/* <Route path="test" element={<TestPage />} /> */}
               <Route path="test2" element={<SPTestPage />} />
               <Route path="home" element={<HomePage />} />
 

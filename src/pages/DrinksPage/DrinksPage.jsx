@@ -16,7 +16,7 @@ import {
   selectSearch,
 } from 'redux/selectors';
 
-export const DrinksPage = () => {
+const DrinksPage = () => {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   dispatch(setChosenCategory(categoryName));
@@ -46,3 +46,5 @@ export const DrinksPage = () => {
     </>
   );
 };
+
+export default DrinksPage;

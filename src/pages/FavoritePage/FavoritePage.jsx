@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { Paginator, MyRecipesList, MainPageTitle } from 'components';
 
-export const FavoritePage = () => {
+const FavoritePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllFavoriteDrinksThunk());
@@ -17,3 +17,5 @@ export const FavoritePage = () => {
     </>
   );
 };
+
+export default FavoritePage;

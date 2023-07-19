@@ -12,7 +12,7 @@ import { refreshThunk } from 'redux/Auth/authOperations';
 import { Container } from 'components/Container/Container';
 import { getCurrentUserThunk } from 'redux/UserInfo/userOperations';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
   /**
     |============================
     | 
@@ -59,3 +59,5 @@ export const SharedLayout = () => {
     </>
   );
 };
+
+export default SharedLayout;

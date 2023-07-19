@@ -4,7 +4,7 @@ import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperat
 import { PreviewDrinks, HeroSection } from 'components';
 import { selectCocktails } from 'redux/selectors';
 
-export const HomePage = () => {
+const HomePage = () => {
   const dispatch = useDispatch();
 
   const category = useSelector(selectCocktails);
@@ -39,3 +39,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;

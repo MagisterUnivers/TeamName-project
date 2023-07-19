@@ -1,7 +1,7 @@
 // Main / Utils
 
 export * from './Header/Header';
-export * from './SharedLayout/SharedLayout';
+// export * from './SharedLayout/SharedLayout';
 export * from './Footer/Footer';
 export * from './Section/Section';
 export * from './Container/Container';
@@ -18,7 +18,7 @@ export * from './MyRecipesList/MyRecipesList';
 export * from './Paginator/Paginator';
 export * from './PreviewDrinks/PreviewDrinks';
 export * from './RecipeIngredientsFields/Counter/Counter';
-export * from './Spinner/Spinner';
+// export * from './Spinner/Spinner';
 
 // Recipe/id/:id
 

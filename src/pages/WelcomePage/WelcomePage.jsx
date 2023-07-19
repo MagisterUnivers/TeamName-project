@@ -10,7 +10,7 @@ import {
   SignInNavLink,
 } from './WelcomPage.styled';
 
-export const WelcomePage = () => {
+const WelcomePage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1439px)',
@@ -70,3 +70,5 @@ export const WelcomePage = () => {
     </BaseDiv>
   );
 };
+
+export default WelcomePage;
