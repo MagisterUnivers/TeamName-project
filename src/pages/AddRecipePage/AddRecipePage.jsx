@@ -1,10 +1,21 @@
-import { FollowUs } from 'components';
-import AddRecipeForm from 'components/Forms/AddRecipeForm/AddRecipeForm';
-import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
-import PopularRecipe from 'components/PopularRecipe/PopularRecipe';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPopularThunk } from 'redux/Cocktails/cocktailsOperations';
+import {
+  FollowUs,
+  AddRecipeForm,
+  PopularRecipe,
+  MainPageTitle,
+} from 'components';
 import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
 
 const AddRecipePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPopularThunk());
+  }, []); // eslint-disable-line
+
   return (
     <>
       <MainPageTitle title="Add recipe" />

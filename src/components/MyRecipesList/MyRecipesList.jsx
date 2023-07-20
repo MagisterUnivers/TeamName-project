@@ -1,11 +1,9 @@
-import DrinkCard from 'components/DrinkCard/DrinkCard';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCocktails, selectOwn } from 'redux/selectors';
+import { DrinkCard, NotFound } from 'components';
 import { MyRecipesListStyled, Section } from './MyrecipesList.styled';
-import NotFound from 'components/NotFound/NotFound';
 
-const MyRecipesList = () => {
+export const MyRecipesList = () => {
   const ownCocktails = useSelector(selectOwn);
   return (
     <Section>
@@ -25,5 +23,3 @@ const MyRecipesList = () => {
     </Section>
   );
 };
-
-export default MyRecipesList;

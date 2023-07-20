@@ -27,7 +27,7 @@ import {
 import { useEffect } from 'react';
 // import { useNavigate } from 'react-router';
 
-const DrinksSearch = ({ categoryName }) => {
+export const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
@@ -208,8 +208,6 @@ const DrinksSearch = ({ categoryName }) => {
     </SearchWrapperStyled>
   );
 };
-
-export default DrinksSearch;
 
 // styles={{
 //   control: (baseStyles, state) => ({

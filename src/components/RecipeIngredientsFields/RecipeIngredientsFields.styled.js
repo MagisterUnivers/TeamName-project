@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Select from 'react-select';
+import { devices } from 'constants/breakpoints';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 
 export const FormWrapper = styled.div`
@@ -10,12 +11,12 @@ export const FormWrapper = styled.div`
   margin-bottom: 80px;
   width: 335px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 704px;
     margin-left: 0;
     margin-right: 0;
   }
-  @media screen and (min-width: 1440px) {
+  @media ${devices.desktop} {
     width: 540px;
     margin-right: auto;
   }
@@ -34,7 +35,7 @@ export const TitleStyled = styled.h3`
   line-height: 1.14;
   color: ${props => props.theme.textColor};
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     font-size: 40px;
     line-height: 1.1;
   }
@@ -45,7 +46,7 @@ export const StyledIngredientsList = styled.ul`
   flex-direction: column;
   gap: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     gap: 24px;
   }
 `;
@@ -55,13 +56,12 @@ export const FieldsInputWrp = styled.div`
   gap: 8px;
   margin-right: 8px;
 
-
-  @media screen and (min-width: 768px){
+  @media ${devices.tablet} {
     gap: 14px;
     margin-right: 188px;
   }
 
-  @media screen and (min-width: 1440px){
+  @media ${devices.desktop} {
     margin-right: 40px;
   }
 `;
@@ -70,9 +70,8 @@ export const IngredientsItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     justify-content: space-between;
   }
 `;
@@ -85,11 +84,11 @@ export const SelectIngredientStyled = styled(Select)`
     height: 50px;
     background: transparent;
     border-radius: 200px;
-    border: 1px solid rgba(243, 243, 243, 0.5);
-    opacity: 0.800000011920929;
+    border: 1px solid;
+    border-color: ${props => props.theme.secondBorderColor};
     outline: none;
     box-shadow: none;
-   
+    transition: border-color 400ms ease;
 
     @media (min-width: 768px) {
       gap: 14px;
@@ -100,7 +99,7 @@ export const SelectIngredientStyled = styled(Select)`
       //font-size: 17px;
     }
 
-    @media screen and (min-width: 1440px){
+    @media ${devices.desktop} {
       width: 316px;
     }
 
@@ -115,7 +114,7 @@ export const SelectIngredientStyled = styled(Select)`
     &:hover,
     &::selection {
       outline: none;
-       border-color: #f3f3f3;
+      border-color: ${props => props.theme.hoverBorderColor};
       //box-shadow: 0 0 0 1px transparent;
     }
   }
@@ -128,9 +127,7 @@ export const SelectIngredientStyled = styled(Select)`
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(243, 243, 243, 1);
-   
-    
+    color: ${props => props.theme.textColor};
 
     @media (min-width: 768px) {
       font-size: 18px;
@@ -141,7 +138,7 @@ export const SelectIngredientStyled = styled(Select)`
     // стилизует контейнер ================
     padding-left: 12px;
     width: 192px;
-   
+
     @media (min-width: 768px) {
       padding-left: 14px;
     }
@@ -152,7 +149,6 @@ export const SelectIngredientStyled = styled(Select)`
     box-shadow: none;
     outline: none;
     border-color: transparent;
-    
 
     &:focus,
     &:active,
@@ -170,15 +166,15 @@ export const SelectIngredientStyled = styled(Select)`
     padding: 0;
     width: 185px;
     height: 160px;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
 
     @media (min-width: 768px) {
       font-size: 14px;
-      width: 332px
+      width: 332px;
     }
 
-    @media screen and (min-width: 1440px){
+    @media ${devices.desktop} {
       width: 316px;
     }
   }
@@ -187,17 +183,16 @@ export const SelectIngredientStyled = styled(Select)`
     margin: 0;
     padding: 8px 0 8px 6px;
     width: 192px;
-    border-radius: 6px;
+    border-radius: 20px;
     background-color: #161f37;
     color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
-   
 
     @media (min-width: 768px) {
       width: 332px;
     }
 
-    @media screen and (min-width: 1440px){
+    @media ${devices.desktop} {
       width: 316px;
     }
   }
@@ -241,14 +236,14 @@ export const SelectIngredientStyled = styled(Select)`
     /* display: none; */
 
     /* padding: 0; */
-    color: var(--primary-green);
+    color: ${props => props.theme.textColor};
     outline: none;
     &:focus,
     &:active,
     &:hover,
     &::selection {
       /* padding: 0; */
-      color: var(--primary-green);
+      color: ${props => props.theme.textColor};
       outline: none;
     }
   }
@@ -278,13 +273,18 @@ export const UnitWrp = styled.div`
 
   background: transparent;
   border-radius: 200px;
-    border: 1px solid rgba(243, 243, 243, 0.5);
-    opacity: 0.800000011920929;
+  border: 1px solid;
+  border-color: ${props => props.theme.secondBorderColor};
+  transition: border-color 400ms ease;
 
   @media (min-width: 768px) {
     width: 150px;
     height: 56px;
     padding: 15px 20px;
+  }
+  &:hover,
+  &:focus {
+    border-color: ${props => props.theme.hoverBorderColor};
   }
 `;
 
@@ -292,7 +292,7 @@ export const UnitQuantity = styled.input`
   width: 27px;
   height: 27px;
   font-size: 14px;
-  color: rgba(243, 243, 243, 1);
+  color: ${props => props.theme.textColor};
   border: none;
   background-color: var(--input-bg);
   border-radius: 6px 0 0 6px;
@@ -353,7 +353,7 @@ export const IngredientUnit = styled(Select)`
     line-height: 1.5;
     letter-spacing: -0.02em;
     text-align: left;
-    color: rgba(243, 243, 243, 1);
+    color: ${props => props.theme.textColor};
 
     @media (min-width: 768px) {
       width: 50px;
@@ -386,7 +386,7 @@ export const IngredientUnit = styled(Select)`
     margin-top: 0;
     padding: 0;
     height: 104px;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
 
     @media (min-width: 768px) {
@@ -400,7 +400,7 @@ export const IngredientUnit = styled(Select)`
     margin-left: -26px;
     padding: 0;
     width: 84px;
-    border-radius: 6px;
+    border-radius: 20px;
     background-color: #161f37;
     color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
@@ -432,7 +432,7 @@ export const IngredientUnit = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color:  rgba(243, 243, 243, 1);
+      color: rgba(243, 243, 243, 1);
     }
   }
   // =========================================
@@ -449,17 +449,17 @@ export const IngredientUnit = styled(Select)`
 
   & .react-select__dropdown-indicator {
     padding: 0 5px 0 0;
-    color: var(--primary-green);
+    color: ${props => props.theme.textColor};
     outline: none;
 
-    transition: color var(--transition-function);
+    /* transition: color var(--transition-function); */
 
     &:focus,
     &:active,
     &:hover,
     &::selection {
       /* padding: 0; */
-      color: var(--primary-green);
+      color: ${props => props.theme.textColor};
       outline: none;
     }
   }
@@ -476,10 +476,11 @@ export const IngredientUnit = styled(Select)`
 export const CloseIconButton = styled(CloseIcon)`
   width: 18px;
   height: 18px;
+  stroke: ${props => props.theme.textColor};
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 20px;
     height: 20px;
   }
@@ -499,7 +500,7 @@ export const DeleteButton = styled.button`
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 20px;
     height: 20px;
   }

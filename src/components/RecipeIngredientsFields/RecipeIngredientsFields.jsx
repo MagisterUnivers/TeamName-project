@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIngredients } from 'redux/selectors';
+import { Counter } from 'components';
+import { listUnits } from './ListUnits.constants';
 import {
   FieldsInputWrp,
   FormWrapper,
@@ -15,11 +14,9 @@ import {
   CloseIconButton,
   StyledIngredientsList,
 } from './RecipeIngredientsFields.styled';
-import Counter from './Counter/Counter';
-import { listUnits } from './ListUnits.constants';
-import { getIngredientsListThunk } from 'redux/Cocktails/cocktailsOperations';
 
 export const RecipeIngredientsFields = ({
+  ingredientsList,
   cocktailIngredientList,
   handleIncIngredients,
   handleDecIngredients,
@@ -28,15 +25,6 @@ export const RecipeIngredientsFields = ({
   handleOnChangeIngredientUnit,
   handleOnChangeUnitQuantity,
 }) => {
-  const dispatch = useDispatch();
-
-  useEffect(()=> {
-   dispatch(getIngredientsListThunk());
-  }, []);
-
-  const ingredientsList = useSelector(selectIngredients);
-  console.log(ingredientsList);
-
   const styles = {
     menuList: base => ({
       ...base,
@@ -66,7 +54,6 @@ export const RecipeIngredientsFields = ({
     }),
   };
 
-
   return (
     <FormWrapper>
       <TitleWrp>
@@ -83,8 +70,8 @@ export const RecipeIngredientsFields = ({
             <FieldsInputWrp>
               <SelectIngredientStyled
                 options={ingredientsList.map(ing => {
-                  return {value: ing._id, label:  ing.title, id: ing._id}
-                })}      
+                  return { value: ing._id, label: ing.title, id: ing._id };
+                })}
                 isSearchable={true}
                 classNamePrefix="react-select"
                 styles={styles}
@@ -104,7 +91,7 @@ export const RecipeIngredientsFields = ({
                 />
                 <IngredientUnit
                   options={listUnits.map(unit => {
-                    return {value: unit.value, label: unit.label}
+                    return { value: unit.value, label: unit.label };
                   })}
                   isSearchable={false}
                   styles={styles}
@@ -116,7 +103,7 @@ export const RecipeIngredientsFields = ({
                 />
               </UnitWrp>
             </FieldsInputWrp>
-            <DeleteButton onClick={()=> handleOnDeleteIngredient(index)}>
+            <DeleteButton onClick={() => handleOnDeleteIngredient(index)}>
               <CloseIconButton />
             </DeleteButton>
           </IngredientsItem>

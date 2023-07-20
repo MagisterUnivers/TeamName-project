@@ -13,7 +13,7 @@ export const getCategoriesListThunk = createAsyncThunk(
     // if (!token) {
     //   return rejectWithValue();
     // }
-   
+
     try {
       setToken(token);
       const res = await instance.get('recipes/category-list');
@@ -159,10 +159,11 @@ export const addRecipeThunk = createAsyncThunk(
       } else {
         res = await instance.post('own', data);
       }
-
       Notiflix.Notify.success('Recipe added to collection successfully');
       return res.data;
     } catch (error) {
+      const errorMessage = error.response.data.message;
+      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
       return rejectWithValue(error.response.status);
     }
   }
@@ -237,3 +238,15 @@ export const removeFromFavoriteThunk = createAsyncThunk(
 );
 
 // Popular
+
+export const getPopularThunk = createAsyncThunk(
+  '@@cocktails/popular',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const res = await instance.get(`/popular-recipe/`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);

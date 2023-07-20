@@ -7,9 +7,11 @@ import {
   StyledImage,
 } from './RecipePageHero.styled';
 import { favoriteFilter } from 'components/utils/filter';
-import MainPageTitle from 'components/MainPageTitle/MainPageTitle';
+import { MainPageTitle } from 'components';
+import { StyledSection } from 'components/Section/Section';
+import { StyledContentHolder } from 'components/RecipePreparation/RecipePreparation.styled';
 
-const RecipePageHero = ({ func }) => {
+export const RecipePageHero = ({ func }) => {
   const cocktails = useSelector(selectCocktails);
   const user = useSelector(selectUser);
   let filter;
@@ -33,30 +35,37 @@ const RecipePageHero = ({ func }) => {
     cocktails !== undefined && (
       <>
         {console.log(user.id, cocktails._id, 'ID')}
-        <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
-        <MainPageTitle title={cocktails.drink} />
-        <StyledAboutContent>
-          {cocktails.about ? cocktails.about : 'sample about'}
-        </StyledAboutContent>
-        {console.log(filter, 'Filter before expression')}
-        {favoriteFilter(cocktails, user) ? (
-          <StyledButton type="button" onClick={func}>
-            Remove recipe from favorite
-          </StyledButton>
-        ) : (
-          <StyledButton type="button" onClick={func}>
-            Add recipe to favorite
-          </StyledButton>
-        )}
-        <StyledImage
-          src={cocktails.drinkThumb}
-          alt="cocktail thumb"
-          width={400}
-          height={400}
-        />
+        <StyledSection>
+          <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
+          <StyledContentHolder>
+            <div>
+              <MainPageTitle title={cocktails.drink} />
+              <StyledAboutContent>
+                {cocktails.about ? cocktails.about : 'sample about'}
+              </StyledAboutContent>
+              {console.log(filter, 'Filter before expression')}
+              {favoriteFilter(cocktails, user) ? (
+                <StyledButton type="button" onClick={func}>
+                  Remove recipe from favorite
+                </StyledButton>
+              ) : (
+                <StyledButton type="button" onClick={func}>
+                  Add recipe to favorite
+                </StyledButton>
+              )}
+            </div>
+            <div>
+              {' '}
+              <StyledImage
+                src={cocktails.drinkThumb}
+                alt="cocktail thumb"
+                width={400}
+                height={400}
+              />
+            </div>
+          </StyledContentHolder>
+        </StyledSection>
       </>
     )
   );
 };
-
-export default RecipePageHero;

@@ -26,3 +26,4 @@ export const selectIngredients = state => state.cocktails.ingredients;
 export const selectSearch = state => state.cocktails.search;
 export const selectPage = state => state.cocktails.page;
 export const selectTotalHits = state => state.cocktails.totalHits;
+export const selectPopular = state => state.cocktails.popular;

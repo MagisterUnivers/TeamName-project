@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logoutThunk } from 'redux/Auth/authOperations';
@@ -13,7 +12,7 @@ import {
 import Notiflix from 'notiflix';
 import XIcon from './x.svg';
 
-const ConfirmLogout = ({ id, onClose }) => {
+export const ConfirmLogout = ({ id, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleDelete = () => {
@@ -44,4 +43,3 @@ const ConfirmLogout = ({ id, onClose }) => {
     </ModalWrapper>
   );
 };
-export default ConfirmLogout;

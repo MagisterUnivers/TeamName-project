@@ -1,10 +1,8 @@
-import React from 'react';
-
-import { StyledMainPageTitle } from 'components/MainPageTitle/MainPageTitle.styled';
+import { AddRecipe } from 'components';
 import { Hero, Herodescription, Herowrapper } from './Hero.styled';
-import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
+import { StyledMainPageTitle } from 'components/MainPageTitle/MainPageTitle.styled';
 
-const HeroSection = () => {
+export const HeroSection = () => {
   return (
     <Hero>
       <Herowrapper>
@@ -21,5 +19,3 @@ const HeroSection = () => {
     </Hero>
   );
 };
-
-export default HeroSection;

@@ -26,7 +26,7 @@ import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
 // import { updateUserThunk } from 'redux/Auth/authOperations';
 
-const UserInfoModal = ({ onClose }) => {
+export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
@@ -132,5 +132,3 @@ const UserInfoModal = ({ onClose }) => {
     </ModalWrapper>
  ) : null;
 };
-
-export default UserInfoModal;
