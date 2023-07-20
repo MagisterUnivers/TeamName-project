@@ -1,6 +1,5 @@
 import { useMediaRules } from 'hooks/useMediaRules';
-import React, { useState } from 'react';
-import { HeaderContainer, HeaderWrp, UserLogoWrp } from './HeaderStyled';
+import { useState } from 'react';
 import {
   Navigation,
   Logo,
@@ -9,6 +8,7 @@ import {
   BurgerMenuButton,
   ThemeButton,
 } from 'components';
+import { HeaderContainer, HeaderWrp, UserLogoWrp } from './HeaderStyled';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
@@ -20,7 +20,6 @@ export const Header = () => {
 
   return (
     <>
-      {' '}
       <HeaderWrp>
         <HeaderContainer>
           <Logo />
@@ -36,7 +35,7 @@ export const Header = () => {
             )}
           </UserLogoWrp>
         </HeaderContainer>
-      </HeaderWrp>{' '}
+      </HeaderWrp>
       {!isDesktop && <BurgerMenu showBurgerMenu={showBurgerMenu} />}
     </>
   );
