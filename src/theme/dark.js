@@ -1,5 +1,6 @@
 export const darkTheme = {
   textColor: '#f3f3f3',
+  secondaryTextColor: 'rgba(243, 243, 243, 0.5)',
   bgrColor: '#0a0a11',
   borderColor: 'rgba(243, 243, 243, 0.2)',
   secondBorderColor: 'rgba(243, 243, 243, 0.5)',
