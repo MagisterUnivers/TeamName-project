@@ -38,7 +38,7 @@ export const StyledContainer = styled.div`
     gap: 28px;
   }
 
-  @media ${devices.tablet} {
+  @media ${devices.desktop} {
     gap: 40px;
   }
 `;
