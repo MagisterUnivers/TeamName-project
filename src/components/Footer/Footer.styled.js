@@ -7,7 +7,7 @@ export const StyledFooter = styled.footer`
   border-top: 1px solid ${props => props.theme.borderColor};
 
   form {
-    margin: 0 auto auto 80px;
+    margin: 0 auto 80px auto ;
   }
 
   @media ${devices.tablet} {
