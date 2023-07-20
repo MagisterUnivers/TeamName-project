@@ -96,6 +96,7 @@ const authSlice = createSlice({
 
     [refreshThunk.fulfilled]: (state, { payload }) => {
       state.online = true;
+      if (payload.token === null) state.online = false;
       state.loading = false;
       state.accessToken = payload.token;
       Loading.remove();
