@@ -163,7 +163,7 @@ export const addRecipeThunk = createAsyncThunk(
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;
-      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
+      Notiflix.Report.failure('Respond from server is ' + errorMessage);
       return rejectWithValue(error.response.status);
     }
   }

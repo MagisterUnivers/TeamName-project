@@ -9,12 +9,14 @@ import {
   Image,
   Ingredients,
   Ingredientswrapper,
+  ImageWrapper,
 } from './DrinkCard.styled';
 
 export const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
+        <ImageWrapper>
         <Image
           src={cocktail.drinkThumb}
           alt={cocktail.drink}
@@ -22,6 +24,7 @@ export const DrinkCard = ({ cocktail, page }) => {
             e.currentTarget.src = drink;
           }}
         />
+        </ImageWrapper>
         <Ingredientswrapper position={page}>
           <Drinkingreds>{cocktail.drink}</Drinkingreds>
           <Ingredients>Ingredients</Ingredients>
