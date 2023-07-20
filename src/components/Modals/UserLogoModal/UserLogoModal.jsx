@@ -28,7 +28,7 @@ import {
   ModalWrapper,
 } from './UserLogoModal.styled';
 
-const UserLogoModal = () => {
+export const UserLogoModal = () => {
   const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
@@ -77,5 +77,3 @@ const UserLogoModal = () => {
     </ModalWrapper>
   );
 };
-
-export default UserLogoModal;

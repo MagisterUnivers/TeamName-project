@@ -9,18 +9,26 @@ import {
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { DrinkCard, NotFound } from 'components';
 import { DrinkListStyled, Section } from './DrinkList.styled';
+import { useNavigate } from 'react-router';
 
 export const DrinksList = () => {
   const dispatch = useDispatch();
   const searchResults = useSelector(selectSearchResults);
   const page = useSelector(selectPage);
   const search = useSelector(selectSearch);
-
+  const navigate = useNavigate();
   useEffect(() => {
     // if (search.query || search.chosenCategory || search.chosenIngredient||)
     dispatch(searchAllDrinksThunk({ search, page }));
+    navigate(
+      `/main/drinks/${encodeURIComponent(
+        encodeURIComponent(search.chosenCategory)
+      )}?query=${encodeURIComponent(search.query)}&ingredient=${
+        search.chosenIngredient
+      }`
+    );
   }, [dispatch, search, page]);
-  console.log(searchResults);
+
   return (
     <Section>
       <DrinkListStyled>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
-import { PreviewDrinks, HeroSection } from 'components';
+import { PreviewDrinks } from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 import { selectCocktails } from 'redux/selectors';
 
 const HomePage = () => {
@@ -31,7 +31,6 @@ const HomePage = () => {
 
   return (
     <>
-      <HeroSection />
       <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
       <PreviewDrinks title="Cocktail" data={cocktail} />
       <PreviewDrinks title="Shake" data={shake} />
@@ -46,35 +45,29 @@ export default HomePage;
 
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
-
-// import PreviewDrinks from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
-
+// import { PreviewDrinks, HeroSection } from 'components';
 // import { selectCocktails } from 'redux/selectors';
 
 // const HomePage = () => {
 //   const dispatch = useDispatch();
 
 //   const category = useSelector(selectCocktails);
-//   // console.log(category);
-
+//   console.log(category);
 //   useEffect(() => {
 //     dispatch(getCocktailsByFourCategoryThunk());
 //   }, [dispatch]);
-
-//   const ordinaryDrink = category[1];
-//   // console.log(ordinaryDrink);
-
-//   const shake = category[0];
-//   // console.log(shake);
-
-//   const cocktail = category[2];
-//   // console.log(cocktail);
-
-//   const other = category[3];
-//   // console.log(other);
+//   const ordinaryDrink = category[3].drinks;
+//   console.log(ordinaryDrink);
+//   const shake = category[0].drinks;
+//   console.log(shake);
+//   const cocktail = category[2].drinks;
+//   console.log(cocktail);
+//   const other = category[1].drinks;
+//   console.log(other);
 
 //   return (
 //     <>
+//       <HeroSection />
 //       <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
 //       <PreviewDrinks title="Cocktail" data={cocktail} />
 //       <PreviewDrinks title="Shake" data={shake} />
