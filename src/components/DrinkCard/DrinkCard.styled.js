@@ -8,6 +8,7 @@ export const Image = styled.img`
   border-radius: 15px;
   display: block;
   width: 100%;
+min-height: 400px;
 `;
 
 export const Ingredientswrapper = styled.div`
