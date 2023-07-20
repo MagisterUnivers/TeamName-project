@@ -9,18 +9,22 @@ import {
   ModalText,
   ButtonWrapper,
 } from './ConfirmLogout.styled';
-
+import Notiflix from 'notiflix';
 import XIcon from './x.svg';
 
 export const ConfirmLogout = ({ id, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleDelete = () => {
-    dispatch(logoutThunk()).then(res => {
-      if (res.payload && res.payload.status === 204) {
-        navigate('/signin');
-      }
-    });
+    dispatch(logoutThunk())
+      .unwrap()
+      .then(res => {
+        console.log('Response:', res);
+        if (res && res.status === 200) {
+          navigate('/');
+        }
+      })
+      .then(Notiflix.Report.success('Account closed successfully!'));
   };
 
   return (

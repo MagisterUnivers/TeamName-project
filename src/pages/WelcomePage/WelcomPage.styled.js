@@ -14,7 +14,6 @@ export const BaseDiv = styled.div`
 
 export const PicturedWrapper = styled.img`
   position: relative;
-
   margin-left: auto;
   background-position: right;
   background-repeat: no-repeat;
@@ -23,6 +22,9 @@ export const PicturedWrapper = styled.img`
   pointer-events: none;
   user-select: none;
 }
+@media screen and (min-width: 1440px) {
+  width: 100vh;
+  }
 `;
 export const SummaryWrapper = styled.div`
   position: absolute;

@@ -1,3 +1,4 @@
+
 // import { UserLogoModal } from 'components';
 // {тимчасово підключила свою модалку, з логікою виконання. Олена};
 // import EditProfileModal from 'components/Modals/UserInfoModal/EditProfileModal';
@@ -17,6 +18,7 @@ import {
   UserAvatarWrp,
   UserLogoWrp,
 } from './UserLogoStyled';
+
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);

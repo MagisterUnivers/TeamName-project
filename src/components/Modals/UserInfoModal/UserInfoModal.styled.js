@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
 import pencilIcon from './edit-2.svg';
+import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+import { RiErrorWarningLine } from 'react-icons/ri';
 
 export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);;
@@ -93,6 +95,26 @@ position: absolute;
   top: 83px;
   }
 `;
+export const StyledInputWrap = styled.div`
+  width: 100%;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    max-width: 400px;
+  }
+`;
+export const StyledIconError = styled(RiErrorWarningLine)`
+  position: absolute;
+  right: 24px;
+  top: 79%;
+  transform: translateY(-50%);
+`;
+export const StyledIconChecked = styled(IoIosCheckmarkCircleOutline)`
+  position: absolute;
+  right: 24px;
+  top: 79%;
+  transform: translateY(-50%);
+`;
 export const StyledInput = styled(Field)`
   margin-top: 119px;
   width: 100%;
@@ -152,6 +174,8 @@ export const SaveChangeButton = styled.button`
   width: 100%;
   display: block;
   padding: 18px 90px;
+  /* outline: none; */
+  border-color: #434D67;
   border-radius: 42px;
   background-color: #434D67;
   color: var(--main-text-color);

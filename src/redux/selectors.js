@@ -11,8 +11,6 @@ export const selectIsClicked = state => state.auth.isClicked;
 // UserInfo
 export const selectUserInfo = state => state.userInfo;
 export const selectUserInfoEmail = state => state.userInfo.email;
-export const selectUserInfoName = state => state.userInfo.user.name;
-export const selectUserInfoAvatar = state => state.userInfo.avatarURL;
 export const selectTheme = state => state.userInfo.theme;
 export const selectUserArray = state => state.userInfo.user;
 export const selectRender = state => state.userInfo.firstRender;
