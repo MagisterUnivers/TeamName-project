@@ -142,7 +142,7 @@ export const AddRecipeForm = () => {
     };
   });
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = async () => {
     const formData = new FormData();
     if (imgData) {
       formData.append('drinkThumb', imgData);
@@ -154,13 +154,15 @@ export const AddRecipeForm = () => {
     formData.append('instructions', instructions);
     formData.append('ingredients', JSON.stringify(newIngredientsList));
     console.log(formData.get('ingredients'));
-    if (formData.get('ingredients') === "[]") {
+    if (formData.get('ingredients') === '[]') {
       Notiflix.Report.warning('Please, add necessary ingredients');
       return;
     }
-    dispatch(addRecipeThunk(formData));
-    resetForm();
-    navigate('/main/my');
+    const res = await dispatch(addRecipeThunk(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      resetForm();
+      navigate('/main/my');
+    }
   };
 
   return (
