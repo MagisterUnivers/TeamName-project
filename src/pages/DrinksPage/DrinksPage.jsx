@@ -18,12 +18,16 @@ const DrinksPage = () => {
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
 
-  if (categoriesList.length === 0) {
+  useEffect(() => {
+    if (categoriesList.length > 1) return;
     dispatch(getCategoriesListThunk());
-  }
-  if (ingredientsList.length === 0) {
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (ingredientsList.length > 1) return;
     dispatch(getIngredientsListThunk());
-  }
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(categoryName));
   }, [dispatch, categoryName]);

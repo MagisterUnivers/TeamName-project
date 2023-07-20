@@ -134,7 +134,7 @@ export const DrinksSearch = ({ categoryName }) => {
         styles={styles}
         value={search.ingredient}
         name="ingredient"
-        defaultValue={{ label: 'Indredients', value: '0' }}
+        defaultValue={{ label: 'Ingredients', value: '0' }}
         options={ingredientsListOptions}
         placeholder="Ingredients"
         isSearchable={true}
