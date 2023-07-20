@@ -82,7 +82,7 @@ export const DrinksSearch = ({ categoryName }) => {
       dispatch(setChosenCategory(e.label));
       dispatch(setPage(1));
     } else {
-      dispatch(setChosenCategory('all'));
+      dispatch(setChosenCategory('Cocktail'));
     }
   };
   const handleChangeIngredient = e => {
@@ -90,7 +90,7 @@ export const DrinksSearch = ({ categoryName }) => {
       dispatch(setChosenIngredient(e.label));
       dispatch(setPage(1));
     } else {
-      dispatch(setChosenIngredient('all'));
+      dispatch(setChosenIngredient(''));
     }
   };
   const handleSubmit = e => {
