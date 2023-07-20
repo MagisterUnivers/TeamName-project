@@ -9,7 +9,8 @@ export const ModalWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  padding-top: 150px;
 `;
 
 export const ModalContent = styled.div`
@@ -18,6 +19,7 @@ export const ModalContent = styled.div`
   width: 177px;
   height: 134px;
   margin: 2px;
+ 
   padding: 0;
   display: flex;
   flex-direction: column;
