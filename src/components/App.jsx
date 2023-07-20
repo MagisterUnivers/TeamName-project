@@ -62,10 +62,9 @@ export const App = () => {
             <Route
               path="/signin"
               element={
-                // <PublicRoute>
+                <PublicRoute>
                   <LoginPage />
-                // </PublicRoute>
-              }
+                </PublicRoute>}
             />
             {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>

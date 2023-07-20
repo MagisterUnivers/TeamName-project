@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserInfo } from 'redux/selectors';
+import { selectUserArray } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
   ModalWrapper,
@@ -28,30 +28,40 @@ import AddIcon from './add_photo.svg';
 
 const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
+  const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
+  const [isUpdateForm, setIsUpdateForm] = useState(null);
+
+  useEffect(() => {
+    if (isUpdateForm) {
+      setIsUpdateForm(null);
+    }
+  }, [isUpdateForm]);
 
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') {
-        onClose();
+        // onClose();
+        setIsOpen(false)
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
+
   const handleModalClick = e => {
     const closeButtonClicked = e.target.closest('.close-button');
     const modalContentClicked = e.target.closest('.modal-content');
 
     if (closeButtonClicked || modalContentClicked === null) {
-      onClose();
-    }    e.stopPropagation();
+      // onClose();
+    }  
+    setIsOpen(false)
+      e.stopPropagation();
   };
-
+  console.log(user.name);
   console.log(user.avatarURL);
   return isOpen ? (
     <ModalWrapper onClick={handleModalClick}>
@@ -71,14 +81,17 @@ const UserInfoModal = ({ onClose }) => {
               'Name can only contain letters or numbers.'
             ),
           })}
-          onSubmit={values => {
-            dispatch(updateUserThunk(values));
+          onSubmit={async values => {
+            const formData = new FormData();
+            formData.append('name', values.name);
+            formData.append('avatarURL', values.avatarURL);
+            await dispatch(updateUserThunk(formData));
           }}
-        >
+                >
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-                <AvatarFrame src={user.avatar} alt="avatar" />
+                <AvatarFrame src={user.avatarURL} alt="avatar" />
                 <AddAvatarButton src={AddIcon} alt="plus" width={28} />
               </UserAvatarWrapper>
               <StyledInputWrap>

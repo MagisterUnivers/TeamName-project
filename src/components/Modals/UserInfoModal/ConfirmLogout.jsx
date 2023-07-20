@@ -10,7 +10,7 @@ import {
   ModalText,
   ButtonWrapper,
 } from './ConfirmLogout.styled';
-
+import Notiflix from 'notiflix';
 import XIcon from './x.svg';
 
 const ConfirmLogout = ({ id, onClose }) => {
@@ -20,27 +20,24 @@ const ConfirmLogout = ({ id, onClose }) => {
     dispatch(logoutThunk())
       .unwrap()
       .then(res => {
-      console.log('Response:', res);
-        if (res && res.status === 204) {
+        console.log('Response:', res);
+        if (res && res.status === 200) {
           navigate('/');
-  }
-})      
-    .then()  
-
+        }
+      })
+      .then(Notiflix.Report.success('Account closed successfully!'));
   };
 
   return (
     <ModalWrapper>
-       <ModalContent>
-      <CloseButton onClick={onClose}>
-        <img src={XIcon} alt="Close" width={24}/>
-      </CloseButton>
-      <ModalText>
-        Are you sure you want to log out?
-        </ModalText>
+      <ModalContent>
+        <CloseButton onClick={onClose}>
+          <img src={XIcon} alt="Close" width={24} />
+        </CloseButton>
+        <ModalText>Are you sure you want to log out?</ModalText>
         <ButtonWrapper>
-        <LogOutButton onClick={handleDelete}>Log out</LogOutButton>
-        <LogOutButton onClick={onClose}>Cancel</LogOutButton>
+          <LogOutButton onClick={handleDelete}>Log out</LogOutButton>
+          <LogOutButton onClick={onClose}>Cancel</LogOutButton>
         </ButtonWrapper>
       </ModalContent>
       `
