@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { nanoid } from '@reduxjs/toolkit';
 import { Formik } from 'formik';
+import Notiflix from 'notiflix';
 import {
   selectCategories,
   selectGlasses,
@@ -75,7 +76,6 @@ export const AddRecipeForm = () => {
     const text = e.target.value;
     const lines = text.split('\n');
     setInstructions(lines);
-    console.log(instructions);
   };
 
   const handleIncIngredients = () => {
@@ -153,7 +153,11 @@ export const AddRecipeForm = () => {
     formData.append('glass', glass.label);
     formData.append('instructions', instructions);
     formData.append('ingredients', JSON.stringify(newIngredientsList));
-
+    console.log(formData.get('ingredients'));
+    if (formData.get('ingredients') === "[]") {
+      Notiflix.Report.warning('Please, add necessary ingredients');
+      return;
+    }
     dispatch(addRecipeThunk(formData));
     resetForm();
     navigate('/main/my');

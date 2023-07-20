@@ -47,7 +47,7 @@ export const AboutStyled = styled.p`
   /* text-justify: distribute; */
   height: 75px;
   /* color: #f3f3f3; */
-  color: ${props => props.theme.bgrColor};
+  color: ${props => props.theme.textColor};
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
