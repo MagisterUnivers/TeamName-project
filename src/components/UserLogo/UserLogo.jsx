@@ -1,4 +1,3 @@
-import { useState } from 'react';
 // import { UserLogoModal } from 'components';
 // {тимчасово підключила свою модалку, з логікою виконання. Олена};
 // import EditProfileModal from 'components/Modals/UserInfoModal/EditProfileModal';
@@ -8,6 +7,7 @@ import { useState } from 'react';
 //   UserAvatarWrp,
 //   UserLogoWrp,
 // } from './UserLogoStyled';
+import { useState } from 'react';
 import { UserLogoModal } from 'components';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/selectors';
