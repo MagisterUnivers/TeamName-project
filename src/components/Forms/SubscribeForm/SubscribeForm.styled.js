@@ -27,6 +27,7 @@ export const StyledText = styled.p`
 export const StyledInputSubscribe = styled(StyledInput)`
   color: ${props => props.theme.textColor};
   opacity: 1;
+  transition: border-color 0.5s ease-in-out;
 
   &::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */

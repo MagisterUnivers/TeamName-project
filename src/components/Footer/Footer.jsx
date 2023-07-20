@@ -43,7 +43,6 @@ export const Footer = () => {
 
         {isTablet && (
           <>
-            {' '}
             <StyledWrapper>
               <StyledContainer>
                 <Logo />

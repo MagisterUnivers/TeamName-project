@@ -170,7 +170,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are adding your recipe...');
     },
     [addRecipeThunk.fulfilled]: (state, { payload }) => {
-      state.own = [...state.own, payload];
+      state.own = [payload, ...state.own];
       Loading.remove();
     },
     [addRecipeThunk.rejected]: (state, { payload }) => {

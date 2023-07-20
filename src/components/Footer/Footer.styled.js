@@ -35,11 +35,10 @@ export const StyledContainer = styled.div`
   gap: 20px;
 
   @media ${devices.tablet} {
-    margin-bottom: 80px;
     gap: 28px;
   }
 
-  @media ${devices.tablet} {
+  @media ${devices.desktop} {
     gap: 40px;
   }
 `;
