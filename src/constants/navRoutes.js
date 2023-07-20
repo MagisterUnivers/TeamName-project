@@ -1,8 +1,7 @@
 export const navRoutes = [
-  { name: 'Home', route: '/home' },
-  { name: 'Drinks', route: '/drinks/Cocktail' },
-  { name: 'Add recipe', route: '/add' },
-  { name: 'My recipes', route: '/my' },
-  { name: 'Favorites', route: '/favorite' },
-  { name: 'Test', route: '/test' },
+  { name: 'Home', route: '/main/home' },
+  { name: 'Drinks', route: '/main/drinks/Cocktail' },
+  { name: 'Add recipe', route: '/main/add' },
+  { name: 'My recipes', route: '/main/my' },
+  { name: 'Favorites', route: '/main/favorite' },
 ];

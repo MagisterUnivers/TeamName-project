@@ -4,8 +4,6 @@ import { Form } from 'formik';
 import { styled } from 'styled-components';
 
 export const StyledFormInsight = styled(Form)`
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   max-width: 480px;
