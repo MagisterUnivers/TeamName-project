@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
@@ -161,7 +161,7 @@ export const DrinksSearch = ({ categoryName }) => {
           aria-label="search"
           onSubmit
         >
-          <SearchIcon />
+          {/* <SearchIcon /> */}
         </IconButton>
       </PaperStyled>
       {/* <form onSubmit={handleSubmit}>
