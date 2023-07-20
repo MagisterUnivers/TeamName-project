@@ -18,17 +18,15 @@
 //   )
 // };
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { ConfirmLogout, UserInfoModal } from 'components';
+import pencilIcon from '../UserInfoModal/edit-2.svg';
 import {
   ChangeProfileButton,
   LogOutButton,
   ModalContent,
   ModalWrapper,
 } from './UserLogoModal.styled';
-
-import pencilIcon from '../UserInfoModal/edit-2.svg';
-import ConfirmLogout from '../UserInfoModal/ConfirmLogout';
-import UserInfoModal from '../UserInfoModal/UserInfoModal';
 
 const UserLogoModal = () => {
   const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
@@ -45,7 +43,7 @@ const UserLogoModal = () => {
     setIsConfirmLogoutOpen(true);
   };
 
-  const handleModalClick = (e) => {
+  const handleModalClick = e => {
     if (e.target === e.currentTarget) {
       setIsChangeProfileOpen(false);
       setIsConfirmLogoutOpen(false);
@@ -54,14 +52,14 @@ const UserLogoModal = () => {
     e.stopPropagation();
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (e.key === 'Escape') {
       setIsChangeProfileOpen(false);
     }
   };
 
   return (
-    <ModalWrapper >
+    <ModalWrapper>
       <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
         <ChangeProfileButton
           onClick={() => {
@@ -69,20 +67,15 @@ const UserLogoModal = () => {
           }}
         >
           Edit profile
-          <img src={pencilIcon} alt="pencil" width="14"/>
+          <img src={pencilIcon} alt="pencil" width="14" />
         </ChangeProfileButton>
         <LogOutButton onClick={handleConfirmLogout}>Log out</LogOutButton>
       </ModalContent>
 
-      {isConfirmLogoutOpen && (
-        <ConfirmLogout onClose={handleConfirmLogout} />
-      )}
+      {isConfirmLogoutOpen && <ConfirmLogout onClose={handleConfirmLogout} />}
       {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
     </ModalWrapper>
   );
 };
 
 export default UserLogoModal;
-
-
-
