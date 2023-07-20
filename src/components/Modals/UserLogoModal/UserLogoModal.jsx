@@ -1,21 +1,26 @@
 // import React from 'react';
 // import { ReactComponent as iconEdit } from '../../../assets/icons/edit.svg';
-// import { InputWrp, ModalBody, Overlay, getStyledIcon } from './UserLogoModal.styled';
-// import LogoutBtn from 'components/Buttons/LogoutBtn/LogoutBtn';
+// import { LogoutBtn } from 'components';
+// import {
+//   InputWrp,
+//   ModalBody,
+//   Overlay,
+//   getStyledIcon,
+// } from './UserLogoModal.styled';
 
 // export const UserLogoModal = () => {
-//   const StyledIconEdit = getStyledIcon(iconEdit)
+//   const StyledIconEdit = getStyledIcon(iconEdit);
 //   return (
-//    <Overlay>
-//     <ModalBody>
-//       <InputWrp>
-//       Edit profile
-//       <StyledIconEdit/>
-//       </InputWrp>
-//       <LogoutBtn/>
-//     </ModalBody>
-//    </Overlay>
-//   )
+//     <Overlay>
+//       <ModalBody>
+//         <InputWrp>
+//           Edit profile
+//           <StyledIconEdit />
+//         </InputWrp>
+//         <LogoutBtn />
+//       </ModalBody>
+//     </Overlay>
+//   );
 // };
 
 import { useState } from 'react';
