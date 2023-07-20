@@ -1,4 +1,5 @@
 import { devices } from 'constants/breakpoints';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
@@ -52,6 +53,7 @@ export const StyledList = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 32px;
   }
 
   @media ${devices.desktop} {
@@ -61,17 +63,18 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListElement = styled.li`
-  display: flex;
+  /* display: flex;
   gap: 14px;
-  align-items: center;
+  align-items: center; */
 
   @media ${devices.tablet} {
-    width: calc((100% - 28px) / 2);
+    /* width: calc((100% - 28px) / 2); */
+    width: 335px;
   }
 
-  @media ${devices.desktop} {
+  /* @media ${devices.desktop} {
     width: auto;
-  }
+  } */
 `;
 
 export const StyledImage = styled.img`
@@ -97,5 +100,20 @@ export const StyledSubtitle = styled.p`
   }
 
   @media ${devices.desktop} {
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  /*  */
+  display: flex;
+  gap: 14px;
+  /* align-items: center; */
+
+  @media ${devices.tablet} {
+    /* width: calc((100% - 28px) / 2); */
+  }
+
+  @media ${devices.desktop} {
+    width: auto;
   }
 `;

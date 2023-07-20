@@ -1,6 +1,6 @@
-import { NavContainer, StyledItem, StyledLink } from './Navigation.styled';
-import { useMediaRules } from '../../hooks/useMediaRules';
 import styled from 'styled-components';
+import { useMediaRules } from 'hooks';
+import { NavContainer, StyledItem, StyledLink } from './Navigation.styled';
 
 export const Navigation = () => {
   const { isDesktop } = useMediaRules();

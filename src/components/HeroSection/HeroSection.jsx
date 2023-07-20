@@ -1,6 +1,15 @@
-import { AddRecipe } from 'components';
-import { Hero, Herodescription, Herowrapper } from './Hero.styled';
+import React from 'react';
+
 import { StyledMainPageTitle } from 'components/MainPageTitle/MainPageTitle.styled';
+import {
+  Hero,
+  Herobackground,
+  Herodescription,
+  Herowrapper,
+} from './Hero.styled';
+// import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
+
+import { AddRecipe } from 'components';
 
 export const HeroSection = () => {
   return (
@@ -16,6 +25,7 @@ export const HeroSection = () => {
         </Herodescription>
         <AddRecipe />
       </Herowrapper>
+      <Herobackground></Herobackground>
     </Hero>
   );
 };

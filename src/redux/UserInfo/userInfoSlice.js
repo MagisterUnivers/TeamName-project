@@ -4,11 +4,10 @@ import {
   getCurrentUserThunk,
   updateThemeThunk,
   updateUserThunk,
-} from './userOperations';
+  } from './userOperations';
 
 const initialState = {
-  user: { name: '', email: '' },
-  avatarURL: '',
+  user: { name: '', email: '', avatarURL: '' },
   theme: 'dark',
   firstRender: true,
 };
