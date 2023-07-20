@@ -3,11 +3,28 @@ import { devices } from 'constants/breakpoints';
 
 export const Card = styled.div``;
 
+export const ImageWrapper = styled.div`
+  width: 335px;
+  height: 360px;
+  overflow: hidden;
+
+  @media ${devices.tablet} {
+    width: 342px;
+  }
+
+  @media ${devices.desktop} {
+    width: 400px;
+    height: 400px;
+  }
+`;
+
 export const Image = styled.img`
   background-image: url('./defaultimg.jpg');
   border-radius: 15px;
   display: block;
-  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const Ingredientswrapper = styled.div`
