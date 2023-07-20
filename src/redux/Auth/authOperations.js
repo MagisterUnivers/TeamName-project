@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from 'api/instance';
 import Notiflix from 'notiflix';
+import thunk from 'redux-thunk';
 import { selectAuthAccessToken, selectUserLoading } from 'redux/selectors';
 
 //defaultURL
@@ -79,11 +80,14 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
-export const logoutThunk = createAsyncThunk('@@auth/logout', async _ => {
+export const logoutThunk = createAsyncThunk('@@auth/logout', async () => {
   try {
-    await instance.post('users/logout');
+    const res =  await instance.post('users/logout');
+    localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
     clearToken();
-    localStorage.removeItem('userData');
+    console.log(res, `thunk`);
+    return res;
   } catch (error) {
     const errorMessage = error.response.data.message;
     Notiflix.Notify.failure('Respond from server is ' + errorMessage);
@@ -152,6 +156,7 @@ export const verifyThunk = createAsyncThunk(
     }
   }
 );
+
 export const setSubscription = async credentials => {
   const res = await instance.patch('users/subscription', credentials);
   return res.data;

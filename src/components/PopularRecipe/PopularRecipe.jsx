@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectPopular } from 'redux/selectors';
 import {
   StyledImage,
+  StyledLink,
   StyledList,
   StyledListElement,
   StyledSubtitle,
@@ -12,6 +13,7 @@ import {
 
 export const PopularRecipe = () => {
   const popularData = useSelector(selectPopular);
+  console.log(popularData);
 
   return (
     <>
@@ -22,24 +24,28 @@ export const PopularRecipe = () => {
             console.log(i.desc);
             return (
               <StyledListElement key={i._id}>
-                <StyledImage
-                  src={
-                    i.drinkThumb
-                      ? i.drinkThumb
-                      : require('../../assets/img/Popular90x90.png')
-                  }
-                  alt="popular thumb"
-                  width={90}
-                  height={90}
-                />
-                <StyledTextWrapper>
-                  <StyledSubtitle text={false}>{i.drink}</StyledSubtitle>
-                  <StyledSubtitle text={true}>
-                    {i.about
-                      ? i.about
-                      : 'The  spring punch is a highball cocktail of vodka and liqueur, per IBA specified ingredients. The International Bartenders Association lists the beverage in its New Era Drinks category.'}
-                  </StyledSubtitle>
-                </StyledTextWrapper>
+                <StyledLink to={`/main/recipe/${i._id}`}>
+                  {/* <div> */}
+                  <StyledImage
+                    src={
+                      i.drinkThumb
+                        ? i.drinkThumb
+                        : require('../../assets/img/Popular90x90.png')
+                    }
+                    alt="popular thumb"
+                    width={90}
+                    height={90}
+                  />
+                  {/* </div> */}
+                  <StyledTextWrapper>
+                    <StyledSubtitle text={false}>{i.drink}</StyledSubtitle>
+                    <StyledSubtitle text={true}>
+                      {i.about
+                        ? i.about
+                        : 'The  spring punch is a highball cocktail of vodka and liqueur, per IBA specified ingredients. The International Bartenders Association lists the beverage in its New Era Drinks category.'}
+                    </StyledSubtitle>
+                  </StyledTextWrapper>
+                </StyledLink>
               </StyledListElement>
             );
           })}

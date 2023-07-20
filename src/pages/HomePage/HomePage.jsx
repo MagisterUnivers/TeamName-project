@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react';
-
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
-
 import { PreviewDrinks } from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
-
 import { selectCocktails } from 'redux/selectors';
 
 const HomePage = () => {
@@ -43,6 +40,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
 // import React, { useEffect } from 'react';
 
 // import { useDispatch, useSelector } from 'react-redux';

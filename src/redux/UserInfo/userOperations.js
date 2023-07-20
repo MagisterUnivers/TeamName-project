@@ -14,6 +14,7 @@ export const updateThemeThunk = createAsyncThunk(
   }
 );
 
+
 export const updateUserThunk = createAsyncThunk(
   '@@userInfo/update',
   async (payload, { rejectWithValue }) => {
