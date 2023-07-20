@@ -96,13 +96,9 @@ export const DrinksSearch = ({ categoryName }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (searchQuery.trim() === '') {
-      Notify.warning('Write something.', {
-        fontSize: '16px',
-        width: '350px',
-        padding: '10px',
-      });
+      return;
     }
-    dispatch(setQuery(searchQuery));
+    dispatch(setQuery(searchQuery.trim()));
   };
   return (
     <SearchFormStyled>
