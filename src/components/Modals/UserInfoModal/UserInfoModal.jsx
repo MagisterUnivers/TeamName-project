@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo } from 'redux/selectors';
 import * as Yup from 'yup';
@@ -13,12 +13,13 @@ import {
   StyledForm,
   SaveChangeButton,
   StyledInput,
+  StyledInputWrap,
+  StyledIconChecked,
+  StyledIconError,
 } from './UserInfoModal.styled';
 import {
   StyledError,
-  StyledIconChecked,
   StyledMessage,
-  StyledIconError,
 } from 'components/RegisterForm/RegisterForm.styled';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
@@ -28,31 +29,40 @@ import AddIcon from './add_photo.svg';
 const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserInfo);
+  const [isOpen, setIsOpen] = useState(true);
 
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
   const handleModalClick = e => {
-    if (e.target.classList.contains('modal')) {
+    const closeButtonClicked = e.target.closest('.close-button');
+    const modalContentClicked = e.target.closest('.modal-content');
+
+    if (closeButtonClicked || modalContentClicked === null) {
       onClose();
-    }
+    }    e.stopPropagation();
   };
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
-  const handleInputFocus = e => {
-    e.stopPropagation();
-  };
+
   console.log(user.avatarURL);
-  return (
-    <ModalWrapper onClick={handleModalClick} onKeyDown={handleKeyDown}>
-      <ContentWrapper>
-        <CloseButton onClick={onClose}>
+  return isOpen ? (
+    <ModalWrapper onClick={handleModalClick}>
+      <ContentWrapper className="modal-content">
+        <CloseButton onClick={onClose} tabIndex={1} className="close-button">
           <img src={XIcon} alt="Close" width={24} />
         </CloseButton>
         <StyledForm
           initialValues={{
-            avatarURL: user?.avatarURL || '',
-            name: user?.name || '',
+            avatarURL: '',
+            name: user.name || '',
           }}
           validationSchema={Yup.object({
             avatarURL: Yup.string(),
@@ -61,9 +71,8 @@ const UserInfoModal = ({ onClose }) => {
               'Name can only contain letters or numbers.'
             ),
           })}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={values => {
             dispatch(updateUserThunk(values));
-            setSubmitting(false);
           }}
         >
           {({ errors, touched, handleChange, setFieldTouched }) => (
@@ -72,42 +81,43 @@ const UserInfoModal = ({ onClose }) => {
                 <AvatarFrame src={user.avatar} alt="avatar" />
                 <AddAvatarButton src={AddIcon} alt="plus" width={28} />
               </UserAvatarWrapper>
-              <StyledInput
-                type="text"
-                name="name"
-                placeholder="Name"
-                onChange={e => {
-                  setFieldTouched('name');
-                  handleChange(e);
-                }}
-                onFocus={handleInputFocus}
-                className={
-                  touched.name && !errors.name
-                    ? 'valid-border'
-                    : errors.name && touched.name
-                    ? 'invalid-border'
-                    : ''
-                }
-              />
-              {errors.name && touched.name && (
-                <div>
-                  <StyledIconError color="red" />{' '}
-                  <StyledError name="name" component="div" />
-                </div>
-              )}
-              {touched.name && !errors.name && (
-                <div>
-                  <StyledIconChecked color="green" />{' '}
-                  <StyledMessage>This is an CORRECT name</StyledMessage>
-                </div>
-              )}
+              <StyledInputWrap>
+                <StyledInput
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  onChange={e => {
+                    setFieldTouched('name');
+                    handleChange(e);
+                  }}
+                  className={
+                    touched.name && !errors.name
+                      ? 'valid-border'
+                      : errors.name && touched.name
+                      ? 'invalid-border'
+                      : ''
+                  }
+                />
+                {errors.name && touched.name && (
+                  <div>
+                    <StyledIconError color="red" />{' '}
+                    <StyledError name="name" component="div" />
+                  </div>
+                )}
+                {touched.name && !errors.name && (
+                  <div>
+                    <StyledIconChecked color="green" />{' '}
+                    <StyledMessage>This is an CORRECT name</StyledMessage>
+                  </div>
+                )}
+              </StyledInputWrap>
               <SaveChangeButton type="submit">Save changes</SaveChangeButton>
             </StyledFormInsight>
           )}
         </StyledForm>
       </ContentWrapper>
     </ModalWrapper>
-  );
+ ) : null;
 };
 
 export default UserInfoModal;

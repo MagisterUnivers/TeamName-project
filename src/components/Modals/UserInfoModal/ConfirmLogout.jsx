@@ -23,7 +23,10 @@ const ConfirmLogout = ({ id, onClose }) => {
       console.log('Response:', res);
         if (res && res.status === 204) {
           navigate('/');
-  }});  
+  }
+})      
+    .then()  
+
   };
 
   return (
