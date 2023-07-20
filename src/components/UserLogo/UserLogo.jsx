@@ -5,18 +5,10 @@ import {
   UserAvatarWrp,
   UserLogoWrp,
 } from './UserLogoStyled';
-// import { UserLogoModal } from 'components';
-// {тимчасово підключила свою модалку, з логікою виконання. Олена};
-// import EditProfileModal from 'components/Modals/UserInfoModal/EditProfileModal';
-// import {
-//   NameStyled,
-//   UserAvatar,
-//   UserAvatarWrp,
-//   UserLogoWrp,
-// } from './UserLogoStyled';
-import { UserLogoModal } from 'components';
+
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/selectors';
+import UserLogoModal from 'components/Modals/UserLogoModal/UserLogoModal';
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);

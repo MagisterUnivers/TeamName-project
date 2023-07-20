@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectUserArray } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
   ModalWrapper,
@@ -12,44 +13,66 @@ import {
   StyledForm,
   SaveChangeButton,
   StyledInput,
+  StyledInputWrap,
+  StyledIconChecked,
+  StyledIconError,
 } from './UserInfoModal.styled';
 import {
   StyledError,
-  StyledIconChecked,
   StyledMessage,
-  StyledIconError,
 } from 'components/RegisterForm/RegisterForm.styled';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import { selectUserInfoAvatar, selectUserInfoName } from 'redux/selectors';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
+// import { updateUserThunk } from 'redux/Auth/authOperations';
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const UserName = useSelector(selectUserInfoName);
-  const UserAvatar = useSelector(selectUserInfoAvatar);
+  const user = useSelector(selectUserArray);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isUpdateForm, setIsUpdateForm] = useState(null);
+
+  useEffect(() => {
+    if (isUpdateForm) {
+      setIsUpdateForm(null);
+    }
+  }, [isUpdateForm]);
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        // onClose();
+        setIsOpen(false)
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   const handleModalClick = e => {
-    if (e.target.classList.contains('modal')) {
-      onClose();
-    }
-  };
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
+    const closeButtonClicked = e.target.closest('.close-button');
+    const modalContentClicked = e.target.closest('.modal-content');
 
-  return (
-    <ModalWrapper onClick={handleModalClick} onKeyDown={handleKeyDown}>
-      <ContentWrapper>
-        <CloseButton onClick={onClose}>
+    if (closeButtonClicked || modalContentClicked === null) {
+      // onClose();
+    }  
+    setIsOpen(false)
+      e.stopPropagation();
+  };
+  console.log(user.name);
+  console.log(user.avatarURL);
+  return isOpen ? (
+    <ModalWrapper onClick={handleModalClick}>
+      <ContentWrapper className="modal-content">
+        <CloseButton onClick={onClose} tabIndex={1} className="close-button">
           <img src={XIcon} alt="Close" width={24} />
         </CloseButton>
         <StyledForm
           initialValues={{
-            avatarURL: UserAvatar || '',
-            name: UserName || '',
+            avatarURL: '',
+            name: user.name || '',
           }}
           validationSchema={Yup.object({
             avatarURL: Yup.string(),
@@ -58,49 +81,54 @@ export const UserInfoModal = ({ onClose }) => {
               'Name can only contain letters or numbers.'
             ),
           })}
-          onSubmit={values => {
-            dispatch(updateUserThunk(values));
+          onSubmit={async values => {
+            const formData = new FormData();
+            formData.append('name', values.name);
+            formData.append('avatarURL', values.avatarURL);
+            await dispatch(updateUserThunk(formData));
           }}
-        >
+                >
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-                <AvatarFrame />
+                <AvatarFrame src={user.avatarURL} alt="avatar" />
                 <AddAvatarButton src={AddIcon} alt="plus" width={28} />
               </UserAvatarWrapper>
-              <StyledInput
-                type="text"
-                name="name"
-                placeholder="Name"
-                onChange={e => {
-                  setFieldTouched('name');
-                  handleChange(e);
-                }}
-                className={
-                  touched.name && !errors.name
-                    ? 'valid-border'
-                    : errors.name && touched.name
-                    ? 'invalid-border'
-                    : ''
-                }
-              />
-              {errors.name && touched.name && (
-                <div>
-                  <StyledIconError color="red" />{' '}
-                  <StyledError name="name" component="div" />
-                </div>
-              )}
-              {touched.name && !errors.name && (
-                <div>
-                  <StyledIconChecked color="green" />{' '}
-                  <StyledMessage>This is an CORRECT name</StyledMessage>
-                </div>
-              )}
-              <SaveChangeButton>Save changes</SaveChangeButton>
+              <StyledInputWrap>
+                <StyledInput
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  onChange={e => {
+                    setFieldTouched('name');
+                    handleChange(e);
+                  }}
+                  className={
+                    touched.name && !errors.name
+                      ? 'valid-border'
+                      : errors.name && touched.name
+                      ? 'invalid-border'
+                      : ''
+                  }
+                />
+                {errors.name && touched.name && (
+                  <div>
+                    <StyledIconError color="red" />{' '}
+                    <StyledError name="name" component="div" />
+                  </div>
+                )}
+                {touched.name && !errors.name && (
+                  <div>
+                    <StyledIconChecked color="green" />{' '}
+                    <StyledMessage>This is an CORRECT name</StyledMessage>
+                  </div>
+                )}
+              </StyledInputWrap>
+              <SaveChangeButton type="submit">Save changes</SaveChangeButton>
             </StyledFormInsight>
           )}
         </StyledForm>
       </ContentWrapper>
     </ModalWrapper>
-  );
+ ) : null;
 };

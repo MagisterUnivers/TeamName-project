@@ -5,12 +5,13 @@ import {
   logoutThunk,
   refreshThunk,
   registrationThunk,
+  updateUserThunk,
   verifyThunk,
 } from './authOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
-  user: { name: '', email: '', id: '' },
+  user: { name: '', email: '', id: '', avatarURL: '' },
   accessToken: null,
   online: false,
   loading: false,
@@ -77,7 +78,8 @@ const authSlice = createSlice({
       Loading.pulse('Log Out...');
     },
     [logoutThunk.fulfilled]: (state, { payload }) => {
-      state.user = { name: '', email: '' };
+      state.user = { name: '', email: '', avatarURL: '' };
+      state.userInfo = { name: '', email: '', avatarURL: '' };
       state.accessToken = '';
       state.online = false;
       state.loading = false;
