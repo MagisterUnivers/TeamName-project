@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
-import Paginator from 'components/Paginator/Paginator';
+import { Paginator, MyRecipesList, MainPageTitle } from 'components';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
-import {MainPageTitle} from 'components';
 
 const MyRecipesPage = () => {
   const dispatch = useDispatch();

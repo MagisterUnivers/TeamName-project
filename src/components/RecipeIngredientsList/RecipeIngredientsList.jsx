@@ -4,11 +4,13 @@ import {
   StyledCardWrapper,
   StyledGlassServi,
   StyledImage,
+  StyledIngredientSubtitle,
   StyledListWrapper,
   StyledTextWrapper,
 } from './RecipeIngredientsList.styled';
+import { StyledSection } from 'components/Section/Section';
 
-const RecipeIngredientsList = () => {
+export const RecipeIngredientsList = () => {
   const cocktails = useSelector(selectCocktails);
 
   // console.log(cocktails, 'state / selector');
@@ -19,7 +21,7 @@ const RecipeIngredientsList = () => {
   }
 
   return (
-    <div style={{ marginTop: 100 }}>
+    <StyledSection>
       <StyledGlassServi>Ingredients</StyledGlassServi>
       <StyledListWrapper>
         {cocktails.ingredients &&
@@ -37,15 +39,17 @@ const RecipeIngredientsList = () => {
                   height={220}
                 />
                 <StyledTextWrapper>
-                  <p>{item.title}</p>
-                  <p>{item.measure}</p>
+                  <StyledIngredientSubtitle text="true">
+                    {item.title}
+                  </StyledIngredientSubtitle>
+                  <StyledIngredientSubtitle text="false">
+                    {item.measure}
+                  </StyledIngredientSubtitle>
                 </StyledTextWrapper>
               </StyledCardWrapper>
             );
           })}
       </StyledListWrapper>
-    </div>
+    </StyledSection>
   );
 };
-
-export default RecipeIngredientsList;

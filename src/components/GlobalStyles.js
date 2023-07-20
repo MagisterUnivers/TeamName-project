@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { devices } from 'constants/breakpoints';
 
 const GlobalStyles = createGlobalStyle`
- @import-normalize;
+ @import-normalize; // normalize (border-box)
 
 :root {
   /* Colors */

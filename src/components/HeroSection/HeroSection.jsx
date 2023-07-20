@@ -7,9 +7,11 @@ import {
   Herodescription,
   Herowrapper,
 } from './Hero.styled';
-import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
+// import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
 
-const HeroSection = () => {
+import { AddRecipe } from 'components';
+
+export const HeroSection = () => {
   return (
     <Hero>
       <Herowrapper>
@@ -27,5 +29,3 @@ const HeroSection = () => {
     </Hero>
   );
 };
-
-export default HeroSection;

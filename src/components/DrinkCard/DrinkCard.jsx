@@ -1,5 +1,6 @@
-import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { SeeButton, DeleteButton } from 'components';
+import drink from './defaultimg.jpg';
 import {
   AboutStyled,
   ButtonsWrapper,
@@ -9,12 +10,8 @@ import {
   Ingredients,
   Ingredientswrapper,
 } from './DrinkCard.styled';
-import { Link } from 'react-router-dom';
-import DeleteButton from 'components/Buttons/DeleteButton/DeleteButton';
-import SeeButton from 'components/Buttons/SeeButton/SeeButton';
-import drink from './defaultimg.jpg';
 
-const DrinkCard = ({ cocktail, page }) => {
+export const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
@@ -38,5 +35,3 @@ const DrinkCard = ({ cocktail, page }) => {
     </Card>
   );
 };
-
-export default DrinkCard;

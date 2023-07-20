@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { UserInfoModal, ConfirmLogout } from 'components';
+import pencilIcon from './edit-2.svg';
 import {
   ChangeProfileButton,
   LogOutButton,
   ModalContent,
   ModalWrapper,
 } from './EditProfileModal.styled';
-import ConfirmLogoutModal from './ConfirmLogout';
-import UserInfoModal from './UserInfoModal';
-import pencilIcon from './edit-2.svg';
 
-const EditProfileModal = () => {
-  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
+export const EditProfileModal = () => {
+  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false); // value is not used (modal window storage)
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
 
@@ -24,7 +23,7 @@ const EditProfileModal = () => {
     setIsConfirmLogoutOpen(true);
   };
 
-  const handleModalClick = (e) => {
+  const handleModalClick = e => {
     if (e.target === e.currentTarget) {
       setIsChangeProfileOpen(false);
       setIsConfirmLogoutOpen(false);
@@ -33,14 +32,14 @@ const EditProfileModal = () => {
     e.stopPropagation();
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (e.key === 'Escape') {
       setIsChangeProfileOpen(false);
     }
   };
 
   return (
-    <ModalWrapper >
+    <ModalWrapper>
       <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
         <ChangeProfileButton
           onClick={() => {
@@ -48,17 +47,13 @@ const EditProfileModal = () => {
           }}
         >
           Edit profile
-          <img src={pencilIcon} alt="pencil" width="14"/>
+          <img src={pencilIcon} alt="pencil" width="14" />
         </ChangeProfileButton>
         <LogOutButton onClick={handleConfirmLogout}>Log out</LogOutButton>
       </ModalContent>
 
-      {isConfirmLogoutOpen && (
-        <ConfirmLogoutModal onClose={handleConfirmLogout} />
-      )}
+      {isConfirmLogoutOpen && <ConfirmLogout onClose={handleConfirmLogout} />}
       {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
     </ModalWrapper>
   );
 };
-
-export default EditProfileModal;

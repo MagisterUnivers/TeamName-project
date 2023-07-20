@@ -1,6 +1,5 @@
-import React from 'react';
-import RegisterForm from 'components/RegisterForm/RegisterForm';
 import { useMediaQuery } from 'react-responsive';
+import { RegisterForm } from 'components';
 import { BaseDiv, PicturedWrapper } from '../WelcomePage/WelcomPage.styled';
 import { SummaryWrapper } from './RegisterPage.styled';
 

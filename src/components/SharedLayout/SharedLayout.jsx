@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-
 import { Header, Footer } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -13,7 +12,7 @@ import { refreshThunk } from 'redux/Auth/authOperations';
 import { Container } from 'components/Container/Container';
 import { getCurrentUserThunk } from 'redux/UserInfo/userOperations';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
   /**
     |============================
     | 
@@ -60,3 +59,5 @@ export const SharedLayout = () => {
     </>
   );
 };
+
+export default SharedLayout;

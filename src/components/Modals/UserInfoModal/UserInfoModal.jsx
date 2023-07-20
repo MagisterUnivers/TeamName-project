@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import {
@@ -24,7 +24,7 @@ import { selectUserInfoAvatar, selectUserInfoName } from 'redux/selectors';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
 
-const UserInfoModal = ({ onClose }) => {
+export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const UserName = useSelector(selectUserInfoName);
   const UserAvatar = useSelector(selectUserInfoAvatar);
@@ -104,5 +104,3 @@ const UserInfoModal = ({ onClose }) => {
     </ModalWrapper>
   );
 };
-
-export default UserInfoModal;
