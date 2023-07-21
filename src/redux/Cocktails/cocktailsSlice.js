@@ -84,11 +84,11 @@ const cocktailsSlice = createSlice({
     },
     [getCocktailByIdThunk.pending]: (state, { payload }) => {
       state.loading = true;
-      state.cocktails = [];
+      // state.cocktails = [];
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailByIdThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload;
+      state.favorites = payload;
       state.backup = payload;
 
       state.loading = false;
@@ -222,7 +222,7 @@ const cocktailsSlice = createSlice({
       // state.cocktails = [];
       // state.cocktails.push(payload);
       // console.log(payload);
-      state.cocktails = payload;
+      state.favorites = payload;
       state.backup = payload;
       state.loading = false;
       Loading.remove();
