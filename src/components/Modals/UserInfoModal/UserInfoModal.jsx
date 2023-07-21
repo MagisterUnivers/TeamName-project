@@ -26,7 +26,6 @@ import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
 import { AddIconImg } from './UserInfoModal.styled';
 import { StyledInputFile } from './UserInfoModal.styled';
-// import { updateUserThunk } from 'redux/Auth/authOperations';
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();

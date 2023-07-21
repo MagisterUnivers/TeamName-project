@@ -22,8 +22,8 @@
 //     </Overlay>
 //   );
 // };
-
-import { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
 import { ConfirmLogout, UserInfoModal } from 'components';
 import pencilIcon from '../UserInfoModal/edit-2.svg';
 import {
@@ -33,24 +33,34 @@ import {
   ModalWrapper,
 } from './UserLogoModal.styled';
 
-export const UserLogoModal = () => {
-  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
+const modalRoot = document.getElementById('modal-root');
+
+export const UserLogoModal = ({ onClose }) => {
+  // const [isOpen, setIsOpen] = useState(false);
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
+  
+  useEffect(() => {
+    console.log('UserLogoModal isOpen:', true);
+    return () => {
+      console.log('UserLogoModal isOpen:', false);
+    };
+  }, []);
 
   const handleOpenUserInfo = () => {
-    setIsChangeProfileOpen(false);
+    // setIsOpen(false);
     setIsUserInfoOpen(true);
   };
 
   const handleConfirmLogout = () => {
-    setIsChangeProfileOpen(false);
+    // setIsOpen(false);
     setIsConfirmLogoutOpen(true);
   };
 
   const handleModalClick = e => {
     if (e.target === e.currentTarget) {
-      setIsChangeProfileOpen(false);
+      console.log('Modal clicked!');
+      // setIsOpen(false);
       setIsConfirmLogoutOpen(false);
       setIsUserInfoOpen(false);
     }
@@ -59,11 +69,12 @@ export const UserLogoModal = () => {
 
   const handleKeyDown = e => {
     if (e.key === 'Escape') {
-      setIsChangeProfileOpen(false);
+      // setIsOpen(false);
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
+    // isOpen ? (
     <ModalWrapper>
       <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
         <ChangeProfileButton
@@ -79,6 +90,8 @@ export const UserLogoModal = () => {
 
       {isConfirmLogoutOpen && <ConfirmLogout onClose={handleConfirmLogout} />}
       {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
-    </ModalWrapper>
+    </ModalWrapper>,
+    //  ) : null,
+     modalRoot 
   );
 };

@@ -18,22 +18,27 @@ import {
   UserLogoWrp,
 } from './UserLogoStyled';
 import { UserLogoModal } from 'components';
+import useravatar_plug from '../../assets/img/useravatar_plug.png';
 
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);
   const user = useSelector(selectUser);
+  const handleClickUserLogoWrp = () => {
+    console.log('UserLogoWrp clicked!');
+    setShowUserLogoModal(!showUserLogoModal);
+  };
 
   return (
-    <UserLogoWrp onClick={() => setShowUserLogoModal(!showUserLogoModal)}>
+    <UserLogoWrp onClick={handleClickUserLogoWrp}>
       <UserAvatarWrp>
         <UserAvatar
-          src={user?.avatar || require('../../assets/img/useravatar_plug.png')}
+          src={user?.avatar || useravatar_plug}
           alt="avatar"
         />
       </UserAvatarWrp>
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
-      {showUserLogoModal && <UserLogoModal />}
+      {showUserLogoModal && <UserLogoModal onClose={() => setShowUserLogoModal(false)} />}
     </UserLogoWrp>
   );
 };

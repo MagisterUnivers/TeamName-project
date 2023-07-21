@@ -13,7 +13,10 @@ const GlobalStyles = createGlobalStyle`
   --error-state-color: #da1414;
   --pagination-accent-color: #4070cd80;
 }
-
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
 *,
 *:before,
 *:after {
