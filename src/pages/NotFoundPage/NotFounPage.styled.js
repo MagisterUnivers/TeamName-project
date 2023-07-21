@@ -7,7 +7,7 @@ export const WrapDiv = styled.div`
 `;
 
 export const P404 = styled.p`
-  color: rgba(243, 243, 243, 0.1);
+  color: ${props => props.theme === 'dark' ? 'rgba(243, 243, 243, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
   font-family: Manrope;
   font-size: 120px;
   font-style: normal;
@@ -16,12 +16,12 @@ export const P404 = styled.p`
   position: absolute;
   z-index: 15;
   top: 152px;
-  word-spacing: 80px;
+  word-spacing: ${props => props.theme === 'dark' ? '80px' : '130px'};
 
   @media ${devices.tablet} {
     top: 161px;
     font-size: 150px;
-    word-spacing: 100px;
+    word-spacing: ${props => props.theme === 'dark' ? '100px' : '150px'}
   }
 `;
 

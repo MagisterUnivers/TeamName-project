@@ -223,8 +223,8 @@ const cocktailsSlice = createSlice({
       // console.log(payload);
       state.cocktails = payload;
       state.backup = payload;
-      state.loading = false;
-      Loading.remove();
+      // state.loading = false;
+      // Loading.remove();
     },
     [addToFavoriteThunk.rejected]: (state, { payload }) => {
       state.error = payload;
