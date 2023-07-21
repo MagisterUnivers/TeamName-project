@@ -41,8 +41,8 @@ export const RecipePreparation = () => {
                 : `Let’s forget about the second half of this drink’s name for a moment: It doesn’t remotely resemble a classic Martini. As for the first part, it's said by some that its creator, bartender Douglas Ankrah, thought it was what a porn star would order; other stories hold that he was inspired by the smell of a stripper's perfume.`}
             </StyledAboutSubtitle>
             <StyledAboutSubtitle>
-              {cocktails.description
-                ? cocktails.description
+              {cocktails.instruction
+                ? cocktails.instruction
                 : `Fill a wine glass or a large balloon glass with ice cubes.
 Add 3 ounces of Aperol to the glass.
 Pour 3 ounces of Prosecco (or any other bubbly wine) over the Aperol.

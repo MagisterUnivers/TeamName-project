@@ -12,13 +12,9 @@ export const MyOwnRecipesList = () => {
   // const loading = useSelector(selectCocktailsIsLoading);
 
   useEffect(() => {
+    if (ownCocktails.length !== 0) return;
     dispatch(getAllOwnDrinksThunk());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (ownCocktails.length > 1) return;
-  //   dispatch(getAllOwnDrinksThunk());
-  // }, [dispatch]);
 
   return (
     <Section>
