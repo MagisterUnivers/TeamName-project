@@ -86,7 +86,6 @@ export const SelectIngredientStyled = styled(Select)`
     border-radius: 200px;
     border: 1px solid;
     border-color: ${props => props.theme.secondBorderColor};
-    opacity: 0.800000011920929;
     outline: none;
     box-shadow: none;
     transition: border-color 400ms ease;
@@ -276,7 +275,6 @@ export const UnitWrp = styled.div`
   border-radius: 200px;
   border: 1px solid;
   border-color: ${props => props.theme.secondBorderColor};
-  opacity: 0.800000011920929;
   transition: border-color 400ms ease;
 
   @media (min-width: 768px) {
