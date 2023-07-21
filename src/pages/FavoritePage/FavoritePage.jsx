@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { Paginator, MainPageTitle } from 'components';
@@ -12,7 +11,7 @@ const FavoritePage = () => {
     <>
       <MainPageTitle title={'Favotites'} />
       <FavoriteList />
-      {/* <Paginator /> */}
+      <Paginator />
     </>
   );
 };

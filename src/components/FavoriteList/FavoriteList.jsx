@@ -1,16 +1,16 @@
 import { useSelector } from 'react-redux';
 
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectCocktails } from 'redux/selectors';
+import { selectCocktails, selectFavorite } from 'redux/selectors';
 import { FavoriteListStyled, Section } from './FavoriteList.styled';
 
 export const FavoriteList = () => {
-  const favoriteCocktails = useSelector(selectCocktails);
+  const favoriteCocktails = useSelector(selectFavorite);
 
   return (
     <Section>
       <FavoriteListStyled>
-        {favoriteCocktails.length !== 0 ? (
+        {favoriteCocktails !== undefined && favoriteCocktails.length !== 0 ? (
           favoriteCocktails.map(favoriteCocktails => (
             <DrinkCard
               key={favoriteCocktails._id}
