@@ -35,6 +35,7 @@ export const StyledAboutContent = styled.p`
   }
 
   @media ${devices.desktop} {
+    width: 593px;
   }
 `;
 
