@@ -1,38 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux';
-import  { Pagination } from '@mui/material';
-
-import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
-
+import { Pagination } from '@mui/material';
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
 import { WrapperGeneralStyled } from './Paginator.styled';
-import { useMediaRules } from 'hooks/useMediaRules';
-import { useEffect, useState } from 'react';
+import { useMediaRules } from '../../hooks/useMediaRules';
+import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
+// import { useEffect, useState } from 'react';
 // import { useState } from 'react';
 
 const Paginator = () => {
-  // let page = useSelector(selectPage);
-  const [pageLocal, setPageLocal] = useState(1);
+  let page = useSelector(selectPage);
   const dispatch = useDispatch();
   const { isMobile } = useMediaRules();
   const totalHits = useSelector(selectTotalHits);
-  const limit = 9; //!!!!
+  const { isDesktop } = useMediaRules();
+  const limit = isDesktop ? 9 : 8;
   const pageQuantity = Math.ceil(totalHits / limit);
   const theme = useSelector(selectTheme);
   
-  useEffect(()=> {
-    dispatch(setPage(pageLocal))
-  }, [pageLocal])
 
   return (
     <WrapperGeneralStyled>
       {pageQuantity > 1 && (
         <Pagination
           count={pageQuantity}
-          page={pageLocal}
+          page={page}
           onClick={() => {
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
           }}
-          onChange={(_, num) => setPageLocal(num)}
+          onChange={(_, num) => dispatch(setPage(num))}
           sx={{
             marginTop: 3,
             marginX: 'auto',
