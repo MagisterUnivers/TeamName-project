@@ -11,11 +11,8 @@ import {
   Ingredientswrapper,
   ImageWrapper,
 } from './DrinkCard.styled';
-import { useDispatch } from 'react-redux';
-import { removeFromFavoriteThunk } from 'redux/Cocktails/cocktailsOperations';
 
 export const DrinkCard = ({ cocktail, page }) => {
-  const dispatch = useDispatch();
 
   return (
     <Card>

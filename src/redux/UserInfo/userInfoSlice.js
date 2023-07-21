@@ -4,7 +4,7 @@ import {
   getCurrentUserThunk,
   updateThemeThunk,
   updateUserThunk,
-  } from './userOperations';
+} from './userOperations';
 
 const initialState = {
   user: { name: '', email: '', avatarURL: '' },
@@ -15,7 +15,13 @@ const initialState = {
 const userInfoSlice = createSlice({
   name: '@@userInfo',
   initialState,
-  reducers: {},
+  reducers: {
+    clearState: state => {
+      state.user = { name: '', email: '', avatarURL: '' };
+      state.theme = 'dark';
+      state.firstRender = true;
+    },
+  },
   extraReducers: {
     [updateThemeThunk.pending]: (state, { payload }) => {
       state.loading = true;
@@ -78,4 +84,4 @@ const userInfoSlice = createSlice({
 });
 
 export const userInfoReducer = userInfoSlice.reducer;
-export const { setTheme } = userInfoSlice.actions;
+export const { clearState } = userInfoSlice.actions;
