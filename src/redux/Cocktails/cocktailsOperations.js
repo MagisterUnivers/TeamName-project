@@ -73,6 +73,7 @@ export const searchAllDrinksThunk = createAsyncThunk(
       search.chosenCategory && (params.category = search.chosenCategory);
       search.chosenIngredient && (params.ingredient = search.chosenIngredient);
       search.query && (params.query = search.query);
+      params.page = page;
       const res = await instance.get('search', {
         params,
       });

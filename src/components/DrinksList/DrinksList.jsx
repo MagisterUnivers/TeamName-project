@@ -15,6 +15,7 @@ const DrinksList = () => {
   const dispatch = useDispatch();
   const searchResults = useSelector(selectSearchResults);
   const page = useSelector(selectPage);
+  console.log(page);
   const search = useSelector(selectSearch);
 
   useEffect(() => {
