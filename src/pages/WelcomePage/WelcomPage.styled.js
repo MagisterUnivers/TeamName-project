@@ -23,7 +23,7 @@ export const BaseDiv = styled.div`
   }
   @media ${devices.desktop} {
     background-image: url(${cocktailIMGDESC});
-
+    background-color: #07070b;
     justify-content: left;
     padding-left: 100px;
   }
