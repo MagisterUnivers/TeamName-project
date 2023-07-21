@@ -24,7 +24,7 @@ export const ConfirmLogout = ({ id, onClose }) => {
           navigate('/');
         }
       })
-      .then(Notiflix.Report.success('Account closed successfully!'));
+      .then(Notiflix.Notify.success('Log out successfully!'));
   };
 
   return (
