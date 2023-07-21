@@ -3,7 +3,7 @@ export const lightTheme = {
   bgrColor: '#f3f3f3',
   borderColor: '#161f37',
   secondBorderColor: '#161f37',
-  hoverBorderColor: 'rgba(22, 31, 55, 0.5)',
+  hoverBorderColor: '#000000',
   btnHoverColor: '#161f37',
   correctStateColor: '#3cbc81',
   errorStateColor: '#da1414',

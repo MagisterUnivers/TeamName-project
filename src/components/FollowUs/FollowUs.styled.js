@@ -39,14 +39,14 @@ export const StyledLink = styled.a`
   align-items: center;
 
   border-radius: 10px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid ${props => props.theme.borderColor};
 
   transition: border-color 400ms ease, transform 400ms ease;
 
   &:hover,
   &:focus {
     transform: translateY(-3px);
-    border-color: var(--main-text-color);
+    ${props => props.theme.hoverBorderColor}
   }
   @media ${devices.tablet} {
     width: 44px;
