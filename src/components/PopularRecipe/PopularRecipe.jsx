@@ -13,7 +13,7 @@ import {
 
 export const PopularRecipe = () => {
   const popularData = useSelector(selectPopular);
-  console.log(popularData);
+  // console.log(popularData);
 
   return (
     <>
@@ -21,7 +21,7 @@ export const PopularRecipe = () => {
         <StyledTitle>Popular Recipe</StyledTitle>
         <StyledList>
           {popularData?.map(i => {
-            console.log(i.desc);
+            // console.log(i.desc);
             return (
               <StyledListElement key={i._id}>
                 <StyledLink to={`/main/recipe/${i._id}`}>

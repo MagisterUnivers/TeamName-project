@@ -17,7 +17,7 @@ export const RecipePageHero = ({ func }) => {
   let filter;
 
   // console.log(cocktails.favorite, 'Favorite');
-  console.log(cocktails, 'Cocktails');
+  // console.log(cocktails, 'Cocktails');
   // console.log(func);
 
   // if (cocktails.favorite !== undefined) {
@@ -34,7 +34,7 @@ export const RecipePageHero = ({ func }) => {
   return (
     cocktails !== undefined && (
       <>
-        {console.log(user.id, cocktails._id, 'ID')}
+        {/* {console.log(user.id, cocktails._id, 'ID')} */}
         <StyledSection>
           <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
           <StyledContentHolder>
@@ -45,7 +45,7 @@ export const RecipePageHero = ({ func }) => {
                   ? cocktails.about
                   : `Let’s forget about the second half of this drink’s name for a moment: It doesn’t remotely resemble a classic Martini. As for the first part, it's said by some that its creator, bartender Douglas Ankrah, thought it was what a porn star would order; other stories hold that he was inspired by the smell of a stripper's perfume.`}
               </StyledAboutContent>
-              {console.log(filter, 'Filter before expression')}
+              {/* {console.log(filter, 'Filter before expression')} */}
               {favoriteFilter(cocktails, user) ? (
                 <StyledButton type="button" onClick={func}>
                   Remove recipe from favorite

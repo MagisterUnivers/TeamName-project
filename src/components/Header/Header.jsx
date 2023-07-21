@@ -14,7 +14,7 @@ export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
   const { isDesktop, isMobile } = useMediaRules();
-  console.log(isDesktop);
+  // console.log(isDesktop);
 
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
