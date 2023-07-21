@@ -104,13 +104,14 @@ export const RegistrationNavLink = styled(NavLink)`
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   /* background: var(--main-text-color); */
-  color: var(--main-text-color);
+  color: ${props => props.theme.textColor};
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.13;
-  transition: background-color 0.5s ease;
-  &:hover {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  &:hover,
+  &:focus {
     background-color: var(--main-text-color);
     color: var(--btn-hover-color);
     /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
@@ -131,8 +132,9 @@ export const SignInNavLink = styled(NavLink)`
   font-style: normal;
   font-weight: 600;
   line-height: 1.28;
-  transition: background-color 0.5s ease;
-  &:hover {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  &:hover,
+  &:focus {
     background-color: var(--main-text-color);
     color: var(--btn-hover-color);
     /* text-decoration: underline;
