@@ -9,24 +9,31 @@ import {
   Image,
   Ingredients,
   Ingredientswrapper,
+  ImageWrapper,
 } from './DrinkCard.styled';
 
 export const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
-        <Image
-          src={cocktail.drinkThumb}
-          alt={cocktail.drink}
-          onError={e => {
-            e.currentTarget.src = drink;
-          }}
-        />
-        <Ingredientswrapper position={page}>
-          <Drinkingreds>{cocktail.drink}</Drinkingreds>
-          <Ingredients>Ingredients</Ingredients>
-        </Ingredientswrapper>
+        <ImageWrapper>
+          <Image
+            src={cocktail.drinkThumb}
+            alt={cocktail.drink}
+            onError={e => {
+              e.currentTarget.src = drink;
+            }}
+          />
+        </ImageWrapper>
       </Link>
+
+      <Ingredientswrapper position={page}>
+        <Link to={`/main/recipe/${cocktail._id}`}>
+          <Drinkingreds>{cocktail.drink}</Drinkingreds>
+        </Link>
+        <Ingredients>Ingredients</Ingredients>
+      </Ingredientswrapper>
+
       {page === 'my' && <AboutStyled>{cocktail.about}</AboutStyled>}
       <ButtonsWrapper>
         {page === 'my' && <SeeButton id={cocktail._id} />}

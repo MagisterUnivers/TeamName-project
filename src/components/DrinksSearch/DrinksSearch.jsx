@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-
-import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 import {
   SelectStyled,
   InputStyled,
   StyledSearchButton,
   SearchFormStyled,
   QueryFormStyled,
+  StyledSearchIcon,
+  HoverWrapper,
+  FirstHoverWrapper,
 } from './DrinksSearch.styled';
 import {
   selectCategories,
@@ -29,6 +29,7 @@ export const DrinksSearch = ({ categoryName }) => {
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
   const search = useSelector(selectSearch);
+  console.log(searchQuery);
 
   //creating options for the dropdowns
   const categoriesListOptions = categoriesList.map(category => {
@@ -75,7 +76,7 @@ export const DrinksSearch = ({ categoryName }) => {
   };
 
   const handleChangeQuery = e => {
-    setSearchQuery(e.target.value);
+    setSearchQuery(e.target.value.trim());
   };
   const handleChangeCategory = e => {
     if (e.label !== 'Categories') {
@@ -95,10 +96,7 @@ export const DrinksSearch = ({ categoryName }) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    if (searchQuery.trim() === '') {
-      return;
-    }
-    dispatch(setQuery(searchQuery.trim()));
+    dispatch(setQuery(searchQuery));
   };
   return (
     <SearchFormStyled>
@@ -111,8 +109,10 @@ export const DrinksSearch = ({ categoryName }) => {
           placeholder="Enter the text"
           onChange={handleChangeQuery}
         />
+
         <StyledSearchButton type="submit">
-          <SearchIcon />
+          <HoverWrapper></HoverWrapper>
+          <StyledSearchIcon />
         </StyledSearchButton>
       </QueryFormStyled>
 
@@ -134,7 +134,7 @@ export const DrinksSearch = ({ categoryName }) => {
         styles={styles}
         value={search.ingredient}
         name="ingredient"
-        defaultValue={{ label: 'Indredients', value: '0' }}
+        defaultValue={{ label: 'Ingredients', value: '0' }}
         options={ingredientsListOptions}
         placeholder="Ingredients"
         isSearchable={true}

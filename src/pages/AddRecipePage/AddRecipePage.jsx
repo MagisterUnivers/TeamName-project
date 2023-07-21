@@ -7,7 +7,7 @@ import {
   PopularRecipe,
   MainPageTitle,
 } from 'components';
-import { StyledPageWrapper, StyledWrapper } from './AddRecipePage.styled';
+import { StyledPageWrapper, StyledWrapper, StyledSection } from './AddRecipePage.styled';
 
 const AddRecipePage = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const AddRecipePage = () => {
   }, []); // eslint-disable-line
 
   return (
-    <>
+    <StyledSection>
       <MainPageTitle title="Add recipe" />
       <StyledPageWrapper>
         <AddRecipeForm />
@@ -26,7 +26,7 @@ const AddRecipePage = () => {
           <PopularRecipe />
         </StyledWrapper>
       </StyledPageWrapper>
-    </>
+    </StyledSection>
   );
 };
 
