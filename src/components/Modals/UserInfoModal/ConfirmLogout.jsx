@@ -19,7 +19,7 @@ export const ConfirmLogout = ({ id, onClose }) => {
     dispatch(logoutThunk())
       .unwrap()
       .then(res => {
-        console.log('Response:', res);
+        // console.log('Response:', res);
         if (res && res.status === 200) {
           navigate('/');
         }

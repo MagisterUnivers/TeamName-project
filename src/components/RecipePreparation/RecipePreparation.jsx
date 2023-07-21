@@ -15,7 +15,7 @@ export const RecipePreparation = () => {
   console.log(cocktails, 'state / selector');
 
   if (!cocktails) {
-    console.log('Empty');
+    // console.log('Empty');
     return null;
   }
 

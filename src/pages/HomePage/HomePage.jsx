@@ -7,7 +7,6 @@ import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrink
 
 const HomePage = () => {
   const dispatch = useDispatch();
-
   const category = useSelector(selectCocktails);
 
   const ordinaryDrink = category.filter(item => {
@@ -27,16 +26,21 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    dispatch(getCocktailsByFourCategoryThunk());
-  }, [dispatch]);
+    if (category !== undefined && category.length === 0)
+      dispatch(getCocktailsByFourCategoryThunk());
+  }, [category]);
 
   return (
     <>
-      <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
-      <PreviewDrinks title="Cocktail" data={cocktail} />
-      <PreviewDrinks title="Shake" data={shake} />
-      <PreviewDrinks title="Other/Unknown" data={other} />
-      <OtherDrinksButton />
+      {category !== undefined && (
+        <>
+          <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
+          <PreviewDrinks title="Cocktail" data={cocktail} />
+          <PreviewDrinks title="Shake" data={shake} />
+          <PreviewDrinks title="Other/Unknown" data={other} />
+          <OtherDrinksButton />
+        </>
+      )}
     </>
   );
 };

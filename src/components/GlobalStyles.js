@@ -29,7 +29,7 @@ body {
   background-color: ${props => props.theme.bgrColor};
   transition: background-color 1s;
 
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
     circle at center,
     white 0%,
     #BCE6D2 40%
@@ -88,7 +88,7 @@ body {
    left -26% bottom 1%,
    left 50%  bottom -100px,
    right 10px bottom -100px;
-  }
+  } */
 }
 
 h1,

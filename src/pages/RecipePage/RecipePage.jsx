@@ -32,26 +32,26 @@ const RecipePage = ({ id }) => {
     // fetch recipe
     dispatch(getCocktailByIdThunk(idQuery.id)); // 1
     dispatch(getCurrentUserThunk()); // 2
-    console.log(contact, 'Contact');
+    // console.log(contact, 'Contact');
   }, []); // eslint-disable-line
 
   const handleSend = () => {
     filter = favoriteFilter(contact, user);
     if (filter) {
       dispatch(removeFromFavoriteThunk(contact._id)); // 3
-      console.log('remove favorite');
+      // console.log('remove favorite');
     } else {
       dispatch(addToFavoriteThunk(contact._id)).then(
         // 4
         dispatch(getCocktailByIdThunk(idQuery.id)) // 5
       );
-      console.log('add favorite');
+      // console.log('add favorite');
     }
   };
 
   return (
     <>
-      {console.log(contact, 'return')}
+      {/* {console.log(contact, 'return')} */}
       <RecipePageHero func={handleSend} />
       {!loading && <RecipeIngredientsList />}
       <RecipePreparation />
