@@ -89,4 +89,5 @@ export const AboutStyled = styled.p`
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 8px;
+  position: relative;
 `;
