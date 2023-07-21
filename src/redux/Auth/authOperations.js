@@ -59,7 +59,7 @@ export const loginThunk = createAsyncThunk(
       setToken(res.data.token);
       return res.data;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setTimeout(() => {
         if (!loading) {
           Notiflix.Report.warning(
@@ -86,7 +86,7 @@ export const logoutThunk = createAsyncThunk('@@auth/logout', async () => {
     localStorage.removeItem('user');
     localStorage.removeItem('accessToken');
     clearToken();
-    console.log(res, `thunk`);
+    // console.log(res, `thunk`);
     return res;
   } catch (error) {
     const errorMessage = error.response.data.message;
@@ -102,7 +102,7 @@ export const refreshThunk = createAsyncThunk(
     setToken(refreshToken);
     try {
       const res = await instance.post('users/refresh');
-      console.log(res);
+      // console.log(res);
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;
@@ -133,7 +133,7 @@ export const verifyThunk = createAsyncThunk(
   async verificationToken => {
     try {
       const res = await instance.get(`/users/verify/${verificationToken}`);
-      console.log(res);
+      // console.log(res);
       // setToken(res.data);
       return res.data;
     } catch (error) {

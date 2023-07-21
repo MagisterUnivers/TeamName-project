@@ -29,7 +29,7 @@ export const DrinksSearch = ({ categoryName }) => {
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
   const search = useSelector(selectSearch);
-  console.log(searchQuery);
+  // console.log(searchQuery);
 
   //creating options for the dropdowns
   const categoriesListOptions = categoriesList.map(category => {

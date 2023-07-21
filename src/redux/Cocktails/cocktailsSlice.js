@@ -18,6 +18,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
   cocktails: [],
+  favorite: [],
   own: [],
   popular: [],
   categories: [],
@@ -104,7 +105,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [searchAllDrinksThunk.fulfilled]: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
@@ -200,7 +201,8 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getAllFavoriteDrinksThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
+      console.log(payload);
+      state.favorite = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;
@@ -219,7 +221,7 @@ const cocktailsSlice = createSlice({
     [addToFavoriteThunk.fulfilled]: (state, { payload }) => {
       // state.cocktails = [];
       // state.cocktails.push(payload);
-      console.log(payload);
+      // console.log(payload);
       state.cocktails = payload;
       state.backup = payload;
       state.loading = false;
@@ -236,7 +238,7 @@ const cocktailsSlice = createSlice({
     },
     [removeFromFavoriteThunk.fulfilled]: (state, { payload }) => {
       state.cocktails = payload.cocktails;
-      console.log(payload);
+      // console.log(payload);
       state.loading = false;
       Loading.remove();
     },

@@ -10,7 +10,7 @@ export const Paginator = () => {
   const totalHits = useSelector(selectTotalHits);
   const limit = 8; //!!!!
   const pageQuantity = Math.ceil(totalHits / limit);
-  console.log(pageQuantity);
+  // console.log(pageQuantity);
   return (
     <WrapperGeneralStyled>
       {pageQuantity > 1 && (

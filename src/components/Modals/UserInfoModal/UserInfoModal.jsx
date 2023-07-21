@@ -61,8 +61,8 @@ export const UserInfoModal = ({ onClose }) => {
     setIsOpen(false)
       e.stopPropagation();
   };
-  console.log(user.name);
-  console.log(user.avatarURL);
+  // console.log(user.name);
+  // console.log(user.avatarURL);
   return isOpen ? (
     <ModalWrapper onClick={handleModalClick}>
       <ContentWrapper className="modal-content">
