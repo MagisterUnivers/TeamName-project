@@ -12,6 +12,7 @@ import {
   getAllFavoriteDrinksThunk,
   addToFavoriteThunk,
   removeFromFavoriteThunk,
+  removeFromFavoritePageThunk,
   getPopularThunk,
 } from './cocktailsOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -236,7 +237,13 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [removeFromFavoriteThunk.fulfilled]: (state, { payload }) => {
-      state.favorites = payload.cocktails;
+      console.log(Array.isArray(state.favorites));
+      if(Array.isArray(state.favorites)){
+        console.log(111);
+        state.favorites = state.favorites.filter((el)=>{ return el._id !== payload.cocktails._id})
+      }else{
+        state.favorites = payload.cocktails;
+      }
       // console.log(payload);
       state.loading = false;
       Loading.remove();
