@@ -35,10 +35,16 @@ export const DrinkCard = ({ cocktail, page }) => {
         <Ingredients>Ingredients</Ingredients>
       </Ingredientswrapper>
 
-      {page === 'my' && <AboutStyled>{cocktail.about}</AboutStyled>}
+      {(page === 'my' || page === 'favorite') && (
+        <AboutStyled>{cocktail.about}</AboutStyled>
+      )}
       <ButtonsWrapper>
-        {page === 'favorite' && <SeeButton id={cocktail._id} />}
-        {page === 'favorite' && <DeleteButton id={cocktail._id} />}
+        {(page === 'my' || page === 'favorite') && (
+          <SeeButton id={cocktail._id} />
+        )}
+        {(page === 'my' || page === 'favorite') && (
+          <DeleteButton id={cocktail._id} page={page} />
+        )}
       </ButtonsWrapper>
     </Card>
   );
