@@ -10,11 +10,11 @@ export const FavoriteList = () => {
   return (
     <Section>
       <FavoriteListStyled>
-        {favoriteCocktails !== undefined && favoriteCocktails.length !== 0 ? (
+        {Array.isArray(favoriteCocktails) && favoriteCocktails.length !== 0 ? (
           favoriteCocktails.map(favoriteCocktails => (
             <DrinkCard
               key={favoriteCocktails._id}
-              page={'my'}
+              page={'favorite'}
               cocktail={favoriteCocktails}
             />
           ))
