@@ -1,18 +1,16 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { Paginator, MyRecipesList, MainPageTitle } from 'components';
+import { Paginator, MainPageTitle } from 'components';
+import { FavoriteList } from 'components/FavoriteList/FavoriteList';
 
 const FavoritePage = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllFavoriteDrinksThunk());
-  }, [dispatch]);
+  dispatch(getAllFavoriteDrinksThunk());
 
   return (
     <>
       <MainPageTitle title={'Favotites'} />
-      <MyRecipesList />
+      <FavoriteList />
       <Paginator />
     </>
   );

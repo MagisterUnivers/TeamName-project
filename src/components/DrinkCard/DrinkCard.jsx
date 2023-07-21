@@ -17,19 +17,23 @@ export const DrinkCard = ({ cocktail, page }) => {
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
         <ImageWrapper>
-        <Image
-          src={cocktail.drinkThumb}
-          alt={cocktail.drink}
-          onError={e => {
-            e.currentTarget.src = drink;
-          }}
-        />
+          <Image
+            src={cocktail.drinkThumb}
+            alt={cocktail.drink}
+            onError={e => {
+              e.currentTarget.src = drink;
+            }}
+          />
         </ImageWrapper>
-        <Ingredientswrapper position={page}>
-          <Drinkingreds>{cocktail.drink}</Drinkingreds>
-          <Ingredients>Ingredients</Ingredients>
-        </Ingredientswrapper>
       </Link>
+
+      <Ingredientswrapper position={page}>
+        <Link to={`/main/recipe/${cocktail._id}`}>
+          <Drinkingreds>{cocktail.drink}</Drinkingreds>
+        </Link>
+        <Ingredients>Ingredients</Ingredients>
+      </Ingredientswrapper>
+
       {page === 'my' && <AboutStyled>{cocktail.about}</AboutStyled>}
       <ButtonsWrapper>
         {page === 'my' && <SeeButton id={cocktail._id} />}

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 import { PreviewDrinks } from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 import { selectCocktails } from 'redux/selectors';
+import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrinks';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-
   const category = useSelector(selectCocktails);
 
   const ordinaryDrink = category.filter(item => {
@@ -26,15 +26,21 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    dispatch(getCocktailsByFourCategoryThunk());
-  }, []);
+    if (category !== undefined && category.length === 0)
+      dispatch(getCocktailsByFourCategoryThunk());
+  }, [category]);
 
   return (
     <>
-      <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
-      <PreviewDrinks title="Cocktail" data={cocktail} />
-      <PreviewDrinks title="Shake" data={shake} />
-      <PreviewDrinks title="Other/Unknown" data={other} />
+      {category !== undefined && (
+        <>
+          <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
+          <PreviewDrinks title="Cocktail" data={cocktail} />
+          <PreviewDrinks title="Shake" data={shake} />
+          <PreviewDrinks title="Other/Unknown" data={other} />
+          <OtherDrinksButton />
+        </>
+      )}
     </>
   );
 };
@@ -47,23 +53,23 @@ export default HomePage;
 // import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
 // import { PreviewDrinks, HeroSection } from 'components';
 // import { selectCocktails } from 'redux/selectors';
+// import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrinks';
 
 // const HomePage = () => {
 //   const dispatch = useDispatch();
 
 //   const category = useSelector(selectCocktails);
-//   console.log(category);
+
 //   useEffect(() => {
 //     dispatch(getCocktailsByFourCategoryThunk());
 //   }, [dispatch]);
 //   const ordinaryDrink = category[3].drinks;
-//   console.log(ordinaryDrink);
+
 //   const shake = category[0].drinks;
-//   console.log(shake);
+
 //   const cocktail = category[2].drinks;
-//   console.log(cocktail);
+
 //   const other = category[1].drinks;
-//   console.log(other);
 
 //   return (
 //     <>
@@ -72,6 +78,7 @@ export default HomePage;
 //       <PreviewDrinks title="Cocktail" data={cocktail} />
 //       <PreviewDrinks title="Shake" data={shake} />
 //       <PreviewDrinks title="Other/Unknown" data={other} />
+//       <OtherDrinksButton />
 //     </>
 //   );
 // };

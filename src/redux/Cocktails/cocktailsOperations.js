@@ -187,7 +187,7 @@ export const getAllOwnDrinksThunk = createAsyncThunk(
 );
 
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
-  '@@cocktails/favorite',
+  '@@cocktails/favorites',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
