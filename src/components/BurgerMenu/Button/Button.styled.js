@@ -22,4 +22,4 @@ export const getStyledIcon = component => styled(component)`
     width: 38px;
     height: 38px;
   }
-`
+`;

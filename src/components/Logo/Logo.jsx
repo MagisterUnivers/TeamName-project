@@ -4,7 +4,7 @@ export const Logo = () => {
   return (
     <StyledLogoLink to="/main/home">
       <StyledLogo />
-      <StyledTitle>DrinkMaster</StyledTitle>
+      <StyledTitle>Drink Master</StyledTitle>
     </StyledLogoLink>
   );
 };

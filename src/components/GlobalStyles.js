@@ -129,6 +129,13 @@ button {
 input {
   font-family: inherit;
 }
+main {
+  margin-top: 72px;
+
+  @media ${devices.tablet} {
+    margin-top: 84px;
+  }
+}
 .subscribe__validation {
   h5 {
 border-bottom: 1px solid ${props => props.theme.textColor} !important;  }
