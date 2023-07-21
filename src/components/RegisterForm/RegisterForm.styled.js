@@ -7,7 +7,8 @@ import { devices } from 'constants/breakpoints';
 
 export const StyledForm = styled(Formik)``;
 export const StyledFormInsight = styled(Form)`
-  max-width: 335px;
+  max-width: 375px;
+  width: 100%;
   height: auto;
 
   @media ${devices.tablet} {
@@ -108,7 +109,7 @@ export const StyledInput = styled(Field)`
 export const StyledButton = styled.button`
   width: 100%;
   height: 54px;
-  padding: 18px 141px;
+  /* padding: 18px 141px; */
   border: none;
   justify-content: center;
   border-radius: 42px;
