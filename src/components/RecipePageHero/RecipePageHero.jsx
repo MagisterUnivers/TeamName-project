@@ -41,7 +41,9 @@ export const RecipePageHero = ({ func }) => {
             <div>
               <MainPageTitle title={cocktails.drink} />
               <StyledAboutContent>
-                {cocktails.about ? cocktails.about : 'sample about'}
+                {cocktails.about
+                  ? cocktails.about
+                  : `Let’s forget about the second half of this drink’s name for a moment: It doesn’t remotely resemble a classic Martini. As for the first part, it's said by some that its creator, bartender Douglas Ankrah, thought it was what a porn star would order; other stories hold that he was inspired by the smell of a stripper's perfume.`}
               </StyledAboutContent>
               {/* {console.log(filter, 'Filter before expression')} */}
               {favoriteFilter(cocktails, user) ? (

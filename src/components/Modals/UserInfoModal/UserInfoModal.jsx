@@ -24,6 +24,8 @@ import {
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
+import { AddIconImg } from './UserInfoModal.styled';
+import { StyledInputFile } from './UserInfoModal.styled';
 // import { updateUserThunk } from 'redux/Auth/authOperations';
 
 export const UserInfoModal = ({ onClose }) => {
@@ -31,40 +33,56 @@ export const UserInfoModal = ({ onClose }) => {
   const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
   const [isUpdateForm, setIsUpdateForm] = useState(null);
-
+  const [selectedAvatar, setSelectedAvatar] = useState (null);
   useEffect(() => {
-    if (isUpdateForm) {
-      setIsUpdateForm(null);
-    }
-  }, [isUpdateForm]);
-
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.key === 'Escape') {
-        // onClose();
-        setIsOpen(false)
+    const handleOutsideClick = (event) => {
+      console.log(event.target);
+      if (!event.target.closest(".modal-content")) {
+        console.log("closing modal");
+        onClose();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("mousedown", handleOutsideClick);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [onClose]);
+  // useEffect(() => {
+  //   if (isUpdateForm) {
+  //     setIsUpdateForm(null);
+  //   }
+  // }, [isUpdateForm]);
 
-  const handleModalClick = e => {
-    const closeButtonClicked = e.target.closest('.close-button');
-    const modalContentClicked = e.target.closest('.modal-content');
+  // useEffect(() => {
+  //   const handleKeyDown = e => {
+  //     if (e.key === 'Escape') {
+  //       // onClose();
+  //       setIsOpen(false)
+  //     }
+  //   };
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   return () => {
+  //     window.removeEventListener('keydown', handleKeyDown);
+  //   };
+  // }, [onClose]);
 
-    if (closeButtonClicked || modalContentClicked === null) {
-      // onClose();
-    }  
-    setIsOpen(false)
-      e.stopPropagation();
-  };
+  // const handleModalClick = e => {
+  //   const closeButtonClicked = e.target.closest('.close-button');
+  //   const modalContentClicked = e.target.closest('.modal-content');
+   
+     // if (closeButtonClicked || modalContentClicked === null) {
+    //   // onClose();
+    // }  
+    // setIsOpen(false)
+    //   e.stopPropagation();
+    const handleAvatarChange = e => {
+      const file = e.target.files[0];
+      setSelectedAvatar(file);
+    };
   // console.log(user.name);
   // console.log(user.avatarURL);
   return isOpen ? (
-    <ModalWrapper onClick={handleModalClick}>
+    <ModalWrapper >
       <ContentWrapper className="modal-content">
         <CloseButton onClick={onClose} tabIndex={1} className="close-button">
           <img src={XIcon} alt="Close" width={24} />
@@ -84,7 +102,9 @@ export const UserInfoModal = ({ onClose }) => {
           onSubmit={async values => {
             const formData = new FormData();
             formData.append('name', values.name);
-            formData.append('avatarURL', values.avatarURL);
+            if (selectedAvatar) {
+              formData.append('avatar', selectedAvatar);
+            }
             await dispatch(updateUserThunk(formData));
           }}
                 >
@@ -92,7 +112,15 @@ export const UserInfoModal = ({ onClose }) => {
             <StyledFormInsight>
               <UserAvatarWrapper>
                 <AvatarFrame src={user.avatarURL} alt="avatar" />
-                <AddAvatarButton src={AddIcon} alt="plus" width={28} />
+                <AddAvatarButton>
+                  <AddIconImg src={AddIcon} alt="plus" width={28} />
+                </AddAvatarButton>
+                <StyledInputFile
+                    type="file"
+                    accept="image/*"
+                    onChange={handleAvatarChange}
+                    style={{ display: 'none' }}
+                  />
               </UserAvatarWrapper>
               <StyledInputWrap>
                 <StyledInput
