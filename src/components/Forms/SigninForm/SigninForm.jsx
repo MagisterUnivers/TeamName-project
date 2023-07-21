@@ -58,7 +58,7 @@ export const SigninForm = () => {
         });
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleChange, setFieldTouched }) => (
         <StyledFormInsight>
           <StyledTitle>Sign In</StyledTitle>
           <StyledInnerDiv>
@@ -67,6 +67,10 @@ export const SigninForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                onChange={e => {
+                  setFieldTouched('email');
+                  handleChange(e);
+                }}
                 className={
                   touched.email && !errors.email
                     ? 'valid-border'
@@ -95,6 +99,10 @@ export const SigninForm = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onChange={e => {
+                    setFieldTouched('password');
+                    handleChange(e);
+                  }}
                   className={
                     touched.password && !errors.password
                       ? 'valid-border'
