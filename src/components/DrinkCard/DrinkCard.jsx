@@ -15,11 +15,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromFavoriteThunk } from 'redux/Cocktails/cocktailsOperations';
 
 export const DrinkCard = ({ cocktail, page }) => {
-  const dispatch = useDispatch()
-  const handleRemoveButton = () =>{
-    console.log("remove");
-    dispatch(removeFromFavoriteThunk(cocktail._id))
-  }
+  const dispatch = useDispatch();
 
   return (
     <Card>
@@ -40,13 +36,18 @@ export const DrinkCard = ({ cocktail, page }) => {
           <Drinkingreds>{cocktail.drink}</Drinkingreds>
         </Link>
         <Ingredients>Ingredients</Ingredients>
-        <button type='button' onClick={handleRemoveButton}>Delete</button>
       </Ingredientswrapper>
 
-      {(page === 'my' || page === 'favorite') && <AboutStyled>{cocktail.about}</AboutStyled>}
+      {(page === 'my' || page === 'favorite') && (
+        <AboutStyled>{cocktail.about}</AboutStyled>
+      )}
       <ButtonsWrapper>
-        {(page === 'my' || page === 'favorite') && <SeeButton id={cocktail._id}/>}
-        {(page === 'my' || page === 'favorite') && <DeleteButton id={cocktail._id} page={page}/>}
+        {(page === 'my' || page === 'favorite') && (
+          <SeeButton id={cocktail._id} />
+        )}
+        {(page === 'my' || page === 'favorite') && (
+          <DeleteButton id={cocktail._id} page={page} />
+        )}
       </ButtonsWrapper>
     </Card>
   );

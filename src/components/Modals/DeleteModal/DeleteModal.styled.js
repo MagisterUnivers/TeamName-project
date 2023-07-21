@@ -17,7 +17,6 @@ export const ModalWrapper = styled.div`
   top: -300%;
   right: auto;
   left: auto;
- 
 `;
 
 export const StyledText = styled.p`

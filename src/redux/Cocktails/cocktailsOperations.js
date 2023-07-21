@@ -186,6 +186,25 @@ export const getAllOwnDrinksThunk = createAsyncThunk(
   }
 );
 
+export const removeRecipeThunk = createAsyncThunk(
+  '@@cocktails/removeRecipe',
+  async (id, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      const res = await instance.delete(`own/${id}`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+// Favorites
+
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
   '@@cocktails/favorites',
   async (_, { rejectWithValue, getState }) => {

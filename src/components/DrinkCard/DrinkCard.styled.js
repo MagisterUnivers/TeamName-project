@@ -32,7 +32,7 @@ export const Ingredientswrapper = styled.div`
   display: flex;
   justify-content: space-between;
   ${props =>
-    props.position === 'my'
+    (props.position === 'my' || props.position === 'favorite')
       ? `flex-direction: column; gap: 4px;`
       : `flex-direction: row`}
 `;

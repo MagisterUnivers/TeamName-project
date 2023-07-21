@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromFavoriteThunk } from 'redux/Cocktails/cocktailsOperations';
+import {
+  removeFromFavoriteThunk,
+  removeRecipeThunk,
+} from 'redux/Cocktails/cocktailsOperations';
 import {
   ButtonWrapper,
   ModalWrapper,
@@ -8,16 +11,19 @@ import {
   StyledText,
 } from './DeleteModal.styled';
 
-
 export const DeleteModal = ({ onClose, page, id }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     if (page === 'favorite') {
-      dispatch(removeFromFavoriteThunk(id))
-      onClose()
+      dispatch(removeFromFavoriteThunk(id));
+      onClose();
       return;
     }
-
+    if (page === 'my') {
+      dispatch(removeRecipeThunk(id));
+      onClose();
+      return;
+    }
   };
 
   return (
