@@ -1,16 +1,33 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import cocktailIMGMOB from '../../assets/img/welcome-page/cocktailMob.jpg';
+import cocktailIMGTAB from '../../assets/img/welcome-page/cocktailTab.jpg';
+import cocktailIMGDESC from '../../assets/img/welcome-page/cocktailDesc.jpg';
+import { devices } from 'constants';
 
 export const BaseDiv = styled.div`
-  background-color: var(--main-bgr-color);
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding-left: 36px;
-  @media screen and (min-width: 768px) {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  background-image: url(${cocktailIMGMOB});
+  background-position: right;
+  background-repeat: no-repeat;
+  @media ${devices.tablet} {
+    background-image: url(${cocktailIMGTAB});
+
+    justify-content: left;
     padding-left: 64px;
   }
-`; 
+  @media ${devices.desktop} {
+    background-image: url(${cocktailIMGDESC});
+    background-color: #07070b;
+    justify-content: left;
+    padding-left: 100px;
+  }
+`;
 
 export const PicturedWrapper = styled.img`
   position: relative;
@@ -19,19 +36,14 @@ export const PicturedWrapper = styled.img`
   background-repeat: no-repeat;
   background-size: cover;
   .no-click {
-  pointer-events: none;
-  user-select: none;
-}
-@media screen and (min-width: 1440px) {
-  width: 100vh;
+    pointer-events: none;
+    user-select: none;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 100vh;
   }
 `;
 export const SummaryWrapper = styled.div`
-  position: absolute;
-  top: 45%;
-  left: 5%;
-  transform: translate(0%, -50%);
-  z-index: 1;
   width: 335px;
   height: 248px;
   padding: 8px;
@@ -40,24 +52,15 @@ export const SummaryWrapper = styled.div`
   justify-content: center;
   align-items: center;
   @media screen and (min-width: 768px) {
-    top: 10%;
-    left: 5%;
-    transform: translate(0%, -50%);
     width: 470px;
     height: 248px;
     padding: 0;
-    margin-top: 400px;
-    margin-left: 64px;
     justify-content: flex-start;
     align-items: flex-start;
   }
   @media screen and (min-width: 1440px) {
-    top: 0%;
-    left: 5%;
-    transform: translate(0%, -50%);
     width: 488px;
     height: 248px;
-    margin-left: 64px;
   }
 `;
 export const WelcomeTitle = styled.h1`
@@ -72,7 +75,7 @@ export const WelcomeTitle = styled.h1`
     font-size: 40px;
     line-height: 1.1;
     letter-spacing: -0.8px;
-    text-align: left; 
+    text-align: left;
   }
 `;
 export const WelcomeText = styled.p`
@@ -101,18 +104,19 @@ export const RegistrationNavLink = styled(NavLink)`
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   /* background: var(--main-text-color); */
-  color: var(--main-text-color);
+  color: ${props => props.theme.textColor};
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.13;
-  transition: background-color 0.5s ease;
-    &:hover {
-      background-color: var(--main-text-color);
-  color: var(--btn-hover-color);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  &:hover,
+  &:focus {
+    background-color: var(--main-text-color);
+    color: var(--btn-hover-color);
     /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
   }
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.28;
     padding: 18px 44px;
@@ -128,10 +132,11 @@ export const SignInNavLink = styled(NavLink)`
   font-style: normal;
   font-weight: 600;
   line-height: 1.28;
-  transition: background-color 0.5s ease;
-  &:hover {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  &:hover,
+  &:focus {
     background-color: var(--main-text-color);
-  color: var(--btn-hover-color);
+    color: var(--btn-hover-color);
     /* text-decoration: underline;
     box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
   }
