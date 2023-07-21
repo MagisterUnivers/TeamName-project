@@ -7,7 +7,7 @@ export const WrapDiv = styled.div`
 `;
 
 export const P404 = styled.p`
-  color: ${props => props.theme === 'dark' ? 'rgba(243, 243, 243, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  color: ${props => props.theme === 'dark' ? 'rgba(243, 243, 243, 0.1)' : 'rgba(5, 5, 5, 0.1)'};
   font-family: Manrope;
   font-size: 120px;
   font-style: normal;
