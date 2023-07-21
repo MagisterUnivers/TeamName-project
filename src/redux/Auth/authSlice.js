@@ -65,6 +65,7 @@ const authSlice = createSlice({
       Loading.remove();
     },
     [loginThunk.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       state.user = payload?.user;
       state.accessToken = payload?.token;
 
@@ -79,7 +80,8 @@ const authSlice = createSlice({
     },
     [logoutThunk.fulfilled]: (state, { payload }) => {
       state.user = { name: '', email: '', avatarURL: '' };
-      state.userInfo = { name: '', email: '', avatarURL: '' };
+      // state.userInfo = { name: '', email: '', avatarURL: '' }; //
+      // state.userInfo.theme = 'dark'; //
       state.accessToken = '';
       state.online = false;
       state.loading = false;

@@ -32,8 +32,7 @@ const RecipePage = ({ id }) => {
 
   useEffect(() => {
     // fetch recipe
-    dispatch(getCocktailByIdThunk(idQuery.id)); // 1
-    dispatch(getCurrentUserThunk()); // 2
+    dispatch(getCocktailByIdThunk(idQuery.id)); // 1;
     // console.log(contact, 'Contact');
   }, []); // eslint-disable-line
 
