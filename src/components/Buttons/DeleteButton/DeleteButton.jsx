@@ -3,7 +3,7 @@ import { DeleteButtonStyled } from './DeleteButton.styled';
 import { ReactComponent as Trash } from '../../../assets/icons/trash.svg';
 import { DeleteModal } from 'components/Modals/DeleteModal/DeleteModal';
 
-export const DeleteButton = ({ id }) => {
+export const DeleteButton = ({ id , page}) => {
   const [ModalOpen, setModalOpen] = useState(false);
  
   const onClose = () => {
@@ -14,7 +14,7 @@ export const DeleteButton = ({ id }) => {
       <DeleteButtonStyled onClick={onClose}>
         {<Trash />}
       </DeleteButtonStyled>
-      {ModalOpen && <DeleteModal onClose={onClose}/>}
+      {ModalOpen && <DeleteModal onClose={onClose} page={page} id={id}/>}
     </>
   );
 };

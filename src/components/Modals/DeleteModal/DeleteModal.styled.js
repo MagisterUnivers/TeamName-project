@@ -51,4 +51,5 @@ export const StyledDelButton = styled(StyledButton)`
   justify-content: center;
   align-items: center;
   background-color: #434D67;
+  outline: none;
 `;

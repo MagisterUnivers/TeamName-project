@@ -31,7 +31,7 @@ export const DrinksList = () => {
 
   return (
     <Section>
-      {/* <DrinkListStyled>
+      <DrinkListStyled>
         {searchResults.length !== 0 ? (
           searchResults.map(searchResult => (
             <DrinkCard
@@ -45,7 +45,7 @@ export const DrinksList = () => {
             message={"We haven't found any cocktails for this search"}
           />
         )}
-      </DrinkListStyled> */}
+      </DrinkListStyled>
     </Section>
   );
 };
