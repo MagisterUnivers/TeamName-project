@@ -4,15 +4,12 @@ import { setPage } from 'redux/Cocktails/cocktailsSlice';
 import { WrapperGeneralStyled } from './Paginator.styled';
 import { useMediaRules } from '../../hooks/useMediaRules';
 import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
-// import { useEffect, useState } from 'react';
-// import { useState } from 'react';
 
 const Paginator = () => {
   let page = useSelector(selectPage);
   const dispatch = useDispatch();
-  const { isMobile } = useMediaRules();
+  const { isMobile, isDesktop } = useMediaRules();
   const totalHits = useSelector(selectTotalHits);
-  const { isDesktop } = useMediaRules();
   const limit = isDesktop ? 9 : 8;
   const pageQuantity = Math.ceil(totalHits / limit);
   const theme = useSelector(selectTheme);
