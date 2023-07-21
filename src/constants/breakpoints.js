@@ -6,4 +6,5 @@ const breakpoints = {
 export const devices = {
   tablet: `(min-width: ${breakpoints.tablet})`,
   desktop: `(min-width: ${breakpoints.desktop})`,
+  retina: '(-webkit-min-device-pixel-ratio: 2)',
 };
