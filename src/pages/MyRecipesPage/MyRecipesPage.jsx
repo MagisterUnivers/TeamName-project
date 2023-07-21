@@ -1,5 +1,5 @@
 import { Paginator, MainPageTitle } from 'components';
-import { MyOwnRecipesList } from 'components/Modals/MyOwnRecipesList/MyOwnRecipesList';
+import { MyOwnRecipesList } from 'components/MyOwnRecipesList/MyOwnRecipesList';
 
 const MyRecipesPage = () => {
   return (
