@@ -1,7 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import {
   BaseDiv,
-  PicturedWrapper,
   SummaryWrapper,
   WelcomeTitle,
   WelcomeText,
@@ -19,42 +18,6 @@ const WelcomePage = () => {
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
   return (
     <BaseDiv>
-      {isMobile && (
-        <PicturedWrapper
-          src={
-            isRetina
-              ? require('../../images/WelcomPage/welcom1mob@2x.png')
-              : require('../../images/WelcomPage/welcom1mob.png')
-          }
-          alt="white cocktail"
-          width="295"
-          height="812"
-        />
-      )}
-      {isTablet && (
-        <PicturedWrapper
-          src={
-            isRetina
-              ? require('../../images/WelcomPage/welcom1tab@2x.png')
-              : require('../../images/WelcomPage/welcom1tab.png')
-          }
-          alt="white cocktail"
-          width="466"
-          height="1024"
-        />
-      )}
-      {isDesktop && (
-        <PicturedWrapper
-          src={
-            isRetina
-              ? require('../../images/WelcomPage/welcom1desk@2x.png')
-              : require('../../images/WelcomPage/welcom1desk.png')
-          }
-          alt="white cocktail"
-          width="703"
-          height="983"
-        />
-      )}
       <SummaryWrapper>
         <WelcomeTitle>Welcome to the app!</WelcomeTitle>
         <WelcomeText>

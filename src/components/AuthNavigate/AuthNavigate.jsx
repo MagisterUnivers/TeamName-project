@@ -20,9 +20,30 @@ export const StyledNavLink = styled(NavLink)`
   font-size: 12px;
   font-weight: 600;
   line-height: calc(16 / 12);
-  text-decoration-line: underline;
-  display: block;
+  text-decoration: none;
   text-align: center;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+
+  position: relative;
+
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    background: ${props => props.theme.textColor};
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
