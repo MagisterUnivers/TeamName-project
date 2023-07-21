@@ -9,7 +9,6 @@ import {
   QueryFormStyled,
   StyledSearchIcon,
   HoverWrapper,
-  FirstHoverWrapper,
 } from './DrinksSearch.styled';
 import {
   selectCategories,
@@ -109,7 +108,6 @@ export const DrinksSearch = ({ categoryName }) => {
           placeholder="Enter the text"
           onChange={handleChangeQuery}
         />
-
         <StyledSearchButton type="submit">
           <HoverWrapper></HoverWrapper>
           <StyledSearchIcon />

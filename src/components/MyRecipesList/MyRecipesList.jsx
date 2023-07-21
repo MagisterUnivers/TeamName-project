@@ -2,26 +2,29 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectOwn } from 'redux/selectors';
+import { selectCocktails } from 'redux/selectors';
 import { MyRecipesListStyled, Section } from './MyrecipesList.styled';
+import { NotFound } from 'components';
 
 export const MyRecipesList = () => {
-  const ownCocktails = useSelector(selectOwn);
+  const favoriteCocktails = useSelector(selectCocktails);
 
   return (
     <Section>
       <MyRecipesListStyled>
-        {ownCocktails.length !== 0 ? (
-          ownCocktails.map(ownCocktail => (
+        {favoriteCocktails.length !== 0 ? (
+          favoriteCocktails.map(favoriteCocktail => (
             <DrinkCard
-              key={ownCocktail._id}
+              key={favoriteCocktail._id}
               page={'my'}
-              cocktail={ownCocktail}
+              cocktail={favoriteCocktail}
             />
           ))
         ) : (
-          <p>Not found</p>
-          // <NotFound message={"You haven't added any cocktail recipes yet"} />
+          // <p>Not found</p>
+          <NotFound
+            message={"You haven't added any drinks to your favorites yet."}
+          />
         )}
       </MyRecipesListStyled>
     </Section>

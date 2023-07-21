@@ -9,7 +9,7 @@ import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 export const MyOwnRecipesList = () => {
   const dispatch = useDispatch();
   const ownCocktails = useSelector(selectOwn);
-  const loading = useSelector(selectCocktailsIsLoading);
+  // const loading = useSelector(selectCocktailsIsLoading);
 
   useEffect(() => {
     dispatch(getAllOwnDrinksThunk());

@@ -21,12 +21,12 @@ const DrinksPage = () => {
   useEffect(() => {
     if (categoriesList.length > 1) return;
     dispatch(getCategoriesListThunk());
-  }, [dispatch]);
+  }, [dispatch, categoriesList]);
 
   useEffect(() => {
     if (ingredientsList.length > 1) return;
     dispatch(getIngredientsListThunk());
-  }, [dispatch]);
+  }, [dispatch, ingredientsList]);
 
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(categoryName));

@@ -28,7 +28,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getCocktailsByFourCategoryThunk());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
