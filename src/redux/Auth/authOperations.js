@@ -82,7 +82,7 @@ export const loginThunk = createAsyncThunk(
 
 export const logoutThunk = createAsyncThunk('@@auth/logout', async () => {
   try {
-    const res =  await instance.post('users/logout');
+    const res = await instance.post('users/logout');
     localStorage.removeItem('user');
     localStorage.removeItem('accessToken');
     clearToken();
@@ -158,6 +158,6 @@ export const verifyThunk = createAsyncThunk(
 );
 
 export const setSubscription = async credentials => {
-  const res = await instance.patch('users/subscription', credentials);
+  const res = await instance.patch('users/subscribe', credentials);
   return res.data;
 };
