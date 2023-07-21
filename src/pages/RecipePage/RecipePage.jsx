@@ -16,6 +16,7 @@ import {
 import {
   selectCocktails,
   selectCocktailsIsLoading,
+  selectFavorite,
   selectUser,
 } from 'redux/selectors';
 
@@ -23,7 +24,8 @@ const RecipePage = ({ id }) => {
   // we must get id with props
   const dispatch = useDispatch();
   const loading = useSelector(selectCocktailsIsLoading);
-  const contact = useSelector(selectCocktails);
+  // const contact = useSelector(selectCocktails);
+  const contact = useSelector(selectFavorite);
   const user = useSelector(selectUser);
   const idQuery = useParams();
   let filter;
@@ -41,17 +43,18 @@ const RecipePage = ({ id }) => {
       dispatch(removeFromFavoriteThunk(contact._id)); // 3
       // console.log('remove favorite');
     } else {
-      dispatch(addToFavoriteThunk(contact._id)).then(
+      dispatch(addToFavoriteThunk(contact._id)).then(res => {
         // 4
-        dispatch(getCocktailByIdThunk(idQuery.id)) // 5
-      );
+        if (res.meta.requestStatus === 'fulfilled')
+          dispatch(getCocktailByIdThunk(idQuery.id)); // 5
+      });
       // console.log('add favorite');
     }
   };
 
   return (
     <>
-      {/* {console.log(contact, 'return')} */}
+      {console.log(contact, 'return')}
       <RecipePageHero func={handleSend} />
       {!loading && <RecipeIngredientsList />}
       <RecipePreparation />

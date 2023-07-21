@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectCocktails } from 'redux/selectors';
+import { selectCocktails, selectFavorite } from 'redux/selectors';
 import {
   StyledTitle,
   StyledContentWrapper,
@@ -10,7 +10,7 @@ import {
 import { StyledSection } from 'components/Section/Section';
 
 export const RecipePreparation = () => {
-  const cocktails = useSelector(selectCocktails);
+  const cocktails = useSelector(selectFavorite);
 
   console.log(cocktails, 'state / selector');
 
