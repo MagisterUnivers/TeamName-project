@@ -13,7 +13,8 @@ export const ModalWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  padding-top: 150px;
 `;
 
 export const ContentWrapper = styled.div`
@@ -83,12 +84,33 @@ export const AvatarFrame = styled.img`
   height: 100px;
   }
 `;
-export const AddAvatarButton = styled.img`
+export const StyledInputFile = styled.input`
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+`;
+export const AddIconImg = styled.img`
+  position: absolute;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  top: -2px;
+   @media screen and (min-width: 768px) {
+    width: 32px;
+  height: 32px;
+   }
+`;
+export const AddAvatarButton = styled.button`
 position: absolute;
   z-index: 2;
   width: 28px;
   height: 28px;
   top: 64px;
+  border-radius: 50%;
    @media screen and (min-width: 768px) {
     width: 32px;
   height: 32px;
