@@ -70,7 +70,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailsByCategoryThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
+      state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;
@@ -83,7 +83,6 @@ const cocktailsSlice = createSlice({
     },
     [getCocktailByIdThunk.pending]: (state, { payload }) => {
       state.loading = true;
-      // state.cocktails = [];
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailByIdThunk.fulfilled]: (state, { payload }) => {
