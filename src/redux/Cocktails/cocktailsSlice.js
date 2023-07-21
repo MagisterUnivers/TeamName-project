@@ -18,7 +18,6 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
   cocktails: [],
-  favorite: [],
   own: [],
   popular: [],
   categories: [],
@@ -201,8 +200,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getAllFavoriteDrinksThunk.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      state.favorite = payload.cocktails;
+      state.cocktails = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;

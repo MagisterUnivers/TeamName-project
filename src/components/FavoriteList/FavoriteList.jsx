@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectFavorite, selectCocktails } from 'redux/selectors';
+import { selectCocktails } from 'redux/selectors';
 import { FavoriteListStyled, Section } from './FavoriteList.styled';
 
 export const FavoriteList = () => {
-  const favoriteCocktails = useSelector(selectFavorite);
+  const favoriteCocktails = useSelector(selectCocktails);
 
   return (
     <Section>
