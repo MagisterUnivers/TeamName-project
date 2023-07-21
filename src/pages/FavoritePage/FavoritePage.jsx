@@ -9,7 +9,7 @@ const FavoritePage = () => {
 
   return (
     <>
-      <MainPageTitle title={'Favotites'} />
+      <MainPageTitle title={'Favorites'} />
       <FavoriteList />
       <Paginator />
     </>
