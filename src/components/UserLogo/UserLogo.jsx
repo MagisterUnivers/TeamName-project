@@ -1,12 +1,3 @@
-// import { UserLogoModal } from 'components';
-// {тимчасово підключила свою модалку, з логікою виконання. Олена};
-// import EditProfileModal from 'components/Modals/UserInfoModal/EditProfileModal';
-// import {
-//   NameStyled,
-//   UserAvatar,
-//   UserAvatarWrp,
-//   UserLogoWrp,
-// } from './UserLogoStyled';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/selectors';
@@ -20,6 +11,7 @@ import { UserLogoModal } from 'components';
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);
+  const [editProfileShown, setEditProfileShown] = useState(false);
   const user = useSelector(selectUser);
 
   return (
@@ -31,7 +23,8 @@ export const UserLogo = () => {
         />
       </UserAvatarWrp>
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
-      {showUserLogoModal && <UserLogoModal />}
+      {(showUserLogoModal || editProfileShown) && (
+        <UserLogoModal setEditProfileShown={setEditProfileShown} />
+      )}
     </UserLogoWrp>
-  );
-};
+  );};

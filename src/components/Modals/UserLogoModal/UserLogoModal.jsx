@@ -1,28 +1,3 @@
-// import React from 'react';
-// import { ReactComponent as iconEdit } from '../../../assets/icons/edit.svg';
-// import { LogoutBtn } from 'components';
-// import {
-//   InputWrp,
-//   ModalBody,
-//   Overlay,
-//   getStyledIcon,
-// } from './UserLogoModal.styled';
-
-// export const UserLogoModal = () => {
-//   const StyledIconEdit = getStyledIcon(iconEdit);
-//   return (
-//     <Overlay>
-//       <ModalBody>
-//         <InputWrp>
-//           Edit profile
-//           <StyledIconEdit />
-//         </InputWrp>
-//         <LogoutBtn />
-//       </ModalBody>
-//     </Overlay>
-//   );
-// };
-
 import { useState } from 'react';
 import { ConfirmLogout, UserInfoModal } from 'components';
 import pencilIcon from '../UserInfoModal/edit-2.svg';
@@ -32,37 +7,38 @@ import {
   ModalContent,
   ModalWrapper,
 } from './UserLogoModal.styled';
-
-export const UserLogoModal = () => {
+export const UserLogoModal = ({ setEditProfileShown }) => {
   const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
-
   const handleOpenUserInfo = () => {
     setIsChangeProfileOpen(false);
     setIsUserInfoOpen(true);
+    setEditProfileShown(true);
   };
-
+  const handleCloseUserInfo = () => {
+    setIsChangeProfileOpen(true);
+    setIsUserInfoOpen(false);
+    setEditProfileShown(false);
+  };
   const handleConfirmLogout = () => {
     setIsChangeProfileOpen(false);
     setIsConfirmLogoutOpen(true);
   };
-
   const handleModalClick = e => {
     if (e.target === e.currentTarget) {
       setIsChangeProfileOpen(false);
       setIsConfirmLogoutOpen(false);
       setIsUserInfoOpen(false);
+      setEditProfileShown(false);
     }
     e.stopPropagation();
   };
-
   const handleKeyDown = e => {
     if (e.key === 'Escape') {
-      setIsChangeProfileOpen(false);
+      handleCloseUserInfo();
     }
   };
-
   return (
     <ModalWrapper>
       <ModalContent onClick={handleModalClick} onKeyDown={handleKeyDown}>
@@ -76,9 +52,8 @@ export const UserLogoModal = () => {
         </ChangeProfileButton>
         <LogOutButton onClick={handleConfirmLogout}>Log out</LogOutButton>
       </ModalContent>
-
       {isConfirmLogoutOpen && <ConfirmLogout onClose={handleConfirmLogout} />}
-      {isUserInfoOpen && <UserInfoModal onClose={handleOpenUserInfo} />}
+      {isUserInfoOpen && <UserInfoModal onClose={handleCloseUserInfo} />}
     </ModalWrapper>
   );
 };

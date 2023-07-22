@@ -46,8 +46,7 @@ const userInfoSlice = createSlice({
     },
 
     [updateUserThunk.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
-      state.avatarURL = payload.avatarURL;
+         state.user = payload;
       state.loading = false;
       Loading.remove();
     },
