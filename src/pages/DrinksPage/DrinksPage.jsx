@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+
 import { Paginator, DrinksSearch, DrinksList, MainPageTitle } from 'components';
 import {
   getCategoriesListThunk,
@@ -19,14 +20,14 @@ const DrinksPage = () => {
   const categoriesList = useSelector(selectCategories);
 
   useEffect(() => {
-    if (categoriesList.length > 1) return;
+    if (categoriesList.length !== 0) return;
     dispatch(getCategoriesListThunk());
-  }, [dispatch]);
+  }, [dispatch, categoriesList]);
 
   useEffect(() => {
-    if (ingredientsList.length > 1) return;
+    if (ingredientsList.length !== 0) return;
     dispatch(getIngredientsListThunk());
-  }, [dispatch]);
+  }, [dispatch, ingredientsList]);
 
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(categoryName));
