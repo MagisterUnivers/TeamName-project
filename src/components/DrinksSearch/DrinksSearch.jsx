@@ -21,6 +21,7 @@ import {
   setPage,
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
+import { Container } from 'components';
 
 export const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
@@ -99,50 +100,52 @@ export const DrinksSearch = ({ categoryName }) => {
   };
   return (
     <SearchFormStyled>
-      <QueryFormStyled onSubmit={handleSubmit}>
-        <InputStyled
-          type="text"
-          name="query"
-          value={searchQuery}
-          autocomplete="off"
-          placeholder="Enter the text"
-          onChange={handleChangeQuery}
-        />
-        <StyledSearchButton type="submit">
-          <HoverWrapper></HoverWrapper>
-          <StyledSearchIcon />
-        </StyledSearchButton>
-      </QueryFormStyled>
+      <Container>
+        <QueryFormStyled onSubmit={handleSubmit}>
+          <InputStyled
+            type="text"
+            name="query"
+            value={searchQuery}
+            autocomplete="off"
+            placeholder="Enter the text"
+            onChange={handleChangeQuery}
+          />
+          <StyledSearchButton type="submit">
+            <HoverWrapper></HoverWrapper>
+            <StyledSearchIcon />
+          </StyledSearchButton>
+        </QueryFormStyled>
 
-      <SelectStyled
-        // theme={customTheme}
-        styles={styles}
-        name="category"
-        value={search.category}
-        options={categoriesListOptions}
-        placeholder="All categories"
-        defaultValue={{ label: categoryName, value: '0' }}
-        isSearchable={true}
-        autoFocus
-        classNamePrefix="react-select"
-        onChange={handleChangeCategory}
-        noOptionsMessage={() => 'Oops! Try again.'}
-        required
-      />
-      <SelectStyled
-        styles={styles}
-        value={search.ingredient}
-        name="ingredient"
-        defaultValue={{ label: 'Ingredients', value: '0' }}
-        options={ingredientsListOptions}
-        placeholder="Ingredients"
-        isSearchable={true}
-        autoFocus
-        classNamePrefix="react-select"
-        onChange={handleChangeIngredient}
-        noOptionsMessage={() => 'Oops! Try again.'}
-        required
-      />
+        <SelectStyled
+          // theme={customTheme}
+          styles={styles}
+          name="category"
+          value={search.category}
+          options={categoriesListOptions}
+          placeholder="All categories"
+          defaultValue={{ label: categoryName, value: '0' }}
+          isSearchable={true}
+          autoFocus
+          classNamePrefix="react-select"
+          onChange={handleChangeCategory}
+          noOptionsMessage={() => 'Oops! Try again.'}
+          required
+        />
+        <SelectStyled
+          styles={styles}
+          value={search.ingredient}
+          name="ingredient"
+          defaultValue={{ label: 'Ingredients', value: '0' }}
+          options={ingredientsListOptions}
+          placeholder="Ingredients"
+          isSearchable={true}
+          autoFocus
+          classNamePrefix="react-select"
+          onChange={handleChangeIngredient}
+          noOptionsMessage={() => 'Oops! Try again.'}
+          required
+        />
+      </Container>
     </SearchFormStyled>
   );
 };

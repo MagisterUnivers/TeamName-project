@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
  @import-normalize; // normalize (border-box)
 
 :root {
+
   /* Colors */
   --main-bgr-color: #0a0a11;
   --btn-hover-color: #161f37;
@@ -27,9 +28,9 @@ body {
   font-family: 'Manrope', sans-serif;
   line-height: 1.5;
   background-color: ${props => props.theme.bgrColor};
-  transition: background-color 1s;
+  transition: background-color 1s;  
 
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
     circle at center,
     white 0%,
     #BCE6D2 40%
@@ -95,7 +96,7 @@ body {
    left -26% bottom 3%,
    left 50%  bottom -100px,
    right 10px bottom -100px;
-  }
+  } */
 }
 
 h1,

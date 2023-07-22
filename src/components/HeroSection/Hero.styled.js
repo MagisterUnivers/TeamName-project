@@ -24,16 +24,16 @@ export const Hero = styled.section`
 `;
 
 export const Herowrapper = styled.div`
-  padding: 244px 0px 400px 20px;
+  padding: 244px 0px 200px 20px;
 
   width: 68%;
 
   @media ${devices.tablet} {
-    padding: 268px 0px 550px 30px;
+    padding: 268px 0px 200px 30px;
   }
 
   @media ${devices.desktop} {
-    padding: 244px 350px 300px 100px;
+    padding: 244px 350px 300px 330px;
   }
 `;
 
@@ -50,8 +50,8 @@ export const Herobackground = styled.div`
   /* background-color: #fff; */
   width: 45%;
   height: 25%;
-  top: 45%;
-  left: 80%;
+  top: 60%;
+  left: 85%;
 
   border-radius: 50%;
 
@@ -66,8 +66,8 @@ export const Herobackground = styled.div`
   @media ${devices.tablet} {
     width: 45%;
     height: 30%;
-    top: 42%;
-    left: 85%;
+    top: 55%;
+    left: 90%;
     filter: blur(80px);
   }
 
