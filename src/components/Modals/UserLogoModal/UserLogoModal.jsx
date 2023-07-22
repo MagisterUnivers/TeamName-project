@@ -40,12 +40,12 @@ export const UserLogoModal = ({ onClose }) => {
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   
-  useEffect(() => {
-    console.log('UserLogoModal isOpen:', true);
-    return () => {
-      console.log('UserLogoModal isOpen:', false);
-    };
-  }, []);
+  // useEffect(() => {
+  //   console.log('UserLogoModal isOpen:', true);
+  //   return () => {
+  //     console.log('UserLogoModal isOpen:', false);
+  //   };
+  // }, []);
 
   const handleOpenUserInfo = () => {
     // setIsOpen(false);
