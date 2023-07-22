@@ -6,7 +6,6 @@ import { DrinkCard } from 'components';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import { useNavigate } from 'react-router';
 import { NotFound } from '../NotFound/NotFound';
-
 export const DrinksList = () => {
   const dispatch = useDispatch();
   const searchResults = useSelector(selectSearchResults);
