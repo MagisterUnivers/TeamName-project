@@ -13,6 +13,7 @@ import {
 } from './DrinkCard.styled';
 
 export const DrinkCard = ({ cocktail, page }) => {
+
   return (
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
@@ -34,10 +35,16 @@ export const DrinkCard = ({ cocktail, page }) => {
         <Ingredients>Ingredients</Ingredients>
       </Ingredientswrapper>
 
-      {page === 'my' && <AboutStyled>{cocktail.about}</AboutStyled>}
+      {(page === 'my' || page === 'favorite') && (
+        <AboutStyled>{cocktail.about}</AboutStyled>
+      )}
       <ButtonsWrapper>
-        {page === 'my' && <SeeButton id={cocktail._id} />}
-        {page === 'my' && <DeleteButton id={cocktail._id} />}
+        {(page === 'my' || page === 'favorite') && (
+          <SeeButton id={cocktail._id} />
+        )}
+        {(page === 'my' || page === 'favorite') && (
+          <DeleteButton id={cocktail._id} page={page} />
+        )}
       </ButtonsWrapper>
     </Card>
   );

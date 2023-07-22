@@ -163,7 +163,7 @@ export const addRecipeThunk = createAsyncThunk(
       return res.data;
     } catch (error) {
       const errorMessage = error.response.data.message;
-      Notiflix.Report.failure('Respond from server is ' + errorMessage);
+      Notiflix.Notify.failure('Respond from server is ' + errorMessage);
       return rejectWithValue(error.response.status);
     }
   }
@@ -186,8 +186,27 @@ export const getAllOwnDrinksThunk = createAsyncThunk(
   }
 );
 
+export const removeRecipeThunk = createAsyncThunk(
+  '@@cocktails/removeRecipe',
+  async (id, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      const res = await instance.delete(`own/${id}`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+// Favorites
+
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
-  '@@cocktails/favorite',
+  '@@cocktails/favorites',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {

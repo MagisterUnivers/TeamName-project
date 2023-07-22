@@ -7,7 +7,6 @@ import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrink
 
 const HomePage = () => {
   const dispatch = useDispatch();
-
   const category = useSelector(selectCocktails);
 
   const ordinaryDrink = category.filter(item => {
@@ -27,56 +26,62 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    dispatch(getCocktailsByFourCategoryThunk());
-  }, []);
+    if (category !== undefined && category.length === 0)
+      dispatch(getCocktailsByFourCategoryThunk());
+  }, [category]);
 
   return (
     <>
-      <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
-      <PreviewDrinks title="Cocktail" data={cocktail} />
-      <PreviewDrinks title="Shake" data={shake} />
-      <PreviewDrinks title="Other/Unknown" data={other} />
-      <OtherDrinksButton />
+      {category !== undefined && (
+        <>
+          <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
+          <PreviewDrinks title="Cocktail" data={cocktail} />
+          <PreviewDrinks title="Shake" data={shake} />
+          <PreviewDrinks title="Other/Unknown" data={other} />
+          <OtherDrinksButton />
+        </>
+      )}
     </>
   );
 };
-
 export default HomePage;
 
-// import React, { useEffect } from 'react';
-
+// import { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
-// import { PreviewDrinks, HeroSection } from 'components';
+// import { PreviewDrinks } from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 // import { selectCocktails } from 'redux/selectors';
 // import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrinks';
 
 // const HomePage = () => {
 //   const dispatch = useDispatch();
-
 //   const category = useSelector(selectCocktails);
 
+//   const ordinaryDrink = category[3]?.drinks;
+
+//   const shake = category[0]?.drinks;
+
+//   const cocktail = category[2]?.drinks;
+
+//   const other = category[1]?.drinks;
+
 //   useEffect(() => {
-//     dispatch(getCocktailsByFourCategoryThunk());
-//   }, [dispatch]);
-//   const ordinaryDrink = category[3].drinks;
-
-//   const shake = category[0].drinks;
-
-//   const cocktail = category[2].drinks;
-
-//   const other = category[1].drinks;
+//     if (category !== undefined && category.length === 0)
+//       dispatch(getCocktailsByFourCategoryThunk());
+//   }, [category]);
 
 //   return (
 //     <>
-//       <HeroSection />
-//       <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
-//       <PreviewDrinks title="Cocktail" data={cocktail} />
-//       <PreviewDrinks title="Shake" data={shake} />
-//       <PreviewDrinks title="Other/Unknown" data={other} />
-//       <OtherDrinksButton />
+//       {category !== undefined && (
+//         <>
+//           <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
+//           <PreviewDrinks title="Cocktail" data={cocktail} />
+//           <PreviewDrinks title="Shake" data={shake} />
+//           <PreviewDrinks title="Other/Unknown" data={other} />
+//           <OtherDrinksButton />
+//         </>
+//       )}
 //     </>
 //   );
 // };
-
 // export default HomePage;

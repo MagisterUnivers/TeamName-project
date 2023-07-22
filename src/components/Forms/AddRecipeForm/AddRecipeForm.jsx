@@ -79,7 +79,7 @@ export const AddRecipeForm = () => {
   };
 
   const handleIncIngredients = () => {
-    console.log(cocktailIngredientsList);
+    // console.log(cocktailIngredientsList);
     setCocktailIngredientsList(p => {
       return [
         ...p,
@@ -108,7 +108,7 @@ export const AddRecipeForm = () => {
 
   const handleOnChangeIngredientName = (e, i) => {
     const tmpList = [...cocktailIngredientsList];
-    console.log(tmpList);
+    // console.log(tmpList);
     tmpList[i] = {
       ...tmpList[i],
       id: e.value,

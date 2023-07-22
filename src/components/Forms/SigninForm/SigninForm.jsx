@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { loginThunk } from 'redux/Auth/authOperations';
+import { getCurrentUserThunk, loginThunk } from 'redux/Auth/authOperations';
 import { AuthNavigate } from 'components';
 import { selectIsClicked } from 'redux/selectors';
 import { handleEyeClick } from 'redux/Auth/authSlice';
@@ -54,11 +54,12 @@ export const SigninForm = () => {
         dispatch(loginThunk(values)).then(res => {
           if (res.payload && res.payload.status === 200) {
             navigate('/signin');
+            dispatch(getCurrentUserThunk());
           }
         });
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleChange, setFieldTouched }) => (
         <StyledFormInsight>
           <StyledTitle>Sign In</StyledTitle>
           <StyledInnerDiv>
@@ -67,6 +68,10 @@ export const SigninForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                onChange={e => {
+                  setFieldTouched('email');
+                  handleChange(e);
+                }}
                 className={
                   touched.email && !errors.email
                     ? 'valid-border'
@@ -95,6 +100,10 @@ export const SigninForm = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onChange={e => {
+                    setFieldTouched('password');
+                    handleChange(e);
+                  }}
                   className={
                     touched.password && !errors.password
                       ? 'valid-border'

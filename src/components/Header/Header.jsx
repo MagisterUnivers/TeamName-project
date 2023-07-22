@@ -1,5 +1,5 @@
 import { useMediaRules } from 'hooks/useMediaRules';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Navigation,
   Logo,
@@ -8,34 +8,43 @@ import {
   BurgerMenuButton,
   ThemeButton,
 } from 'components';
-import { HeaderContainer, HeaderWrp, UserLogoWrp } from './HeaderStyled';
+import {
+  HeaderContainer,
+  StyledHeader,
+  StyledHeaderWrp,
+  UserLogoWrp,
+} from './HeaderStyled';
+import useBodyScroll from 'hooks/useBodyScroll';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
   const { isDesktop, isMobile } = useMediaRules();
-  console.log(isDesktop);
+  // console.log(isDesktop);
 
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
+  useBodyScroll(showBurgerMenu);
   return (
     <>
-      <HeaderWrp>
-        <HeaderContainer>
-          <Logo />
-          {isDesktop && <Navigation />}
-          <UserLogoWrp>
-            {!isMobile && <ThemeButton />}
-            <UserLogo />
-            {!isDesktop && (
-              <BurgerMenuButton
-                showBurgerMenu={showBurgerMenu}
-                onClose={toggleBurgerMenu}
-              />
-            )}
-          </UserLogoWrp>
-        </HeaderContainer>
-      </HeaderWrp>
+      <StyledHeader>
+        <StyledHeaderWrp>
+          <HeaderContainer>
+            <Logo />
+            {isDesktop && <Navigation />}
+            <UserLogoWrp>
+              {!isMobile && <ThemeButton />}
+              <UserLogo />
+              {!isDesktop && (
+                <BurgerMenuButton
+                  showBurgerMenu={showBurgerMenu}
+                  onClose={toggleBurgerMenu}
+                />
+              )}
+            </UserLogoWrp>
+          </HeaderContainer>
+        </StyledHeaderWrp>
+      </StyledHeader>
       {!isDesktop && <BurgerMenu showBurgerMenu={showBurgerMenu} />}
     </>
   );

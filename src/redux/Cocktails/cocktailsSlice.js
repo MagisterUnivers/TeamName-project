@@ -12,12 +12,15 @@ import {
   getAllFavoriteDrinksThunk,
   addToFavoriteThunk,
   removeFromFavoriteThunk,
+  removeFromFavoritePageThunk,
   getPopularThunk,
+  removeRecipeThunk,
 } from './cocktailsOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
   cocktails: [],
+  favorites: [],
   own: [],
   popular: [],
   categories: [],
@@ -69,7 +72,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailsByCategoryThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
+      state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;
@@ -82,11 +85,10 @@ const cocktailsSlice = createSlice({
     },
     [getCocktailByIdThunk.pending]: (state, { payload }) => {
       state.loading = true;
-      state.cocktails = [];
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailByIdThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload;
+      state.favorites = payload;
       state.backup = payload;
 
       state.loading = false;
@@ -104,7 +106,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [searchAllDrinksThunk.fulfilled]: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
@@ -194,13 +196,29 @@ const cocktailsSlice = createSlice({
       state.loading = false;
       Loading.remove();
     },
+    [removeRecipeThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('we are updating the data...');
+    },
+    [removeRecipeThunk.fulfilled]: (state, { payload }) => {
+      state.own = state.own.filter((el)=> el._id !== payload._id)
+      state.loading = false;
+      Loading.remove();
+    },
+    [removeRecipeThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+
+   // Favorite
 
     [getAllFavoriteDrinksThunk.pending]: (state, { payload }) => {
       state.loading = true;
       Loading.hourglass('We are validating your data...');
     },
     [getAllFavoriteDrinksThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
+      state.favorites = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;
@@ -219,8 +237,8 @@ const cocktailsSlice = createSlice({
     [addToFavoriteThunk.fulfilled]: (state, { payload }) => {
       // state.cocktails = [];
       // state.cocktails.push(payload);
-      console.log(payload);
-      state.cocktails = payload;
+      // console.log(payload);
+      state.favorites = payload;
       state.backup = payload;
       state.loading = false;
       Loading.remove();
@@ -235,8 +253,14 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [removeFromFavoriteThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
-      console.log(payload);
+      console.log(Array.isArray(state.favorites));
+      if(Array.isArray(state.favorites)){
+        console.log(111);
+        state.favorites = state.favorites.filter((el)=>{ return el._id !== payload.cocktails._id})
+      }else{
+        state.favorites = payload.cocktails;
+      }
+      // console.log(payload);
       state.loading = false;
       Loading.remove();
     },

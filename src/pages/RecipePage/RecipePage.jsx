@@ -16,6 +16,7 @@ import {
 import {
   selectCocktails,
   selectCocktailsIsLoading,
+  selectFavorite,
   selectUser,
 } from 'redux/selectors';
 
@@ -23,29 +24,30 @@ const RecipePage = ({ id }) => {
   // we must get id with props
   const dispatch = useDispatch();
   const loading = useSelector(selectCocktailsIsLoading);
-  const contact = useSelector(selectCocktails);
+  // const contact = useSelector(selectCocktails);
+  const contact = useSelector(selectFavorite);
   const user = useSelector(selectUser);
   const idQuery = useParams();
   let filter;
 
   useEffect(() => {
     // fetch recipe
-    dispatch(getCocktailByIdThunk(idQuery.id)); // 1
-    dispatch(getCurrentUserThunk()); // 2
-    console.log(contact, 'Contact');
+    dispatch(getCocktailByIdThunk(idQuery.id)); // 1;
+    // console.log(contact, 'Contact');
   }, []); // eslint-disable-line
 
   const handleSend = () => {
     filter = favoriteFilter(contact, user);
     if (filter) {
       dispatch(removeFromFavoriteThunk(contact._id)); // 3
-      console.log('remove favorite');
+      // console.log('remove favorite');
     } else {
-      dispatch(addToFavoriteThunk(contact._id)).then(
+      dispatch(addToFavoriteThunk(contact._id)).then(res => {
         // 4
-        dispatch(getCocktailByIdThunk(idQuery.id)) // 5
-      );
-      console.log('add favorite');
+        if (res.meta.requestStatus === 'fulfilled')
+          dispatch(getCocktailByIdThunk(idQuery.id)); // 5
+      });
+      // console.log('add favorite');
     }
   };
 

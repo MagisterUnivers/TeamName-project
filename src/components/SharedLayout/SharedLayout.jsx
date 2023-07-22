@@ -42,7 +42,7 @@ const SharedLayout = () => {
 
   useEffect(() => {
     dispatch(refreshThunk(token));
-    console.log(user);
+    // console.log(user);
     if (isFirstRender) dispatch(getCurrentUserThunk());
   }, []); // eslint-disable-line
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectCocktails } from 'redux/selectors';
+import { selectCocktails, selectFavorite } from 'redux/selectors';
 import {
   StyledCardWrapper,
   StyledGlassServi,
@@ -11,12 +11,12 @@ import {
 import { StyledSection } from 'components/Section/Section';
 
 export const RecipeIngredientsList = () => {
-  const cocktails = useSelector(selectCocktails);
+  const cocktails = useSelector(selectFavorite);
 
   // console.log(cocktails, 'state / selector');
 
   if (!cocktails) {
-    console.log('Empty');
+    // console.log('Empty');
     return null;
   }
 

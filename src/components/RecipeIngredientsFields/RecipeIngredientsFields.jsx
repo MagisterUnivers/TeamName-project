@@ -103,7 +103,7 @@ export const RecipeIngredientsFields = ({
                 />
               </UnitWrp>
             </FieldsInputWrp>
-            <DeleteButton onClick={() => handleOnDeleteIngredient(index)}>
+            <DeleteButton type="button" onClick={() => handleOnDeleteIngredient(index)}>
               <CloseIconButton />
             </DeleteButton>
           </IngredientsItem>

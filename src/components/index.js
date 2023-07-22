@@ -14,7 +14,7 @@ export * from './DrinkCard/DrinkCard';
 export * from './DrinksList/DrinksList';
 export * from './DrinksSearch/DrinksSearch';
 export * from './HeroSection/HeroSection';
-export * from './MyRecipesList/MyRecipesList';
+export * from './MyOwnRecipesList/MyOwnRecipesList';
 export * from './Paginator/Paginator';
 export * from './PreviewDrinks/PreviewDrinks';
 export * from './RecipeIngredientsFields/Counter/Counter';

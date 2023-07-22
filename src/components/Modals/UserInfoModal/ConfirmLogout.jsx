@@ -11,6 +11,7 @@ import {
 } from './ConfirmLogout.styled';
 import Notiflix from 'notiflix';
 import XIcon from './x.svg';
+import { clearState } from 'redux/UserInfo/userInfoSlice';
 
 export const ConfirmLogout = ({ id, onClose }) => {
   const dispatch = useDispatch();
@@ -19,9 +20,10 @@ export const ConfirmLogout = ({ id, onClose }) => {
     dispatch(logoutThunk())
       .unwrap()
       .then(res => {
-        console.log('Response:', res);
+        // console.log('Response:', res);
         if (res && res.status === 200) {
           navigate('/');
+          dispatch(clearState());
         }
       })
       .then(Notiflix.Notify.success('Log out successfully!'));

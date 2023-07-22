@@ -9,7 +9,6 @@ import {
   QueryFormStyled,
   StyledSearchIcon,
   HoverWrapper,
-  FirstHoverWrapper,
 } from './DrinksSearch.styled';
 import {
   selectCategories,
@@ -29,7 +28,7 @@ export const DrinksSearch = ({ categoryName }) => {
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
   const search = useSelector(selectSearch);
-  console.log(searchQuery);
+  // console.log(searchQuery);
 
   //creating options for the dropdowns
   const categoriesListOptions = categoriesList.map(category => {
@@ -109,7 +108,6 @@ export const DrinksSearch = ({ categoryName }) => {
           placeholder="Enter the text"
           onChange={handleChangeQuery}
         />
-
         <StyledSearchButton type="submit">
           <HoverWrapper></HoverWrapper>
           <StyledSearchIcon />
@@ -128,6 +126,7 @@ export const DrinksSearch = ({ categoryName }) => {
         autoFocus
         classNamePrefix="react-select"
         onChange={handleChangeCategory}
+        noOptionsMessage={() => 'Oops! Try again.'}
         required
       />
       <SelectStyled
@@ -141,6 +140,7 @@ export const DrinksSearch = ({ categoryName }) => {
         autoFocus
         classNamePrefix="react-select"
         onChange={handleChangeIngredient}
+        noOptionsMessage={() => 'Oops! Try again.'}
         required
       />
     </SearchFormStyled>
