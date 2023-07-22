@@ -126,6 +126,7 @@ export const DrinksSearch = ({ categoryName }) => {
         autoFocus
         classNamePrefix="react-select"
         onChange={handleChangeCategory}
+        noOptionsMessage={() => 'Oops! Try again.'}
         required
       />
       <SelectStyled
@@ -139,6 +140,7 @@ export const DrinksSearch = ({ categoryName }) => {
         autoFocus
         classNamePrefix="react-select"
         onChange={handleChangeIngredient}
+        noOptionsMessage={() => 'Oops! Try again.'}
         required
       />
     </SearchFormStyled>
