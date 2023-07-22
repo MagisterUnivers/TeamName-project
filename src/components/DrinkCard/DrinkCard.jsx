@@ -10,22 +10,24 @@ import {
   Ingredients,
   Ingredientswrapper,
   ImageWrapper,
+  OneMoreWrapper,
 } from './DrinkCard.styled';
 
 export const DrinkCard = ({ cocktail, page }) => {
-
   return (
     <Card>
       <Link to={`/main/recipe/${cocktail._id}`}>
-        <ImageWrapper>
-          <Image
-            src={cocktail.drinkThumb}
-            alt={cocktail.drink}
-            onError={e => {
-              e.currentTarget.src = drink;
-            }}
-          />
-        </ImageWrapper>
+        <OneMoreWrapper>
+          <ImageWrapper>
+            <Image
+              src={cocktail.drinkThumb}
+              alt={cocktail.drink}
+              onError={e => {
+                e.currentTarget.src = drink;
+              }}
+            />
+          </ImageWrapper>
+        </OneMoreWrapper>
       </Link>
 
       <Ingredientswrapper position={page}>
