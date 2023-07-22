@@ -14,6 +14,7 @@ export const selectUserInfoEmail = state => state.userInfo.email;
 export const selectTheme = state => state.userInfo.theme;
 export const selectUserArray = state => state.userInfo.user;
 export const selectRender = state => state.userInfo.firstRender;
+export const selectAvatar = state => state.userInfo.avatarURL;
 
 //Cocktails
 export const selectCocktails = state => state.cocktails.cocktails;

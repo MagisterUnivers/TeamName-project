@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserArray } from 'redux/selectors';
 import * as Yup from 'yup';
@@ -28,43 +29,37 @@ import { AddIconImg } from './UserInfoModal.styled';
 import { StyledInputFile } from './UserInfoModal.styled';
 import { UpdateUserForm } from './UpdateUserForm';
 
+const modalRoot = document.getElementById('modal-root');
+
 export const UserInfoModal = ({ onClose }) => {
   // const dispatch = useDispatch();
-  // const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
-  // const [isUpdateForm, setIsUpdateForm] = useState(null);
-  // const [selectedAvatar, setSelectedAvatar] = useState (null);
-  // useEffect(() => {
-  //   const handleOutsideClick = (event) => {
-  //     // console.log(event.target);
-  //     if (!event.target.closest(".modal-content")) {
-  //       console.log("closing modal");
-  //       onClose();
-  //     }
-  //   };
-  //   window.addEventListener("mousedown", handleOutsideClick);
-  //   return () => {
-  //     window.removeEventListener("mousedown", handleOutsideClick);
-  //   };
-  // }, [onClose]);
-  // useEffect(() => {
-  //   if (isUpdateForm) {
-  //     setIsUpdateForm(null);
-  //   }
-  // }, [isUpdateForm]);
+    useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // console.log(event.target);
+      if (!event.target.closest(".modal-content")) {
+        console.log("closing modal");
+        onClose();
+      }
+    };
+    window.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [onClose]);
 
-  // useEffect(() => {
-  //   const handleKeyDown = e => {
-  //     if (e.key === 'Escape') {
-  //       // onClose();
-  //       setIsOpen(false)
-  //     }
-  //   };
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, [onClose]);
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        // onClose();
+        setIsOpen(false)
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   // const handleModalClick = e => {
   //   const closeButtonClicked = e.target.closest('.close-button');
@@ -81,14 +76,15 @@ export const UserInfoModal = ({ onClose }) => {
     // };
   // console.log(user);
   // console.log(user.avatarURL);
-  return isOpen ? (
+  return ReactDOM.createPortal(
     <ModalWrapper >
       <ContentWrapper className="modal-content">
-        <CloseButton onClick={onClose} tabIndex={1} className="close-button">
-          <img src={XIcon} alt="Close" width={24} />
+        <CloseButton >
+          <img src={XIcon} alt="close" width={24} />
         </CloseButton>
-        <UpdateUserForm/>
+        {/* <UpdateUserForm/> */}
       </ContentWrapper>
-    </ModalWrapper>
- ) : null;
+    </ModalWrapper>,
+     modalRoot 
+ ) 
 };

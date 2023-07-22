@@ -12,6 +12,7 @@ import {
 import Notiflix from 'notiflix';
 import XIcon from './x.svg';
 import { clearState } from 'redux/UserInfo/userInfoSlice';
+import { UpdateUserForm } from './UpdateUserForm';
 
 export const ConfirmLogout = ({ id, onClose }) => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export const ConfirmLogout = ({ id, onClose }) => {
           <LogOutButton onClick={handleDelete}>Log out</LogOutButton>
           <LogOutButton onClick={onClose}>Cancel</LogOutButton>
         </ButtonWrapper>
+        {/* <div><UpdateUserForm/></div> */}
       </ModalContent>
       `
     </ModalWrapper>

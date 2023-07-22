@@ -5,7 +5,7 @@ import { DrinkCard } from 'components/DrinkCard/DrinkCard';
 import { selectOwn } from 'redux/selectors';
 import { MyRecipesListStyled, Section } from './MyOwnRecipesList.styled';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { NotFound } from 'components';
+import { NotFound } from '../NotFound/NotFound';
 
 export const MyOwnRecipesList = () => {
   const dispatch = useDispatch();

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserArray } from 'redux/selectors';
+import { selectUserArray, selectAvatar } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
-  ModalWrapper,
-  CloseButton,
   UserAvatarWrapper,
-  ContentWrapper,
   AvatarFrame,
   AddAvatarButton,
   StyledFormInsight,
@@ -22,14 +19,14 @@ import {
   StyledMessage,
 } from 'components/RegisterForm/RegisterForm.styled';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
 import { AddIconImg } from './UserInfoModal.styled';
 import { StyledInputFile } from './UserInfoModal.styled';
 
-export const UpdateUserForm = ({ onClose }) => {
+export const UpdateUserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserArray);
+  const avatar = useSelector(selectAvatar);
 //   const [isOpen, setIsOpen] = useState(true);
 //   const [isUpdateForm, setIsUpdateForm] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState (null);
@@ -39,7 +36,7 @@ export const UpdateUserForm = ({ onClose }) => {
       setSelectedAvatar(file);
     };
   console.log(user);
-  console.log(user.avatarURL);
+  console.log(avatar);
   return  <StyledForm
           initialValues={{
             avatarURL: '',
@@ -64,7 +61,7 @@ export const UpdateUserForm = ({ onClose }) => {
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-                <AvatarFrame src={user.avatarURL} alt="avatar" />
+                <AvatarFrame src={avatar} alt="avatar" />
                 <AddAvatarButton>
                   <AddIconImg src={AddIcon} alt="plus" width={28} />
                 </AddAvatarButton>
