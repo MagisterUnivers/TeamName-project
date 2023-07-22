@@ -15,7 +15,7 @@ export const MyOwnRecipesList = () => {
   useEffect(() => {
     if (ownCocktails.length !== 0) return;
     dispatch(getAllOwnDrinksThunk());
-  }, [dispatch]);
+  }, [dispatch, ownCocktails]);
 
   return (
     <Section>

@@ -12,7 +12,6 @@ import {
   getAllFavoriteDrinksThunk,
   addToFavoriteThunk,
   removeFromFavoriteThunk,
-  removeFromFavoritePageThunk,
   getPopularThunk,
   removeRecipeThunk,
 } from './cocktailsOperations.js';
