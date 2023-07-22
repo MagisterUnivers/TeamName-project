@@ -59,7 +59,11 @@ export const RecipePageHero = ({ func }) => {
             <div>
               {' '}
               <StyledImage
-                src={cocktails.drinkThumb}
+                src={
+                  cocktails.drinkThumb
+                    ? cocktails.drinkThumb
+                    : require('../../assets/img/testPNG.png')
+                }
                 alt="cocktail thumb"
                 width={400}
                 height={400}
