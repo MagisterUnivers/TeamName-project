@@ -3,6 +3,7 @@ import {
   RecipePreparation,
   RecipePageHero,
   RecipeIngredientsList,
+  Container,
 } from 'components';
 import { favoriteFilter } from 'components/utils';
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,10 +54,12 @@ const RecipePage = ({ id }) => {
 
   return (
     <>
-      {console.log(contact, 'return')}
-      <RecipePageHero func={handleSend} />
-      {!loading && <RecipeIngredientsList />}
-      <RecipePreparation />
+      <Container>
+        {console.log(contact, 'return')}
+        <RecipePageHero func={handleSend} />
+        {!loading && <RecipeIngredientsList />}
+        <RecipePreparation />
+      </Container>
     </>
   );
 };

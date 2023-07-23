@@ -2,7 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
-import { Paginator, DrinksSearch, DrinksList, MainPageTitle } from 'components';
+import {
+  Paginator,
+  DrinksSearch,
+  DrinksList,
+  MainPageTitle,
+  Container,
+} from 'components';
 import {
   getCategoriesListThunk,
   getCocktailsByCategoryThunk,
@@ -35,12 +41,14 @@ const DrinksPage = () => {
   }, [dispatch, categoryName]);
 
   return (
-    <StyledSection>
-      <MainPageTitle title={'Drinks'} />
-      <DrinksSearch categoryName={categoryName} />
-      <DrinksList />
-      <Paginator />
-    </StyledSection>
+    <>
+      <Container>
+        <MainPageTitle title={'Drinks'} />
+        <DrinksSearch categoryName={categoryName} />
+        <DrinksList />
+        <Paginator />
+      </Container>
+    </>
   );
 };
 
