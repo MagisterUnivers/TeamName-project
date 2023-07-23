@@ -59,7 +59,6 @@ export * from './Modals/MotivationModal/MotivationModal';
 
 //  // UserInfoModal
 export * from './Modals/UserInfoModal/ConfirmLogout';
-export * from './Modals/UserInfoModal/EditProfileModal';
 export * from './Modals/UserInfoModal/UserInfoModal';
 
 //  // UserLogoModal
