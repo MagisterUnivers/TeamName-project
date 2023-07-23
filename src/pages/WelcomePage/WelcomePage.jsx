@@ -8,7 +8,6 @@ import {
   RegistrationNavLink,
   SignInNavLink,
 } from './WelcomPage.styled';
-import { Container } from 'components';
 
 const WelcomePage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
@@ -19,22 +18,18 @@ const WelcomePage = () => {
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
   return (
     <BaseDiv>
-      <Container>
-        <SummaryWrapper>
-          <WelcomeTitle>Welcome to the app!</WelcomeTitle>
-          <WelcomeText>
-            This app offers more than just a collection of recipes - it is
-            designed to be your very own digital cookbook. You can easily save
-            and retrieve your own recipes at any time.
-          </WelcomeText>
-          <ButtonsBlock>
-            <RegistrationNavLink to="/register">
-              Registration
-            </RegistrationNavLink>
-            <SignInNavLink to="/signin">Sign In</SignInNavLink>
-          </ButtonsBlock>
-        </SummaryWrapper>
-      </Container>
+      <SummaryWrapper>
+        <WelcomeTitle>Welcome to the app!</WelcomeTitle>
+        <WelcomeText>
+          This app offers more than just a collection of recipes - it is
+          designed to be your very own digital cookbook. You can easily save and
+          retrieve your own recipes at any time.
+        </WelcomeText>
+        <ButtonsBlock>
+          <RegistrationNavLink to="/register">Registration</RegistrationNavLink>
+          <SignInNavLink to="/signin">Sign In</SignInNavLink>
+        </ButtonsBlock>
+      </SummaryWrapper>
     </BaseDiv>
   );
 };
