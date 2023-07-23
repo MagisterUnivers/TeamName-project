@@ -120,15 +120,22 @@ export const StyledInputWrap = styled.div`
 export const StyledIconError = styled(RiErrorWarningLine)`
   position: absolute;
   right: 24px;
-  top: 79%;
+  top: 70%;
   transform: translateY(-50%);
+  @media screen and (min-width: 768px) {
+    top: 75%;
+  }
 `;
 export const StyledIconChecked = styled(IoIosCheckmarkCircleOutline)`
   position: absolute;
   right: 24px;
-  top: 79%;
+  top: 70%;
   transform: translateY(-50%);
+  @media screen and (min-width: 768px) {
+    top: 75%;
+  }
 `;
+
 export const StyledInput = styled(Field)`
   margin-top: 93px;
   width: 100%;
