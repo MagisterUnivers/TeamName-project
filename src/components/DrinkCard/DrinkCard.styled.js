@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 
-export const Card = styled.div``;
+export const Card = styled.div`
+  width: 335px;
+
+  @media ${devices.tablet} {
+    width: 342px;
+  }
+
+  @media ${devices.desktop} {
+    width: 400px;
+  }
+`;
 
 export const ImageWrapper = styled.div`
   width: 335px;
@@ -32,7 +42,7 @@ export const Ingredientswrapper = styled.div`
   display: flex;
   justify-content: space-between;
   ${props =>
-    (props.position === 'my' || props.position === 'favorite')
+    props.position === 'my' || props.position === 'favorite'
       ? `flex-direction: column; gap: 4px;`
       : `flex-direction: row`}
 `;

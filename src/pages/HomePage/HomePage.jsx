@@ -4,6 +4,7 @@ import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperat
 import { PreviewDrinks } from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 import { selectCocktails } from 'redux/selectors';
 import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrinks';
+import { HeroSection } from 'components';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -28,12 +29,13 @@ const HomePage = () => {
   useEffect(() => {
     if (category !== undefined && category.length === 0)
       dispatch(getCocktailsByFourCategoryThunk());
-  }, [category]);
+  }, []);
 
   return (
     <>
       {category !== undefined && (
         <>
+          <HeroSection />
           <PreviewDrinks title="Ordinary Drink" data={ordinaryDrink} />
           <PreviewDrinks title="Cocktail" data={cocktail} />
           <PreviewDrinks title="Shake" data={shake} />
