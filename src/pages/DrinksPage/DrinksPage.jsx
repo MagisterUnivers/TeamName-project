@@ -16,6 +16,7 @@ import {
 } from 'redux/Cocktails/cocktailsOperations';
 import { setChosenCategory } from 'redux/Cocktails/cocktailsSlice';
 import { selectCategories, selectIngredients } from 'redux/selectors';
+import { StyledSection } from './DrinksPage.styled';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -42,10 +43,12 @@ const DrinksPage = () => {
   return (
     <>
       <Container>
-        <MainPageTitle title={'Drinks'} />
-        <DrinksSearch categoryName={categoryName} />
-        <DrinksList />
-        <Paginator />
+        <StyledSection>
+          <MainPageTitle title={'Drinks'} />
+          <DrinksSearch categoryName={categoryName} />
+          <DrinksList />
+          <Paginator />
+        </StyledSection>
       </Container>
     </>
   );

@@ -7,7 +7,8 @@ export const Section = styled.div`
 `;
 
 export const SectionTitle = styled.p`
-  color: #f3f3f3;
+  /* color: #f3f3f3; */
+  color: ${props => props.theme.textColor};
   font-family: Manrope, sans-serif;
   font-size: 40px;
   font-weight: 600;
