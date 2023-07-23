@@ -1,4 +1,4 @@
-import { Container, Counter } from 'components';
+import { Counter } from 'components';
 import { listUnits } from './ListUnits.constants';
 import {
   FieldsInputWrp,
@@ -56,64 +56,62 @@ export const RecipeIngredientsFields = ({
 
   return (
     <FormWrapper>
-      <Container>
-        <TitleWrp>
-          <TitleStyled>Ingredients</TitleStyled>
-          <Counter
-            handleIncIngredients={handleIncIngredients}
-            handleDecIngredients={handleDecIngredients}
-            cocktailIngredientList={cocktailIngredientList}
-          />
-        </TitleWrp>
-        <StyledIngredientsList>
-          {cocktailIngredientList?.map((el, index) => (
-            <IngredientsItem key={el._id}>
-              <FieldsInputWrp>
-                <SelectIngredientStyled
-                  options={ingredientsList.map(ing => {
-                    return { value: ing._id, label: ing.title, id: ing._id };
-                  })}
-                  isSearchable={true}
-                  classNamePrefix="react-select"
+      <TitleWrp>
+        <TitleStyled>Ingredients</TitleStyled>
+        <Counter
+          handleIncIngredients={handleIncIngredients}
+          handleDecIngredients={handleDecIngredients}
+          cocktailIngredientList={cocktailIngredientList}
+        />
+      </TitleWrp>
+      <StyledIngredientsList>
+        {cocktailIngredientList?.map((el, index) => (
+          <IngredientsItem key={el._id}>
+            <FieldsInputWrp>
+              <SelectIngredientStyled
+                options={ingredientsList.map(ing => {
+                  return { value: ing._id, label: ing.title, id: ing._id };
+                })}
+                isSearchable={true}
+                classNamePrefix="react-select"
+                styles={styles}
+                onChange={evt => handleOnChangeIngredientName(evt, index)}
+                required
+              />
+              <UnitWrp>
+                <UnitQuantity
+                  type="number"
+                  min="0"
                   styles={styles}
-                  onChange={evt => handleOnChangeIngredientName(evt, index)}
+                  onChange={e => {
+                    handleOnChangeUnitQuantity(e, index);
+                  }}
+                  // name={`unitQuauntity${index}`}
+                  placeholder="0"
+                />
+                <IngredientUnit
+                  options={listUnits.map(unit => {
+                    return { value: unit.value, label: unit.label };
+                  })}
+                  isSearchable={false}
+                  styles={styles}
+                  classNamePrefix="react-select"
+                  onChange={e => {
+                    handleOnChangeIngredientUnit(e, index);
+                  }}
                   required
                 />
-                <UnitWrp>
-                  <UnitQuantity
-                    type="number"
-                    min="0"
-                    styles={styles}
-                    onChange={e => {
-                      handleOnChangeUnitQuantity(e, index);
-                    }}
-                    // name={`unitQuauntity${index}`}
-                    placeholder="0"
-                  />
-                  <IngredientUnit
-                    options={listUnits.map(unit => {
-                      return { value: unit.value, label: unit.label };
-                    })}
-                    isSearchable={false}
-                    styles={styles}
-                    classNamePrefix="react-select"
-                    onChange={e => {
-                      handleOnChangeIngredientUnit(e, index);
-                    }}
-                    required
-                  />
-                </UnitWrp>
-              </FieldsInputWrp>
-              <DeleteButton
-                type="button"
-                onClick={() => handleOnDeleteIngredient(index)}
-              >
-                <CloseIconButton />
-              </DeleteButton>
-            </IngredientsItem>
-          ))}
-        </StyledIngredientsList>
-      </Container>
+              </UnitWrp>
+            </FieldsInputWrp>
+            <DeleteButton
+              type="button"
+              onClick={() => handleOnDeleteIngredient(index)}
+            >
+              <CloseIconButton />
+            </DeleteButton>
+          </IngredientsItem>
+        ))}
+      </StyledIngredientsList>
     </FormWrapper>
   );
 };

@@ -1,12 +1,14 @@
-import { RegisterForm } from 'components';
+import { Container, RegisterForm } from 'components';
 import { BaseDiv, SummaryWrapper } from '../WelcomePage/WelcomPage.styled';
 
 const RegisterPage = () => {
   return (
     <BaseDiv>
-      <SummaryWrapper>
-        <RegisterForm />
-      </SummaryWrapper>
+      <Container>
+        <SummaryWrapper>
+          <RegisterForm />
+        </SummaryWrapper>
+      </Container>
     </BaseDiv>
   );
 };

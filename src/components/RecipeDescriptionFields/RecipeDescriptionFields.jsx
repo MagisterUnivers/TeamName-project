@@ -1,5 +1,5 @@
 // import * as Yup from 'yup';
-import { Container } from 'components';
+
 import {
   StyledFormInsight,
   StyledError,
@@ -58,82 +58,80 @@ export const RecipeDescriptionFields = ({
   return (
     <>
       <StyledFormInsight>
-        <Container>
-          <StyledImgLabel htmlFor="image">
-            {imgURL ? (
-              <StyledImg src={imgURL} />
-            ) : (
-              <StyledImgBtn>
-                <FiPlus color="#161F37" size="28" />
-              </StyledImgBtn>
-            )}
-            <StyledImageInput
+        <StyledImgLabel htmlFor="image">
+          {imgURL ? (
+            <StyledImg src={imgURL} />
+          ) : (
+            <StyledImgBtn>
+              <FiPlus color="#161F37" size="28" />
+            </StyledImgBtn>
+          )}
+          <StyledImageInput
+            as="input"
+            id="image"
+            name="image"
+            type="file"
+            onChange={handleOnImgSelect}
+          ></StyledImageInput>
+        </StyledImgLabel>
+
+        <StyledFildWrapper>
+          <div>
+            <StyledField
               as="input"
-              id="image"
-              name="image"
-              type="file"
-              onChange={handleOnImgSelect}
-            ></StyledImageInput>
-          </StyledImgLabel>
+              name="itemTitleRecipe"
+              value={itemTitleRecipe}
+              placeholder="Enter item title"
+              onChange={e => {
+                handleOnTitleRecipe(e.currentTarget.value);
+              }}
+              required
+            />
+            <StyledError name="itemTitleRecipe" component="div" />
+          </div>
+          <div>
+            <StyledField
+              as="input"
+              name="aboutRecipe"
+              value={aboutRecipe}
+              placeholder="Enter about recipe"
+              onChange={e => {
+                handleOnAboutRecipe(e.currentTarget.value);
+              }}
+              required
+            />
+            <StyledError name="aboutRecipe" component="div" />
+          </div>
 
-          <StyledFildWrapper>
-            <div>
-              <StyledField
-                as="input"
-                name="itemTitleRecipe"
-                value={itemTitleRecipe}
-                placeholder="Enter item title"
-                onChange={e => {
-                  handleOnTitleRecipe(e.currentTarget.value);
-                }}
-                required
-              />
-              <StyledError name="itemTitleRecipe" component="div" />
-            </div>
-            <div>
-              <StyledField
-                as="input"
-                name="aboutRecipe"
-                value={aboutRecipe}
-                placeholder="Enter about recipe"
-                onChange={e => {
-                  handleOnAboutRecipe(e.currentTarget.value);
-                }}
-                required
-              />
-              <StyledError name="aboutRecipe" component="div" />
-            </div>
-
-            <StyledWrapperSelect>
-              <StyledLabelSelect>Category</StyledLabelSelect>
-              <StyledSelect
-                options={categoryList.map(category => {
-                  return { value: category._id, label: category.category };
-                })}
-                styles={styles}
-                isSearchable={false}
-                value={category}
-                classNamePrefix="react-select"
-                onChange={handleOnCategory}
-                placeholder="Cocktail"
-              />
-            </StyledWrapperSelect>
-            <StyledWrapperSelect>
-              <StyledLabelSelect>Glass</StyledLabelSelect>
-              <StyledSelect
-                options={glassList.map(glass => {
-                  return { value: glass._id, label: glass.title };
-                })}
-                styles={styles}
-                isSearchable={false}
-                value={glass}
-                classNamePrefix="react-select"
-                onChange={handleOnGlass}
-                placeholder="Highball glass"
-              />
-            </StyledWrapperSelect>
-          </StyledFildWrapper>
-        </Container>
+          <StyledWrapperSelect>
+            <StyledLabelSelect>Category</StyledLabelSelect>
+            <StyledSelect
+              options={categoryList.map(category => {
+                return { value: category._id, label: category.category };
+              })}
+              styles={styles}
+              isSearchable={false}
+              value={category}
+              classNamePrefix="react-select"
+              onChange={handleOnCategory}
+              placeholder="Cocktail"
+            />
+          </StyledWrapperSelect>
+          <StyledWrapperSelect>
+            <StyledLabelSelect>Glass</StyledLabelSelect>
+            <StyledSelect
+              options={glassList.map(glass => {
+                return { value: glass._id, label: glass.title };
+              })}
+              styles={styles}
+              isSearchable={false}
+              value={glass}
+              classNamePrefix="react-select"
+              onChange={handleOnGlass}
+              placeholder="Highball glass"
+            />
+          </StyledWrapperSelect>
+        </StyledFildWrapper>
       </StyledFormInsight>
     </>
   );

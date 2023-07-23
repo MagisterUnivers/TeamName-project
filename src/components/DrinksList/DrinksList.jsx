@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPage, selectSearch, selectSearchResults } from 'redux/selectors';
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { Container, DrinkCard, NotFound } from 'components';
+import { DrinkCard, NotFound } from 'components';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import { useNavigate } from 'react-router';
 
@@ -26,23 +26,21 @@ export const DrinksList = () => {
 
   return (
     <Section>
-      <Container>
-        <DrinkListStyled>
-          {searchResults.length !== 0 ? (
-            searchResults.map(searchResult => (
-              <DrinkCard
-                key={searchResult._id}
-                cocktail={searchResult}
-                page={'drinks'}
-              />
-            ))
-          ) : (
-            <NotFound
-              message={"We haven't found any cocktails for this search"}
+      <DrinkListStyled>
+        {searchResults.length !== 0 ? (
+          searchResults.map(searchResult => (
+            <DrinkCard
+              key={searchResult._id}
+              cocktail={searchResult}
+              page={'drinks'}
             />
-          )}
-        </DrinkListStyled>
-      </Container>
+          ))
+        ) : (
+          <NotFound
+            message={"We haven't found any cocktails for this search"}
+          />
+        )}
+      </DrinkListStyled>
     </Section>
   );
 };
