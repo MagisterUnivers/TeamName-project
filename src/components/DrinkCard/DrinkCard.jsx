@@ -11,6 +11,7 @@ import {
   Ingredientswrapper,
   ImageWrapper,
   OneMoreWrapper,
+  Wrapper,
 } from './DrinkCard.styled';
 
 export const DrinkCard = ({ cocktail, page }) => {
@@ -30,14 +31,14 @@ export const DrinkCard = ({ cocktail, page }) => {
           </ImageWrapper>
         </OneMoreWrapper>
       </Link>
-
-      <Ingredientswrapper position={page}>
-        <Link to={`/main/recipe/${cocktail._id}`}>
-          <Drinkingreds>{cocktail.drink}</Drinkingreds>
-        </Link>
-        <Ingredients>Ingredients</Ingredients>
-      </Ingredientswrapper>
-
+      <Wrapper>
+        <Ingredientswrapper position={page}>
+          <Link to={`/main/recipe/${cocktail._id}`}>
+            <Drinkingreds>{cocktail.drink}</Drinkingreds>
+          </Link>
+          <Ingredients>Ingredients</Ingredients>
+        </Ingredientswrapper>
+      </Wrapper>
       {(page === 'my' || page === 'favorite') && (
         <AboutStyled>{cocktail.about}</AboutStyled>
       )}

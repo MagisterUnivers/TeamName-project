@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 
-export const Card = styled.div``;
+export const Card = styled.div`
+`;
 export const OneMoreWrapper = styled.div`
   border-radius: 15px;
 
@@ -106,3 +107,7 @@ export const ButtonsWrapper = styled.div`
   gap: 8px;
   position: relative;
 `;
+
+export const Wrapper = styled.div`
+
+ `;
