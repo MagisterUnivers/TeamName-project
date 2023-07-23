@@ -43,10 +43,12 @@ const DrinksPage = () => {
   return (
     <>
       <Container>
-        <MainPageTitle title={'Drinks'} />
-        <DrinksSearch categoryName={categoryName} />
-        <DrinksList />
-        <Paginator />
+        <StyledSection>
+          <MainPageTitle title={'Drinks'} />
+          <DrinksSearch categoryName={categoryName} />
+          <DrinksList />
+          <Paginator />
+        </StyledSection>
       </Container>
     </>
   );
