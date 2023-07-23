@@ -8,7 +8,6 @@ import {
   UserAvatarWrapper,
   ContentWrapper,
   AvatarFrame,
-  AddAvatarButton,
   StyledFormInsight,
   StyledForm,
   SaveChangeButton,
@@ -16,6 +15,8 @@ import {
   StyledInputWrap,
   StyledIconChecked,
   StyledIconError,
+  AddIconImg,
+  StyledInputFile,
 } from './UserInfoModal.styled';
 import {
   StyledError,
@@ -24,65 +25,46 @@ import {
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
-import { AddIconImg } from './UserInfoModal.styled';
-import { StyledInputFile } from './UserInfoModal.styled';
-// import { updateUserThunk } from 'redux/Auth/authOperations';
+const defaultAvatarURL = require('./user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
-  const [isUpdateForm, setIsUpdateForm] = useState(null);
-  const [selectedAvatar, setSelectedAvatar] = useState (null);
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [imgURL, setImageURL] = useState('');
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      console.log(event.target);
-      if (!event.target.closest(".modal-content")) {
-        console.log("closing modal");
+    const handleOutsideClick = event => {
+      if (!event.target.closest('.modal-content')) {
         onClose();
       }
     };
-    window.addEventListener("mousedown", handleOutsideClick);
+    window.addEventListener('mousedown', handleOutsideClick);
     return () => {
-      window.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener('mousedown', handleOutsideClick);
     };
   }, [onClose]);
-  // useEffect(() => {
-  //   if (isUpdateForm) {
-  //     setIsUpdateForm(null);
-  //   }
-  // }, [isUpdateForm]);
 
-  // useEffect(() => {
-  //   const handleKeyDown = e => {
-  //     if (e.key === 'Escape') {
-  //       // onClose();
-  //       setIsOpen(false)
-  //     }
-  //   };
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, [onClose]);
+  const handleAvatarChange = async e => {
+    const file = e.target.files[0];
+    setSelectedAvatar(file);
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      setImageURL(reader.result);
+    });
+    reader.readAsDataURL(file);
+  };
 
-  // const handleModalClick = e => {
-  //   const closeButtonClicked = e.target.closest('.close-button');
-  //   const modalContentClicked = e.target.closest('.modal-content');
-   
-     // if (closeButtonClicked || modalContentClicked === null) {
-    //   // onClose();
-    // }  
-    // setIsOpen(false)
-    //   e.stopPropagation();
-    const handleAvatarChange = e => {
-      const file = e.target.files[0];
-      setSelectedAvatar(file);
-    };
-  // console.log(user.name);
-  // console.log(user.avatarURL);
+  const handleOnSubmit = async values => {
+    const formData = new FormData();
+    formData.append('name', values.name);
+    if (selectedAvatar) {
+      formData.append('avatarURL', selectedAvatar);
+    }
+    await dispatch(updateUserThunk(formData));
+  };
   return isOpen ? (
-    <ModalWrapper >
+    <ModalWrapper>
       <ContentWrapper className="modal-content">
         <CloseButton onClick={onClose} tabIndex={1} className="close-button">
           <img src={XIcon} alt="Close" width={24} />
@@ -99,28 +81,25 @@ export const UserInfoModal = ({ onClose }) => {
               'Name can only contain letters or numbers.'
             ),
           })}
-          onSubmit={async values => {
-            const formData = new FormData();
-            formData.append('name', values.name);
-            if (selectedAvatar) {
-              formData.append('avatar', selectedAvatar);
-            }
-            await dispatch(updateUserThunk(formData));
-          }}
-                >
+          onSubmit={handleOnSubmit}
+        >
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-                <AvatarFrame src={user.avatarURL} alt="avatar" />
-                <AddAvatarButton>
+                <AvatarFrame
+                  src={user.avatarURL || defaultAvatarURL}
+                  alt="avatar"
+                  width={100}
+                />
+                <label htmlFor="avatarInput">
                   <AddIconImg src={AddIcon} alt="plus" width={28} />
-                </AddAvatarButton>
-                <StyledInputFile
+                  <StyledInputFile
                     type="file"
+                    id="avatarInput"
                     accept="image/*"
                     onChange={handleAvatarChange}
-                    style={{ display: 'none' }}
                   />
+                </label>
               </UserAvatarWrapper>
               <StyledInputWrap>
                 <StyledInput
@@ -158,5 +137,5 @@ export const UserInfoModal = ({ onClose }) => {
         </StyledForm>
       </ContentWrapper>
     </ModalWrapper>
- ) : null;
+  ) : null;
 };

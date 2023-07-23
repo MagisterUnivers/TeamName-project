@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPage, selectSearch, selectSearchResults } from 'redux/selectors';
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { DrinkCard, NotFound } from 'components';
+import { DrinkCard } from 'components';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import { useNavigate } from 'react-router';
+import { NotFound } from '../NotFound/NotFound';
 
 export const DrinksList = () => {
   const dispatch = useDispatch();
