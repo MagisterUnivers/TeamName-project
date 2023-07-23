@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import pencilIcon from './edit-2.svg';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
+const defaultAvatarURL = require('./user.png');
 
 export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);;
@@ -78,7 +79,7 @@ export const AvatarFrame = styled.img`
   height: 80px;
   margin: 0 auto;
   border-radius: 50%;
-  border: 1px solid;
+   background-image: url({defaultAvatarURL});
   @media screen and (min-width: 768px) {
     width: 100px;
   height: 100px;
@@ -98,24 +99,15 @@ export const AddIconImg = styled.img`
   z-index: 3;
   width: 28px;
   height: 28px;
-  top: -2px;
-   @media screen and (min-width: 768px) {
-    width: 32px;
-  height: 32px;
-   }
-`;
-export const AddAvatarButton = styled.button`
-position: absolute;
-  z-index: 2;
-  width: 28px;
-  height: 28px;
   top: 64px;
+  left: 35%;
   border-radius: 50%;
+  /* top: -2px; */
    @media screen and (min-width: 768px) {
     width: 32px;
   height: 32px;
   top: 83px;
-  }
+   }
 `;
 export const StyledInputWrap = styled.div`
   width: 100%;
@@ -138,7 +130,7 @@ export const StyledIconChecked = styled(IoIosCheckmarkCircleOutline)`
   transform: translateY(-50%);
 `;
 export const StyledInput = styled(Field)`
-  margin-top: 119px;
+  margin-top: 93px;
   width: 100%;
   height: 54px;
   border-radius: 200px;
@@ -152,7 +144,7 @@ export const StyledInput = styled(Field)`
   font-weight: 400;
   line-height: calc(18 / 14);
    @media screen and (min-width: 768px) {
-    margin-top: 166px;
+    margin-top: 136px;
     height: 56px;
     padding: 14px 24px;
     padding-right: 10px;
@@ -196,7 +188,8 @@ export const SaveChangeButton = styled.button`
   width: 100%;
   display: block;
   padding: 18px 90px;
-  /* outline: none; */
+  outline: none;
+  border: none;
   border-color: #434D67;
   border-radius: 42px;
   background-color: #434D67;

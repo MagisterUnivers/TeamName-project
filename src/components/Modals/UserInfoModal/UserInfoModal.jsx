@@ -8,7 +8,6 @@ import {
   UserAvatarWrapper,
   ContentWrapper,
   AvatarFrame,
-  AddAvatarButton,
   StyledFormInsight,
   StyledForm,
   SaveChangeButton,
@@ -17,7 +16,7 @@ import {
   StyledIconChecked,
   StyledIconError,
   AddIconImg,
-  StyledInputFile
+  StyledInputFile,
 } from './UserInfoModal.styled';
 import {
   StyledError,
@@ -26,16 +25,17 @@ import {
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
+const defaultAvatarURL = require('./user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.userInfo.user);
+  const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
-   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [imgURL, setImageURL] = useState('');
   useEffect(() => {
     const handleOutsideClick = event => {
       if (!event.target.closest('.modal-content')) {
-        console.log('closing modal');
         onClose();
       }
     };
@@ -45,11 +45,24 @@ export const UserInfoModal = ({ onClose }) => {
     };
   }, [onClose]);
 
-  const handleAvatarChange = e => {
+  const handleAvatarChange = async e => {
     const file = e.target.files[0];
     setSelectedAvatar(file);
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      setImageURL(reader.result);
+    });
+    reader.readAsDataURL(file);
   };
 
+  const handleOnSubmit = async values => {
+    const formData = new FormData();
+    formData.append('name', values.name);
+    if (selectedAvatar) {
+      formData.append('avatarURL', selectedAvatar);
+    }
+    await dispatch(updateUserThunk(formData));
+  };
   return isOpen ? (
     <ModalWrapper>
       <ContentWrapper className="modal-content">
@@ -68,31 +81,25 @@ export const UserInfoModal = ({ onClose }) => {
               'Name can only contain letters or numbers.'
             ),
           })}
-          onSubmit={async values => {
-            const formData = new FormData();
-            formData.append('name', values.name);
-            if (selectedAvatar) {
-              formData.append('avatar', selectedAvatar);
-            }
-            await dispatch(updateUserThunk(formData));
-          }}
+          onSubmit={handleOnSubmit}
         >
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-              <label htmlFor="avatarInput">
-                <AvatarFrame src={user.avatarURL || require('./user.svg')} alt="avatar" />
-               
-                  <AddAvatarButton type="button">
-                    <AddIconImg src={AddIcon} alt="plus" width={28} />
-                  </AddAvatarButton>
-                </label>
-                <StyledInputFile
-                  type="file"
-                  id="avatarInput"
-                  accept="image/*"
-                  onChange={handleAvatarChange}
+                <AvatarFrame
+                  src={user.avatarURL || defaultAvatarURL}
+                  alt="avatar"
+                  width={100}
                 />
+                <label htmlFor="avatarInput">
+                  <AddIconImg src={AddIcon} alt="plus" width={28} />
+                  <StyledInputFile
+                    type="file"
+                    id="avatarInput"
+                    accept="image/*"
+                    onChange={handleAvatarChange}
+                  />
+                </label>
               </UserAvatarWrapper>
               <StyledInputWrap>
                 <StyledInput
