@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 
-export const Card = styled.div``;
+export const Card = styled.div`
+  width: 335px;
 
+  @media ${devices.tablet} {
+    width: 342px;
+  }
+
+  @media ${devices.desktop} {
+    width: 400px;
+  }
+`;
+export const OneMoreWrapper = styled.div`
+  border-radius: 15px;
   transition: scale 400ms ease, box-shadow 400ms ease;
   &:hover,
   &:focus {
