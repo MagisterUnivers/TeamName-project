@@ -46,8 +46,7 @@ const userInfoSlice = createSlice({
     },
 
     [updateUserThunk.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
-      state.avatarURL = payload.avatarURL;
+         state.user = payload;
       state.loading = false;
       Loading.remove();
     },
@@ -62,10 +61,11 @@ const userInfoSlice = createSlice({
     },
 
     [getCurrentUserThunk.fulfilled]: (state, { payload }) => {
-      // console.log(payload, 'HELLOOOOOOOOOOOOO');
+      console.log(payload, 'HELLOOOOOOOOOOOOO');
       state.user = {
         name: payload.name,
         email: payload.email,
+        avatarURL: payload.avatarURL,
         id: payload._id,
       };
 

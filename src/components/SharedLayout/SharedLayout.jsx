@@ -50,9 +50,7 @@ const SharedLayout = () => {
     <>
       <Header />
       <main>
-        <Container>
-          <Outlet />
-        </Container>
+        <Outlet />
       </main>
       <Footer />
     </>

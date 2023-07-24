@@ -10,31 +10,35 @@ import {
   Ingredients,
   Ingredientswrapper,
   ImageWrapper,
+  OneMoreWrapper,
+  Wrapper,
 } from './DrinkCard.styled';
 
 export const DrinkCard = ({ cocktail, page }) => {
-
   return (
     <Card>
+      {console.log(cocktail)}
       <Link to={`/main/recipe/${cocktail._id}`}>
-        <ImageWrapper>
-          <Image
-            src={cocktail.drinkThumb}
-            alt={cocktail.drink}
-            onError={e => {
-              e.currentTarget.src = drink;
-            }}
-          />
-        </ImageWrapper>
+        <OneMoreWrapper>
+          <ImageWrapper>
+            <Image
+              src={cocktail.drinkThumb}
+              alt={cocktail.drink}
+              onError={e => {
+                e.currentTarget.src = drink;
+              }}
+            />
+          </ImageWrapper>
+        </OneMoreWrapper>
       </Link>
-
-      <Ingredientswrapper position={page}>
-        <Link to={`/main/recipe/${cocktail._id}`}>
-          <Drinkingreds>{cocktail.drink}</Drinkingreds>
-        </Link>
-        <Ingredients>Ingredients</Ingredients>
-      </Ingredientswrapper>
-
+      <Wrapper>
+        <Ingredientswrapper position={page}>
+          <Link to={`/main/recipe/${cocktail._id}`}>
+            <Drinkingreds>{cocktail.drink}</Drinkingreds>
+          </Link>
+          <Ingredients>Ingredients</Ingredients>
+        </Ingredientswrapper>
+      </Wrapper>
       {(page === 'my' || page === 'favorite') && (
         <AboutStyled>{cocktail.about}</AboutStyled>
       )}
