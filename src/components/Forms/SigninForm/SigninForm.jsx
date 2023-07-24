@@ -4,7 +4,7 @@ import { getCurrentUserThunk, loginThunk } from 'redux/Auth/authOperations';
 import { AuthNavigate } from 'components';
 import { selectIsClicked } from 'redux/selectors';
 import { handleEyeClick } from 'redux/Auth/authSlice';
-import { LoginSchema } from 'components/RegisterForm/ValidationSchema';
+import { LoginSchema } from '../RegisterForm/ValidationSchema';
 import {
   StyledButton,
   StyledError,
