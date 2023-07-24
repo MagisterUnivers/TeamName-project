@@ -31,6 +31,10 @@ const HomePage = () => {
       dispatch(getCocktailsByFourCategoryThunk());
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       {category !== undefined && (
