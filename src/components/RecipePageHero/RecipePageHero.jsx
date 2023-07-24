@@ -13,7 +13,6 @@ import {
 export const RecipePageHero = ({ func }) => {
   const cocktails = useSelector(selectFavorite);
   const user = useSelector(selectUser);
-  let filter;
 
   return (
     cocktails !== undefined && (
