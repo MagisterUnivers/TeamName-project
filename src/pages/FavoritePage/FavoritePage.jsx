@@ -3,6 +3,7 @@ import { FavoriteList } from 'components/FavoriteList/FavoriteList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
+import { PageWrapFavorite } from './FavoritePage.styled';
 
 const FavoritePage = () => {
   const despatch = useDispatch();
@@ -13,13 +14,13 @@ const FavoritePage = () => {
   }, [])
 
   return (
-    <>
+    <PageWrapFavorite>
       <Container>
         <MainPageTitle title={'Favorites'} />
         <FavoriteList />
         <Paginator />
       </Container>
-    </>
+    </PageWrapFavorite>
   );
 };
 
