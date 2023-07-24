@@ -26,14 +26,15 @@ export const Hero = styled.section`
 export const Herowrapper = styled.div`
   padding: 244px 0px 200px 20px;
 
-  width: 68%;
+  width: 70%;
 
   @media ${devices.tablet} {
     padding: 268px 0px 200px 30px;
   }
 
   @media ${devices.desktop} {
-    padding: 244px 350px 300px 330px;
+    padding: 244px 350px 300px 30px;
+    width: 80%;
   }
 `;
 
