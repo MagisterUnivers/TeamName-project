@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { ConfirmLogout, UserInfoModal } from 'components';
 import pencilIcon from '../UserInfoModal/edit-2.svg';
+import pencilIconBlack from '../UserInfoModal/edit-black.svg';
+
 import {
   ChangeProfileButton,
   LogOutButton,
   ModalContent,
   ModalWrapper,
 } from './UserLogoModal.styled';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
 export const UserLogoModal = ({ setEditProfileShown }) => {
+  const theme = useSelector(selectTheme);
   const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
@@ -48,7 +53,11 @@ export const UserLogoModal = ({ setEditProfileShown }) => {
           }}
         >
           Edit profile
-          <img src={pencilIcon} alt="pencil" width="14" />
+          <img
+            src={theme === 'dark' ? pencilIcon : pencilIconBlack}
+            alt="pencil"
+            width="14"
+          />
         </ChangeProfileButton>
         <LogOutButton onClick={handleConfirmLogout}>Log out</LogOutButton>
       </ModalContent>

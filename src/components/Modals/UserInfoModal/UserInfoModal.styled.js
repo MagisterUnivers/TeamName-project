@@ -6,7 +6,7 @@ import { RiErrorWarningLine } from 'react-icons/ri';
 const defaultAvatarURL = require('./user.png');
 
 export const ModalWrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  background-color: var(--btn-hover-color);
+  background-color: ${props => props.theme.secondBgrColor};
   border-radius: 16px;
   width: 335px;
   height: 345px;
@@ -31,10 +31,10 @@ export const ContentWrapper = styled.div`
   }
 `;
 export const CloseButton = styled.button`
-margin-top: 14px;
-margin-left: 297px;
-margin-bottom: 12px;
-   background: none;
+  margin-top: 14px;
+  margin-left: 297px;
+  margin-bottom: 12px;
+  background: none;
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -44,8 +44,8 @@ margin-bottom: 12px;
     width: 32px;
     height: 32px;
     margin-top: 18px;
-margin-left: 450px;
-margin-right: 0;
+    margin-left: 450px;
+    margin-right: 0;
   }
 `;
 
@@ -69,7 +69,7 @@ export const UserAvatarWrapper = styled.div`
   margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 100px;
-  margin: 0 auto;
+    margin: 0 auto;
   }
 `;
 export const AvatarFrame = styled.img`
@@ -79,10 +79,10 @@ export const AvatarFrame = styled.img`
   height: 80px;
   margin: 0 auto;
   border-radius: 50%;
-   background-image: url({defaultAvatarURL});
+  background-image: url({defaultAvatarURL});
   @media screen and (min-width: 768px) {
     width: 100px;
-  height: 100px;
+    height: 100px;
   }
 `;
 export const StyledInputFile = styled.input`
@@ -103,11 +103,11 @@ export const AddIconImg = styled.img`
   left: 35%;
   border-radius: 50%;
   /* top: -2px; */
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 32px;
-  height: 32px;
-  top: 83px;
-   }
+    height: 32px;
+    top: 83px;
+  }
 `;
 export const StyledInputWrap = styled.div`
   width: 100%;
@@ -141,16 +141,16 @@ export const StyledInput = styled(Field)`
   width: 100%;
   height: 54px;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid ${props => props.theme.borderColor};
   opacity: 0.800000011920929;
   background-color: transparent;
   padding: 18px 24px;
   padding-right: 50px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${props => props.theme.secondaryTextColor};
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-top: 136px;
     height: 56px;
     padding: 14px 24px;
@@ -161,8 +161,8 @@ export const StyledInput = styled(Field)`
   &:focus,
   &:hover {
     outline: none;
-    color: #f3f3f3;
-    border-color: rgba(243, 243, 243, 0.5);
+    color: ${props => props.theme.textColor};
+    border-color: ${props => props.theme.secondBorderColor};
     background-color: transparent;
   }
   &.valid-border {
@@ -197,18 +197,17 @@ export const SaveChangeButton = styled.button`
   padding: 18px 90px;
   outline: none;
   border: none;
-  border-color: #434D67;
   border-radius: 42px;
-  background-color: #434D67;
-  color: var(--main-text-color);
+  background-color: ${props => props.theme.textColor};
+  color: ${props => props.theme.bgrColor};
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.29;
-  transition: background-color 0.5s ease;
+  transition: 0.5s ease;
   &:hover {
-    background-color: var(--main-text-color);
-  color: var(--btn-hover-color);
+    background-color: ${props => props.theme.bgrColor};
+    color: ${props => props.theme.textColor};
   }
   @media screen and (min-width: 768px) {
     margin-top: 25px;

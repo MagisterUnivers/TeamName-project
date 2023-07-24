@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserArray } from 'redux/selectors';
+import { selectTheme, selectUserArray } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
   ModalWrapper,
@@ -24,11 +24,14 @@ import {
 } from 'components/RegisterForm/RegisterForm.styled';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
+import XIconBlack from '../../../assets/icons/close.svg';
+
 import AddIcon from './add_photo.svg';
 const defaultAvatarURL = require('./user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
   const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -62,19 +65,27 @@ export const UserInfoModal = ({ onClose }) => {
       formData.append('avatarURL', selectedAvatar);
     }
     const res = await dispatch(updateUserThunk(formData));
-    if (res.meta.requestStatus === "fulfilled") {
-      onClose()
+    if (res.meta.requestStatus === 'fulfilled') {
+      onClose();
     }
   };
   let avatar;
-  if (imgURL) {avatar = imgURL}
-  else if (user.avatarUrl) {avatar = user.avatarUrl}
-  else {avatar = defaultAvatarURL};
+  if (imgURL) {
+    avatar = imgURL;
+  } else if (user.avatarUrl) {
+    avatar = user.avatarUrl;
+  } else {
+    avatar = defaultAvatarURL;
+  }
   return isOpen ? (
     <ModalWrapper>
       <ContentWrapper className="modal-content">
         <CloseButton onClick={onClose} tabIndex={1} className="close-button">
-          <img src={XIcon} alt="Close" width={24} />
+          <img
+            src={theme === 'dark' ? XIcon : XIconBlack}
+            alt="Close"
+            width={24}
+          />
         </CloseButton>
         <StyledForm
           initialValues={{
@@ -93,11 +104,7 @@ export const UserInfoModal = ({ onClose }) => {
           {({ errors, touched, handleChange, setFieldTouched }) => (
             <StyledFormInsight>
               <UserAvatarWrapper>
-                <AvatarFrame
-                  src={avatar}
-                  alt="avatar"
-                  width={100}
-                />
+                <AvatarFrame src={avatar} alt="avatar" width={100} />
                 <label htmlFor="avatarInput">
                   <AddIconImg src={AddIcon} alt="plus" width={28} />
                   <StyledInputFile
