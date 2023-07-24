@@ -172,14 +172,18 @@ export const addRecipeThunk = createAsyncThunk(
 
 export const getAllOwnDrinksThunk = createAsyncThunk(
   '@@cocktails/ownCocktails',
-  async (_, { rejectWithValue, getState }) => {
+  async (page, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
     setToken(token);
+    const params = {};
+    params.page= page;
     try {
-      const res = await instance.get('own');
+      const res = await instance.get('own', {
+        params
+      });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -208,14 +212,18 @@ export const removeRecipeThunk = createAsyncThunk(
 
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
   '@@cocktails/favorites',
-  async (_, { rejectWithValue, getState }) => {
+  async (page, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
     setToken(token);
+    const params = {};
+    params.page= page;
     try {
-      const res = await instance.get('favorite');
+      const res = await instance.get('favorite', {
+        params
+      });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
