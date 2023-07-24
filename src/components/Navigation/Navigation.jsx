@@ -1,24 +1,11 @@
-import styled from 'styled-components';
-import { useMediaRules } from 'hooks';
-import { NavContainer, StyledItem, StyledLink } from './Navigation.styled';
+import {
+  NavContainer,
+  StyledItem,
+  StyledLink,
+  StyledList,
+} from './Navigation.styled';
 
 export const Navigation = () => {
-  const { isDesktop } = useMediaRules();
-
-  const StyledList = styled.ul`
-    display: flex;
-    flex-direction: ${isDesktop ? 'row' : 'column'};
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-  `;
-
-  // display: flex;
-  // flex-direction: ${isDesktop ? 'row' : 'column'};
-  // gap: 16px;
-  // align-items: center;
-  // justify-content: center;
-
   return (
     <NavContainer>
       <StyledList>

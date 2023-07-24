@@ -16,7 +16,7 @@ export const Nav = () => {
     <nav>
       <ul>
         {navRoutes.map(({ name, route }) => (
-          <StyledListItem>
+          <StyledListItem key={name}>
             {location.pathname === route ? (
               <StyledNavButton type="button" onClick={scrollToTop}>
                 {name}

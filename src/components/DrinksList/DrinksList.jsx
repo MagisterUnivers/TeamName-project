@@ -6,16 +6,19 @@ import { DrinkCard } from 'components';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import { useNavigate } from 'react-router';
 import { NotFound } from '../NotFound/NotFound';
+import { useMediaRules } from 'hooks';
 
 export const DrinksList = () => {
   const dispatch = useDispatch();
+  const { isDesktop } = useMediaRules();
   const searchResults = useSelector(selectSearchResults);
   const page = useSelector(selectPage);
   const search = useSelector(selectSearch);
   const navigate = useNavigate();
+  const limit = isDesktop ? 9 : 8;
 
   useEffect(() => {
-    dispatch(searchAllDrinksThunk({ search, page }));
+    dispatch(searchAllDrinksThunk({ search, page, limit }));
     navigate(
       `/main/drinks/${encodeURIComponent(
         encodeURIComponent(search.chosenCategory)
@@ -23,7 +26,7 @@ export const DrinksList = () => {
         search.chosenIngredient
       }&page=${page}`
     );
-  }, [dispatch, search, page]);
+  }, [dispatch, search, page, limit]);
 
   return (
     <Section>
