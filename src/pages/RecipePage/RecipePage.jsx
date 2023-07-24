@@ -16,14 +16,14 @@ import {
 import {
   selectCocktailsIsLoading,
   selectFavorite,
-  selectUser,
+  selectUserArray,
 } from 'redux/selectors';
 
 const RecipePage = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectCocktailsIsLoading);
   const contact = useSelector(selectFavorite);
-  const user = useSelector(selectUser);
+  const user = useSelector(selectUserArray);
   const idQuery = useParams();
   let filter;
 
@@ -33,6 +33,7 @@ const RecipePage = () => {
 
   const handleSend = () => {
     filter = favoriteFilter(contact, user);
+    console.log(filter, 'filter');
     if (filter) {
       dispatch(removeFromFavoriteThunk(contact._id));
     } else {
@@ -50,7 +51,6 @@ const RecipePage = () => {
   return (
     <>
       <Container>
-        {console.log(contact, 'return')}
         <RecipePageHero func={handleSend} />
         {!loading && <RecipeIngredientsList />}
         <RecipePreparation />

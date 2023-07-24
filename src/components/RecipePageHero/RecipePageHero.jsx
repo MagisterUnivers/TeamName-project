@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectFavorite, selectUser } from 'redux/selectors';
+import { selectFavorite, selectUserArray } from 'redux/selectors';
 import { favoriteFilter } from 'components/utils/filter';
 import { MainPageTitle, StyledSection } from 'components';
 import { StyledContentHolder } from 'components/RecipePreparation/RecipePreparation.styled';
@@ -12,7 +12,7 @@ import {
 
 export const RecipePageHero = ({ func }) => {
   const cocktails = useSelector(selectFavorite);
-  const user = useSelector(selectUser);
+  const user = useSelector(selectUserArray);
 
   return (
     cocktails !== undefined && (
@@ -30,10 +30,12 @@ export const RecipePageHero = ({ func }) => {
               {favoriteFilter(cocktails, user) ? (
                 <StyledButton type="button" onClick={func}>
                   Remove recipe from favorite
+                  {console.log(favoriteFilter(cocktails, user), 'func result')}
                 </StyledButton>
               ) : (
                 <StyledButton type="button" onClick={func}>
                   Add recipe to favorite
+                  {console.log(favoriteFilter(cocktails, user), 'func result')}
                 </StyledButton>
               )}
             </div>
