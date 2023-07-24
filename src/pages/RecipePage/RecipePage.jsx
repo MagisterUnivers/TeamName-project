@@ -33,7 +33,6 @@ const RecipePage = () => {
 
   const handleSend = () => {
     filter = favoriteFilter(contact, user);
-    console.log(filter, 'filter');
     if (filter) {
       dispatch(removeFromFavoriteThunk(contact._id));
     } else {
