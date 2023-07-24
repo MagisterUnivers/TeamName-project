@@ -22,6 +22,7 @@ export const HeroSection = () => {
           </Herodescription>
           <ReusableButton
             text="Add Recipe"
+            ariaLabel="Button to open Add Recipe Page"
             onClick={() => {
               navigate('/main/add');
             }}
