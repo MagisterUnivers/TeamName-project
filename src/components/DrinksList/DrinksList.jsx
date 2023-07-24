@@ -27,6 +27,9 @@ export const DrinksList = () => {
       }&page=${page}`
     );
   }, [dispatch, search, page, limit]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Section>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const StyledGlassServi = styled.p`
   font-size: 12px;
   line-height: calc(14 / 12);
-  font-style: normal;
   font-weight: 400;
 
   color: ${props => props.theme.sectionTagTitle};

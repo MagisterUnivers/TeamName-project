@@ -5,11 +5,14 @@ import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { PageWrapFavorite } from './FavoritePage.styled';
 import { selectPage } from 'redux/selectors';
 import { useEffect } from 'react';
+import { useMediaRules } from 'hooks';
 
 const FavoritePage = () => {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
-  dispatch(getAllFavoriteDrinksThunk(page));
+  const { isDesktop } = useMediaRules();
+  const limit = isDesktop ? 9 : 8;
+  dispatch(getAllFavoriteDrinksThunk({ page, limit }));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

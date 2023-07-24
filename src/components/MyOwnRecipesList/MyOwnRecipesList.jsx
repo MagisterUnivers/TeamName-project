@@ -19,9 +19,11 @@ export const MyOwnRecipesList = () => {
 
   useEffect(() => {
     // if (ownCocktails.length !== 0) return;
-    dispatch(getAllOwnDrinksThunk(page));
-  }, [page]);
-
+    dispatch(getAllOwnDrinksThunk({ page, limit }));
+  }, [page, limit]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Section>
       <MyRecipesListStyled>
