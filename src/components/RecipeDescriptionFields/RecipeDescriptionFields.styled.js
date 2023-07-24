@@ -187,6 +187,7 @@ export const StyledSelect = styled(Select)`
     background-color: transparent;
     gap: 8px;
     align-items: start;
+    cursor: pointer;
 
     &--is-focused,
     &--menu-is-open {
