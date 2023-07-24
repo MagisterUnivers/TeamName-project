@@ -14,7 +14,7 @@ export * from './DrinkCard/DrinkCard';
 export * from './DrinksList/DrinksList';
 export * from './DrinksSearch/DrinksSearch';
 export * from './HeroSection/HeroSection';
-export * from './MyRecipesList/MyRecipesList';
+export * from './MyOwnRecipesList/MyOwnRecipesList';
 export * from './Paginator/Paginator';
 export * from './PreviewDrinks/PreviewDrinks';
 export * from './RecipeIngredientsFields/Counter/Counter';
@@ -59,7 +59,6 @@ export * from './Modals/MotivationModal/MotivationModal';
 
 //  // UserInfoModal
 export * from './Modals/UserInfoModal/ConfirmLogout';
-export * from './Modals/UserInfoModal/EditProfileModal';
 export * from './Modals/UserInfoModal/UserInfoModal';
 
 //  // UserLogoModal

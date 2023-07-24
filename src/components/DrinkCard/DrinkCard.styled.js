@@ -1,13 +1,32 @@
 import styled from 'styled-components';
 import { devices } from 'constants/breakpoints';
 
-export const Card = styled.div``;
+export const Card = styled.div`
+  width: 335px;
 
+  @media ${devices.tablet} {
+    width: 342px;
+  }
+
+  @media ${devices.desktop} {
+    width: 400px;
+  }
+`;
+export const OneMoreWrapper = styled.div`
+  border-radius: 15px;
+  transition: scale 400ms ease, box-shadow 400ms ease;
+  &:hover,
+  &:focus {
+    scale: 0.98;
+    /* scale: 1.02; */
+    box-shadow: 0 0 12px ${props => props.theme.secondaryTextColor};
+  }
+`;
 export const ImageWrapper = styled.div`
   width: 335px;
   height: 360px;
+  border-radius: 15px;
   overflow: hidden;
-
   @media ${devices.tablet} {
     width: 342px;
   }
@@ -25,6 +44,11 @@ export const Image = styled.img`
   max-width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 600ms ease;
+  &:hover,
+  &:focus {
+    transform: scale(1.03);
+  }
 `;
 
 export const Ingredientswrapper = styled.div`
@@ -32,7 +56,7 @@ export const Ingredientswrapper = styled.div`
   display: flex;
   justify-content: space-between;
   ${props =>
-    props.position === 'my'
+    props.position === 'my' || props.position === 'favorite'
       ? `flex-direction: column; gap: 4px;`
       : `flex-direction: row`}
 `;
@@ -89,4 +113,7 @@ export const AboutStyled = styled.p`
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 8px;
+  position: relative;
 `;
+
+export const Wrapper = styled.div``;

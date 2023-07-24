@@ -14,6 +14,7 @@ import {
   removeFromFavoriteThunk,
   removeFromFavoritePageThunk,
   getPopularThunk,
+  removeRecipeThunk,
 } from './cocktailsOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
@@ -71,7 +72,7 @@ const cocktailsSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailsByCategoryThunk.fulfilled]: (state, { payload }) => {
-      state.cocktails = payload.cocktails;
+      state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
       state.page = payload.page;
       state.loading = false;
@@ -84,7 +85,6 @@ const cocktailsSlice = createSlice({
     },
     [getCocktailByIdThunk.pending]: (state, { payload }) => {
       state.loading = true;
-      // state.cocktails = [];
       Loading.hourglass('We are validating your data...');
     },
     [getCocktailByIdThunk.fulfilled]: (state, { payload }) => {
@@ -196,6 +196,22 @@ const cocktailsSlice = createSlice({
       state.loading = false;
       Loading.remove();
     },
+    [removeRecipeThunk.pending]: (state, { payload }) => {
+      state.loading = true;
+      Loading.hourglass('we are updating the data...');
+    },
+    [removeRecipeThunk.fulfilled]: (state, { payload }) => {
+      state.own = state.own.filter((el)=> el._id !== payload._id)
+      state.loading = false;
+      Loading.remove();
+    },
+    [removeRecipeThunk.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+      Loading.remove();
+    },
+
+   // Favorite
 
     [getAllFavoriteDrinksThunk.pending]: (state, { payload }) => {
       state.loading = true;

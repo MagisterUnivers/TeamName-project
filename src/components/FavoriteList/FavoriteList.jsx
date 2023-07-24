@@ -1,19 +1,7 @@
 import { useSelector } from 'react-redux';
-
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectCocktails, selectFavorite, selectTheme } from 'redux/selectors';
-import {
-  FavoriteListStyled,
-  WrapDiv,
-  NotFavorioteText,
-  NotFoundImg,
-} from './FavoriteList.styled';
-import { useMediaQuery } from 'react-responsive';
-
-const notFoundImg1x = require('../../assets/img/NotFound1x.jpg');
-const notFoundImg2x = require('../../assets/img/NotFound2x.jpg');
-const notFoundWhite1x = require('../../assets/img/notFoundWhite1x.png');
-const notFoundWhite2x = require('../../assets/img/notFoundWhite2x.png');
+import { selectCocktails, selectFavorite } from 'redux/selectors';
+import { FavoriteListStyled, Section } from './FavoriteList.styled';
 
 export const FavoriteList = () => {
   const favoriteCocktails = useSelector(selectFavorite);

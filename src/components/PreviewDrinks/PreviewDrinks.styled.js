@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { devices } from 'constants/breakpoints';
 
 export const Section = styled.div`
   max-width: 100%;
@@ -7,7 +8,8 @@ export const Section = styled.div`
 `;
 
 export const SectionTitle = styled.p`
-  color: #f3f3f3;
+  /* color: #f3f3f3; */
+  color: ${props => props.theme.textColor};
   font-family: Manrope, sans-serif;
   font-size: 40px;
   font-weight: 600;
@@ -16,15 +18,15 @@ export const SectionTitle = styled.p`
 `;
 
 export const Cardwrapper = styled.div`
-  /* display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(3, 1fr); */
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
 
-  /* @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media ${devices.tablet} {
+    max-width: 768px;
   }
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  } */
+  @media ${devices.desktop} {
+    max-width: 100%;
+  }
 `;

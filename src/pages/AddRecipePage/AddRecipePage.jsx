@@ -6,8 +6,13 @@ import {
   AddRecipeForm,
   PopularRecipe,
   MainPageTitle,
+  Container,
 } from 'components';
-import { StyledPageWrapper, StyledWrapper, StyledSection } from './AddRecipePage.styled';
+import {
+  StyledPageWrapper,
+  StyledWrapper,
+  StyledSection,
+} from './AddRecipePage.styled';
 
 const AddRecipePage = () => {
   const dispatch = useDispatch();
@@ -18,14 +23,16 @@ const AddRecipePage = () => {
 
   return (
     <StyledSection>
-      <MainPageTitle title="Add recipe" />
-      <StyledPageWrapper>
-        <AddRecipeForm />
-        <StyledWrapper>
-          <FollowUs title="Follow Us" />
-          <PopularRecipe />
-        </StyledWrapper>
-      </StyledPageWrapper>
+      <Container>
+        <MainPageTitle title="Add recipe" />
+        <StyledPageWrapper>
+          <AddRecipeForm />
+          <StyledWrapper>
+            <FollowUs title="Follow Us" />
+            <PopularRecipe />
+          </StyledWrapper>
+        </StyledPageWrapper>
+      </Container>
     </StyledSection>
   );
 };

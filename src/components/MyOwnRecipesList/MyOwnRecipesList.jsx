@@ -2,23 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectCocktailsIsLoading, selectOwn } from 'redux/selectors';
+import { selectOwn } from 'redux/selectors';
 import { MyRecipesListStyled, Section } from './MyOwnRecipesList.styled';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
+import { NotFound } from '../NotFound/NotFound';
 
 export const MyOwnRecipesList = () => {
   const dispatch = useDispatch();
   const ownCocktails = useSelector(selectOwn);
-  const loading = useSelector(selectCocktailsIsLoading);
+  // const loading = useSelector(selectCocktailsIsLoading);
 
   useEffect(() => {
+    if (ownCocktails.length !== 0) return;
     dispatch(getAllOwnDrinksThunk());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (ownCocktails.length > 1) return;
-  //   dispatch(getAllOwnDrinksThunk());
-  // }, [dispatch]);
 
   return (
     <Section>
@@ -32,8 +29,8 @@ export const MyOwnRecipesList = () => {
             />
           ))
         ) : (
-          <p>Not found</p>
-          // <NotFound message={"You haven't added any cocktail recipes yet"} />
+          // <p>Not found</p>
+          <NotFound message={"You haven't added any cocktail recipes yet"} />
         )}
       </MyRecipesListStyled>
     </Section>

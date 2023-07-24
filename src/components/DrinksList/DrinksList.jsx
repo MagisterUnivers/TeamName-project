@@ -1,15 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectCocktails,
-  selectPage,
-  selectSearch,
-  selectSearchResults,
-} from 'redux/selectors';
+import { selectPage, selectSearch, selectSearchResults } from 'redux/selectors';
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { DrinkCard, NotFound } from 'components';
+import { DrinkCard } from 'components';
 import { DrinkListStyled, Section } from './DrinkList.styled';
 import { useNavigate } from 'react-router';
+import { NotFound } from '../NotFound/NotFound';
 
 export const DrinksList = () => {
   const dispatch = useDispatch();
@@ -17,8 +13,8 @@ export const DrinksList = () => {
   const page = useSelector(selectPage);
   const search = useSelector(selectSearch);
   const navigate = useNavigate();
+
   useEffect(() => {
-    // if (search.query || search.chosenCategory || search.chosenIngredient||)
     dispatch(searchAllDrinksThunk({ search, page }));
     navigate(
       `/main/drinks/${encodeURIComponent(
@@ -31,7 +27,7 @@ export const DrinksList = () => {
 
   return (
     <Section>
-      {/* <DrinkListStyled>
+      <DrinkListStyled>
         {searchResults.length !== 0 ? (
           searchResults.map(searchResult => (
             <DrinkCard
@@ -45,7 +41,7 @@ export const DrinksList = () => {
             message={"We haven't found any cocktails for this search"}
           />
         )}
-      </DrinkListStyled> */}
+      </DrinkListStyled>
     </Section>
   );
 };
