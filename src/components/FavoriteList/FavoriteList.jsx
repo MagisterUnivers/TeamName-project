@@ -1,27 +1,44 @@
 import { useSelector } from 'react-redux';
+
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectFavorite } from 'redux/selectors';
-import { FavoriteListStyled, Section } from './FavoriteList.styled';
+import { selectCocktails, selectFavorite, selectTheme } from 'redux/selectors';
+import {
+  FavoriteListStyled,
+  WrapDiv,
+  NotFavorioteText,
+  NotFoundImg,
+} from './FavoriteList.styled';
+import { useMediaQuery } from 'react-responsive';
+
+const notFoundImg1x = require('../../assets/img/NotFound1x.jpg');
+const notFoundImg2x = require('../../assets/img/NotFound2x.jpg');
+const notFoundWhite1x = require('../../assets/img/notFoundWhite1x.png');
+const notFoundWhite2x = require('../../assets/img/notFoundWhite2x.png');
 
 export const FavoriteList = () => {
   const favoriteCocktails = useSelector(selectFavorite);
-
+  const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
+  const theme = useSelector(selectTheme);
   return (
-    <Section>
-      <FavoriteListStyled>
-        {Array.isArray(favoriteCocktails) ? (
-          favoriteCocktails.map(favoriteCocktails => (
+    <>
+      {Array.isArray(favoriteCocktails) && favoriteCocktails.length !== 0 ? (
+        <FavoriteListStyled>
+          {favoriteCocktails.map(favoriteCocktails => (
             <DrinkCard
               key={favoriteCocktails._id}
               page={'favorite'}
               cocktail={favoriteCocktails}
             />
-          ))
-        ) : (
-          <p>Not found</p>
-          // <NotFound message={"You haven't added any cocktail recipes yet"} />
-        )}
-      </FavoriteListStyled>
-    </Section>
+          ))}
+        </FavoriteListStyled>
+      ) : (
+        <WrapDiv>
+          <NotFoundImg ismobile={isMobile} theme={theme} />
+          <NotFavorioteText theme={theme}>
+            You haven't added any favorite cocktails yet
+          </NotFavorioteText>
+        </WrapDiv>
+      )}
+    </>
   );
 };
