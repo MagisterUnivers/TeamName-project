@@ -14,11 +14,11 @@ export const Counter = ({
 
   return (
     <CounterWrp>
-      <StyledButton onClick={() => handleDecIngredients()}>
+      <StyledButton type="button" onClick={() => handleDecIngredients()}>
         <StyledIconMinus />
       </StyledButton>
       <p>{cocktailIngredientList.length}</p>
-      <StyledButton onClick={() => handleIncIngredients()}>
+      <StyledButton type="button" onClick={() => handleIncIngredients()}>
         <StyledIconPlus />
       </StyledButton>
     </CounterWrp>
