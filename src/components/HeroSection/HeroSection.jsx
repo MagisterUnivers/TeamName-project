@@ -10,10 +10,14 @@ import {
 // import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
 
 import { AddRecipe, Container } from 'components';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
 
 export const HeroSection = () => {
+  const currentTheme = useSelector(selectTheme);
+  console.log(currentTheme);
   return (
-    <Hero>
+    <Hero currentTheme={currentTheme}>
       <Container>
         <Herowrapper>
           <StyledMainPageTitle>
