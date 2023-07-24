@@ -31,12 +31,14 @@ export const RecipePageHero = ({ func }) => {
                   text={'Remove recipe from favorite'}
                   onClick={func}
                   marginbottom={'80px'}
+                  ariaLabel="Remove from favorite button"
                 />
               ) : (
                 <ReusableButton
                   text={'Add recipe to favorite'}
                   onClick={func}
                   marginbottom={'80px'}
+                  ariaLabel="Add to favorite button"
                 />
               )}
             </div>
