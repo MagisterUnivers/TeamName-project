@@ -4,8 +4,6 @@ import { Form } from 'formik';
 import { styled } from 'styled-components';
 
 export const StyledFormInsight = styled(Form)`
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   max-width: 480px;
@@ -29,6 +27,14 @@ export const StyledText = styled.p`
 export const StyledInputSubscribe = styled(StyledInput)`
   color: ${props => props.theme.textColor};
   opacity: 1;
+  transition: border-color 0.5s ease-in-out;
+  border-color: ${props => props.theme.borderColor};
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.textColor};
+    border-color: ${props => props.theme.hoverBorderColor};
+  }
 
   &::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */

@@ -1,10 +1,17 @@
 import React from 'react';
 
 import { StyledMainPageTitle } from 'components/MainPageTitle/MainPageTitle.styled';
-import { Hero, Herodescription, Herowrapper } from './Hero.styled';
-import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
+import {
+  Hero,
+  Herobackground,
+  Herodescription,
+  Herowrapper,
+} from './Hero.styled';
+// import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
 
-const HeroSection = () => {
+import { AddRecipe } from 'components';
+
+export const HeroSection = () => {
   return (
     <Hero>
       <Herowrapper>
@@ -18,8 +25,7 @@ const HeroSection = () => {
         </Herodescription>
         <AddRecipe />
       </Herowrapper>
+      <Herobackground></Herobackground>
     </Hero>
   );
 };
-
-export default HeroSection;

@@ -1,64 +1,71 @@
-import { devices } from 'constants/breakpoints';
 import styled from 'styled-components';
 
-export const getStyledIcon = component => styled(component)`
-  width: 14px;
-  height: 14px;
-  stroke: ${props => props.theme.textColor};
-  @media ${devices.tablet} {
-    width: 20px;
-    height: 20px;
-  }
-`
-
-export const Overlay = styled.div`
+export const ModalWrapper = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
-  min-width: 100%;
+  width: 100%;
   height: 100%;
-  background-color: transparent;
-  backdrop-filter: blur(2px);
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, left 0.3s ease-in-out;
-`
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 150px;
+`;
 
-export const ModalBody = styled.div`
-  position: relative;
-  width: 177px;
-  he: 134px;
-  padding: 18px;
-  position: fixed;
+export const ModalContent = styled.div`
+  background-color: var(--btn-hover-color);
   border-radius: 8px;
-  background: #161F37;
-  z-index: 10; 
-  top: 10%;
-  right: 10%;
-  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15),
-    0px 1px 2px 0px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 38px;
+  width: 177px;
+  height: 134px;
+  margin: 2px;
+ 
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
-    @media ${devices.tablet} {
-   
-    }
-
-    @media ${devices.desktop} {
-      right: 15%;
-    }
-
-`
-
-export const InputWrp= styled.div`
-width: 141px;
+export const ChangeProfileButton = styled.button`
 display: flex;
 align-items: center;
 justify-content: space-between;
-width: 141px;
-background-color: transparent;
-border: none;
-outline: none;
-cursor: pointer;
-`
+margin: 0;
+  width: 171px;
+  height: 18px;
+  padding: 18px;
+  border: none;
+  border-radius: 42px;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--main-text-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.29;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
+  }
+`;
+export const LogOutButton = styled.button`
+  display: block;
+  padding: 12px 45px;
+  margin-top: 20px; 
+  border-radius: 42px;
+  outline: none;
+  border: none;
+  background-color: #434D67;
+  color: var(--main-text-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.29;
+  transition: background-color 0.5s ease;
+  &:hover {
+       /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
+    background-color: var(--main-text-color);
+  color: var(--btn-hover-color);
+  }
+  `;

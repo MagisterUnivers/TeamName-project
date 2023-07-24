@@ -13,8 +13,6 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/authSlice';
 import { cocktailsReducer } from './Cocktails/cocktailsSlice';
 import { userInfoReducer } from './UserInfo/userInfoSlice';
-// import { userInfoReducer } from './UserInfo/userInfoSlice';
-// import { calendarEventsReducer } from './CalendarEvents/calendarEventsSlice';
 
 const persistConfig = {
   key: 'data',

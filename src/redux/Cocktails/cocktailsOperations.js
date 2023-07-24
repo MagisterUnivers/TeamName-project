@@ -13,7 +13,7 @@ export const getCategoriesListThunk = createAsyncThunk(
     // if (!token) {
     //   return rejectWithValue();
     // }
-   
+
     try {
       setToken(token);
       const res = await instance.get('recipes/category-list');
@@ -187,8 +187,27 @@ export const getAllOwnDrinksThunk = createAsyncThunk(
   }
 );
 
+export const removeRecipeThunk = createAsyncThunk(
+  '@@cocktails/removeRecipe',
+  async (id, { rejectWithValue, getState }) => {
+    const token = selectAuthAccessToken(getState());
+    if (!token) {
+      return rejectWithValue();
+    }
+    setToken(token);
+    try {
+      const res = await instance.delete(`own/${id}`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+// Favorites
+
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
-  '@@cocktails/favorite',
+  '@@cocktails/favorites',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
@@ -239,3 +258,15 @@ export const removeFromFavoriteThunk = createAsyncThunk(
 );
 
 // Popular
+
+export const getPopularThunk = createAsyncThunk(
+  '@@cocktails/popular',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const res = await instance.get(`/popular-recipe/`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);

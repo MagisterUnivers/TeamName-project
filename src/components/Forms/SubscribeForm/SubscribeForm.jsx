@@ -1,38 +1,43 @@
-import React from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { loginThunk, setSubscription } from 'redux/Auth/authOperations';
-import { StyledButton, StyledFormInsight, StyledInputSubscribe, StyledText } from './SubscribeForm.styled';
+import {
+  StyledButton,
+  StyledFormInsight,
+  StyledInputSubscribe,
+  StyledText,
+} from './SubscribeForm.styled';
 import { Formik } from 'formik';
-import {  Report } from 'notiflix';
+import { Report } from 'notiflix';
 import { useTheme } from 'styled-components';
+
 export const SubscribeForm = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
-const notiflixOptions = {
-  className: 'subscribe__validation',
-  svgSize: '66px',
-  plainText: false,
-  backgroundColor: theme.secondBgrColor,
-  messageMaxLength: 2000,
-  fontFamily: 'Manrope',
-  failure: {
-    svgColor: theme.textColor,
-    titleColor: theme.textColor,
-    messageColor: theme.textColor,
-    buttonColor: theme.bgrColor,
-    buttonBackground: theme.textColor,
-  },
-  success: {
-    svgColor: theme.textColor,
-    titleColor: theme.textColor,
-    messageColor: theme.textColor,
-    buttonColor: theme.bgrColor,
-    buttonBackground: theme.textColor,
-  },
-};
+  const notiflixOptions = {
+    className: 'subscribe__validation',
+    svgSize: '66px',
+    plainText: false,
+    backgroundColor: theme.secondBgrColor,
+    messageMaxLength: 2000,
+    fontFamily: 'Manrope',
+    failure: {
+      svgColor: theme.textColor,
+      titleColor: theme.textColor,
+      messageColor: theme.textColor,
+      buttonColor: theme.bgrColor,
+      buttonBackground: theme.textColor,
+    },
+    success: {
+      svgColor: theme.textColor,
+      titleColor: theme.textColor,
+      messageColor: theme.textColor,
+      buttonColor: theme.bgrColor,
+      buttonBackground: theme.textColor,
+    },
+  };
   return (
     <Formik
       initialValues={{
@@ -53,18 +58,19 @@ const notiflixOptions = {
             'Ok',
             notiflixOptions
           );
-
-    
         } catch (error) {
           Report.failure(
             'Error',
-            `${error.response.status === 409? `${error.response.data.message} <br/> Please, contact with our Support service` : error.message}`,
+            `${
+              error.response.status === 409
+                ? `${error.response.data.message} <br/> Please, contact with our Support service`
+                : error.message
+            }`,
             'Ok',
             notiflixOptions
           );
         }
       }}
-      
     >
       {({ errors, touched, values, status }) => (
         <StyledFormInsight>
@@ -80,7 +86,7 @@ const notiflixOptions = {
           {JSON.stringify(status)}
           <StyledButton
             formNoValidate
-            type='submit'
+            type="submit"
             disabled={values.email ? false : true}
             onClick={() => {
               if (errors.email) {
@@ -98,7 +104,6 @@ const notiflixOptions = {
 </ul>`,
                   'Ok',
                   notiflixOptions
-                  
                 );
               }
             }}

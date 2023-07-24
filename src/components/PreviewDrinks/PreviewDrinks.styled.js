@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const Section = styled.div`
   max-width: 100%;
-  margin-top: 80px;
-
+  margin-bottom: 80px;
   overflow: hidden;
 `;
 
 export const SectionTitle = styled.p`
-  color: #f3f3f3;
+  /* color: #f3f3f3; */
+  color: ${props => props.theme.textColor};
   font-family: Manrope, sans-serif;
   font-size: 40px;
   font-weight: 600;

@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
-
-import { Header, Footer } from 'components';
+import { Header, Footer, Container } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAuthAccessToken,
@@ -10,10 +9,9 @@ import {
 } from 'redux/selectors';
 import { useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/authOperations';
-import { Container } from 'components/Container/Container';
 import { getCurrentUserThunk } from 'redux/UserInfo/userOperations';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
   /**
     |============================
     | 
@@ -44,7 +42,7 @@ export const SharedLayout = () => {
 
   useEffect(() => {
     dispatch(refreshThunk(token));
-    console.log(user);
+    // console.log(user);
     if (isFirstRender) dispatch(getCurrentUserThunk());
   }, []); // eslint-disable-line
 
@@ -52,11 +50,11 @@ export const SharedLayout = () => {
     <>
       <Header />
       <main>
-        <Container>
-          <Outlet />
-        </Container>
+        <Outlet />
       </main>
       <Footer />
     </>
   );
 };
+
+export default SharedLayout;

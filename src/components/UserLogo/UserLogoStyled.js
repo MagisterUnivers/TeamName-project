@@ -19,6 +19,7 @@ export const UserAvatarWrp = styled.div`
   height: 32px;
   border-radius: 32px;
   border: none;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     width: 44px;
     height: 44px;
@@ -31,6 +32,7 @@ export const UserAvatarWrp = styled.div`
 export const UserAvatar = styled.img`
   object-fit: contain;
   overflow: hidden;
+  border-radius: 50%;
 `;
 
 export const NameStyled = styled.p`
@@ -38,6 +40,7 @@ export const NameStyled = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 1,28;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1, 5;

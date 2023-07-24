@@ -1,22 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
-import Paginator from 'components/Paginator/Paginator';
-import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
-import {MainPageTitle} from 'components';
+import { Paginator, MainPageTitle, Container } from 'components';
+import { MyOwnRecipesList } from 'components/MyOwnRecipesList/MyOwnRecipesList';
+import { StyledSection } from './MyRecipesPage.styled';
 
 const MyRecipesPage = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllOwnDrinksThunk());
-  }, [dispatch]);
-
   return (
     <>
-      <MainPageTitle title={'My recipes'} />
-      <MyRecipesList />
-      <Paginator />
+      <Container>
+        <StyledSection>
+          <MainPageTitle title={'My recipes'} />
+          <MyOwnRecipesList />
+          <Paginator />
+        </StyledSection>
+      </Container>
     </>
   );
 };

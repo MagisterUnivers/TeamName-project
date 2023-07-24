@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
 import pencilIcon from './edit-2.svg';
+import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+import { RiErrorWarningLine } from 'react-icons/ri';
+const defaultAvatarURL = require('./user.png');
 
 export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);;
@@ -11,7 +14,8 @@ export const ModalWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  padding-top: 150px;
 `;
 
 export const ContentWrapper = styled.div`
@@ -75,26 +79,65 @@ export const AvatarFrame = styled.img`
   height: 80px;
   margin: 0 auto;
   border-radius: 50%;
-  border: 1px solid;
+   background-image: url({defaultAvatarURL});
   @media screen and (min-width: 768px) {
     width: 100px;
   height: 100px;
   }
 `;
-export const AddAvatarButton = styled.img`
-position: absolute;
-  z-index: 2;
+export const StyledInputFile = styled.input`
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+`;
+export const AddIconImg = styled.img`
+  position: absolute;
+  z-index: 3;
   width: 28px;
   height: 28px;
   top: 64px;
+  left: 35%;
+  border-radius: 50%;
+  /* top: -2px; */
    @media screen and (min-width: 768px) {
     width: 32px;
   height: 32px;
   top: 83px;
+   }
+`;
+export const StyledInputWrap = styled.div`
+  width: 100%;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    max-width: 400px;
   }
 `;
+export const StyledIconError = styled(RiErrorWarningLine)`
+  position: absolute;
+  right: 24px;
+  top: 70%;
+  transform: translateY(-50%);
+  @media screen and (min-width: 768px) {
+    top: 75%;
+  }
+`;
+export const StyledIconChecked = styled(IoIosCheckmarkCircleOutline)`
+  position: absolute;
+  right: 24px;
+  top: 70%;
+  transform: translateY(-50%);
+  @media screen and (min-width: 768px) {
+    top: 75%;
+  }
+`;
+
 export const StyledInput = styled(Field)`
-  margin-top: 119px;
+  margin-top: 93px;
   width: 100%;
   height: 54px;
   border-radius: 200px;
@@ -108,7 +151,7 @@ export const StyledInput = styled(Field)`
   font-weight: 400;
   line-height: calc(18 / 14);
    @media screen and (min-width: 768px) {
-    margin-top: 166px;
+    margin-top: 136px;
     height: 56px;
     padding: 14px 24px;
     padding-right: 10px;
@@ -152,6 +195,9 @@ export const SaveChangeButton = styled.button`
   width: 100%;
   display: block;
   padding: 18px 90px;
+  outline: none;
+  border: none;
+  border-color: #434D67;
   border-radius: 42px;
   background-color: #434D67;
   color: var(--main-text-color);
