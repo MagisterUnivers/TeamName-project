@@ -7,8 +7,8 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--btn-hover-color);
-  box-shadow: 0px 4px 48px 0px rgba(0, 0, 0, 0.1);
+  background-color: ${props => props.theme.secondBgrColor};
+  
   width: 335px;
   height: 150px;
   border-radius: 16px;
@@ -20,7 +20,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const StyledText = styled.p`
-  color: var(--main-text-color);
+  color: ${props => props.theme.textColor};
   text-align: center;
   font-size: 14px;
   font-weight: 400;
