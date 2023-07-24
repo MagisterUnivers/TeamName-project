@@ -1,12 +1,5 @@
-import React from 'react';
-
 import { StyledMainPageTitle } from 'components/MainPageTitle/MainPageTitle.styled';
-import {
-  Hero,
-  Herobackground,
-  Herodescription,
-  Herowrapper,
-} from './Hero.styled';
+import { Hero, Herodescription, Herowrapper } from './Hero.styled';
 // import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
 
 import { AddRecipe, Container } from 'components';

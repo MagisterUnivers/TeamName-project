@@ -42,7 +42,6 @@ export const StyledImage = styled.img`
 export const StyledGlassServi = styled.p`
   color: ${props => props.theme.sectionTagTitle};
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: calc(20 / 16);
 
@@ -58,9 +57,10 @@ export const StyledGlassServi = styled.p`
 
 export const StyledIngredientSubtitle = styled.p`
   color: ${props =>
-    props.text === 'true' ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)'};
+    props.text === 'true'
+      ? props.theme.textColor
+      : props.theme.secondaryTextColor};
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: calc(18 / 14);
 
