@@ -311,8 +311,6 @@ export const UnitQuantity = styled.input`
   &::selection {
     outline: none;
     border-color: transparent;
-    color: var(--black);
-    //box-shadow: 0 0 0 1px transparent;
   }
 `;
 
