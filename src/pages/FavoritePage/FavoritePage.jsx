@@ -12,7 +12,13 @@ const FavoritePage = () => {
   const page = useSelector(selectPage);
   const { isDesktop } = useMediaRules();
   const limit = isDesktop ? 9 : 8;
-  dispatch(getAllFavoriteDrinksThunk({ page, limit }));
+
+  useEffect(() => {
+    // if (ownCocktails.length !== 0) return;
+    dispatch(getAllFavoriteDrinksThunk({ page, limit }));
+  }, [page, limit]);
+
+  // dispatch(getAllFavoriteDrinksThunk({ page, limit }));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 import {
   Paginator,
@@ -22,6 +22,7 @@ const DrinksPage = () => {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   dispatch(setChosenCategory(categoryName));
+  const navigate = useNavigate();
 
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
@@ -38,12 +39,13 @@ const DrinksPage = () => {
 
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(categoryName));
+    // navigate(`/main/drinks/${encodeURIComponent(categoryName)}`);
   }, [dispatch, categoryName]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Container>
