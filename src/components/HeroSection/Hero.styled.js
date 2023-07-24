@@ -13,7 +13,7 @@ export const Hero = styled.section`
   margin-bottom: 100px;
 
   @media ${devices.tablet} {
-    background-position: top 0px right -350px;
+    background-position: top 0px right -230px;
     background-size: contain;
   }
 
@@ -24,16 +24,16 @@ export const Hero = styled.section`
 `;
 
 export const Herowrapper = styled.div`
-  padding: 244px 0px 200px 20px;
-
+  padding: 164px 0px 200px 0px;
   width: 68%;
+  overflow: hidden;
 
   @media ${devices.tablet} {
-    padding: 268px 0px 200px 30px;
+    padding: 184px 0px 200px 0px;
   }
 
   @media ${devices.desktop} {
-    padding: 244px 350px 300px 330px;
+    padding: 244px 0px 300px 0px;
   }
 `;
 
