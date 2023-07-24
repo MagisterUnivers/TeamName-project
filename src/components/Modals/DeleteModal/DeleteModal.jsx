@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   removeFromFavoriteThunk,
@@ -26,8 +26,20 @@ export const DeleteModal = ({ onClose, page, id }) => {
     }
   };
 
+  useEffect(() => {
+    const handleOutsideClick = event => {
+      if (!event.target.closest('.modal-content')) {
+        onClose();
+      }
+    };
+    window.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      window.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [onClose]);
+
   return (
-    <ModalWrapper>
+    <ModalWrapper className="modal-content">
       <StyledText>Remove from list?</StyledText>
       <ButtonWrapper>
         <StyledDelButton name="yes" onClick={handleDelete}>
