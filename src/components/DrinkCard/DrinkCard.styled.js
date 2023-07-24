@@ -48,7 +48,7 @@ export const Image = styled.img`
   &:hover,
   &:focus {
     transform: scale(1.03);
-     }
+  }
 `;
 
 export const Ingredientswrapper = styled.div`
@@ -116,6 +116,4 @@ export const ButtonsWrapper = styled.div`
   position: relative;
 `;
 
-export const Wrapper = styled.div`
-
- `;
+export const Wrapper = styled.div``;
