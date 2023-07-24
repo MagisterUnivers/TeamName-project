@@ -21,7 +21,7 @@ export const DrinksList = () => {
         encodeURIComponent(search.chosenCategory)
       )}?query=${encodeURIComponent(search.query)}&ingredient=${
         search.chosenIngredient
-      }`
+      }&page=${page}`
     );
   }, [dispatch, search, page]);
 
