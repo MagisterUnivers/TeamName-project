@@ -40,6 +40,10 @@ const DrinksPage = () => {
     dispatch(getCocktailsByCategoryThunk(categoryName));
   }, [dispatch, categoryName]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
   return (
     <>
       <Container>

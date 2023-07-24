@@ -21,6 +21,10 @@ const AddRecipePage = () => {
     dispatch(getPopularThunk());
   }, []); // eslint-disable-line
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <StyledSection>
       <Container>
