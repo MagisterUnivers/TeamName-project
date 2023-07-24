@@ -1,5 +1,6 @@
 // import * as Yup from 'yup';
 
+import { useTheme } from 'styled-components';
 import {
   StyledFormInsight,
   StyledError,
@@ -25,6 +26,7 @@ export const RecipeDescriptionFields = ({
   categoryList,
   glassList,
 }) => {
+  const theme = useTheme();
   const styles = {
     menuList: base => ({
       ...base,
@@ -50,7 +52,7 @@ export const RecipeDescriptionFields = ({
     }),
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
+      color: state.isSelected ? theme.textColor : theme.secondaryTextColor,
     }),
   };
   const { imgURL, itemTitleRecipe, aboutRecipe, category, glass } = dataField;

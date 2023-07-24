@@ -253,7 +253,7 @@ export const StyledSelect = styled(Select)`
   & .react-select__menu {
     width: 131px;
     border-radius: 20px;
-    background-color: #161f37;
+    background-color: ${props => props.theme.secondBgrColor};
     color: #f3f3f3;
 
     @media ${devices.tablet} {
@@ -270,7 +270,7 @@ export const StyledSelect = styled(Select)`
     font-style: normal;
     font-weight: 400;
     line-height: calc(16 / 12);
-    background-color: #161f37;
+    background-color: ${props => props.theme.secondBgrColor};
 
     @media ${devices.desktop} {
       font-size: 14px;
@@ -281,8 +281,8 @@ export const StyledSelect = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color: #f3f3f3;
-      background-color: #161f37;
+      color: ${props => props.theme.textColor};
+      background-color: ${props => props.theme.secondBgrColor};
     }
   }
 
@@ -306,7 +306,7 @@ export const StyledSelect = styled(Select)`
     &:active {
       padding: 0;
       /* transform: rotate(180deg); */
-      color: ${props => props.theme.textColor};
+      color: #4070cd;
       outline: none;
     }
   }
