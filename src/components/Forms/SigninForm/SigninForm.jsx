@@ -4,7 +4,7 @@ import { getCurrentUserThunk, loginThunk } from 'redux/Auth/authOperations';
 import { AuthNavigate } from 'components';
 import { selectIsClicked } from 'redux/selectors';
 import { handleEyeClick } from 'redux/Auth/authSlice';
-import { RegisterSchema } from '../RegisterForm/ValidationSchema'
+import { LoginSchema } from 'components/RegisterForm/ValidationSchema';
 import {
   StyledButton,
   StyledError,
@@ -37,7 +37,7 @@ export const SigninForm = () => {
         email: '',
         password: '',
       }}
-      validationSchema={RegisterSchema}
+      validationSchema={LoginSchema}
       onSubmit={values => {
         dispatch(loginThunk(values)).then(res => {
           if (res.payload && res.payload.status === 200) {
