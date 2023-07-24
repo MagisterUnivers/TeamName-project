@@ -1,25 +1,27 @@
 import { useSelector } from 'react-redux';
-import { selectCocktails } from 'redux/selectors';
+import { selectCocktails, selectFavorite } from 'redux/selectors';
 import {
   StyledCardWrapper,
   StyledGlassServi,
   StyledImage,
+  StyledIngredientSubtitle,
   StyledListWrapper,
   StyledTextWrapper,
 } from './RecipeIngredientsList.styled';
+import { StyledSection } from 'components/Section/Section';
 
-const RecipeIngredientsList = () => {
-  const cocktails = useSelector(selectCocktails);
+export const RecipeIngredientsList = () => {
+  const cocktails = useSelector(selectFavorite);
 
   // console.log(cocktails, 'state / selector');
 
   if (!cocktails) {
-    console.log('Empty');
+    // console.log('Empty');
     return null;
   }
 
   return (
-    <div style={{ marginTop: 100 }}>
+    <StyledSection>
       <StyledGlassServi>Ingredients</StyledGlassServi>
       <StyledListWrapper>
         {cocktails.ingredients &&
@@ -37,15 +39,17 @@ const RecipeIngredientsList = () => {
                   height={220}
                 />
                 <StyledTextWrapper>
-                  <p>{item.title}</p>
-                  <p>{item.measure}</p>
+                  <StyledIngredientSubtitle text="true">
+                    {item.title}
+                  </StyledIngredientSubtitle>
+                  <StyledIngredientSubtitle text="false">
+                    {item.measure}
+                  </StyledIngredientSubtitle>
                 </StyledTextWrapper>
               </StyledCardWrapper>
             );
           })}
       </StyledListWrapper>
-    </div>
+    </StyledSection>
   );
 };
-
-export default RecipeIngredientsList;

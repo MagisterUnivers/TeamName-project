@@ -1,7 +1,3 @@
-import React from 'react';
-
-const MotivationModal = () => {
+export const MotivationModal = () => {
   return <div>MotivationModal</div>;
 };
-
-export default MotivationModal;

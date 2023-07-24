@@ -1,43 +1,52 @@
 import { useMediaRules } from 'hooks/useMediaRules';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {
+  Navigation,
+  Logo,
+  UserLogo,
+  BurgerMenu,
+  BurgerMenuButton,
+  ThemeButton,
+} from 'components';
 import {
   HeaderContainer,
-  HeaderWrp,
+  StyledHeader,
+  StyledHeaderWrp,
   UserLogoWrp,
 } from './HeaderStyled';
-
-import { Navigation, Logo, UserLogo, BurgerMenu, BurgerMenuButton, ThemeButton } from 'components';
-
+import useBodyScroll from 'hooks/useBodyScroll';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
   const { isDesktop, isMobile } = useMediaRules();
-  
+  // console.log(isDesktop);
+
 
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
+  useBodyScroll(showBurgerMenu);
   return (
     <>
-      {' '}
-      <HeaderWrp>
-        <HeaderContainer>
-          <Logo />
-          {isDesktop && <Navigation />}
-          <UserLogoWrp>
-         {!isMobile && <ThemeButton/>}
-            <UserLogo />
-            {!isDesktop && (
-              <BurgerMenuButton
-                showBurgerMenu={showBurgerMenu}
-                onClose={toggleBurgerMenu}
-              />
-            )}
-          </UserLogoWrp>
-        </HeaderContainer>
-      </HeaderWrp>{' '}
-     {!isDesktop && <BurgerMenu showBurgerMenu={showBurgerMenu}/>}
+      <StyledHeader>
+        <StyledHeaderWrp>
+          <HeaderContainer>
+            <Logo />
+            {isDesktop && <Navigation />}
+            <UserLogoWrp>
+              {!isMobile && <ThemeButton />}
+              <UserLogo />
+              {!isDesktop && (
+                <BurgerMenuButton
+                  showBurgerMenu={showBurgerMenu}
+                  onClose={toggleBurgerMenu}
+                />
+              )}
+            </UserLogoWrp>
+          </HeaderContainer>
+        </StyledHeaderWrp>
+      </StyledHeader>
+      {!isDesktop && <BurgerMenu showBurgerMenu={showBurgerMenu} />}
     </>
   );
 };
-

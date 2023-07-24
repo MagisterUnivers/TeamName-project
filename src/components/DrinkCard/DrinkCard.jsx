@@ -1,5 +1,6 @@
-import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { SeeButton, DeleteButton } from 'components';
+import drink from './defaultimg.jpg';
 import {
   AboutStyled,
   ButtonsWrapper,
@@ -8,35 +9,47 @@ import {
   Image,
   Ingredients,
   Ingredientswrapper,
+  ImageWrapper,
+  OneMoreWrapper,
+  Wrapper,
 } from './DrinkCard.styled';
-import { Link } from 'react-router-dom';
-import DeleteButton from 'components/Buttons/DeleteButton/DeleteButton';
-import SeeButton from 'components/Buttons/SeeButton/SeeButton';
-import drink from './defaultimg.jpg';
 
-const DrinkCard = ({ cocktail, page }) => {
+export const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
+      {console.log(cocktail)}
       <Link to={`/main/recipe/${cocktail._id}`}>
-        <Image
-          src={cocktail.drinkThumb}
-          alt={cocktail.drink}
-          onError={e => {
-            e.currentTarget.src = drink;
-          }}
-        />
+        <OneMoreWrapper>
+          <ImageWrapper>
+            <Image
+              src={cocktail.drinkThumb}
+              alt={cocktail.drink}
+              onError={e => {
+                e.currentTarget.src = drink;
+              }}
+            />
+          </ImageWrapper>
+        </OneMoreWrapper>
+      </Link>
+      <Wrapper>
         <Ingredientswrapper position={page}>
-          <Drinkingreds>{cocktail.drink}</Drinkingreds>
+          <Link to={`/main/recipe/${cocktail._id}`}>
+            <Drinkingreds>{cocktail.drink}</Drinkingreds>
+          </Link>
           <Ingredients>Ingredients</Ingredients>
         </Ingredientswrapper>
-      </Link>
-      {page === 'my' && <AboutStyled>{cocktail.about}</AboutStyled>}
+      </Wrapper>
+      {(page === 'my' || page === 'favorite') && (
+        <AboutStyled>{cocktail.about}</AboutStyled>
+      )}
       <ButtonsWrapper>
-        {page === 'my' && <SeeButton id={cocktail._id} />}
-        {page === 'my' && <DeleteButton id={cocktail._id} />}
+        {(page === 'my' || page === 'favorite') && (
+          <SeeButton id={cocktail._id} />
+        )}
+        {(page === 'my' || page === 'favorite') && (
+          <DeleteButton id={cocktail._id} page={page} />
+        )}
       </ButtonsWrapper>
     </Card>
   );
 };
-
-export default DrinkCard;

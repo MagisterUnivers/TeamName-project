@@ -1,4 +1,5 @@
 // import * as Yup from 'yup';
+
 import {
   StyledFormInsight,
   StyledError,
@@ -114,7 +115,6 @@ export const RecipeDescriptionFields = ({
               classNamePrefix="react-select"
               onChange={handleOnCategory}
               placeholder="Cocktail"
-              
             />
           </StyledWrapperSelect>
           <StyledWrapperSelect>
@@ -136,7 +136,6 @@ export const RecipeDescriptionFields = ({
     </>
   );
 };
-
 
 // validationSchema={Yup.object({
 //   itemTitleRecipe: Yup.string().required('Required'),

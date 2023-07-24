@@ -1,7 +1,8 @@
-import React from 'react';
-import { data } from './MockData';
+import { useSelector } from 'react-redux';
+import { selectPopular } from 'redux/selectors';
 import {
   StyledImage,
+  StyledLink,
   StyledList,
   StyledListElement,
   StyledSubtitle,
@@ -11,27 +12,40 @@ import {
 } from './PopularRecipe.styled';
 
 export const PopularRecipe = () => {
-  // fetch to get some popular cocktail
+  const popularData = useSelector(selectPopular);
+  // console.log(popularData);
 
   return (
     <>
       <StyledWrapper>
         <StyledTitle>Popular Recipe</StyledTitle>
         <StyledList>
-          {data?.map(i => {
-            console.log(i.desc);
+          {popularData?.map(i => {
+            // console.log(i.desc);
             return (
-              <StyledListElement key={i.title}>
-                <StyledImage
-                  src={require('../../assets/img/Popular90x90.png')}
-                  alt="popular thumb"
-                  width={90}
-                  height={90}
-                />
-                <StyledTextWrapper>
-                  <StyledSubtitle text={false}>{i.title}</StyledSubtitle>
-                  <StyledSubtitle text={true}>{i.desc}</StyledSubtitle>
-                </StyledTextWrapper>
+              <StyledListElement key={i._id}>
+                <StyledLink to={`/main/recipe/${i._id}`}>
+                  {/* <div> */}
+                  <StyledImage
+                    src={
+                      i.drinkThumb
+                        ? i.drinkThumb
+                        : require('../../assets/img/Popular90x90.png')
+                    }
+                    alt="popular thumb"
+                    width={90}
+                    height={90}
+                  />
+                  {/* </div> */}
+                  <StyledTextWrapper>
+                    <StyledSubtitle text={false}>{i.drink}</StyledSubtitle>
+                    <StyledSubtitle text={true}>
+                      {i.about
+                        ? i.about
+                        : 'The  spring punch is a highball cocktail of vodka and liqueur, per IBA specified ingredients. The International Bartenders Association lists the beverage in its New Era Drinks category.'}
+                    </StyledSubtitle>
+                  </StyledTextWrapper>
+                </StyledLink>
               </StyledListElement>
             );
           })}

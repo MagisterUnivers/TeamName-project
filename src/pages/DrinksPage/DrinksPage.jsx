@@ -1,24 +1,22 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
-import DrinksList from '../../components/DrinksList/DrinksList';
-import DrinksSearch from 'components/DrinksSearch/DrinksSearch';
-import Paginator from 'components/Paginator/Paginator';
+import {
+  Paginator,
+  DrinksSearch,
+  DrinksList,
+  MainPageTitle,
+  Container,
+} from 'components';
 import {
   getCategoriesListThunk,
   getCocktailsByCategoryThunk,
   getIngredientsListThunk,
-  searchAllDrinksThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import {MainPageTitle} from 'components';
 import { setChosenCategory } from 'redux/Cocktails/cocktailsSlice';
-import {
-  selectCategories,
-  selectIngredients,
-  selectPage,
-  selectSearch,
-} from 'redux/selectors';
+import { selectCategories, selectIngredients } from 'redux/selectors';
+import { StyledSection } from './DrinksPage.styled';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -28,25 +26,30 @@ const DrinksPage = () => {
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
 
-  if (categoriesList.length === 0) {
+  useEffect(() => {
+    if (categoriesList.length !== 0) return;
     dispatch(getCategoriesListThunk());
-  }
-  if (ingredientsList.length === 0) {
+  }, [dispatch, categoriesList]);
+
+  useEffect(() => {
+    if (ingredientsList.length !== 0) return;
     dispatch(getIngredientsListThunk());
-  }
-  // if (!categoryName) {
-  //   dispatch(setChosenCategory('Cocktail'));
-  // }
+  }, [dispatch, ingredientsList]);
+
   useEffect(() => {
     dispatch(getCocktailsByCategoryThunk(categoryName));
   }, [dispatch, categoryName]);
 
   return (
     <>
-      <MainPageTitle title={'Drinks'} />
-      <DrinksSearch categoryName={categoryName} />
-      <DrinksList categoryName={categoryName} />
-      <Paginator />
+      <Container>
+        <StyledSection>
+          <MainPageTitle title={'Drinks'} />
+          <DrinksSearch categoryName={categoryName} />
+          <DrinksList />
+          <Paginator />
+        </StyledSection>
+      </Container>
     </>
   );
 };

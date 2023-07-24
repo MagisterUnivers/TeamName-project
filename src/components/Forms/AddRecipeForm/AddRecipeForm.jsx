@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { nanoid } from '@reduxjs/toolkit';
 import { Formik } from 'formik';
+import Notiflix from 'notiflix';
 import {
   selectCategories,
   selectGlasses,
@@ -75,11 +76,10 @@ export const AddRecipeForm = () => {
     const text = e.target.value;
     const lines = text.split('\n');
     setInstructions(lines);
-    console.log(instructions);
   };
 
   const handleIncIngredients = () => {
-    console.log(cocktailIngredientsList);
+    // console.log(cocktailIngredientsList);
     setCocktailIngredientsList(p => {
       return [
         ...p,
@@ -108,7 +108,7 @@ export const AddRecipeForm = () => {
 
   const handleOnChangeIngredientName = (e, i) => {
     const tmpList = [...cocktailIngredientsList];
-    console.log(tmpList);
+    // console.log(tmpList);
     tmpList[i] = {
       ...tmpList[i],
       id: e.value,
@@ -142,7 +142,7 @@ export const AddRecipeForm = () => {
     };
   });
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = async () => {
     const formData = new FormData();
     if (imgData) {
       formData.append('drinkThumb', imgData);
@@ -153,10 +153,16 @@ export const AddRecipeForm = () => {
     formData.append('glass', glass.label);
     formData.append('instructions', instructions);
     formData.append('ingredients', JSON.stringify(newIngredientsList));
-
-    dispatch(addRecipeThunk(formData));
-    resetForm();
-    navigate('/main/my');
+    console.log(formData.get('ingredients'));
+    if (formData.get('ingredients') === '[]') {
+      Notiflix.Report.warning('Please, add necessary ingredients');
+      return;
+    }
+    const res = await dispatch(addRecipeThunk(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      resetForm();
+      navigate('/main/my');
+    }
   };
 
   return (

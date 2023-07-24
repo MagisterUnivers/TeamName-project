@@ -7,8 +7,7 @@ import {
 } from './userOperations';
 
 const initialState = {
-  user: { name: '', email: '' },
-  avatarURL: '',
+  user: { name: '', email: '', avatarURL: '' },
   theme: 'dark',
   firstRender: true,
 };
@@ -16,7 +15,13 @@ const initialState = {
 const userInfoSlice = createSlice({
   name: '@@userInfo',
   initialState,
-  reducers: {},
+  reducers: {
+    clearState: state => {
+      state.user = { name: '', email: '', avatarURL: '' };
+      state.theme = 'dark';
+      state.firstRender = true;
+    },
+  },
   extraReducers: {
     [updateThemeThunk.pending]: (state, { payload }) => {
       state.loading = true;
@@ -41,8 +46,7 @@ const userInfoSlice = createSlice({
     },
 
     [updateUserThunk.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
-      state.avatarURL = payload.avatarURL;
+         state.user = payload;
       state.loading = false;
       Loading.remove();
     },
@@ -57,10 +61,11 @@ const userInfoSlice = createSlice({
     },
 
     [getCurrentUserThunk.fulfilled]: (state, { payload }) => {
-      // console.log(payload, 'HELLOOOOOOOOOOOOO');
+      console.log(payload, 'HELLOOOOOOOOOOOOO');
       state.user = {
         name: payload.name,
         email: payload.email,
+        avatarURL: payload.avatarURL,
         id: payload._id,
       };
 
@@ -79,4 +84,4 @@ const userInfoSlice = createSlice({
 });
 
 export const userInfoReducer = userInfoSlice.reducer;
-export const { setTheme } = userInfoSlice.actions;
+export const { clearState } = userInfoSlice.actions;

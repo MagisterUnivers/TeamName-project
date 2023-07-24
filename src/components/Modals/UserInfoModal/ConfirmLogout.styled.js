@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,8 @@ export const ModalWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  padding-top: 150px;
 `;
 
 export const ModalContent = styled.div`
@@ -31,6 +32,7 @@ margin-top: 14px;
 margin-left: 297px;
 margin-bottom: 12px;
    background: none;
+  outline: none;
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -76,6 +78,8 @@ export const LogOutButton = styled.button`
   display: block;
   padding: 16px 41px;
   border-radius: 42px;
+  outline: none;
+  border: none;
   background-color: #434D67;
   color: var(--main-text-color);
   font-size: 16px;

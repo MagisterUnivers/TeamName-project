@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination, PaginationItem } from '@mui/material';
+import { selectPage, selectTotalHits } from 'redux/selectors';
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
 import { useMediaRules } from '../../hooks/useMediaRules';
 import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
 import { Link, useLocation} from 'react-router-dom';
 
-const Paginator = () => {
+export const Paginator = () => {
   let page = useSelector(selectPage);
   const dispatch = useDispatch();
   const { isMobile, isTablet, isDesktop } = useMediaRules();
@@ -56,5 +57,5 @@ const Paginator = () => {
   );
 };
 
-
 export default Paginator;
+

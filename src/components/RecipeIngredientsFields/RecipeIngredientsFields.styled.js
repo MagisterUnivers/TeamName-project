@@ -187,7 +187,7 @@ export const SelectIngredientStyled = styled(Select)`
     background-color: #161f37;
     color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
-    
+
     @media (min-width: 768px) {
       width: 332px;
     }
@@ -404,7 +404,7 @@ export const IngredientUnit = styled(Select)`
     background-color: #161f37;
     color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
-  
+
     @media (min-width: 768px) {
       margin-left: -52px;
       width: 110px;
