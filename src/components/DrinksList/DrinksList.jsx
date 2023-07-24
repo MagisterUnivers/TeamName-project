@@ -21,12 +21,15 @@ export const DrinksList = () => {
     dispatch(searchAllDrinksThunk({ search, page, limit }));
     navigate(
       `/main/drinks/${encodeURIComponent(
-        encodeURIComponent(search.chosenCategory)
+        search.chosenCategory
       )}?query=${encodeURIComponent(search.query)}&ingredient=${
         search.chosenIngredient
       }&page=${page}`
     );
   }, [dispatch, search, page, limit]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Section>

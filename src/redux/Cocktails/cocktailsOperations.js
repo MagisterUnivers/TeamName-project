@@ -173,7 +173,7 @@ export const addRecipeThunk = createAsyncThunk(
 
 export const getAllOwnDrinksThunk = createAsyncThunk(
   '@@cocktails/ownCocktails',
-  async (page, { rejectWithValue, getState }) => {
+  async ({page, limit}, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
@@ -181,7 +181,7 @@ export const getAllOwnDrinksThunk = createAsyncThunk(
     setToken(token);
     const params = {};
     params.page= page;
-    // params.limit = limit;
+    params.limit = limit;
     try {
       const res = await instance.get('own', {
         params
@@ -214,7 +214,7 @@ export const removeRecipeThunk = createAsyncThunk(
 
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
   '@@cocktails/favorites',
-  async (page, { rejectWithValue, getState }) => {
+  async ({page, limit}, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
@@ -222,6 +222,7 @@ export const getAllFavoriteDrinksThunk = createAsyncThunk(
     setToken(token);
     const params = {};
     params.page= page;
+    params.limit = limit;
     try {
       const res = await instance.get('favorite', {
         params

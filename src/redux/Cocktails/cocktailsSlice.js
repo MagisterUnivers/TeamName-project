@@ -72,7 +72,7 @@ const cocktailsSlice = createSlice({
     [getCocktailsByCategoryThunk.fulfilled]: (state, { payload }) => {
       state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
-      state.page = payload.page;
+      // state.page = payload.page;
       state.loading = false;
       Loading.remove();
     },
@@ -107,7 +107,7 @@ const cocktailsSlice = createSlice({
       // console.log(payload);
       state.searchResults = payload.cocktails;
       state.totalHits = payload.totalHits;
-      state.page = payload.page;
+      // state.page = payload.page;
       state.loading = false;
       Loading.remove();
     },
@@ -185,7 +185,7 @@ const cocktailsSlice = createSlice({
     [getAllOwnDrinksThunk.fulfilled]: (state, { payload }) => {
       state.own = payload.cocktails;
       state.totalHits = payload.totalHits;
-      state.page = payload.page;
+      // state.page = payload.page;
       state.loading = false;
       Loading.remove();
     },
@@ -218,7 +218,7 @@ const cocktailsSlice = createSlice({
     [getAllFavoriteDrinksThunk.fulfilled]: (state, { payload }) => {
       state.favorites = payload.cocktails;
       state.totalHits = payload.totalHits;
-      state.page = payload.page;
+      // state.page = payload.page;
       state.loading = false;
       Loading.remove();
     },

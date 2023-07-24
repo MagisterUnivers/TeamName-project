@@ -14,13 +14,11 @@ export const MyOwnRecipesList = () => {
   const ownCocktails = useSelector(selectOwn);
   const page = useSelector(selectPage);
   const limit = isDesktop ? 9 : 8;
-  // console.log(isDesktop);
-  // console.log(limit);
 
   useEffect(() => {
     // if (ownCocktails.length !== 0) return;
-    dispatch(getAllOwnDrinksThunk(page));
-  }, [page]);
+    dispatch(getAllOwnDrinksThunk({ page, limit }));
+  }, [page, limit]);
 
   return (
     <Section>
