@@ -14,24 +14,23 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background-color: var(--btn-hover-color);
+  background-color: ${props => props.theme.secondBgrColor};
   border-radius: 8px;
   width: 335px;
-height: 193px;
+  height: 193px;
   margin: 0;
   padding: 0;
   @media screen and (min-width: 768px) {
     width: 500px;
     height: 215px;
-
   }
 `;
 
 export const CloseButton = styled.button`
-margin-top: 14px;
-margin-left: 297px;
-margin-bottom: 12px;
-   background: none;
+  margin-top: 14px;
+  margin-left: 297px;
+  margin-bottom: 12px;
+  background: none;
   outline: none;
   border: none;
   cursor: pointer;
@@ -42,30 +41,30 @@ margin-bottom: 12px;
     width: 32px;
     height: 32px;
     margin-top: 18px;
-margin-left: 450px;
-margin-right: 0;
+    margin-left: 450px;
+    margin-right: 0;
   }
 `;
 export const ModalText = styled.h1`
-color: var(--main-text-color);
-text-align: center;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.29; 
-letter-spacing: -0.28px;
-margin-bottom: 25px;
-@media screen and (min-width: 768px) {
-  font-size: 18px;
-  line-height: 1.33; 
+  color: ${props => props.theme.textColor};
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.28px;
+  margin-bottom: 25px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
   }
 `;
 
 export const ButtonWrapper = styled.div`
-width: 285px;
-display: flex;
-align-items: center;
-justify-content: space-between;
+  width: 285px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 25px;
   padding: 0;
   @media screen and (min-width: 768px) {
@@ -80,19 +79,18 @@ export const LogOutButton = styled.button`
   border-radius: 42px;
   outline: none;
   border: none;
-  background-color: #434D67;
-  color: var(--main-text-color);
+  background-color: ${props => props.theme.textColor};
+  color: ${props => props.theme.bgrColor};
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.13;
-  transition: background-color 0.5s ease;
+  transition: 0.5s ease;
   &:hover {
-    background-color: var(--main-text-color);
-  color: var(--btn-hover-color);
+    background-color: ${props => props.theme.bgrColor};
+    color: ${props => props.theme.textColor};
   }
   @media screen and (min-width: 768px) {
     padding: 18px 69px;
   }
 `;
-
