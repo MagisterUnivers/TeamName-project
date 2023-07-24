@@ -9,23 +9,25 @@ import {
 } from './Hero.styled';
 // import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
 
-import { AddRecipe } from 'components';
+import { AddRecipe, Container } from 'components';
 
 export const HeroSection = () => {
   return (
     <Hero>
-      <Herowrapper>
-        <StyledMainPageTitle>
-          Craft Your Perfect Drink with Drink Master
-        </StyledMainPageTitle>
-        <Herodescription>
-          Unlock your inner mixologist with Drink Master, your one-stop
-          destination for exploring, crafting, and mastering the world's finest
-          beverages.
-        </Herodescription>
-        <AddRecipe />
-      </Herowrapper>
-      <Herobackground></Herobackground>
+      <Container>
+        <Herowrapper>
+          <StyledMainPageTitle>
+            Craft Your Perfect Drink with Drink Master
+          </StyledMainPageTitle>
+          <Herodescription>
+            Unlock your inner mixologist with Drink Master, your one-stop
+            destination for exploring, crafting, and mastering the world's
+            finest beverages.
+          </Herodescription>
+          <AddRecipe />
+        </Herowrapper>
+      </Container>
+      {/* <Herobackground></Herobackground> */}
     </Hero>
   );
 };
