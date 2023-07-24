@@ -1,24 +1,32 @@
 import styled from 'styled-components';
-import heroimg from './heroimg.jpg';
+import heroimgDark from './heroimg.jpg';
+import heroimgLight from '../../assets/img/hero-section/Mask-group.png';
+
 import { devices } from 'constants/breakpoints';
 
 export const Hero = styled.section`
   position: relative;
-  background-image: url(${heroimg});
+  background-image: ${props =>
+    props.currentTheme === 'dark'
+      ? `url(${heroimgDark})`
+      : `url(${heroimgLight})`};
 
-  background-position: top 0px right -320px;
+  background-position: top 0px right
+    ${props => (props.currentTheme === 'dark' ? '-320px' : '-560px')};
 
   background-repeat: no-repeat;
   background-size: auto;
   margin-bottom: 100px;
 
   @media ${devices.tablet} {
-    background-position: top 0px right -230px;
+    background-position: top 0px right
+      ${props => (props.currentTheme === 'dark' ? '-230px' : '-350px')};
     background-size: contain;
   }
 
   @media ${devices.desktop} {
-    background-position: top 0px right 0px;
+    background-position: top 0px right
+      ${props => (props.currentTheme === 'dark' ? '0px' : '-180px')};
     background-size: contain;
   }
 `;
@@ -38,8 +46,7 @@ export const Herowrapper = styled.div`
 `;
 
 export const Herodescription = styled.div`
-  color: #f3f3f3;
-  font-family: Manrope, sans-serif;
+  color: ${props => props.theme.textColor};
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 40px;

@@ -130,7 +130,7 @@ export const SelectStyled = styled(Select)`
   & .react-select__control {
     width: 335px;
     height: 54px;
-    background: #161f37;
+    background: ${props => props.theme.secondBgrColor};
     border: none;
     outline: none;
     box-shadow: none;
@@ -158,7 +158,7 @@ export const SelectStyled = styled(Select)`
     padding-top: 18px;
     padding-bottom: 18px;
     padding-left: 24px;
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     font-size: 14px;
     font-weight: 400;
     line-height: calc(18 / 14);
@@ -171,7 +171,7 @@ export const SelectStyled = styled(Select)`
   }
   & .react-select__input-container {
     // стилизует текст при прямом вводе ================
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     padding-left: 24px;
     margin-right: 24px;
   }
@@ -185,9 +185,9 @@ export const SelectStyled = styled(Select)`
     font-size: 14px;
     font-weight: 400;
     line-height: calc(18 / 14);
-    color: #f3f3f3;
+    color: ${props => props.theme.textColor};
     &:focus-within {
-      color: #f3f3f3;
+      color: ${props => props.theme.textColor};
     }
     @media ${devices.tablet} {
       padding-top: 14px;
@@ -228,7 +228,7 @@ export const SelectStyled = styled(Select)`
     padding-left: 14px;
     width: 335px;
     border-radius: 20px;
-    background-color: #161f37;
+    background-color: ${props => props.theme.secondBgrColor};
     @media ${devices.tablet} {
       width: 199px;
       max-height: 405px;
@@ -240,7 +240,7 @@ export const SelectStyled = styled(Select)`
     font-style: normal;
     font-weight: 400;
     line-height: calc(18 / 14);
-    background-color: #161f37;
+    background-color: ${props => props.theme.secondBgrColor};
 
     @media ${devices.tablet} {
       font-size: 17px;
@@ -250,8 +250,8 @@ export const SelectStyled = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color: #f3f3f3;
-      background-color: #161f37;
+      color: ${props => props.theme.textColor};
+      background-color: ${props => props.theme.secondBgrColor};
       cursor: pointer;
     }
   }

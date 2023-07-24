@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { registrationThunk } from 'redux/Auth/authOperations';
-
 import { useSearchParams } from 'react-router-dom';
 import { verifyThunk } from 'redux/Auth/authOperations';
 import { AuthNavigate } from 'components';
@@ -40,23 +39,6 @@ export const RegisterForm = () => {
   const openPassword = () => {
     dispatch(handleEyeClick());
   };
-
-  // useEffect(() => {
-  // const input = document.querySelector('#password');
-
-  // const togglePasswordVisibility = () => {
-  // if (input.type === 'password') {
-  // const dummyText = Array(input.value.length + 1).join('*');
-  // input.value = dummyText;
-  // }
-  // };
-
-  // input.addEventListener('keyup', togglePasswordVisibility);
-
-  // return () => {
-  // input.removeEventListener('keyup', togglePasswordVisibility);
-  // };
-  // }, []);
 
   return (
     <StyledForm

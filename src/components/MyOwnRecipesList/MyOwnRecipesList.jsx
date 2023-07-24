@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
-import { selectOwn } from 'redux/selectors';
+import { selectOwn, selectPage } from 'redux/selectors';
 import { MyRecipesListStyled, Section } from './MyOwnRecipesList.styled';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { NotFound } from '../NotFound/NotFound';
@@ -10,12 +10,13 @@ import { NotFound } from '../NotFound/NotFound';
 export const MyOwnRecipesList = () => {
   const dispatch = useDispatch();
   const ownCocktails = useSelector(selectOwn);
+  const page = useSelector(selectPage);
   // const loading = useSelector(selectCocktailsIsLoading);
 
   useEffect(() => {
-    if (ownCocktails.length !== 0) return;
-    dispatch(getAllOwnDrinksThunk());
-  }, [dispatch, ownCocktails]);
+    // if (ownCocktails.length !== 0) return;
+    dispatch(getAllOwnDrinksThunk(page));
+  }, [page]);
 
   return (
     <Section>
