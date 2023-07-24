@@ -12,7 +12,6 @@ import { UserLogoModal } from 'components';
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);
   const [editProfileShown, setEditProfileShown] = useState(false);
-  // const user = useSelector(selectUser);
   const user = useSelector(selectUserArray);
 
   return (

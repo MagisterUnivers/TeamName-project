@@ -61,8 +61,15 @@ export const UserInfoModal = ({ onClose }) => {
     if (selectedAvatar) {
       formData.append('avatarURL', selectedAvatar);
     }
-    await dispatch(updateUserThunk(formData));
+    const res = await dispatch(updateUserThunk(formData));
+    if (res.meta.requestStatus === "fulfilled") {
+      onClose()
+    }
   };
+  let avatar;
+  if (imgURL) {avatar = imgURL}
+  else if (user.avatarUrl) {avatar = user.avatarUrl}
+  else {avatar = defaultAvatarURL};
   return isOpen ? (
     <ModalWrapper>
       <ContentWrapper className="modal-content">
@@ -87,7 +94,7 @@ export const UserInfoModal = ({ onClose }) => {
             <StyledFormInsight>
               <UserAvatarWrapper>
                 <AvatarFrame
-                  src={user.avatarURL || defaultAvatarURL}
+                  src={avatar}
                   alt="avatar"
                   width={100}
                 />
