@@ -21,7 +21,7 @@ import {
 import {
   StyledError,
   StyledMessage,
-} from 'components/RegisterForm/RegisterForm.styled';
+} from 'components/Forms/RegisterForm/RegisterForm.styled';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
 import XIcon from './x.svg';
 import AddIcon from './add_photo.svg';
