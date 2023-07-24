@@ -1,4 +1,4 @@
-import { StyledButton } from "components/RegisterForm/RegisterForm.styled";
+import { StyledButton } from "components/Forms/RegisterForm/RegisterForm.styled";
 import styled from "styled-components";
 
 

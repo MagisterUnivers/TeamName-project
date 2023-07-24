@@ -17,7 +17,7 @@ export const RecipePageHero = ({ func }) => {
   return (
     cocktails !== undefined && (
       <>
-        <StyledSection>
+        <StyledSection firstsection="true">
           <StyledGlassServi>{cocktails.glass}</StyledGlassServi>
           <StyledContentHolder>
             <div>
@@ -30,12 +30,10 @@ export const RecipePageHero = ({ func }) => {
               {favoriteFilter(cocktails, user) ? (
                 <StyledButton type="button" onClick={func}>
                   Remove recipe from favorite
-                  {console.log(favoriteFilter(cocktails, user), 'func result')}
                 </StyledButton>
               ) : (
                 <StyledButton type="button" onClick={func}>
                   Add recipe to favorite
-                  {console.log(favoriteFilter(cocktails, user), 'func result')}
                 </StyledButton>
               )}
             </div>

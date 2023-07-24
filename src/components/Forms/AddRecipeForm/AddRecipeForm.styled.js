@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
-import { StyledButton } from 'components/RegisterForm/RegisterForm.styled';
+import { StyledButton } from 'components/Forms/RegisterForm/RegisterForm.styled';
 import { devices } from 'constants/breakpoints';
 
 export const StyledForm = styled(Form)`

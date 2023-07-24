@@ -1,4 +1,4 @@
-import { StyledInput } from 'components/RegisterForm/RegisterForm.styled';
+import { StyledInput } from 'components/Forms/RegisterForm/RegisterForm.styled';
 import { devices } from 'constants/breakpoints';
 import { Form } from 'formik';
 import { styled } from 'styled-components';

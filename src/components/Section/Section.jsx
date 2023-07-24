@@ -6,11 +6,14 @@ export const Section = ({ SectionTitle }) => {
 };
 
 export const StyledSection = styled.section`
-  padding-top: 80px;
-  padding-bottom: ${props => (props.lastSection ? '80px' : '0px')};
+  padding-top: ${props => (props.firstsection ? '80px' : '0px')};
+  padding-bottom: ${props => (props.lastsection ? '80px' : '0px')};
 
   @media ${devices.tablet} {
-    padding-top: 100px;
-    padding-bottom: ${props => (props.lastSection ? '100px' : '0px')};
+    padding-top: ${props => (props.firstsection ? '140px' : '0px')};
+    padding-bottom: ${props => (props.lastsection ? '140px' : '0px')};
+  }
+  @media ${devices.desktop} {
+    padding-top: ${props => (props.firstsection ? '160px' : '0px')};
   }
 `;
