@@ -84,7 +84,8 @@ export const AddRecipeForm = () => {
       return [
         ...p,
         {
-          id: nanoid(),
+          _id: nanoid(),
+          id: '',
           title: '',
           unitQuantity: '',
           unit: '',
@@ -159,7 +160,7 @@ export const AddRecipeForm = () => {
       return;
     }
     const res = await dispatch(addRecipeThunk(formData));
-    if (res.meta.requestStatus === "fulfilled") {
+    if (res.meta.requestStatus === 'fulfilled') {
       resetForm();
       navigate('/main/my');
     }
