@@ -8,7 +8,7 @@ export const lightTheme = {
   secondBgrColor: '#e0e0e0',
   hoverBorderColor: '#000000',
   btnHoverColor: '#161f37',
-  secondBtnHoverColor: '#7bb6f2',
+  secondBtnHoverColor: 'rgba(64, 112, 205, 0.5)',
 
   correctStateColor: '#3cbc81',
   errorStateColor: '#da1414',
