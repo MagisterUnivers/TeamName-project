@@ -89,6 +89,7 @@ export const SelectIngredientStyled = styled(Select)`
     outline: none;
     box-shadow: none;
     transition: border-color 400ms ease;
+    cursor: pointer;
 
     @media (min-width: 768px) {
       gap: 14px;
@@ -184,7 +185,7 @@ export const SelectIngredientStyled = styled(Select)`
     padding: 8px 0 8px 6px;
     width: 192px;
     border-radius: 20px;
-    background-color: #161f37;
+    background-color: ${props => props.theme.secondBgrColor};
     color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
 
@@ -204,9 +205,8 @@ export const SelectIngredientStyled = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(243, 243, 243, 0.4);
 
-    background-color: transparent;
+    background-color: ${props => props.theme.secondBgrColor};
     transition: color var(--transition-function);
 
     @media (min-width: 768px) {
@@ -217,7 +217,8 @@ export const SelectIngredientStyled = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color: rgba(243, 243, 243, 1);
+      color: ${props => props.theme.textColor};
+      background-color: ${props => props.theme.secondBgrColor};
     }
   }
   // =========================================
@@ -243,7 +244,7 @@ export const SelectIngredientStyled = styled(Select)`
     &:hover,
     &::selection {
       /* padding: 0; */
-      color: ${props => props.theme.textColor};
+      color: #4070cd;
       outline: none;
     }
   }
@@ -298,6 +299,7 @@ export const UnitQuantity = styled.input`
   border-radius: 6px 0 0 6px;
   text-align: center;
   transition: color cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
 
   @media (min-width: 768px) {
     width: 35px;
@@ -322,6 +324,7 @@ export const IngredientUnit = styled(Select)`
     border: none;
     outline: none;
     box-shadow: none;
+    cursor: pointer;
 
     &--is-focused,
     &--menu-is-open {
@@ -399,7 +402,7 @@ export const IngredientUnit = styled(Select)`
     padding: 0;
     width: 84px;
     border-radius: 20px;
-    background-color: #161f37;
+    background-color: ${props => props.theme.secondBgrColor};
     color: white;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.03);
 
@@ -416,10 +419,9 @@ export const IngredientUnit = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(243, 243, 243, 0.4);
     text-align: center;
 
-    background-color: var(--white);
+    background-color: ${props => props.theme.secondBgrColor};
     transition: color var(--transition-function);
 
     @media (min-width: 768px) {
@@ -430,7 +432,8 @@ export const IngredientUnit = styled(Select)`
     &:active,
     &:hover,
     &::selection {
-      color: rgba(243, 243, 243, 1);
+      color: ${props => props.theme.textColor};
+      background-color: ${props => props.theme.secondBgrColor};
     }
   }
   // =========================================
@@ -457,7 +460,7 @@ export const IngredientUnit = styled(Select)`
     &:hover,
     &::selection {
       /* padding: 0; */
-      color: ${props => props.theme.textColor};
+      color: #4070cd;
       outline: none;
     }
   }

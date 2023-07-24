@@ -39,6 +39,7 @@ export * from './Buttons/LogoutButton/LogoutBtn';
 
 // Buttons
 
+export * from './Buttons/ReusableButton';
 export * from './BurgerMenu/Button/Button';
 export * from './Buttons/AddYourCocktail/AddYourCocktail';
 export * from './Buttons/DeleteButton/DeleteButton';

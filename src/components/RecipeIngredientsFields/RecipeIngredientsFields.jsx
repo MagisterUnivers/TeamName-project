@@ -14,6 +14,7 @@ import {
   CloseIconButton,
   StyledIngredientsList,
 } from './RecipeIngredientsFields.styled';
+import { useTheme } from 'styled-components';
 
 export const RecipeIngredientsFields = ({
   ingredientsList,
@@ -25,6 +26,7 @@ export const RecipeIngredientsFields = ({
   handleOnChangeIngredientUnit,
   handleOnChangeUnitQuantity,
 }) => {
+  const theme = useTheme();
   const styles = {
     menuList: base => ({
       ...base,
@@ -50,7 +52,7 @@ export const RecipeIngredientsFields = ({
     }),
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
+      color: state.isSelected ? theme.textColor : theme.secondaryTextColor,
     }),
   };
 

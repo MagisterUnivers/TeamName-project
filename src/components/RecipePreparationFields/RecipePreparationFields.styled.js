@@ -26,7 +26,6 @@ export const StyledTextArea = styled(Field)`
   border-radius: 20px;
   border: 1px solid;
   border-color: ${props => props.theme.secondBorderColor};
-  opacity: 0.800000011920929;
   background-color: transparent;
   color: ${props => props.theme.textColor};
   outline: none;
