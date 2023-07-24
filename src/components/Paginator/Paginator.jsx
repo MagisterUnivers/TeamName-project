@@ -11,7 +11,7 @@ const Paginator = () => {
   const { isMobile, isTablet, isDesktop } = useMediaRules();
   const totalHits = useSelector(selectTotalHits);
   const limit = isDesktop ? 9 : 8;
-  const pageQuantity = Math.ceil(totalHits / limit);
+  const pageQuantity = Math.floor(totalHits / limit);
   const theme = useSelector(selectTheme);
   const location = useLocation();
   const currentPath = location.pathname;
