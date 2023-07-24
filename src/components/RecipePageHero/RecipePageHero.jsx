@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectFavorite, selectUserArray } from 'redux/selectors';
-import { favoriteFilter } from 'components/utils/filter';
+import { favoriteFilter } from 'utils';
 import { MainPageTitle, StyledSection } from 'components';
 import { StyledContentHolder } from 'components/RecipePreparation/RecipePreparation.styled';
 import {

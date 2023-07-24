@@ -5,7 +5,7 @@ import {
   RecipeIngredientsList,
   Container,
 } from 'components';
-import { favoriteFilter } from 'components/utils';
+import { favoriteFilter } from 'utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {
