@@ -21,9 +21,11 @@ import {
   setPage,
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
+import { useTheme } from 'styled-components';
 
 export const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
   const [searchQuery, setSearchQuery] = useState();
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
@@ -70,7 +72,7 @@ export const DrinksSearch = ({ categoryName }) => {
     }),
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
+      color: state.isSelected ? theme.textColor : theme.secondaryTextColor,
     }),
   };
 
