@@ -4,6 +4,7 @@ import Pagination  from '@mui/material/Pagination'
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
 import { useMediaRules } from '../../hooks/useMediaRules';
 import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
+// import { WrapperGeneralStyled } from './Paginator.styled';
 
 export const Paginator = () => {
   let page = useSelector(selectPage);
@@ -30,7 +31,7 @@ export const Paginator = () => {
           onChange={(_, num) => dispatch(setPage(num))}
           defaultPage={page}
           boundaryCount={1}
-          siblingCount={0}
+          siblingCount={1}
           onClick={() => {
            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
           }}
@@ -41,21 +42,20 @@ export const Paginator = () => {
               fontWeight: '500',
               color: theme === 'dark' ? 'var(--main-text-color)' : "'#0A0A11'",
               transition: 'background 0.3s ease',
-              '&:hover, &:active': {
+              '&:hover, &:focus': {
                 background: 'rgba(64, 112, 205, 0.4)',
               },
             },
-            '& .MuiPaginationItem-circular.Mui-selected': {
+            '& .MuiPaginationItem-page': {
               color: theme === 'dark' ? 'var(--main-text-color)' : "'#0A0A11'",
               background: 'transparent',
               transition: 'background-color 500ms ease',
-              '&:hover, &:active ': {
+              '&:hover, &:focus ': {
                 background: 'rgba(64, 112, 205, 0.5)',
               },
             },
             'Ul.MuiPagination-ul': {
               flexWrap: 'nowrap',
-              // marginX: 'auto'
             },
           }}
         />
