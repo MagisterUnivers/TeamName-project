@@ -6,7 +6,6 @@ export const StyledTitle = styled.h2`
 
   color: ${props => props.theme.textColor};
   font-size: 28px;
-  font-style: normal;
   font-weight: 600;
   line-height: calc(32 / 28);
 
@@ -44,7 +43,6 @@ export const StyledTextWrapper = styled.div`
 
 export const StyledAboutSubtitle = styled.p`
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: calc(18 / 14);
 
