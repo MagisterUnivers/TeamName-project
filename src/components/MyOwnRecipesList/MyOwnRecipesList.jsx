@@ -6,12 +6,16 @@ import { selectOwn, selectPage } from 'redux/selectors';
 import { MyRecipesListStyled, Section } from './MyOwnRecipesList.styled';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { NotFound } from '../NotFound/NotFound';
+import { useMediaRules } from 'hooks';
 
 export const MyOwnRecipesList = () => {
   const dispatch = useDispatch();
+  const { isDesktop } = useMediaRules();
   const ownCocktails = useSelector(selectOwn);
   const page = useSelector(selectPage);
-  // const loading = useSelector(selectCocktailsIsLoading);
+  const limit = isDesktop ? 9 : 8;
+  // console.log(isDesktop);
+  // console.log(limit);
 
   useEffect(() => {
     // if (ownCocktails.length !== 0) return;
