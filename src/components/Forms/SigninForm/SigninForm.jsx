@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Yup from 'yup';
 import { getCurrentUserThunk, loginThunk } from 'redux/Auth/authOperations';
 import { AuthNavigate } from 'components';
 import { selectIsClicked } from 'redux/selectors';
 import { handleEyeClick } from 'redux/Auth/authSlice';
+import { LoginSchema } from 'components/RegisterForm/ValidationSchema';
 import {
   StyledButton,
   StyledError,
@@ -37,19 +37,7 @@ export const SigninForm = () => {
         email: '',
         password: '',
       }}
-      validationSchema={Yup.object({
-        email: Yup.string()
-          .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
-          .required('Required'),
-        password: Yup.string()
-          .required('No password provided.')
-          .min(6, 'Password is too short - should be 6 chars minimum.')
-          .max(16, 'Password is too long - should be 16 chars maximum.')
-          .matches(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
-            'Password must contain 1 lowercase, 1 uppercase letter and 1 number.'
-          ),
-      })}
+      validationSchema={LoginSchema}
       onSubmit={values => {
         dispatch(loginThunk(values)).then(res => {
           if (res.payload && res.payload.status === 200) {
