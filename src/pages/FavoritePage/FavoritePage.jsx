@@ -7,9 +7,9 @@ import { selectPage } from 'redux/selectors';
 import { useEffect } from 'react';
 
 const FavoritePage = () => {
-  const despatch = useDispatch();
+  const dispatch = useDispatch();
   const page = useSelector(selectPage);
-  despatch(getAllFavoriteDrinksThunk(page));
+  dispatch(getAllFavoriteDrinksThunk(page));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
