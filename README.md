@@ -38,7 +38,7 @@
   <li>Git Bash</li>
   <li>Copy the code</li>
   <li>
-    Git Clone
+    Git Clone / 
     <a href="https://github.com/MagisterUnivers/TeamName-project/tree/dev"
       >Link to repository</a
     >
