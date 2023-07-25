@@ -1,3 +1,4 @@
+import { navRoutes } from 'constants';
 import {
   NavContainer,
   StyledItem,
@@ -5,25 +6,19 @@ import {
   StyledList,
 } from './Navigation.styled';
 
-export const Navigation = () => {
+export const Navigation = ({ onClick }) => {
   return (
     <NavContainer>
       <StyledList>
-        <StyledItem>
-          <StyledLink to="home">Home</StyledLink>
-        </StyledItem>
-        <StyledItem>
-          <StyledLink to="drinks/Cocktail">Drinks</StyledLink>
-        </StyledItem>
-        <StyledItem>
-          <StyledLink to="add">Add recipe</StyledLink>
-        </StyledItem>
-        <StyledItem>
-          <StyledLink to="my">My recipes</StyledLink>
-        </StyledItem>
-        <StyledItem>
-          <StyledLink to="favorite">Favorites</StyledLink>
-        </StyledItem>
+        {navRoutes.map(({ name, route }) => {
+          return (
+            <StyledItem>
+              <StyledLink to={route} onClick={onClick}>
+                {name}
+              </StyledLink>
+            </StyledItem>
+          );
+        })}
       </StyledList>
     </NavContainer>
   );
