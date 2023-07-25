@@ -17,7 +17,6 @@ import {
 export const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
-      {/* {console.log(cocktail)} */}
       <Link to={`/main/recipe/${cocktail._id}`}>
         <OneMoreWrapper>
           <ImageWrapper>
