@@ -1,4 +1,5 @@
-![0_0](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/6e3e3c11-a91d-4de3-bb26-995e790e28c7)
+![Tech Titans1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a6beb350-7058-4ea1-9091-629e4a52db27)
+
 
 <h1>TechTitans-React/Node-Drink Master</h1>
 <br />
