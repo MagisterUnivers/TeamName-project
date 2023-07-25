@@ -12,8 +12,9 @@ export const Paginator = () => {
   const { isMobile, isDesktop } = useMediaRules();
   const totalHits = useSelector(selectTotalHits);
   const limit = isDesktop ? 9 : 8;
-  const pageQuantity = Math.floor(totalHits / limit);
+  const pageQuantity = Math.ceil(totalHits / limit);
   const theme = useSelector(selectTheme);
+  const defaultPage = Math.ceil(pageQuantity/2)
 
   return (
     <Box
@@ -29,7 +30,7 @@ export const Paginator = () => {
           count={pageQuantity}
           page={page}
           onChange={(_, num) => dispatch(setPage(num))}
-          defaultPage={page}
+          defaultPage={defaultPage}
           boundaryCount={1}
           siblingCount={1}
           onClick={() => {
