@@ -7,10 +7,11 @@ export const ReusableButton = ({
   marginbottom = '0px',
   margintop = '0px',
   onClick,
+  type = 'button',
 }) => {
   return (
     <StyledButton
-      type="button"
+      type={type}
       aria-label={ariaLabel}
       marginbottom={marginbottom}
       margintop={margintop}
@@ -20,7 +21,6 @@ export const ReusableButton = ({
     </StyledButton>
   );
 };
-
 export const StyledButton = styled.button`
   border-radius: 42px;
   padding: 14px 40px;
