@@ -22,7 +22,9 @@ export const Nav = () => {
                 {name}
               </StyledNavButton>
             ) : (
-              <StyledNavLink to={route}>{name}</StyledNavLink>
+              <StyledNavLink to={route} state={{ from: 'Cocktail' }}>
+                {name}
+              </StyledNavLink>
             )}
           </StyledListItem>
         ))}

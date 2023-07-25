@@ -13,7 +13,11 @@ export const Navigation = ({ onClick }) => {
         {navRoutes.map(({ name, route }) => {
           return (
             <StyledItem key={name}>
-              <StyledLink to={route} onClick={onClick}>
+              <StyledLink
+                to={route}
+                state={{ from: 'Cocktail' }}
+                onClick={onClick}
+              >
                 {name}
               </StyledLink>
             </StyledItem>
