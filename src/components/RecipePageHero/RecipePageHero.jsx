@@ -43,7 +43,6 @@ export const RecipePageHero = ({ func }) => {
               )}
             </div>
             <div>
-              {' '}
               <StyledImage
                 src={
                   cocktails.drinkThumb

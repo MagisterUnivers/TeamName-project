@@ -5,6 +5,5 @@ export const favoriteFilter = (cocktails, user) => {
       filter = cocktails.favorite.includes(user.id);
     }
   }
-  console.log(filter, 'Filter func');
   return filter;
 };
