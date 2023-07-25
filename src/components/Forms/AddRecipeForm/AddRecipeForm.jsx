@@ -20,6 +20,7 @@ import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
   RecipePreparationFields,
+  ReusableButton,
 } from 'components';
 
 export const AddRecipeForm = () => {
@@ -203,7 +204,12 @@ export const AddRecipeForm = () => {
             dataField={instructions}
             handleOnInstructions={handleOnInstructions}
           />
-          <StyledAddButton type="submit">Add</StyledAddButton>
+          {/* <StyledAddButton type="submit">Add</StyledAddButton> */}
+          <ReusableButton
+            type="submit"
+            text="Add"
+            ariaLabel="Adding recipe button"
+          />
         </StyledForm>
       </Formik>
     </>

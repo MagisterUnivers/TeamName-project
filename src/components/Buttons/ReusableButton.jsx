@@ -7,10 +7,11 @@ export const ReusableButton = ({
   marginbottom = '0px',
   margintop = '0px',
   onClick,
+  type = 'button',
 }) => {
   return (
     <StyledButton
-      type="button"
+      type={type}
       aria-label={ariaLabel}
       marginbottom={marginbottom}
       margintop={margintop}
