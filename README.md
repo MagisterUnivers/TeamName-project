@@ -32,7 +32,7 @@
 <h2>Project code example:</h2>
 <br />
 <br />
-![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/f93852a3-fc61-4216-bcd8-0aa74b69f6fe)
+<iframe src="https://giphy.com/embed/WMGzAY3TQngeoW4Qj7" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/WMGzAY3TQngeoW4Qj7">via GIPHY</a></p>
 <br />
 <br />
 <h2>Project Structure</h2>
