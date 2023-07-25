@@ -46,6 +46,7 @@ export * from './Buttons/DeleteButton/DeleteButton';
 export * from './Buttons/AddRecipeButton/AddRecipe';
 export * from './Buttons/LogoutButton/LogoutBtn';
 export * from './Buttons/SeeButton/SeeButton';
+export * from './Buttons/OtherDrinks/OtherDrinks';
 
 // Forms
 

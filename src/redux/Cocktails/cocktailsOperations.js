@@ -10,10 +10,6 @@ export const getCategoriesListThunk = createAsyncThunk(
   '@@cocktails/categoriesList',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
-    // if (!token) {
-    //   return rejectWithValue();
-    // }
-
     try {
       setToken(token);
       const res = await instance.get('recipes/category-list');
@@ -91,10 +87,6 @@ export const getIngredientsListThunk = createAsyncThunk(
   '@@cocktails/ingredientsList',
   async (_, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
-    // if (!token) {
-    //   return rejectWithValue();
-    // }
-
     try {
       setToken(token);
       const res = await instance.get('ingredients/list');
@@ -173,18 +165,18 @@ export const addRecipeThunk = createAsyncThunk(
 
 export const getAllOwnDrinksThunk = createAsyncThunk(
   '@@cocktails/ownCocktails',
-  async ({page, limit}, { rejectWithValue, getState }) => {
+  async ({ page, limit }, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
     setToken(token);
     const params = {};
-    params.page= page;
+    params.page = page;
     params.limit = limit;
     try {
       const res = await instance.get('own', {
-        params
+        params,
       });
       return res.data;
     } catch (error) {
@@ -214,18 +206,18 @@ export const removeRecipeThunk = createAsyncThunk(
 
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
   '@@cocktails/favorites',
-  async ({page, limit}, { rejectWithValue, getState }) => {
+  async ({ page, limit }, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
     setToken(token);
     const params = {};
-    params.page= page;
+    params.page = page;
     params.limit = limit;
     try {
       const res = await instance.get('favorite', {
-        params
+        params,
       });
       return res.data;
     } catch (error) {
