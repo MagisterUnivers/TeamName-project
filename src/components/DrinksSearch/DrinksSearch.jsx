@@ -103,7 +103,6 @@ export const DrinksSearch = ({ categoryName }) => {
           type="text"
           name="query"
           value={searchQuery}
-          autocomplete="off"
           placeholder="Enter the text"
           onChange={handleChangeQuery}
         />
