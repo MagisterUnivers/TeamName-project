@@ -38,7 +38,7 @@
   <li>Git Bash</li>
   <li>Copy the code</li>
   <li>
-    Git Clone <br />
+    Git Clone
     <a href="https://github.com/MagisterUnivers/TeamName-project/tree/dev"
       >Link to repository</a
     >
@@ -78,7 +78,7 @@
 <ul>
   <li>
     npm run start: Starts the development server on
-    http://localhost:3000/TeamName-project/.
+    http://localhost:3000/TeamName-project/
   </li>
   <li>npm run build: Builds the application for production.</li>
   <li>npm run lint:js: Runs the linter to check for code quality issues</li>
