@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectSearchResults } from 'redux/selectors';
 import { DrinkCard, NotFound } from 'components';
-
 import { DrinkListStyled, Section } from './DrinkList.styled';
 
 export const DrinksList = () => {
