@@ -15,7 +15,7 @@ import {
   addRecipeThunk,
   getIngredientsListThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
+import { StyledForm } from './AddRecipeForm.styled';
 import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
