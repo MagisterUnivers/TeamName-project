@@ -9,7 +9,7 @@ export const HeroSection = () => {
   const currentTheme = useSelector(selectTheme);
   const navigate = useNavigate();
   return (
-    <Hero currentTheme={currentTheme}>
+    <Hero currenttheme={currentTheme}>
       <Container>
         <Herowrapper>
           <StyledMainPageTitle>
@@ -29,7 +29,6 @@ export const HeroSection = () => {
           />
         </Herowrapper>
       </Container>
-      {/* <Herobackground></Herobackground> */}
     </Hero>
   );
 };
