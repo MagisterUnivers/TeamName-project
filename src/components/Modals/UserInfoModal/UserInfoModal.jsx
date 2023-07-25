@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme, selectUserArray } from 'redux/selectors';
 import * as Yup from 'yup';
 import {
+  StyledError,
+  StyledMessage,
+} from 'components/Forms/RegisterForm/RegisterForm.styled';
+import { updateUserThunk } from 'redux/UserInfo/userOperations';
+import XIcon from './x.svg';
+import XIconBlack from '../../../assets/icons/close.svg';
+import {
   ModalWrapper,
   CloseButton,
   UserAvatarWrapper,
@@ -18,13 +25,6 @@ import {
   AddIconImg,
   StyledInputFile,
 } from './UserInfoModal.styled';
-import {
-  StyledError,
-  StyledMessage,
-} from 'components/Forms/RegisterForm/RegisterForm.styled';
-import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import XIcon from './x.svg';
-import XIconBlack from '../../../assets/icons/close.svg';
 
 import AddIcon from './add_photo.svg';
 const defaultAvatarURL = require('./user.png');
@@ -36,6 +36,7 @@ export const UserInfoModal = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imgURL, setImageURL] = useState('');
+
   useEffect(() => {
     const handleOutsideClick = event => {
       if (!event.target.closest('.modal-content')) {
@@ -94,10 +95,12 @@ export const UserInfoModal = ({ onClose }) => {
           }}
           validationSchema={Yup.object({
             avatarURL: Yup.string(),
-            name: Yup.string().matches(
-              /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
-              'Name can only contain letters or numbers.'
-            ),
+            name: Yup.string()
+              .min(2)
+              .matches(
+                /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
+                'Name can only contain letters or numbers.'
+              ),
           })}
           onSubmit={handleOnSubmit}
         >
