@@ -4,21 +4,21 @@ import { selectTheme } from 'redux/selectors';
 import { ThemeProvider } from 'styled-components';
 import { Suspense, lazy, useEffect } from 'react';
 import { PublicRoute, PrivateRoute } from 'routes';
-import Spinner from './Spinner/Spinner';
-import SharedLayout from './SharedLayout/SharedLayout';
+
+// Themes
 import { darkTheme, lightTheme } from 'theme';
-import GlobalStyles from './GlobalStyles';
-import SPTestPage from 'pages/DONOTTOUCHPAGE/SPTestPage';
+
+// Pages
 import HomePage from 'pages/HomePage/HomePage';
 import DrinksPage from 'pages/DrinksPage/DrinksPage';
 import RecipePage from 'pages/RecipePage/RecipePage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import FavoritePage from 'pages/FavoritePage/FavoritePage';
-import TestPage from 'pages/TestPage/TestPage';
 
-// import PreviewDrinks from './PreviewDrinks/PreviewDrinks'; // by Igor
-// import { mockData } from '../assets/mockData/mockDataCocktails'; // by Igor - delete after add backend
-// import PreviewDrinks from './PreviewDrinks/PreviewDrinks';
+// Utils
+import Spinner from './Spinner/Spinner';
+import SharedLayout from './SharedLayout/SharedLayout';
+import GlobalStyles from './GlobalStyles';
 
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -63,18 +63,11 @@ export const App = () => {
               element={
                 <PublicRoute>
                   <LoginPage />
-                </PublicRoute>}
+                </PublicRoute>
+              }
             />
-            {/* <Route path="/main" element={<MainLayout />}> */}
             <Route path="/main" element={<SharedLayout />}>
-              {/* <Route path="test" element={<TestPage />} /> */}
-              <Route path="test2" element={<SPTestPage />} />
               <Route path="home" element={<HomePage />} />
-
-              <Route
-                path="cocktails"
-                element={<PrivateRoute>{/* cocktailsPage */}</PrivateRoute>}
-              />
               <Route
                 path="drinks/:categoryName"
                 element={<PrivateRoute>{<DrinksPage />}</PrivateRoute>}
@@ -91,11 +84,9 @@ export const App = () => {
               />
               <Route
                 path="favorite"
-                // element={<PrivateRoute>{/* MyRecipesPage */}</PrivateRoute>}
                 element={<PrivateRoute>{<FavoritePage />}</PrivateRoute>}
               />
             </Route>
-
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

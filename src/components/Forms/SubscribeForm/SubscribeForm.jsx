@@ -1,17 +1,14 @@
-import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
-import { loginThunk, setSubscription } from 'redux/Auth/authOperations';
+import { setSubscription } from 'redux/Auth/authOperations';
+import { Formik } from 'formik';
+import { Report } from 'notiflix';
+import { SubscribeSchema } from '../RegisterForm/ValidationSchema';
+import { useTheme } from 'styled-components';
 import {
   StyledButton,
   StyledFormInsight,
   StyledInputSubscribe,
   StyledText,
 } from './SubscribeForm.styled';
-import { Formik } from 'formik';
-import { Report } from 'notiflix';
-import { useTheme } from 'styled-components';
-import { SubscribeSchema } from '../RegisterForm/ValidationSchema';
 
 export const SubscribeForm = () => {
   const theme = useTheme();

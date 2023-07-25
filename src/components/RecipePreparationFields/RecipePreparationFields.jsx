@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   FormWrapper,
   StyledTextArea,
@@ -6,7 +5,10 @@ import {
   StyledDiv,
 } from './RecipePreparationFields.styled';
 
- export const RecipePreparationFields = ({ dataField, handleOnInstructions }) => {
+export const RecipePreparationFields = ({
+  dataField,
+  handleOnInstructions,
+}) => {
   return (
     <FormWrapper>
       <StyledTitle>Recipe Preparation</StyledTitle>

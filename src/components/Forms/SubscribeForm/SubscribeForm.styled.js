@@ -1,12 +1,13 @@
-import { StyledInput } from 'components/Forms/RegisterForm/RegisterForm.styled';
-import { devices } from 'constants/breakpoints';
 import { Form } from 'formik';
+import { devices } from 'constants';
 import { styled } from 'styled-components';
+import { StyledInput } from 'components/Forms/RegisterForm/RegisterForm.styled';
 
 export const StyledFormInsight = styled(Form)`
   display: flex;
   flex-direction: column;
   max-width: 480px;
+
   @media ${devices.tablet} {
     max-width: 309px;
   }
@@ -18,6 +19,7 @@ export const StyledText = styled.p`
   color: ${props => props.theme.textColor};
   font-size: 14px;
   line-height: calc(20 / 14);
+
   @media ${devices.tablet} {
     font-size: 18px;
     line-height: calc(24 / 18);
@@ -37,9 +39,8 @@ export const StyledInputSubscribe = styled(StyledInput)`
   }
 
   &::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: ${props => props.theme.textColor};
-    opacity: 1; /* Firefox */
+    opacity: 1;
   }
 
   @media ${devices.tablet} {

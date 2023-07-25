@@ -1,15 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useState } from 'react';
-import {
-  SelectStyled,
-  InputStyled,
-  StyledSearchButton,
-  SearchFormStyled,
-  QueryFormStyled,
-  StyledSearchIcon,
-  HoverWrapper,
-} from './DrinksSearch.styled';
 import {
   selectCategories,
   selectIngredients,
@@ -22,6 +12,15 @@ import {
   setQuery,
 } from 'redux/Cocktails/cocktailsSlice';
 import { useTheme } from 'styled-components';
+import {
+  SelectStyled,
+  InputStyled,
+  StyledSearchButton,
+  SearchFormStyled,
+  QueryFormStyled,
+  StyledSearchIcon,
+  HoverWrapper,
+} from './DrinksSearch.styled';
 
 export const DrinksSearch = ({ categoryName }) => {
   const dispatch = useDispatch();
@@ -30,9 +29,7 @@ export const DrinksSearch = ({ categoryName }) => {
   const ingredientsList = useSelector(selectIngredients);
   const categoriesList = useSelector(selectCategories);
   const search = useSelector(selectSearch);
-  // console.log(searchQuery);
 
-  //creating options for the dropdowns
   const categoriesListOptions = categoriesList.map(category => {
     return { value: category._id, label: category.category };
   });
@@ -117,7 +114,6 @@ export const DrinksSearch = ({ categoryName }) => {
       </QueryFormStyled>
 
       <SelectStyled
-        // theme={customTheme}
         styles={styles}
         name="category"
         value={search.category}

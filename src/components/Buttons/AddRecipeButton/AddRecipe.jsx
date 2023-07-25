@@ -1,6 +1,5 @@
-import React from 'react';
-import { StyledAddButton } from './AddRecipe.styled';
 import { useNavigate } from 'react-router';
+import { StyledAddButton } from './AddRecipe.styled';
 
 export const AddRecipe = () => {
   const navigate = useNavigate();

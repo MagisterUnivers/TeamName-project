@@ -7,11 +7,10 @@ import { Cardwrapper, Section, SectionTitle } from './PreviewDrinks.styled';
 
 export const PreviewDrinks = ({ title, data = [] }) => {
   const linkTransform = encodeURIComponent(title);
-
   return (
     <Section>
       <Container>
-        <Link to={`/main/drinks/${linkTransform}`}>
+        <Link to={`/main/drinks/${linkTransform}`} state={{ from: `${title}` }}>
           <SectionTitle>{title}</SectionTitle>
         </Link>
         <Cardwrapper>

@@ -2,8 +2,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { devices } from 'constants';
 import styled from 'styled-components';
-import { devices } from 'constants/breakpoints';
 
 export const StyledForm = styled(Formik)``;
 export const StyledFormInsight = styled(Form)`

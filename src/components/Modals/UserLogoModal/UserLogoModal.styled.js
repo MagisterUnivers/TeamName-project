@@ -49,6 +49,7 @@ export const ChangeProfileButton = styled.button`
     box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
   }
 `;
+
 export const LogOutButton = styled.button`
   display: block;
   padding: 12px 45px;
@@ -64,7 +65,6 @@ export const LogOutButton = styled.button`
   line-height: 1.29;
   transition: 0.5s ease;
   &:hover {
-    /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
     background-color: ${props => props.theme.bgrColor};
     color: ${props => props.theme.textColor};
   }

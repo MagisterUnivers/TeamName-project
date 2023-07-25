@@ -1,3 +1,4 @@
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const UserLogoWrp = styled.div`
@@ -6,11 +7,8 @@ export const UserLogoWrp = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     gap: 14px;
-  }
-
-  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -19,13 +17,12 @@ export const UserAvatarWrp = styled.div`
   height: 32px;
   border-radius: 32px;
   border: none;
+
   cursor: pointer;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     width: 44px;
     height: 44px;
-  }
-
-  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -39,13 +36,12 @@ export const NameStyled = styled.p`
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1,28;
+  line-height: 1, 28;
+
   cursor: pointer;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     font-size: 16px;
     line-height: 1, 5;
-  }
-
-  @media screen and (min-width: 1440px) {
   }
 `;

@@ -1,4 +1,4 @@
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const StyledGlassServi = styled.p`
@@ -13,9 +13,6 @@ export const StyledGlassServi = styled.p`
   @media ${devices.tablet} {
     font-size: 16px;
     line-height: calc(20 / 16);
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 
@@ -68,9 +65,6 @@ export const StyledButton = styled.button`
 
     font-size: 16px;
     line-height: calc(18 / 16);
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 

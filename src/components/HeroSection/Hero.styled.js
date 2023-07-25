@@ -1,8 +1,7 @@
-import styled from 'styled-components';
 import heroimgDark from '../../assets/img/hero-section/heroimg.jpg';
 import heroimgLight from '../../assets/img/hero-section/Mask-group.png';
-
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
+import styled from 'styled-components';
 
 export const Hero = styled.section`
   position: relative;
@@ -54,7 +53,6 @@ export const Herodescription = styled.div`
 
 export const Herobackground = styled.div`
   position: absolute;
-  /* background-color: #fff; */
   width: 45%;
   height: 25%;
   top: 60%;

@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCocktailsByFourCategoryThunk } from 'redux/Cocktails/cocktailsOperations';
-import { PreviewDrinks } from '../../components/PreviewDrinks/PreviewDrinks'; // by Igor
 import { selectCocktails } from 'redux/selectors';
-import { OtherDrinksButton } from 'components/Buttons/OtherDrinks.jsx/OtherDrinks';
-import { HeroSection } from 'components';
+import { HeroSection, OtherDrinksButton, PreviewDrinks } from 'components';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -29,11 +27,11 @@ const HomePage = () => {
   useEffect(() => {
     if (category !== undefined && category.length === 0)
       dispatch(getCocktailsByFourCategoryThunk());
-  }, []);
+  }, []); //eslint-disable-line
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

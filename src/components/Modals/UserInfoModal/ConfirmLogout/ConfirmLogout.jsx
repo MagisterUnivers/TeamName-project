@@ -1,6 +1,11 @@
+import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logoutThunk } from 'redux/Auth/authOperations';
+import { clearState } from 'redux/UserInfo/userInfoSlice';
+import { selectTheme } from 'redux/selectors';
+import XIcon from '../../../../assets/icons/modals/confirm-logout/x.svg';
+import XIconBlack from '../../../../assets/icons/close.svg';
 import {
   ModalWrapper,
   ModalContent,
@@ -9,13 +14,8 @@ import {
   ModalText,
   ButtonWrapper,
 } from './ConfirmLogout.styled';
-import Notiflix from 'notiflix';
-import XIcon from './x.svg';
-import XIconBlack from '../../../assets/icons/close.svg';
-import { clearState } from 'redux/UserInfo/userInfoSlice';
-import { selectTheme } from 'redux/selectors';
 
-export const ConfirmLogout = ({ id, onClose }) => {
+export const ConfirmLogout = ({ onClose }) => {
   const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ export const ConfirmLogout = ({ id, onClose }) => {
     dispatch(logoutThunk())
       .unwrap()
       .then(res => {
-        // console.log('Response:', res);
         if (res && res.status === 200) {
           navigate('/');
           dispatch(clearState());

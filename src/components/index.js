@@ -46,6 +46,7 @@ export * from './Buttons/DeleteButton/DeleteButton';
 export * from './Buttons/AddRecipeButton/AddRecipe';
 export * from './Buttons/LogoutButton/LogoutBtn';
 export * from './Buttons/SeeButton/SeeButton';
+export * from './Buttons/OtherDrinks/OtherDrinks';
 
 // Forms
 
@@ -57,9 +58,10 @@ export * from './Forms/SubscribeForm/SubscribeForm';
 // Modals
 
 export * from './Modals/MotivationModal/MotivationModal';
+export * from './Modals/DeleteModal/DeleteModal';
 
 //  // UserInfoModal
-export * from './Modals/UserInfoModal/ConfirmLogout';
+export * from './Modals/UserInfoModal/ConfirmLogout/ConfirmLogout';
 export * from './Modals/UserInfoModal/UserInfoModal';
 
 //  // UserLogoModal

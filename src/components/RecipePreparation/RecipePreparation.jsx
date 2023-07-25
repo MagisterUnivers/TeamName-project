@@ -12,8 +12,6 @@ import {
 export const RecipePreparation = () => {
   const cocktails = useSelector(selectFavorite);
 
-  console.log(cocktails, 'state / selector');
-
   if (!cocktails) {
     return null;
   }
@@ -27,7 +25,7 @@ export const RecipePreparation = () => {
             src={
               cocktails.drinkThumb
                 ? cocktails.drinkThumb
-                : require('../../assets/img/testPNG.png')
+                : require('../../assets/img/RecipePlaceholder.png')
             }
             alt="ingredient thumb"
             width={335}

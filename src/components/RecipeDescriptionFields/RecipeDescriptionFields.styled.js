@@ -1,7 +1,7 @@
 import { Field, ErrorMessage } from 'formik';
 import Select from 'react-select';
+import { devices } from 'constants';
 import styled from 'styled-components';
-import { devices } from 'constants/breakpoints';
 
 export const StyledFormInsight = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ export const StyledFormInsight = styled.div`
     justify-content: center;
     gap: 32px;
   }
+
   @media ${devices.desktop} {
     gap: 40px;
     justify-content: start;
@@ -95,6 +96,7 @@ export const StyledFildWrapper = styled.div`
     gap: 40px;
     width: 352px;
   }
+
   @media ${devices.desktop} {
     width: 393px;
   }
@@ -122,10 +124,12 @@ export const StyledImgLabel = styled.label`
     width: 320px;
     height: 320px;
   }
+
   @media ${devices.desktop} {
     width: 400;
     height: 400;
   }
+
   &:hover,
   &:focus {
     -webkit-box-shadow: 0px 5px 10px 2px rgba(76, 115, 146, 0.2);
@@ -160,6 +164,7 @@ export const StyledWrapperSelect = styled.div`
     padding-bottom: 18px;
     height: 41px;
   }
+
   &:focus,
   &:active,
   &:hover,
