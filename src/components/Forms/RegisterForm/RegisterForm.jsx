@@ -3,10 +3,9 @@ import { useEffect } from 'react';
 import { registrationThunk } from 'redux/Auth/authOperations';
 import { useSearchParams } from 'react-router-dom';
 import { verifyThunk } from 'redux/Auth/authOperations';
-import { AuthNavigate } from 'components';
+import { AuthNavigate, RegisterSchema } from 'components';
 import { handleEyeClick } from 'redux/Auth/authSlice';
 import { selectIsClicked } from 'redux/selectors';
-import { RegisterSchema } from './ValidationSchema';
 import {
   StyledButton,
   StyledError,

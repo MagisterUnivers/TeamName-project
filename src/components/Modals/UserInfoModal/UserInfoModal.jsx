@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme, selectUserArray } from 'redux/selectors';
-import * as Yup from 'yup';
+import { UpdateUserSchema } from 'components';
+import { updateUserThunk } from 'redux/UserInfo/userOperations';
+import XIcon from './x.svg';
+import AddIcon from './add_photo.svg';
+import XIconBlack from '../../../assets/icons/close.svg';
+import {
+  StyledError,
+  StyledMessage,
+} from 'components/Forms/RegisterForm/RegisterForm.styled';
 import {
   ModalWrapper,
   CloseButton,
@@ -18,24 +26,16 @@ import {
   AddIconImg,
   StyledInputFile,
 } from './UserInfoModal.styled';
-import {
-  StyledError,
-  StyledMessage,
-} from 'components/Forms/RegisterForm/RegisterForm.styled';
-import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import XIcon from './x.svg';
-import XIconBlack from '../../../assets/icons/close.svg';
-
-import AddIcon from './add_photo.svg';
 const defaultAvatarURL = require('./user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const user = useSelector(selectUserArray);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true); //eslint-disable-line
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imgURL, setImageURL] = useState('');
+
   useEffect(() => {
     const handleOutsideClick = event => {
       if (!event.target.closest('.modal-content')) {
@@ -69,6 +69,7 @@ export const UserInfoModal = ({ onClose }) => {
       onClose();
     }
   };
+
   let avatar;
   if (imgURL) {
     avatar = imgURL;
@@ -77,6 +78,7 @@ export const UserInfoModal = ({ onClose }) => {
   } else {
     avatar = defaultAvatarURL;
   }
+
   return isOpen ? (
     <ModalWrapper>
       <ContentWrapper className="modal-content">
@@ -92,13 +94,7 @@ export const UserInfoModal = ({ onClose }) => {
             avatarURL: '',
             name: user.name || '',
           }}
-          validationSchema={Yup.object({
-            avatarURL: Yup.string(),
-            name: Yup.string().matches(
-              /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
-              'Name can only contain letters or numbers.'
-            ),
-          })}
+          validationSchema={UpdateUserSchema}
           onSubmit={handleOnSubmit}
         >
           {({ errors, touched, handleChange, setFieldTouched }) => (

@@ -48,7 +48,6 @@ export const ConfirmLogout = ({ id, onClose }) => {
           <LogOutButton onClick={onClose}>Cancel</LogOutButton>
         </ButtonWrapper>
       </ModalContent>
-      `
     </ModalWrapper>
   );
 };

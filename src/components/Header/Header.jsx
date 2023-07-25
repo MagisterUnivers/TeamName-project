@@ -1,5 +1,5 @@
 import { useMediaRules } from 'hooks/useMediaRules';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Navigation,
   Logo,
@@ -45,7 +45,12 @@ export const Header = () => {
           </HeaderContainer>
         </StyledHeaderWrp>
       </StyledHeader>
-      {!isDesktop && <BurgerMenu showBurgerMenu={showBurgerMenu} />}
+      {!isDesktop && (
+        <BurgerMenu
+          showBurgerMenu={showBurgerMenu}
+          toggleFn={toggleBurgerMenu}
+        />
+      )}
     </>
   );
 };

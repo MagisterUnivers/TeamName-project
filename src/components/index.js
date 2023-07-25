@@ -75,3 +75,7 @@ export * from './PopularRecipe/PopularRecipe';
 // Not Found (404)
 
 export * from './NotFound/NotFound';
+
+//  YUP Schema
+
+export * from './Forms/RegisterForm/ValidationSchema';

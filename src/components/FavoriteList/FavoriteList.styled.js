@@ -19,7 +19,7 @@ export const FavoriteListStyled = styled.ul`
 
 export const NotFavorioteText = styled.p`
   width: 205px;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.textColor};
   text-align: center;
   font-family: Manrope;
   font-size: 14px;
@@ -37,26 +37,25 @@ export const WrapDiv = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 14px;
+  @media ${devices.tablet} {
+    gap: 18px;
+  }
 `;
 
-const notFoundImg1x = require('../../assets/img/NotFound1x.jpg');
 const notFoundImg2x = require('../../assets/img/NotFound2x.jpg');
-const notFoundWhite1x = require('../../assets/img/notFoundWhite1x.png');
-const notFoundWhite2x = require('../../assets/img/notFoundWhite2x.png');
+const notFoundWhite2x = require('../../assets/img/hero-section/Mask-group.png');
 
 export const NotFoundImg = styled.div`
   width: 375px;
   height: 517px;
   background-image: ${props =>
     props.theme === 'dark'
-      ? props.ismobile
-        ? `url(${notFoundImg2x})`
-        : `url(${notFoundImg1x})`
-      : props.isMobile
-      ? `url(${notFoundWhite2x})`
-      : `url(${notFoundWhite1x})`};
+      ? `url(${notFoundImg2x})`
+      : `url(${notFoundWhite2x})`};
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   @media ${devices.tablet} {
     width: 465px;
   }

@@ -15,11 +15,11 @@ export const PreviewDrinks = ({ title, data = [] }) => {
         </Link>
         <Cardwrapper>
           <Swiper
+            loop={true} // infinite loop
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
             }}
-            rewind={true}
             modules={[Autoplay, Pagination, Navigation]}
             breakpoints={{
               320: {

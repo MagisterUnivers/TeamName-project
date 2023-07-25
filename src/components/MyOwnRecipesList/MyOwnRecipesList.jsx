@@ -18,24 +18,24 @@ export const MyOwnRecipesList = () => {
   useEffect(() => {
     // if (ownCocktails.length !== 0) return;
     dispatch(getAllOwnDrinksThunk({ page, limit }));
-  }, [page, limit]);
+  }, [page, limit, dispatch]);
 
   return (
     <Section>
-      <MyRecipesListStyled>
-        {ownCocktails.length !== 0 ? (
-          ownCocktails.map(ownCocktail => (
+      {ownCocktails.length !== 0 ? (
+        <MyRecipesListStyled>
+          {ownCocktails.map(ownCocktail => (
             <DrinkCard
               key={ownCocktail._id}
               page={'my'}
               cocktail={ownCocktail}
             />
-          ))
-        ) : (
-          // <p>Not found</p>
-          <NotFound message={"You haven't added any cocktail recipes yet"} />
-        )}
-      </MyRecipesListStyled>
+          ))}
+        </MyRecipesListStyled>
+      ) : (
+        // <p>Not found</p>
+        <NotFound message={"You haven't added any cocktail recipes yet"} />
+      )}
     </Section>
   );
 };
