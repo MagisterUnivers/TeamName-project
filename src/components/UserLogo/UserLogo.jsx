@@ -26,7 +26,10 @@ export const UserLogo = () => {
       </UserAvatarWrp>
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
       {(showUserLogoModal || editProfileShown) && (
-        <UserLogoModal setEditProfileShown={setEditProfileShown} />
+        <UserLogoModal
+          setEditProfileShown={setEditProfileShown}
+          setShowUserLogoModal={setShowUserLogoModal}
+        />
       )}
     </UserLogoWrp>
   );

@@ -2,7 +2,7 @@ import { Paginator, MainPageTitle, Container } from 'components';
 import { FavoriteList } from 'components/FavoriteList/FavoriteList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { PageWrapFavorite } from './FavoritePage.styled';
+import { BottomPadding, PageWrapFavorite } from './FavoritePage.styled';
 import { selectPage } from 'redux/selectors';
 import { useEffect } from 'react';
 import { useMediaRules } from 'hooks';
@@ -28,6 +28,7 @@ const FavoritePage = () => {
         <MainPageTitle title={'Favorites'} />
         <FavoriteList />
         <Paginator />
+        <BottomPadding />
       </Container>
     </PageWrapFavorite>
   );

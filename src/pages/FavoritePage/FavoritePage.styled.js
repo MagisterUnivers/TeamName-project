@@ -10,3 +10,7 @@ export const PageWrapFavorite = styled.div`
     padding-top: 158px;
   }
 `;
+
+export const BottomPadding = styled.div`
+  padding-bottom: 140px;
+`;

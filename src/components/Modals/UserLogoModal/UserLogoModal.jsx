@@ -11,13 +11,17 @@ import {
   ModalWrapper,
 } from './UserLogoModal.styled';
 
-export const UserLogoModal = ({ setEditProfileShown }) => {
+export const UserLogoModal = ({
+  setEditProfileShown,
+  setShowUserLogoModal,
+}) => {
   const theme = useSelector(selectTheme);
   const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false); //eslint-disable-line
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   const handleOpenUserInfo = () => {
     setIsChangeProfileOpen(false);
+    setShowUserLogoModal(false);
     setIsUserInfoOpen(true);
     setEditProfileShown(true);
   };
@@ -32,6 +36,7 @@ export const UserLogoModal = ({ setEditProfileShown }) => {
   };
   const handleModalClick = e => {
     if (e.target === e.currentTarget) {
+      setShowUserLogoModal(false);
       setIsChangeProfileOpen(false);
       setIsConfirmLogoutOpen(false);
       setIsUserInfoOpen(false);
