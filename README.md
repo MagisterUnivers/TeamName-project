@@ -33,7 +33,7 @@
 <br />
 <br />
 
-<iframe src="https://giphy.com/embed/WMGzAY3TQngeoW4Qj7" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/WMGzAY3TQngeoW4Qj7">via GIPHY</a></p>
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/313464f2-2dff-471a-ac35-197912cb8557)
 
 <br />
 <br />
