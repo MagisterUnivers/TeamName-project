@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
-import { useMediaRules } from '../../hooks/useMediaRules';
+import { useMediaRules } from 'hooks';
 import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
-// import { WrapperGeneralStyled } from './Paginator.styled';
 
 export const Paginator = () => {
   let page = useSelector(selectPage);

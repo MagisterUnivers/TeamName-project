@@ -1,7 +1,6 @@
-import { devices } from 'constants/breakpoints';
 import { NavLink } from 'react-router-dom';
+import { devices } from 'constants';
 import { styled } from 'styled-components';
-
 
 export const StyledNavLink = styled(NavLink)`
   display: inline-block;

@@ -13,14 +13,15 @@ export const ReusableButton = ({
     <StyledButton
       type={type}
       aria-label={ariaLabel}
-      $marginbottom={marginbottom}
-      $margintop={margintop}
+      marginbottom={marginbottom}
+      margintop={margintop}
       onClick={onClick}
     >
       {text}
     </StyledButton>
   );
 };
+
 export const StyledButton = styled.button`
   border-radius: 42px;
   padding: 14px 40px;

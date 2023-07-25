@@ -1,5 +1,6 @@
 import { Counter } from 'components';
 import { listUnits } from './ListUnits.constants';
+import { useTheme } from 'styled-components';
 import {
   FieldsInputWrp,
   FormWrapper,
@@ -14,7 +15,6 @@ import {
   CloseIconButton,
   StyledIngredientsList,
 } from './RecipeIngredientsFields.styled';
-import { useTheme } from 'styled-components';
 
 export const RecipeIngredientsFields = ({
   ingredientsList,
@@ -88,7 +88,6 @@ export const RecipeIngredientsFields = ({
                   onChange={e => {
                     handleOnChangeUnitQuantity(e, index);
                   }}
-                  // name={`unitQuauntity${index}`}
                   placeholder="0"
                 />
                 <IngredientUnit

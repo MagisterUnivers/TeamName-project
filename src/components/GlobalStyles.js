@@ -1,5 +1,5 @@
+import { devices } from 'constants';
 import { createGlobalStyle } from 'styled-components';
-import { devices } from 'constants/breakpoints';
 
 const GlobalStyles = createGlobalStyle`
  @import-normalize; // normalize (border-box)
@@ -137,6 +137,7 @@ button {
 input {
   font-family: inherit;
 }
+
 main {
   margin-top: 72px;
 
@@ -144,15 +145,19 @@ main {
     margin-top: 84px;
   }
 }
+
 .subscribe__validation {
+
   h5 {
 border-bottom: 1px solid ${props => props.theme.textColor} !important;  }
+
   ul {
     list-style: square;
     font-size: 13px;
     margin-left: 27px;
     color: ${props => props.theme.textColor};
   }
+  
   a:hover{
     transform: scale(1.1);
   }

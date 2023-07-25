@@ -5,7 +5,6 @@ import {
   logoutThunk,
   refreshThunk,
   registrationThunk,
-  updateUserThunk,
   verifyThunk,
 } from './authOperations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -30,12 +29,6 @@ const authSlice = createSlice({
       const openPassword = () => {
         const input = document.querySelector('#password');
         input.type = input.type === 'password' ? 'text' : 'password';
-        // input.addEventListener('keyup', () => {
-        //   if (input.type === 'password') {
-        //     const dummyText = Array(input.value.length).fill('*').join('');
-        //     input.innerHTML = dummyText;
-        //   }
-        // });
       };
       openPassword();
     },
@@ -52,7 +45,6 @@ const authSlice = createSlice({
     },
     [registrationThunk.rejected]: (state, { payload }) => {
       state.error = payload;
-      // state.loading = false;
       Loading.remove();
     },
     [loginThunk.pending]: (state, { payload }) => {
@@ -61,11 +53,9 @@ const authSlice = createSlice({
     },
     [loginThunk.rejected]: (state, { payload }) => {
       state.error = payload;
-      // state.loading = false;
       Loading.remove();
     },
     [loginThunk.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.user = payload?.user;
       state.accessToken = payload?.token;
 
@@ -80,8 +70,6 @@ const authSlice = createSlice({
     },
     [logoutThunk.fulfilled]: (state, { payload }) => {
       state.user = { name: '', email: '', avatarURL: '' };
-      // state.userInfo = { name: '', email: '', avatarURL: '' }; //
-      // state.userInfo.theme = 'dark'; //
       state.accessToken = '';
       state.online = false;
       state.loading = false;

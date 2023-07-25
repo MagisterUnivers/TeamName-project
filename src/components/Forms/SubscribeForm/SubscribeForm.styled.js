@@ -1,7 +1,7 @@
-import { StyledInput } from 'components/Forms/RegisterForm/RegisterForm.styled';
-import { devices } from 'constants/breakpoints';
 import { Form } from 'formik';
+import { devices } from 'constants';
 import { styled } from 'styled-components';
+import { StyledInput } from 'components/Forms/RegisterForm/RegisterForm.styled';
 
 export const StyledFormInsight = styled(Form)`
   display: flex;

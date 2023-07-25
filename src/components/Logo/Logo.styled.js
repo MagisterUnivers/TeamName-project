@@ -1,8 +1,7 @@
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as SiteLogo } from '../../assets/icons/logo.svg';
 import { styled } from 'styled-components';
-
 
 export const StyledLogoLink = styled(NavLink)`
   padding-top: 9px;
