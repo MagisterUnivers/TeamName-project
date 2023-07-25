@@ -1,11 +1,10 @@
-import { Paginator, MainPageTitle, Container } from 'components';
-import { FavoriteList } from 'components/FavoriteList/FavoriteList';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { BottomPadding, PageWrapFavorite } from './FavoritePage.styled';
-import { selectPage } from 'redux/selectors';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPage } from 'redux/selectors';
+import { Paginator, MainPageTitle, Container, FavoriteList } from 'components';
+import { getAllFavoriteDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
 import { useMediaRules } from 'hooks';
+import { BottomPadding, PageWrapFavorite } from './FavoritePage.styled';
 
 const FavoritePage = () => {
   const dispatch = useDispatch();
@@ -14,14 +13,13 @@ const FavoritePage = () => {
   const limit = isDesktop ? 9 : 8;
 
   useEffect(() => {
-    // if (ownCocktails.length !== 0) return;
     dispatch(getAllFavoriteDrinksThunk({ page, limit }));
   }, [page, limit, dispatch]);
 
-  // dispatch(getAllFavoriteDrinksThunk({ page, limit }));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <PageWrapFavorite>
       <Container>

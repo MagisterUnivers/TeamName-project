@@ -18,6 +18,7 @@ export * from './MyOwnRecipesList/MyOwnRecipesList';
 export * from './Paginator/Paginator';
 export * from './PreviewDrinks/PreviewDrinks';
 export * from './RecipeIngredientsFields/Counter/Counter';
+export * from './FavoriteList/FavoriteList';
 // export * from './Spinner/Spinner';
 
 // Recipe/id/:id
