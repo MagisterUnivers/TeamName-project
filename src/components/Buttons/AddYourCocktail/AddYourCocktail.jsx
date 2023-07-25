@@ -1,6 +1,5 @@
-import React from 'react';
-import { StyledAddButton } from './AddYourCocktail.styled';
 import { useNavigate } from 'react-router';
+import { StyledAddButton } from './AddYourCocktail.styled';
 
 export const AddYourCocktail = () => {
   const navigate = useNavigate();

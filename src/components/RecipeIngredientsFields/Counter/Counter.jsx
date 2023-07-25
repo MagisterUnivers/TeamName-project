@@ -7,8 +7,6 @@ export const Counter = ({
   handleDecIngredients,
   cocktailIngredientList,
 }) => {
-  // const [counter, setCounter] = useState(3);
-
   const StyledIconMinus = getStyledIcon(iconMinus);
   const StyledIconPlus = getStyledIcon(iconPlus);
 

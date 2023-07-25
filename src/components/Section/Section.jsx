@@ -1,5 +1,5 @@
+import { devices } from 'constants';
 import styled from 'styled-components';
-import { devices } from 'constants/breakpoints';
 
 export const Section = ({ SectionTitle }) => {
   return <StyledSection>{SectionTitle}</StyledSection>;

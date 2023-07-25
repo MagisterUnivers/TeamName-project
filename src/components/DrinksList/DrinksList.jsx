@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPage, selectSearch, selectSearchResults } from 'redux/selectors';
 import { searchAllDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { DrinkCard } from 'components';
-import { DrinkListStyled, Section } from './DrinkList.styled';
+import { DrinkCard, NotFound } from 'components';
 import { useNavigate } from 'react-router';
-import { NotFound } from '../NotFound/NotFound';
 import { useMediaRules } from 'hooks';
+import { DrinkListStyled, Section } from './DrinkList.styled';
 
 export const DrinksList = () => {
   const dispatch = useDispatch();
@@ -26,7 +25,8 @@ export const DrinksList = () => {
         search.chosenIngredient
       }&page=${page}`
     );
-  }, [dispatch, search, page, limit]);
+  }, [dispatch, search, page, limit]); //eslint-disable-line
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

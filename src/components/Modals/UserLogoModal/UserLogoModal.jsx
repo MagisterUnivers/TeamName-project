@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { ConfirmLogout, UserInfoModal } from 'components';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
 import pencilIcon from '../UserInfoModal/edit-2.svg';
 import pencilIconBlack from '../UserInfoModal/edit-black.svg';
-
 import {
   ChangeProfileButton,
   LogOutButton,
   ModalContent,
   ModalWrapper,
 } from './UserLogoModal.styled';
-import { useSelector } from 'react-redux';
-import { selectTheme } from 'redux/selectors';
+
 export const UserLogoModal = ({ setEditProfileShown }) => {
   const theme = useSelector(selectTheme);
   const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);

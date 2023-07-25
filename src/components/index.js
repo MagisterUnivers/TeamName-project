@@ -57,6 +57,7 @@ export * from './Forms/SubscribeForm/SubscribeForm';
 // Modals
 
 export * from './Modals/MotivationModal/MotivationModal';
+export * from './Modals/DeleteModal/DeleteModal';
 
 //  // UserInfoModal
 export * from './Modals/UserInfoModal/ConfirmLogout';

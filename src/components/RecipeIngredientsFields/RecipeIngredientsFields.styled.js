@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import Select from 'react-select';
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
+import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 
 export const FormWrapper = styled.div`
@@ -16,6 +16,7 @@ export const FormWrapper = styled.div`
     margin-left: 0;
     margin-right: 0;
   }
+
   @media ${devices.desktop} {
     width: 540px;
     margin-right: auto;
@@ -78,8 +79,6 @@ export const IngredientsItem = styled.li`
 
 export const SelectIngredientStyled = styled(Select)`
   & .react-select__control {
-    /* margin-right: 14px; */
-
     width: 200px;
     height: 50px;
     background: transparent;
@@ -96,8 +95,6 @@ export const SelectIngredientStyled = styled(Select)`
       width: 332px;
       height: 56px;
       padding: 10px 24px;
-
-      //font-size: 17px;
     }
 
     @media ${devices.desktop} {
@@ -107,7 +104,6 @@ export const SelectIngredientStyled = styled(Select)`
     &--is-focused,
     &--menu-is-open {
       outline: none;
-      //border: 1px solid transparent;
     }
 
     &:focus,
@@ -116,7 +112,6 @@ export const SelectIngredientStyled = styled(Select)`
     &::selection {
       outline: none;
       border-color: ${props => props.theme.hoverBorderColor};
-      //box-shadow: 0 0 0 1px transparent;
     }
   }
 
@@ -157,7 +152,6 @@ export const SelectIngredientStyled = styled(Select)`
     &::selection {
       outline: none;
       border-color: transparent;
-      //box-shadow: 0 0 0 1px transparent;
     }
   }
 
@@ -224,26 +218,13 @@ export const SelectIngredientStyled = styled(Select)`
   // =========================================
 
   // стилизует стрелочку выпадающего списка ================
-  /* & .react-select__indicators {
-    height: 20px;
-    padding: 0;
-
-    @media (min-width: 768px) {
-      height: 15px;
-    }
-  } */
-
   & .react-select__dropdown-indicator {
-    /* display: none; */
-
-    /* padding: 0; */
     color: ${props => props.theme.textColor};
     outline: none;
     &:focus,
     &:active,
     &:hover,
     &::selection {
-      /* padding: 0; */
       color: #4070cd;
       outline: none;
     }
@@ -264,9 +245,7 @@ export const UnitWrp = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
-  //gap: 5px;
 
-  //margin-right: 10px;
   padding: 16px 12px;
 
   width: 101px;
@@ -283,6 +262,7 @@ export const UnitWrp = styled.div`
     height: 56px;
     padding: 15px 20px;
   }
+
   &:hover,
   &:focus {
     border-color: ${props => props.theme.hoverBorderColor};
@@ -329,7 +309,6 @@ export const IngredientUnit = styled(Select)`
     &--is-focused,
     &--menu-is-open {
       outline: none;
-      //border: 1px solid transparent;
     }
 
     &:focus,
@@ -338,8 +317,8 @@ export const IngredientUnit = styled(Select)`
     &::selection {
       outline: none;
       border-color: transparent;
-      //box-shadow: 0 0 0 1px transparent;
     }
+
     @media (min-width: 768px) {
       height: 59px;
       font-size: 18px;
@@ -363,7 +342,6 @@ export const IngredientUnit = styled(Select)`
   }
 
   & .react-select__value-container {
-    //margin-right: 5px;
     padding: 0;
   }
 
@@ -378,7 +356,6 @@ export const IngredientUnit = styled(Select)`
     &::selection {
       outline: none;
       border-color: transparent;
-      //box-shadow: 0 0 0 1px transparent;
     }
   }
 
@@ -439,27 +416,16 @@ export const IngredientUnit = styled(Select)`
   // =========================================
 
   // стилизует стрелочку выпадающего списка ================
-  /* & .react-select__indicators {
-    height: 20px;
-    padding: 0;
-
-    @media (min-width: 768px) {
-      height: 15px;
-    }
-  } */
 
   & .react-select__dropdown-indicator {
     padding: 0 5px 0 0;
     color: ${props => props.theme.textColor};
     outline: none;
 
-    /* transition: color var(--transition-function); */
-
     &:focus,
     &:active,
     &:hover,
     &::selection {
-      /* padding: 0; */
       color: #4070cd;
       outline: none;
     }

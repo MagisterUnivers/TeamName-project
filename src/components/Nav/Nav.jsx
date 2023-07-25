@@ -1,10 +1,10 @@
-import { navRoutes } from 'constants/navRoutes';
-import { StyledListItem, StyledNavButton, StyledNavLink } from './Nav.styled';
 import { useLocation } from 'react-router';
+import { navRoutes } from 'constants';
+import { StyledListItem, StyledNavButton, StyledNavLink } from './Nav.styled';
 
 export const Nav = () => {
   const location = useLocation();
-  // console.log(location);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

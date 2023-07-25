@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { devices } from 'constants';
+import styled from 'styled-components';
 import { StyledButton } from 'components/Buttons/LogoutButton/LogoutBtn.styled';
 
 export const ModalWrapper = styled.div`
@@ -8,7 +8,7 @@ export const ModalWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.secondBgrColor};
-  
+
   width: 335px;
   height: 150px;
   border-radius: 16px;
@@ -49,6 +49,6 @@ export const StyledDelButton = styled(StyledButton)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #434D67;
+  background-color: #434d67;
   outline: none;
 `;

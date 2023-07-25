@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { devices } from '../../constants/breakpoints';
+import styled from 'styled-components';
 
 export const FavoriteListStyled = styled.ul`
   display: grid;

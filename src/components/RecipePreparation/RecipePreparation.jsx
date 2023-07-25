@@ -12,8 +12,6 @@ import {
 export const RecipePreparation = () => {
   const cocktails = useSelector(selectFavorite);
 
-  console.log(cocktails, 'state / selector');
-
   if (!cocktails) {
     return null;
   }
