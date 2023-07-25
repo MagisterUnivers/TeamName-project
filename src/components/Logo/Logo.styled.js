@@ -19,10 +19,11 @@ export const StyledLogoLink = styled(NavLink)`
   }
 `;
 
-export const StyledTitle = styled.h3`
+export const StyledTitle = styled.p`
   font-size: 16px;
   font-weight: 600;
   line-height: calc(18 / 16);
+
   @media ${devices.tablet} {
     font-size: 18px;
     line-height: calc(22 / 18);
