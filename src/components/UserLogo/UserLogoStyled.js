@@ -1,3 +1,4 @@
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const UserLogoWrp = styled.div`
@@ -6,7 +7,7 @@ export const UserLogoWrp = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     gap: 14px;
   }
 `;
@@ -19,7 +20,7 @@ export const UserAvatarWrp = styled.div`
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     width: 44px;
     height: 44px;
   }
@@ -39,7 +40,7 @@ export const NameStyled = styled.p`
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     font-size: 16px;
     line-height: 1, 5;
   }
