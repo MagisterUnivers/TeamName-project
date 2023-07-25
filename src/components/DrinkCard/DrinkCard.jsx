@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SeeButton, DeleteButton } from 'components';
-import drink from './defaultimg.jpg';
+import drink from '../../assets/img/DrinkPlaceholder.jpg';
 import {
   AboutStyled,
   ButtonsWrapper,
