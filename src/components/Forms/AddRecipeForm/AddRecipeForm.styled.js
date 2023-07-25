@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { Form } from 'formik';
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
+import styled from 'styled-components';
 
 export const StyledForm = styled(Form)`
   margin-bottom: 80px;

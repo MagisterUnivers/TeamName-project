@@ -1,4 +1,4 @@
-import { useMediaRules } from 'hooks/useMediaRules';
+import { useMediaRules, useBodyScroll } from 'hooks';
 import { useState } from 'react';
 import {
   Navigation,
@@ -14,14 +14,10 @@ import {
   StyledHeaderWrp,
   UserLogoWrp,
 } from './HeaderStyled';
-import useBodyScroll from 'hooks/useBodyScroll';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
-
   const { isDesktop, isMobile } = useMediaRules();
-  // console.log(isDesktop);
-
   const toggleBurgerMenu = () => setShowBurgerMenu(!showBurgerMenu);
 
   useBodyScroll(showBurgerMenu);

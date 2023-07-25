@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SeeButton, DeleteButton } from 'components';
-import drink from './defaultimg.jpg';
+import drink from '../../assets/img/DrinkPlaceholder.jpg';
 import {
   AboutStyled,
   ButtonsWrapper,
@@ -17,7 +17,6 @@ import {
 export const DrinkCard = ({ cocktail, page }) => {
   return (
     <Card>
-      {/* {console.log(cocktail)} */}
       <Link to={`/main/recipe/${cocktail._id}`}>
         <OneMoreWrapper>
           <ImageWrapper>

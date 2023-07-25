@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useBodyScroll = state => {
+export const useBodyScroll = state => {
   useEffect(() => {
     document.body.style.overflow = state ? 'hidden' : 'auto';
 
@@ -10,5 +10,3 @@ const useBodyScroll = state => {
     };
   }, [state]);
 };
-
-export default useBodyScroll;

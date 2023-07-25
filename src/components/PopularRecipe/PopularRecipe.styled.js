@@ -1,14 +1,11 @@
-import { devices } from 'constants/breakpoints';
 import { NavLink } from 'react-router-dom';
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   display: flex;
   gap: 28px;
   flex-direction: column;
-
-  @media ${devices.tablet} {
-  }
 
   @media ${devices.desktop} {
     width: 313px;
@@ -20,12 +17,6 @@ export const StyledTextWrapper = styled.div`
   flex-direction: column;
   gap: 8px;
   overflow: hidden;
-
-  @media ${devices.tablet} {
-  }
-
-  @media ${devices.desktop} {
-  }
 `;
 
 export const StyledTitle = styled.h2`
@@ -37,9 +28,6 @@ export const StyledTitle = styled.h2`
   @media ${devices.tablet} {
     font-size: 24px;
     line-height: calc(32 / 24);
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 
@@ -67,10 +55,6 @@ export const StyledListElement = styled.li`
   @media ${devices.tablet} {
     width: 335px;
   }
-
-  /* @media ${devices.desktop} {
-    width: auto;
-  } */
 
   &:hover {
     transform: scale(1.1);
@@ -107,19 +91,11 @@ export const StyledSubtitle = styled.p`
     line-height: ${props =>
       props.text === 'true' ? 'calc(20/14)' : 'calc(22 / 16)'};
   }
-
-  @media ${devices.desktop} {
-  }
 `;
 
 export const StyledLink = styled(NavLink)`
-  /*  */
   display: flex;
   gap: 14px;
-
-  @media ${devices.tablet} {
-    /* width: calc((100% - 28px) / 2); */
-  }
 
   @media ${devices.desktop} {
     width: auto;

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import Select from 'react-select';
 import { devices } from 'constants/breakpoints';
+import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 
 export const SearchFormStyled = styled.div`

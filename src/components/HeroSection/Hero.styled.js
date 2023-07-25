@@ -1,18 +1,17 @@
-import styled from 'styled-components';
-import heroimgDark from './heroimg.jpg';
+import heroimgDark from '../../assets/img/hero-section/heroimg.jpg';
 import heroimgLight from '../../assets/img/hero-section/Mask-group.png';
-
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
+import styled from 'styled-components';
 
 export const Hero = styled.section`
   position: relative;
   background-image: ${props =>
-    props.currentTheme === 'dark'
+    props.currenttheme === 'dark'
       ? `url(${heroimgDark})`
       : `url(${heroimgLight})`};
 
   background-position: top 0px right
-    ${props => (props.currentTheme === 'dark' ? '-320px' : '-560px')};
+    ${props => (props.currenttheme === 'dark' ? '-320px' : '-560px')};
 
   background-repeat: no-repeat;
   background-size: auto;
@@ -20,13 +19,13 @@ export const Hero = styled.section`
 
   @media ${devices.tablet} {
     background-position: top 0px right
-      ${props => (props.currentTheme === 'dark' ? '-230px' : '-350px')};
+      ${props => (props.currenttheme === 'dark' ? '-230px' : '-350px')};
     background-size: contain;
   }
 
   @media ${devices.desktop} {
     background-position: top 0px right
-      ${props => (props.currentTheme === 'dark' ? '0px' : '-180px')};
+      ${props => (props.currenttheme === 'dark' ? '0px' : '-180px')};
     background-size: contain;
   }
 `;
@@ -54,7 +53,6 @@ export const Herodescription = styled.div`
 
 export const Herobackground = styled.div`
   position: absolute;
-  /* background-color: #fff; */
   width: 45%;
   height: 25%;
   top: 60%;

@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
-
-import { DrinkCard } from 'components/DrinkCard/DrinkCard';
+import { DrinkCard } from 'components';
 import { selectFavorite, selectTheme } from 'redux/selectors';
 import {
   FavoriteListStyled,

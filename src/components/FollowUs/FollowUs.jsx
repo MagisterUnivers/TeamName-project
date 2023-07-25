@@ -1,9 +1,12 @@
-import React from 'react';
 import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/instagram.svg';
 import { ReactComponent as YoutubeIcon } from '../../assets/icons/youtube.svg';
-
-import { StyledLink, StyledList, StyledTitle, getStyledIcon } from './FollowUs.styled';
+import {
+  StyledLink,
+  StyledList,
+  StyledTitle,
+  getStyledIcon,
+} from './FollowUs.styled';
 
 const StyledFacebookIcon = getStyledIcon(FacebookIcon);
 const StyledInstagramIcon = getStyledIcon(InstagramIcon);
@@ -75,4 +78,3 @@ export const FollowUs = ({ title }) => {
     </StyledList>
   );
 };
-

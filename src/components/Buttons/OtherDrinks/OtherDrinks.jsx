@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledOtherButton, StyledOtherWrapper } from './OtherDrinks.styled';
 
 export const OtherDrinksButton = () => {

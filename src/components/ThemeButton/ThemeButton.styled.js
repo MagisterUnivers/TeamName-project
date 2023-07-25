@@ -1,8 +1,7 @@
-import { styled } from "styled-components";
 import { ReactComponent as SunIcon } from '../../assets/icons/sun.svg';
 import { ReactComponent as MoonIcon } from '../../assets/icons/moon.svg';
-
-import { devices } from "constants/breakpoints";
+import { devices } from 'constants';
+import { styled } from 'styled-components';
 
 export const StyledSunIcon = styled(SunIcon)`
   width: 24px;
@@ -28,7 +27,6 @@ export const StyledMoonIcon = styled(MoonIcon)`
   }
 `;
 
-
 export const StyledButton = styled.button`
   padding-top: 8px;
   padding-bottom: 8px;
@@ -53,6 +51,7 @@ export const StyledButton = styled.button`
       }
     }
   }
+
   &:hover ${StyledMoonIcon} {
     animation: rotate 3s ease-in-out 1;
 
@@ -74,4 +73,3 @@ export const StyledButton = styled.button`
     padding-bottom: 4px;
   }
 `;
-

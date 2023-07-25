@@ -1,12 +1,13 @@
-import styled from 'styled-components';
 import { Field } from 'formik';
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
+import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
-margin-bottom: 20px`;
+  margin-bottom: 20px;
+`;
 
 export const StyledTitle = styled.h2`
-color: ${props => props.theme.textColor};
+  color: ${props => props.theme.textColor};
   font-size: 28px;
   font-weight: 600;
   line-height: calc(32 / 28);

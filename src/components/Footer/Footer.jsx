@@ -1,11 +1,5 @@
-import {
-  Logo,
-  Navigation,
-  SubscribeForm,
-  FollowUs,
-  Container,
-  Nav,
-} from 'components';
+import { Logo, SubscribeForm, FollowUs, Container, Nav } from 'components';
+import { useMediaRules } from 'hooks';
 import {
   StyledBottomWrapper,
   StyledContainer,
@@ -13,7 +7,6 @@ import {
   StyledFooter,
   StyledWrapper,
 } from './Footer.styled';
-import { useMediaRules } from 'hooks';
 
 export const Footer = () => {
   const { isMobile, isTablet, isDesktop } = useMediaRules();

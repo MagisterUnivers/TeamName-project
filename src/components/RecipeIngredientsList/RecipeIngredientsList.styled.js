@@ -1,4 +1,4 @@
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const StyledCardWrapper = styled.li`
@@ -10,9 +10,6 @@ export const StyledCardWrapper = styled.li`
   @media ${devices.tablet} {
     width: 220px;
     gap: 14px;
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 
@@ -29,15 +26,9 @@ export const StyledListWrapper = styled.ul`
   @media ${devices.tablet} {
     gap: 22px;
   }
-
-  @media ${devices.desktop} {
-  }
 `;
 
-export const StyledImage = styled.img`
-  /* min-width: 157px;
-  height: 157px; */
-`;
+export const StyledImage = styled.img``;
 
 export const StyledGlassServi = styled.p`
   color: ${props => props.theme.sectionTagTitle};
@@ -49,9 +40,6 @@ export const StyledGlassServi = styled.p`
 
   @media ${devices.tablet} {
     margin-bottom: 24px;
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 
@@ -67,8 +55,5 @@ export const StyledIngredientSubtitle = styled.p`
   @media ${devices.tablet} {
     font-size: 18px;
     line-height: calc(24 / 18);
-  }
-
-  @media ${devices.desktop} {
   }
 `;

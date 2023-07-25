@@ -1,4 +1,4 @@
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`

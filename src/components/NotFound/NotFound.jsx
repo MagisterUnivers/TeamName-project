@@ -1,11 +1,11 @@
-import { Wrapper, Image, Message } from './NotFound.styled';
-import cocktailTabDesc1 from './images/cocktailTabDesc1.png';
-import cocktailTabDesc2 from './images/cocktailTabDesc2.png';
-import cocktailMobile1 from './images/cocktailMobile1.png';
-import cocktailMobile2 from './images/cocktailMobile2.png';
-import cocktailTabDesc1Light from '../../assets/img/hero-section/Mask-group.png';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
+import cocktailTabDesc1 from '../../assets/img/not-found/cocktailTabDesc1.png';
+import cocktailTabDesc2 from '../../assets/img/not-found/cocktailTabDesc2.png';
+import cocktailMobile1 from '../../assets/img/not-found/cocktailMobile1.png';
+import cocktailMobile2 from '../../assets/img/not-found/cocktailMobile2.png';
+import cocktailTabDesc1Light from '../../assets/img/hero-section/Mask-group.png';
+import { Wrapper, Image, Message } from './NotFound.styled';
 
 export const NotFound = ({ message }) => {
   const theme = useSelector(selectTheme);

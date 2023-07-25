@@ -1,9 +1,7 @@
-import { devices } from 'constants/breakpoints';
+import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const StyledTitle = styled.h2`
-  /* margin-bottom: 60px; */
-
   color: ${props => props.theme.textColor};
   font-size: 28px;
   font-weight: 600;
@@ -26,9 +24,6 @@ export const StyledContentWrapper = styled.div`
   gap: 40px;
   flex-direction: column-reverse;
 
-  @media ${devices.tablet} {
-  }
-
   @media ${devices.desktop} {
     flex-direction: row;
     gap: 60px;
@@ -49,9 +44,6 @@ export const StyledAboutSubtitle = styled.p`
   @media ${devices.tablet} {
     font-size: 16px;
     line-height: calc(22 / 16);
-  }
-
-  @media ${devices.desktop} {
   }
 `;
 

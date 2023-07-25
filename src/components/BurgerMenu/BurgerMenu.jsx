@@ -1,6 +1,6 @@
-import { NameStyled } from 'components/UserLogo/UserLogoStyled';
 import { Navigation, ThemeButton } from 'components';
-import { useMediaRules } from 'hooks/useMediaRules';
+import { useMediaRules } from 'hooks';
+import { NameStyled } from 'components/UserLogo/UserLogoStyled';
 import { BurgerMenuContainer } from './BurgerMenu.styled';
 
 export const BurgerMenu = ({ showBurgerMenu, toggleFn }) => {

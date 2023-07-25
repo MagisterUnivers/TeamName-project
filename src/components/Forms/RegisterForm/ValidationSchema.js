@@ -43,3 +43,9 @@ export const UpdateUserSchema = Yup.object({
       'Name can only contain letters or numbers.'
     ),
 });
+
+export const SubscribeSchema = Yup.object({
+  email: Yup.string()
+    .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
+    .required('Required'),
+});

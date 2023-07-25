@@ -21,6 +21,7 @@ export const ReusableButton = ({
     </StyledButton>
   );
 };
+
 export const StyledButton = styled.button`
   border-radius: 42px;
   padding: 14px 40px;

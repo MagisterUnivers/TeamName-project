@@ -28,16 +28,12 @@ const userInfoSlice = createSlice({
       Loading.hourglass('We are validating your data...');
     },
     [updateThemeThunk.fulfilled]: (state, { payload }) => {
-      // crerate algorithm for toggleTheme
-      // create less fetch for theme
-
       state.theme = payload.theme;
       state.loading = false;
       Loading.remove();
     },
     [updateThemeThunk.rejected]: (state, { payload }) => {
       state.error = payload;
-      // state.loading = false;
       Loading.remove();
     },
     [updateUserThunk.pending]: (state, { payload }) => {
@@ -46,7 +42,7 @@ const userInfoSlice = createSlice({
     },
 
     [updateUserThunk.fulfilled]: (state, { payload }) => {
-         state.user = payload;
+      state.user = payload;
       state.loading = false;
       Loading.remove();
     },
@@ -61,17 +57,14 @@ const userInfoSlice = createSlice({
     },
 
     [getCurrentUserThunk.fulfilled]: (state, { payload }) => {
-      console.log(payload, 'HELLOOOOOOOOOOOOO');
       state.user = {
         name: payload.name,
         email: payload.email,
         avatarURL: payload.avatarURL,
         id: payload._id,
       };
-
       state.firstRender = false;
       state.theme = payload.theme;
-
       state.loading = false;
       Loading.remove();
     },

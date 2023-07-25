@@ -1,5 +1,4 @@
-// import * as Yup from 'yup';
-
+import { FiPlus } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
 import {
   StyledFormInsight,
@@ -14,7 +13,6 @@ import {
   StyledWrapperSelect,
   StyledField,
 } from './RecipeDescriptionFields.styled';
-import { FiPlus } from 'react-icons/fi';
 
 export const RecipeDescriptionFields = ({
   dataField,
@@ -138,10 +136,3 @@ export const RecipeDescriptionFields = ({
     </>
   );
 };
-
-// validationSchema={Yup.object({
-//   itemTitleRecipe: Yup.string().required('Required'),
-//   aboutRecipe: Yup.string().required('Required'),
-//   category: Yup.mixed().oneOf(lists.categoryList),
-//   glass: Yup.mixed().oneOf(lists.glassList),
-// })}
