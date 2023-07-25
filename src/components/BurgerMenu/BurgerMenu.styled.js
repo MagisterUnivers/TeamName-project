@@ -10,7 +10,7 @@ export const BurgerMenuContainer = styled.div`
   justify-content: center;
   align-items: center;
   transform: ${props =>
-    props.isShown ? 'translateY(0px)' : 'translateY(-100%)'};
+    props.showburgermenu === 'true' ? 'translateY(0px)' : 'translateY(-100%)'};
   transition: transform 1.5s;
 
   .themeWrp {

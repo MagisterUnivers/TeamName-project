@@ -6,7 +6,7 @@ import { BurgerMenuContainer } from './BurgerMenu.styled';
 export const BurgerMenu = ({ showBurgerMenu, toggleFn }) => {
   const { isMobile } = useMediaRules();
   return (
-    <BurgerMenuContainer isShown={showBurgerMenu}>
+    <BurgerMenuContainer showburgermenu={showBurgerMenu.toString()}>
       <Navigation onClick={toggleFn} />
       {isMobile && (
         <div className="themeWrp">
