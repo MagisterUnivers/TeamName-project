@@ -8,13 +8,13 @@ import {
   BurgerMenuButton,
   ThemeButton,
 } from 'components';
+import useBodyScroll from 'hooks/useBodyScroll';
 import {
   HeaderContainer,
   StyledHeader,
   StyledHeaderWrp,
   UserLogoWrp,
 } from './HeaderStyled';
-import useBodyScroll from 'hooks/useBodyScroll';
 
 export const Header = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
