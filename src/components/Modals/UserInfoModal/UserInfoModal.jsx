@@ -73,8 +73,8 @@ export const UserInfoModal = ({ onClose }) => {
   let avatar;
   if (imgURL) {
     avatar = imgURL;
-  } else if (user.avatarUrl) {
-    avatar = user.avatarUrl;
+  } else if (user.avatarURL) {
+    avatar = user.avatarURL;
   } else {
     avatar = defaultAvatarURL;
   }
