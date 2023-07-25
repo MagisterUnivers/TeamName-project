@@ -32,7 +32,9 @@
 <h2>Project code example:</h2>
 <br />
 <br />
+
 ![test](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/d36ee4db-48ac-413e-8eb2-cfad4c728826)
+
 <br />
 <br />
 <h2>Project Structure</h2>
