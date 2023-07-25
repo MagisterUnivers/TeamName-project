@@ -34,12 +34,19 @@
 <br />
 
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/313464f2-2dff-471a-ac35-197912cb8557)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/5ef2f1b4-8023-4589-b44c-cc6f86cc5da9)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/4350b71b-c92b-4e91-9262-97da35576b79)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/9d3966d6-832e-4988-a64c-3acab7af5698)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a0854b79-1a77-41a0-8c57-38c32bf507fb)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a506b902-5228-4a55-9809-06339155c178)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/78816220-8381-4c42-8ee2-6815d10096a4)
+
 ![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/73dfb259-15e1-49c1-a044-358d91d73c76)
 
 <br />
