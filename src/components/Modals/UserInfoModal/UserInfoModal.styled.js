@@ -26,11 +26,13 @@ export const ContentWrapper = styled.div`
   height: 345px;
   margin: 0;
   padding: 0;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     width: 500px;
     height: 426px;
   }
 `;
+
 export const CloseButton = styled.button`
   margin-top: 14px;
   margin-left: 297px;
@@ -41,7 +43,8 @@ export const CloseButton = styled.button`
   font-size: 1.5rem;
   width: 24px;
   height: 24px;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     width: 32px;
     height: 32px;
     margin-top: 18px;
@@ -55,7 +58,8 @@ export const StyledFormInsight = styled(Form)`
   max-width: 285px;
   height: auto;
   margin: 0px 25px 50px 25px;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     max-width: 400px;
     margin: 0px 50px 75px 50px;
   }
@@ -68,11 +72,13 @@ export const UserAvatarWrapper = styled.div`
   align-items: center;
   width: 80px;
   margin: 0 auto;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     width: 100px;
     margin: 0 auto;
   }
 `;
+
 export const AvatarFrame = styled.img`
   position: absolute;
   z-index: 1;
@@ -82,11 +88,13 @@ export const AvatarFrame = styled.img`
   border-radius: 50%;
   cursor: pointer;
   background-image: url({defaultAvatarURL});
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     width: 100px;
     height: 100px;
   }
 `;
+
 export const StyledInputFile = styled.input`
   opacity: 0;
   height: 0;
@@ -96,6 +104,7 @@ export const StyledInputFile = styled.input`
   padding: 0;
   margin: 0;
 `;
+
 export const AddIconImg = styled.img`
   position: absolute;
   z-index: 3;
@@ -105,7 +114,8 @@ export const AddIconImg = styled.img`
   left: 35%;
   border-radius: 50%;
   cursor: pointer;
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     width: 32px;
     height: 32px;
     top: 83px;
@@ -115,25 +125,29 @@ export const StyledInputWrap = styled.div`
   width: 100%;
   position: relative;
 
-  @media screen and (min-width: 768px) {
+  @media ${devices.tablet} {
     max-width: 400px;
   }
 `;
+
 export const StyledIconError = styled(RiErrorWarningLine)`
   position: absolute;
   right: 24px;
   top: 70%;
   transform: translateY(-50%);
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     top: 75%;
   }
 `;
+
 export const StyledIconChecked = styled(IoIosCheckmarkCircleOutline)`
   position: absolute;
   right: 24px;
   top: 70%;
   transform: translateY(-50%);
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     top: 75%;
   }
 `;
@@ -152,7 +166,8 @@ export const StyledInput = styled(Field)`
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     margin-top: 136px;
     height: 56px;
     padding: 14px 24px;
@@ -160,6 +175,7 @@ export const StyledInput = styled(Field)`
     font-size: 17px;
     line-height: calc(18 / 17);
   }
+
   &:focus,
   &:hover {
     outline: none;
@@ -167,16 +183,19 @@ export const StyledInput = styled(Field)`
     border-color: ${props => props.theme.secondBorderColor};
     background-color: transparent;
   }
+
   &.valid-border {
     border-color: green;
     outline: none;
     background-color: transparent;
   }
+
   &.invalid-border {
     border-color: red;
     outline: none;
     background-color: transparent;
   }
+
   &::after {
     content: '';
     display: inline-block;
@@ -207,11 +226,13 @@ export const SaveChangeButton = styled.button`
   font-weight: 600;
   line-height: 1.29;
   transition: 0.5s ease;
+
   &:hover {
     background-color: ${props => props.theme.bgrColor};
     color: ${props => props.theme.textColor};
   }
-  @media screen and (min-width: 768px) {
+
+  @media ${devices.tablet} {
     margin-top: 25px;
     padding: 18px 143px;
     font-size: 16px;

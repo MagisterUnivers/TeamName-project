@@ -37,7 +37,8 @@ export const UserInfoModal = ({ onClose }) => {
   useEffect(() => {
     const handleOutsideClick = event => {
       if (!event.target.closest('.modal-content')) {
-        onClose();
+        onClose(); // first time close (if modal in update user form)
+        onClose(); // second time close if user is on logout + edit selection
       }
     };
     window.addEventListener('mousedown', handleOutsideClick);
@@ -81,7 +82,7 @@ export const UserInfoModal = ({ onClose }) => {
     <ModalWrapper>
       <ContentWrapper className="modal-content">
         <CloseButton onClick={onClose} tabIndex={1} className="close-button">
-          <StyledUpdatedCloseButton />
+          <StyledUpdatedCloseButton width={24} height={24} />
         </CloseButton>
         <StyledForm
           initialValues={{

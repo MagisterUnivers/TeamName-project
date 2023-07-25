@@ -36,12 +36,12 @@ export const NameStyled = styled.p`
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1, 28;
+  line-height: 1.28;
 
   cursor: pointer;
 
   @media ${devices.tablet} {
     font-size: 16px;
-    line-height: 1, 5;
+    line-height: 1.5;
   }
 `;
