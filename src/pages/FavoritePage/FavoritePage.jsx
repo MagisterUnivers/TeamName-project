@@ -16,7 +16,7 @@ const FavoritePage = () => {
   useEffect(() => {
     // if (ownCocktails.length !== 0) return;
     dispatch(getAllFavoriteDrinksThunk({ page, limit }));
-  }, [page, limit]);
+  }, [page, limit, dispatch]);
 
   // dispatch(getAllFavoriteDrinksThunk({ page, limit }));
   useEffect(() => {
