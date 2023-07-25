@@ -29,9 +29,8 @@ export const StyledTextWrapper = styled.div`
 `;
 
 export const StyledTitle = styled.h2`
-  color: #f3f3f3;
+  color: ${props => props.theme.textColor};
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: calc(24 / 18);
 
@@ -63,18 +62,24 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListElement = styled.li`
-  /* display: flex;
-  gap: 14px;
-  align-items: center; */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   @media ${devices.tablet} {
-    /* width: calc((100% - 28px) / 2); */
     width: 335px;
   }
 
   /* @media ${devices.desktop} {
     width: auto;
   } */
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: ${props =>
+      props.theme === 'dark'
+        ? '0 4px 10px rgba(0, 0, 0, 0.2)'
+        : '0 4px 10px rgba(128, 128, 128, 0.2)'};
+  }
 `;
 
 export const StyledImage = styled.img`
@@ -89,14 +94,18 @@ export const StyledSubtitle = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  color: ${props => (props.text ? 'rgba(243, 243, 243, 0.50)' : '#f3f3f3')};
-  font-size: ${props => (props.text ? '14px' : '16px')};
-  font-style: normal;
-  font-weight: ${props => (props.text ? '400' : '500')};
-  line-height: ${props => (props.text ? 'calc(18/14)' : 'calc(22 / 16)')};
+  color: ${props =>
+    props.text === 'true'
+      ? props.theme.secondaryTextColor
+      : props.theme.textColor};
+  font-size: ${props => (props.text === 'true' ? '14px' : '16px')};
+  font-weight: ${props => (props.text === 'true' ? '400' : '500')};
+  line-height: ${props =>
+    props.text === 'true' ? 'calc(18/14)' : 'calc(22 / 16)'};
 
   @media ${devices.tablet} {
-    line-height: ${props => (props.text ? 'calc(20/14)' : 'calc(22 / 16)')};
+    line-height: ${props =>
+      props.text === 'true' ? 'calc(20/14)' : 'calc(22 / 16)'};
   }
 
   @media ${devices.desktop} {
@@ -107,7 +116,6 @@ export const StyledLink = styled(NavLink)`
   /*  */
   display: flex;
   gap: 14px;
-  /* align-items: center; */
 
   @media ${devices.tablet} {
     /* width: calc((100% - 28px) / 2); */

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectPopular } from 'redux/selectors';
+import { selectPopular, selectTheme } from 'redux/selectors';
 import {
   StyledImage,
   StyledLink,
@@ -13,7 +13,7 @@ import {
 
 export const PopularRecipe = () => {
   const popularData = useSelector(selectPopular);
-  // console.log(popularData);
+  const theme = useSelector(selectTheme);
 
   return (
     <>
@@ -21,11 +21,9 @@ export const PopularRecipe = () => {
         <StyledTitle>Popular Recipe</StyledTitle>
         <StyledList>
           {popularData?.map(i => {
-            // console.log(i.desc);
             return (
-              <StyledListElement key={i._id}>
+              <StyledListElement key={i._id} theme={theme}>
                 <StyledLink to={`/main/recipe/${i._id}`}>
-                  {/* <div> */}
                   <StyledImage
                     src={
                       i.drinkThumb
@@ -36,10 +34,9 @@ export const PopularRecipe = () => {
                     width={90}
                     height={90}
                   />
-                  {/* </div> */}
                   <StyledTextWrapper>
-                    <StyledSubtitle text={false}>{i.drink}</StyledSubtitle>
-                    <StyledSubtitle text={true}>
+                    <StyledSubtitle text="false">{i.drink}</StyledSubtitle>
+                    <StyledSubtitle text="true">
                       {i.about
                         ? i.about
                         : 'The  spring punch is a highball cocktail of vodka and liqueur, per IBA specified ingredients. The International Bartenders Association lists the beverage in its New Era Drinks category.'}
