@@ -1,6 +1,6 @@
 ![0_0](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/6e3e3c11-a91d-4de3-bb26-995e790e28c7)
 
-<h1>TechTitans-React/Node-DrinkMaster</h1>
+<h1>TechTitans-React/Node-Drink Master</h1>
 <br />
 <br />
 <h2>Project Description</h2>
@@ -17,8 +17,8 @@
 <h2>Project Structure</h2>
 <br />
 <br />
+<h3>The project structure is organized as follows:</h3>
 <ul>
-  The project structure is organized as follows:
   <li>
     Components/ # Contains reusable components used throughout the application
   </li>
@@ -31,8 +31,8 @@
 <h2>Getting Started</h2>
 <br />
 <br />
+<h3>To get started with the project, follow these steps:</h3>
 <ul>
-  To get started with the project, follow these steps:
   <li>Clone the repository</li>
   <li>Git Bash</li>
   <li>Copy the code</li>
@@ -46,8 +46,6 @@
 <br />
 <br />
 <h3>Navigate to the project directory:</h3>
-<br />
-<br />
 <ul>
   <li>Git bash</li>
   <li>Copy the code</li>
@@ -75,7 +73,7 @@
 <h2>Available Scripts</h2>
 <br />
 <br />
-<p>In the project directory, you can run the following scripts:</p>
+<h3>In the project directory, you can run the following scripts:</h3>
 <ul>
   <li>
     npm run start: Starts the development server on
@@ -89,7 +87,9 @@
 <h2>Contributing</h2>
 <br />
 <br />
-<p>If you`d like to contribute to this project, you can follow these steps:</p>
+<h3>
+  If you`d like to contribute to this project, you can follow these steps:
+</h3>
 <ul>
   <li>For the repository on GitHub</li>
   <li>Clone your forked repository to your local machine</li>
@@ -103,7 +103,7 @@
 <h2>License</h2>
 <br />
 <br />
-<p>This project is licensed under the MIT License</p>
+<h4>This project is licensed under the MIT License</h4>
 <br />
 <br />
 <h2>Acknowledgments</h2>
