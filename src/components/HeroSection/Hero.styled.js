@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import heroimgDark from './heroimg.jpg';
+import heroimgDark from '../../assets/img/hero-section/heroimg.jpg';
 import heroimgLight from '../../assets/img/hero-section/Mask-group.png';
 
 import { devices } from 'constants/breakpoints';
