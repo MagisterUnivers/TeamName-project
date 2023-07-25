@@ -1,4 +1,4 @@
-import { useMediaRules } from 'hooks/useMediaRules';
+import { useMediaRules, useBodyScroll } from 'hooks';
 import { useState } from 'react';
 import {
   Navigation,
@@ -8,7 +8,6 @@ import {
   BurgerMenuButton,
   ThemeButton,
 } from 'components';
-import useBodyScroll from 'hooks/useBodyScroll';
 import {
   HeaderContainer,
   StyledHeader,
