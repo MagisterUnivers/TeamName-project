@@ -13,8 +13,8 @@ export const ReusableButton = ({
     <StyledButton
       type={type}
       aria-label={ariaLabel}
-      $marginbottom={marginbottom}
-      $margintop={margintop}
+      marginbottom={marginbottom}
+      margintop={margintop}
       onClick={onClick}
     >
       {text}
