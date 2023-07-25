@@ -89,7 +89,7 @@ export const StyledImage = styled.img`
 
 export const StyledSubtitle = styled.p`
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: ${props => (props.text === 'false' ? 1 : 3)};
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
