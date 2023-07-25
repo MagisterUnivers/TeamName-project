@@ -9,8 +9,8 @@ export const BurgerMenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: ${({ showBurgerMenu }) =>
-    showBurgerMenu ? 'translateY(0px)' : 'translateY(-100%)'};
+  transform: ${props =>
+    props.isShown ? 'translateY(0px)' : 'translateY(-100%)'};
   transition: transform 1.5s;
 
   .themeWrp {
