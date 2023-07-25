@@ -1,4 +1,3 @@
-import { devices } from 'constants/breakpoints';
 import { styled } from 'styled-components';
 
 export const BurgerMenuContainer = styled.div`
