@@ -56,10 +56,18 @@
 <br />
 <h3>The project structure is organized as follows:</h3>
 <ul>
+  <li>Api/ # Contains all api connection settings</li>
+  <li>Assets/ # Contains all images and icons that was used in the project</li>
   <li>
     Components/ # Contains reusable components used throughout the application
   </li>
+  <li>Constants/ # Contains all CONST project data</li>
+  <li>Hooks/ # Contains all useful hooks that was used in the project</li>
   <li>Pages/ # Contains the pages</li>
+  <li>Redux/ # Contains all project redux logic</li>
+  <li>Routes/ # Contains all route settings</li>
+  <li>Theme/ # Contains all theme project data</li>
+  <li>Utils/ # Contains all utility`s</li>
   <li>Package.json # Project dependencies and scripts</li>
   <li>README.md # Project documentation (you are here)</li>
 </ul>
