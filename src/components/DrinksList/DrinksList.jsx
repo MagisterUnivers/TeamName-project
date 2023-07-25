@@ -17,25 +17,25 @@ export const DrinksList = () => {
   const navigate = useNavigate();
   const limit = isDesktop ? 9 : 8;
 
-  useEffect(() => {
-    dispatch(searchAllDrinksThunk({ search, page, limit }));
-    navigate(
-      `/main/drinks/${encodeURIComponent(
-        search.chosenCategory
-      )}?query=${encodeURIComponent(search.query)}&ingredient=${
-        search.chosenIngredient
-      }&page=${page}`
-    );
-  }, [dispatch, search, page, limit]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(searchAllDrinksThunk({ search, page, limit }));
+  //   navigate(
+  //     `/main/drinks/${encodeURIComponent(
+  //       search.chosenCategory
+  //     )}?query=${encodeURIComponent(search.query)}&ingredient=${
+  //       search.chosenIngredient
+  //     }&page=${page}`
+  //   );
+  // }, [dispatch, search, page, limit]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <Section>
       <DrinkListStyled>
-        {searchResults.length !== 0 ? (
-          searchResults.map(searchResult => (
+        {searchResults?.length !== 0 ? (
+          searchResults?.map(searchResult => (
             <DrinkCard
               key={searchResult._id}
               cocktail={searchResult}

@@ -13,7 +13,9 @@ export const Navigation = () => {
           <StyledLink to="home">Home</StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink to="drinks/Cocktail">Drinks</StyledLink>
+          <StyledLink to="drinks/Cocktail" state={{ from: 'Cocktail' }}>
+            Drinks
+          </StyledLink>
         </StyledItem>
         <StyledItem>
           <StyledLink to="add">Add recipe</StyledLink>
