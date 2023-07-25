@@ -17,7 +17,6 @@ const notFoundWhite2x = require('../../assets/img/notFoundWhite2x.png');
 
 export const FavoriteList = () => {
   const favoriteCocktails = useSelector(selectFavorite);
-  const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
   const theme = useSelector(selectTheme);
   return (
     <>
@@ -33,7 +32,7 @@ export const FavoriteList = () => {
         </FavoriteListStyled>
       ) : (
         <WrapDiv>
-          <NotFoundImg ismobile={isMobile} theme={theme} />
+          <NotFoundImg theme={theme} />
           <NotFavorioteText theme={theme}>
             You haven't added any favorite cocktails yet
           </NotFavorioteText>
