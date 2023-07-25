@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -7,11 +7,10 @@ import { Cardwrapper, Section, SectionTitle } from './PreviewDrinks.styled';
 
 export const PreviewDrinks = ({ title, data = [] }) => {
   const linkTransform = encodeURIComponent(title);
-
   return (
     <Section>
       <Container>
-        <Link to={`/main/drinks/${linkTransform}`}>
+        <Link to={`/main/drinks/${linkTransform}`} state={{ from: `${title}` }}>
           <SectionTitle>{title}</SectionTitle>
         </Link>
         <Cardwrapper>

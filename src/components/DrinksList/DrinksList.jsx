@@ -34,8 +34,8 @@ export const DrinksList = () => {
   return (
     <Section>
       <DrinkListStyled>
-        {searchResults.length !== 0 ? (
-          searchResults.map(searchResult => (
+        {searchResults?.length !== 0 ? (
+          searchResults?.map(searchResult => (
             <DrinkCard
               key={searchResult._id}
               cocktail={searchResult}
