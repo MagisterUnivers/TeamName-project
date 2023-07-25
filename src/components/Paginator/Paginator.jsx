@@ -14,7 +14,7 @@ export const Paginator = () => {
   const limit = isDesktop ? 9 : 8;
   const pageQuantity = Math.ceil(totalHits / limit);
   const theme = useSelector(selectTheme);
-  const defaultPage = Math.ceil(pageQuantity/2)
+  const defaultPage = Math.ceil(pageQuantity / 2);
 
   return (
     <Box
@@ -47,14 +47,6 @@ export const Paginator = () => {
                 background: 'rgba(64, 112, 205, 0.4)',
               },
             },
-            // '& .MuiPaginationItem-page': {
-            //   color: theme === 'dark' ? 'var(--main-text-color)' : "'#0A0A11'",
-            //   background: 'transparent',
-            //   transition: 'background-color 500ms ease',
-            //   '&:hover, &:focus ': {
-            //     background: 'rgba(64, 112, 205, 0.5)',
-            //   },
-            // },
             '& .MuiPaginationItem-page.Mui-selected': {
               background: 'rgba(64, 112, 205, 0.4)',
             },
