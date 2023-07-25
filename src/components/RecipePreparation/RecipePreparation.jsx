@@ -25,7 +25,7 @@ export const RecipePreparation = () => {
             src={
               cocktails.drinkThumb
                 ? cocktails.drinkThumb
-                : require('../../assets/img/testPNG.png')
+                : require('../../assets/img/RecipePlaceholder.png')
             }
             alt="ingredient thumb"
             width={335}

@@ -29,7 +29,7 @@ export const RecipeIngredientsList = () => {
                   src={
                     item.ingredientThumb
                       ? item.ingredientThumb
-                      : require('../../assets/img/testPNG.png')
+                      : require('../../assets/img/RecipePlaceholder.png')
                   }
                   alt="ingredient thumb"
                   width={220}

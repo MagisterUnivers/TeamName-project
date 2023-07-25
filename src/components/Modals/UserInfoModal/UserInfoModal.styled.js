@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
-import pencilIcon from './edit-2.svg';
+import pencilIcon from '../../../assets/icons/modals/user-info/edit-2.svg';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
-const defaultAvatarURL = require('./user.png');
 
 export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);

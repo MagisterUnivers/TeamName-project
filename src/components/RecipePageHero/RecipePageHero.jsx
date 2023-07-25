@@ -48,7 +48,7 @@ export const RecipePageHero = ({ func }) => {
                 src={
                   cocktails.drinkThumb
                     ? cocktails.drinkThumb
-                    : require('../../assets/img/testPNG.png')
+                    : require('../../assets/img/RecipePlaceholder.png')
                 }
                 alt="cocktail thumb"
                 width={400}

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme, selectUserArray } from 'redux/selectors';
 import { UpdateUserSchema } from 'components';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import XIcon from './x.svg';
-import AddIcon from './add_photo.svg';
+import XIcon from '../../../assets/icons/modals/confirm-logout/x.svg';
+import AddIcon from '../../../assets/icons/modals/user-info/add_photo.svg';
 import XIconBlack from '../../../assets/icons/close.svg';
 import {
   StyledError,
@@ -26,7 +26,7 @@ import {
   AddIconImg,
   StyledInputFile,
 } from './UserInfoModal.styled';
-const defaultAvatarURL = require('./user.png');
+const defaultAvatarURL = require('../../../assets/img/modals/user-info/user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();

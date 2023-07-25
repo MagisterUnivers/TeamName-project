@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { ConfirmLogout, UserInfoModal } from 'components';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/selectors';
-import pencilIcon from '../UserInfoModal/edit-2.svg';
-import pencilIconBlack from '../UserInfoModal/edit-black.svg';
+import pencilIcon from '../../../assets/icons/modals/user-info/edit-2.svg';
+import pencilIconBlack from '../../../assets/icons/modals/user-info/edit-black.svg';
 import {
   ChangeProfileButton,
   LogOutButton,

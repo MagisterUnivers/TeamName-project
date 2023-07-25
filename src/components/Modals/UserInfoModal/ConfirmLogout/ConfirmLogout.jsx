@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { logoutThunk } from 'redux/Auth/authOperations';
 import { clearState } from 'redux/UserInfo/userInfoSlice';
 import { selectTheme } from 'redux/selectors';
-import XIcon from './x.svg';
-import XIconBlack from '../../../assets/icons/close.svg';
+import XIcon from '../../../../assets/icons/modals/confirm-logout/x.svg';
+import XIconBlack from '../../../../assets/icons/close.svg';
 import {
   ModalWrapper,
   ModalContent,
@@ -15,7 +15,7 @@ import {
   ButtonWrapper,
 } from './ConfirmLogout.styled';
 
-export const ConfirmLogout = ({ id, onClose }) => {
+export const ConfirmLogout = ({ onClose }) => {
   const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
