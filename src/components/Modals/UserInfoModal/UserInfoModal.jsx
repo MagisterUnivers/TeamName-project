@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme, selectUserArray } from 'redux/selectors';
+import { selectUserArray } from 'redux/selectors';
 import { UpdateUserSchema } from 'components';
 import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import XIcon from '../../../assets/icons/modals/confirm-logout/x.svg';
 import AddIcon from '../../../assets/icons/modals/user-info/add_photo.svg';
-import XIconBlack from '../../../assets/icons/close.svg';
 import {
   StyledError,
   StyledMessage,
@@ -25,12 +23,12 @@ import {
   StyledIconError,
   AddIconImg,
   StyledInputFile,
+  StyledUpdatedCloseButton,
 } from './UserInfoModal.styled';
 const defaultAvatarURL = require('../../../assets/img/modals/user-info/user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
   const user = useSelector(selectUserArray);
   const [isOpen, setIsOpen] = useState(true); //eslint-disable-line
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -83,11 +81,7 @@ export const UserInfoModal = ({ onClose }) => {
     <ModalWrapper>
       <ContentWrapper className="modal-content">
         <CloseButton onClick={onClose} tabIndex={1} className="close-button">
-          <img
-            src={theme === 'dark' ? XIcon : XIconBlack}
-            alt="Close"
-            width={24}
-          />
+          <StyledUpdatedCloseButton />
         </CloseButton>
         <StyledForm
           initialValues={{

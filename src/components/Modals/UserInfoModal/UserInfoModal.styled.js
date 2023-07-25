@@ -1,8 +1,10 @@
-import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
-import pencilIcon from '../../../assets/icons/modals/user-info/edit-2.svg';
+import { devices } from 'constants';
+import styled from 'styled-components';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
+import pencilIcon from '../../../assets/icons/modals/user-info/edit-2.svg';
+import { ReactComponent as CloseButtonIcon } from '../../../assets/icons/forIco.svg';
 
 export const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -78,6 +80,7 @@ export const AvatarFrame = styled.img`
   height: 80px;
   margin: 0 auto;
   border-radius: 50%;
+  cursor: pointer;
   background-image: url({defaultAvatarURL});
   @media screen and (min-width: 768px) {
     width: 100px;
@@ -101,7 +104,7 @@ export const AddIconImg = styled.img`
   top: 64px;
   left: 35%;
   border-radius: 50%;
-  /* top: -2px; */
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     width: 32px;
     height: 32px;
@@ -213,5 +216,21 @@ export const SaveChangeButton = styled.button`
     padding: 18px 143px;
     font-size: 16px;
     line-height: 1.13;
+  }
+`;
+
+export const StyledUpdatedCloseButton = styled(CloseButtonIcon)`
+  width: 24px;
+  height: 24px;
+  fill: ${props =>
+    props.theme === 'dark' ? props.theme.bgrColor : props.theme.textColor};
+
+  @media ${devices.tablet} {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    fill: red;
   }
 `;
