@@ -32,7 +32,7 @@ const persistConfigForCocktails = {
   key: 'cocktails',
   version: 3,
   storage,
-  whitelist: ['cocktails', 'ingredients', 'categories', 'glass'],
+  whitelist: ['cocktails', 'ingredients', 'categories', 'glasses'],
 };
 
 export const store = configureStore({
