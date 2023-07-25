@@ -11,10 +11,9 @@ import {
 import { Formik } from 'formik';
 import { Report } from 'notiflix';
 import { useTheme } from 'styled-components';
+import { SubscribeSchema } from '../RegisterForm/ValidationSchema';
 
 export const SubscribeForm = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const theme = useTheme();
   const notiflixOptions = {
     className: 'subscribe__validation',
@@ -43,11 +42,7 @@ export const SubscribeForm = () => {
       initialValues={{
         email: '',
       }}
-      validationSchema={Yup.object({
-        email: Yup.string()
-          .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
-          .required('Required'),
-      })}
+      validationSchema={SubscribeSchema}
       onSubmit={async values => {
         try {
           const data = await setSubscription(values);
@@ -72,7 +67,7 @@ export const SubscribeForm = () => {
         }
       }}
     >
-      {({ errors, touched, values, status }) => (
+      {({ errors, values, status }) => (
         <StyledFormInsight>
           <StyledText>
             Subscribe up to our newsletter. Be in touch with latest news and
