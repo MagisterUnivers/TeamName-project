@@ -13,7 +13,7 @@ import {
 
 export const UserLogoModal = ({ setEditProfileShown }) => {
   const theme = useSelector(selectTheme);
-  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
+  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false); //eslint-disable-line
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   const handleOpenUserInfo = () => {
