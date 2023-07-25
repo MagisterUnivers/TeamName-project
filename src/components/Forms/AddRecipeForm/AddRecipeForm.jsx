@@ -204,7 +204,12 @@ export const AddRecipeForm = () => {
             dataField={instructions}
             handleOnInstructions={handleOnInstructions}
           />
-          <ReusableButton type="submit" text="Add" ariaLabel="Button to add a recipe"/>
+          {/* <StyledAddButton type="submit">Add</StyledAddButton> */}
+          <ReusableButton
+            type="submit"
+            text="Add"
+            ariaLabel="Adding recipe button"
+          />
         </StyledForm>
       </Formik>
     </>

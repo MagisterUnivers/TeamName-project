@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@mui/material';
-import Pagination  from '@mui/material/Pagination'
+import Pagination from '@mui/material/Pagination';
 import { setPage } from 'redux/Cocktails/cocktailsSlice';
 import { useMediaRules } from '../../hooks/useMediaRules';
 import { selectPage, selectTheme, selectTotalHits } from 'redux/selectors';
@@ -12,8 +12,9 @@ export const Paginator = () => {
   const { isMobile, isDesktop } = useMediaRules();
   const totalHits = useSelector(selectTotalHits);
   const limit = isDesktop ? 9 : 8;
-  const pageQuantity = Math.floor(totalHits / limit);
+  const pageQuantity = Math.ceil(totalHits / limit);
   const theme = useSelector(selectTheme);
+  const defaultPage = Math.ceil(pageQuantity/2)
 
   return (
     <Box
@@ -29,11 +30,11 @@ export const Paginator = () => {
           count={pageQuantity}
           page={page}
           onChange={(_, num) => dispatch(setPage(num))}
-          defaultPage={page}
+          defaultPage={defaultPage}
           boundaryCount={1}
           siblingCount={1}
           onClick={() => {
-           window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
           }}
           sx={{
             marginX: 'auto',
@@ -42,17 +43,20 @@ export const Paginator = () => {
               fontWeight: '500',
               color: theme === 'dark' ? 'var(--main-text-color)' : "'#0A0A11'",
               transition: 'background 0.3s ease',
-              '&:hover, &:focus': {
+              '&:hover': {
                 background: 'rgba(64, 112, 205, 0.4)',
               },
             },
-            '& .MuiPaginationItem-page': {
-              color: theme === 'dark' ? 'var(--main-text-color)' : "'#0A0A11'",
-              background: 'transparent',
-              transition: 'background-color 500ms ease',
-              '&:hover, &:focus ': {
-                background: 'rgba(64, 112, 205, 0.5)',
-              },
+            // '& .MuiPaginationItem-page': {
+            //   color: theme === 'dark' ? 'var(--main-text-color)' : "'#0A0A11'",
+            //   background: 'transparent',
+            //   transition: 'background-color 500ms ease',
+            //   '&:hover, &:focus ': {
+            //     background: 'rgba(64, 112, 205, 0.5)',
+            //   },
+            // },
+            '& .MuiPaginationItem-page.Mui-selected': {
+              background: 'rgba(64, 112, 205, 0.4)',
             },
             'Ul.MuiPagination-ul': {
               flexWrap: 'nowrap',
