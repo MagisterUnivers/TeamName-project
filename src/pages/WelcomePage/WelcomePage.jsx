@@ -1,4 +1,3 @@
-import { useMediaQuery } from 'react-responsive';
 import {
   BaseDiv,
   SummaryWrapper,
@@ -10,12 +9,6 @@ import {
 } from './WelcomPage.styled';
 
 const WelcomePage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1439px)',
-  });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
   return (
     <BaseDiv>
       <SummaryWrapper>
