@@ -1,7 +1,145 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import {
+  selectCategories,
+  selectIngredients,
+  selectSearch,
+} from 'redux/selectors';
+import {
+  setChosenCategory,
+  setChosenIngredient,
+  setPage,
+  setQuery,
+} from 'redux/Cocktails/cocktailsSlice';
+import { useTheme } from 'styled-components';
+import {
+  SelectStyled,
+  InputStyled,
+  StyledSearchButton,
+  SearchFormStyled,
+  QueryFormStyled,
+  StyledSearchIcon,
+  HoverWrapper,
+} from './DrinksSearch.styled';
 
-const DrinksSearch = () => {
-  return <div>DrinksSearch</div>;
+export const DrinksSearch = ({ categoryName }) => {
+  const dispatch = useDispatch();
+  const theme = useTheme();
+  const [searchQuery, setSearchQuery] = useState();
+  const ingredientsList = useSelector(selectIngredients);
+  const categoriesList = useSelector(selectCategories);
+  const search = useSelector(selectSearch);
+
+  const categoriesListOptions = categoriesList.map(category => {
+    return { value: category._id, label: category.category };
+  });
+  categoriesListOptions.unshift({
+    value: '100',
+    label: 'Categories',
+  });
+  const ingredientsListOptions = ingredientsList.map(ingredient => {
+    return { value: ingredient._id, label: ingredient.title };
+  });
+  ingredientsListOptions.unshift({
+    value: '100',
+    label: 'Ingredients',
+  });
+  //styling scrollbar and color in the dropdown
+  const styles = {
+    menuList: base => ({
+      ...base,
+      height: '200px',
+      '::-webkit-scrollbar': {
+        width: '8px',
+        height: '110px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: 'transparent',
+        margin: '5px',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: '#434D67',
+        height: '110px',
+        width: '8px',
+        borderRadius: '20px',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: 'rgba(243, 243, 243, 0.40)',
+      },
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? theme.textColor : theme.secondaryTextColor,
+    }),
+  };
+
+  const handleChangeQuery = e => {
+    setSearchQuery(e.target.value.trim());
+  };
+  const handleChangeCategory = e => {
+    if (e.label !== 'Categories') {
+      dispatch(setChosenCategory(e.label));
+      dispatch(setPage(1));
+    } else {
+      dispatch(setChosenCategory('Cocktail'));
+    }
+  };
+  const handleChangeIngredient = e => {
+    if (e.label !== 'Ingredients') {
+      dispatch(setChosenIngredient(e.label));
+      dispatch(setPage(1));
+    } else {
+      dispatch(setChosenIngredient(''));
+    }
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(setQuery(searchQuery));
+  };
+  return (
+    <SearchFormStyled>
+      <QueryFormStyled onSubmit={handleSubmit}>
+        <InputStyled
+          type="text"
+          name="query"
+          value={searchQuery}
+          placeholder="Enter the text"
+          onChange={handleChangeQuery}
+        />
+        <StyledSearchButton type="submit">
+          <HoverWrapper></HoverWrapper>
+          <StyledSearchIcon />
+        </StyledSearchButton>
+      </QueryFormStyled>
+
+      <SelectStyled
+        styles={styles}
+        name="category"
+        value={search.category}
+        options={categoriesListOptions}
+        placeholder="All categories"
+        defaultValue={{ label: categoryName, value: '0' }}
+        isSearchable={true}
+        autoFocus
+        classNamePrefix="react-select"
+        onChange={handleChangeCategory}
+        noOptionsMessage={() => 'Oops! Try again.'}
+        required
+      />
+      <SelectStyled
+        styles={styles}
+        value={search.ingredient}
+        name="ingredient"
+        defaultValue={{ label: 'Ingredients', value: '0' }}
+        options={ingredientsListOptions}
+        placeholder="Ingredients"
+        isSearchable={true}
+        autoFocus
+        classNamePrefix="react-select"
+        onChange={handleChangeIngredient}
+        noOptionsMessage={() => 'Oops! Try again.'}
+        required
+      />
+    </SearchFormStyled>
+  );
 };
-
-export default DrinksSearch;

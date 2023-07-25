@@ -1,7 +1,10 @@
-import React from 'react';
+import { StyledLogo, StyledLogoLink, StyledTitle } from './Logo.styled';
 
-const Logo = () => {
-  return <div>Logo</div>;
+export const Logo = () => {
+  return (
+    <StyledLogoLink to="/main/home">
+      <StyledLogo />
+      <StyledTitle>Drink Master</StyledTitle>
+    </StyledLogoLink>
+  );
 };
-
-export default Logo;

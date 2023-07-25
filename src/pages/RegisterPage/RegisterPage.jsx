@@ -1,7 +1,14 @@
-import React from 'react';
+import { RegisterForm } from 'components';
+import { BaseDiv, SummaryWrapper } from '../WelcomePage/WelcomPage.styled';
 
 const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return (
+    <BaseDiv>
+      <SummaryWrapper>
+        <RegisterForm />
+      </SummaryWrapper>
+    </BaseDiv>
+  );
 };
 
 export default RegisterPage;

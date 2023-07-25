@@ -11,28 +11,35 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/authSlice';
-// import { userInfoReducer } from './UserInfo/userInfoSlice';
-// import { calendarEventsReducer } from './CalendarEvents/calendarEventsSlice';
+import { cocktailsReducer } from './Cocktails/cocktailsSlice';
+import { userInfoReducer } from './UserInfo/userInfoSlice';
 
 const persistConfig = {
   key: 'data',
   version: 1,
   storage,
-  whitelist: ['data', 'userInfo', 'user', 'online'],
+  whitelist: ['accessToken', 'userInfo', 'user', 'online'],
 };
 
-// const persistConfigForTheme = {
-//   key: 'theme',
-//   version: 2,
-//   storage,
-//   whitelist: ['theme'],
-// };
+const persistConfigForUserInfo = {
+  key: 'theme',
+  version: 2,
+  storage,
+  whitelist: ['theme', 'user', 'firstRender'],
+};
+
+const persistConfigForCocktails = {
+  key: 'cocktails',
+  version: 3,
+  storage,
+  whitelist: ['cocktails', 'ingredients', 'categories', 'glasses'],
+};
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    // userInfo: persistReducer(persistConfigForTheme, userInfoReducer),
-    // calendar: calendarEventsReducer,
+    cocktails: persistReducer(persistConfigForCocktails, cocktailsReducer),
+    userInfo: persistReducer(persistConfigForUserInfo, userInfoReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
