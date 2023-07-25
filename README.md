@@ -1,8 +1,5 @@
 ![Tech Titans1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a6beb350-7058-4ea1-9091-629e4a52db27)
 
-![5eeea355389655 59822ff824b72](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/9ae692ae-2d0b-463a-bdfb-f845600e1dab)
-
-
 <h1>TechTitans-React/Node-Drink Master</h1>
 <br />
 <br />
@@ -15,6 +12,35 @@
   static websites. The focus of this test is to showcase understanding of
   fundamentals, including routing, data fetching, and component composition.
 </p>
+<br />
+<br />
+<h2>Technology that have been used:</h2>
+<br />
+<br />
+<ul>
+  <li>React</li>
+  <li>Redux</li>
+  <li>Redux Toolkit</li>
+  <li>MUI</li>
+  <li>Styled-components</li>
+  <li>JS ES6+</li>
+  <li>Node.js</li>
+  <li>REST API</li>
+</ul>
+<br />
+<br />
+<h2>Project code example:</h2>
+<br />
+<br />
+<iframe
+  src="https://giphy.com/embed/WMGzAY3TQngeoW4Qj7"
+  width="480"
+  height="270"
+  frameborder="0"
+  class="giphy-embed"
+  allowfullscreen
+></iframe>
+<p><a href="https://giphy.com/gifs/WMGzAY3TQngeoW4Qj7">via GIPHY</a></p>
 <br />
 <br />
 <h2>Project Structure</h2>
@@ -40,7 +66,7 @@
   <li>Git Bash</li>
   <li>Copy the code</li>
   <li>
-    Git Clone / 
+    Git Clone /
     <a href="https://github.com/MagisterUnivers/TeamName-project/tree/dev"
       >Link to repository</a
     >
@@ -101,6 +127,40 @@
   <li>Push your branch to your forked repository</li>
   <li>Submit a pull request to the original repository</li>
 </ul>
+<br />
+<br />
+<h2>Main functionality</h2>
+<br />
+<br />
+<p>
+  The main functionality and purpose of the application is to create an
+  authorization / registration system. The database must also be connected in
+  order for the user to be stored in it. Various checks must be implemented so
+  that the same users cannot be registered.
+</p>
+<br />
+<br />
+<p>
+  A database of cocktails should be created. They must be able to be added/taken
+  from the database. It should be possible to add cocktail recipes to favorites.
+  Each profile (account) should have its favorites. Recipes created by other
+  users should be visible to other users (shown / included in the general
+  database of recipes).
+</p>
+<br />
+<br />
+<p>
+  Add the ability to add your recipes, with different recipes, photos,
+  descriptions. Add mechanism for "Popular" recipes. Implement a component that
+  would show 4 of the popular recipes.
+</p>
+<br />
+<br />
+<p>
+  Bind any interactions either to the redux or to the backend. Bind all the
+  necessary components to the database and the state. Use the latest
+  technologies (hooks, es6+, code cleanup and beauty)
+</p>
 <br />
 <br />
 <h2>License</h2>
