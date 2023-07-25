@@ -13,21 +13,19 @@ export const DrinksList = () => {
 
   return (
     <Section>
-      <DrinkListStyled>
-        {searchResults?.length !== 0 ? (
-          searchResults?.map(searchResult => (
+      {searchResults?.length !== 0 ? (
+        <DrinkListStyled>
+          {searchResults?.map(searchResult => (
             <DrinkCard
               key={searchResult._id}
               cocktail={searchResult}
               page={'drinks'}
             />
-          ))
-        ) : (
-          <NotFound
-            message={"We haven't found any cocktails for this search"}
-          />
-        )}
-      </DrinkListStyled>
+          ))}
+        </DrinkListStyled>
+      ) : (
+        <NotFound message={"We haven't found any cocktails for this search"} />
+      )}
     </Section>
   );
 };

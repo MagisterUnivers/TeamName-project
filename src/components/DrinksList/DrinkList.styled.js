@@ -2,6 +2,7 @@ import { devices } from 'constants';
 import styled from 'styled-components';
 
 export const Section = styled.section`
+  width: 100%;
   margin-bottom: 40px;
   overflow: hidden;
   @media ${devices.tablet} {
