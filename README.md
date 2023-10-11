@@ -1,17 +1,19 @@
 ![Tech Titans1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a6beb350-7058-4ea1-9091-629e4a52db27)
 
-<h1>TechTitans-React/Task-Manager</h1>
+<h1>TechTitans-React/Node-Drink Master</h1>
 <br />
 <br />
 <h2>Project Description</h2>
 <br />
 <br />
 <p>
-  This project was created by Tech Titans SEO to demonstrate basic knowledge
-    Bootstrap + React is a popular combination for quickly creating client interfaces and
-    static sites. The purpose of this test is to demonstrate understanding
-    fundamentals including routing, data retrieval, and component composition. You also need to demonstrate state management through Redux.
+  This project was created by Tech Titans to demonstrate the basic knowledge of
+  Node + React, a popular combination for building server-side rendered and
+  static websites. The focus of this test is to showcase understanding of
+  fundamentals, including routing, data fetching, and component composition.
   <br/>
+    <a href="https://github.com/MagisterUnivers/TeamName-project-backend/tree/dev"
+      >Link to BackEnd repository</a>
 </p>
 <br />
 <br />
@@ -22,11 +24,34 @@
   <li>React</li>
   <li>Redux</li>
   <li>Redux Toolkit</li>
-  <li>BootStrap</li>
+  <li>MUI</li>
   <li>Styled-components</li>
   <li>JS ES6+</li>
-  <li>Webpack</li>
+  <li>Node.js</li>
+  <li>REST API</li>
 </ul>
+<br />
+<br />
+<h2>Project code example:</h2>
+<br />
+<br />
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/313464f2-2dff-471a-ac35-197912cb8557)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/5ef2f1b4-8023-4589-b44c-cc6f86cc5da9)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/4350b71b-c92b-4e91-9262-97da35576b79)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/9d3966d6-832e-4988-a64c-3acab7af5698)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a0854b79-1a77-41a0-8c57-38c32bf507fb)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/a506b902-5228-4a55-9809-06339155c178)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/78816220-8381-4c42-8ee2-6815d10096a4)
+
+![giphy 1](https://github.com/MagisterUnivers/TeamName-project/assets/36455862/73dfb259-15e1-49c1-a044-358d91d73c76)
+
 <br />
 <br />
 <h2>Project Structure</h2>
@@ -34,14 +59,18 @@
 <br />
 <h3>The project structure is organized as follows:</h3>
 <ul>
+  <li>Api/ # Contains all api connection settings</li>
   <li>Assets/ # Contains all images and icons that was used in the project</li>
   <li>
     Components/ # Contains reusable components used throughout the application
   </li>
   <li>Constants/ # Contains all CONST project data</li>
+  <li>Hooks/ # Contains all useful hooks that was used in the project</li>
   <li>Pages/ # Contains the pages</li>
   <li>Redux/ # Contains all project redux logic</li>
   <li>Routes/ # Contains all route settings</li>
+  <li>Theme/ # Contains all theme project data</li>
+  <li>Utils/ # Contains all utility`s</li>
   <li>Package.json # Project dependencies and scripts</li>
   <li>README.md # Project documentation (you are here)</li>
 </ul>
@@ -55,7 +84,12 @@
   <li>Clone the repository</li>
   <li>Git Bash</li>
   <li>Copy the code</li>
-  <li>Git Clone</li>
+  <li>
+    Git Clone /
+    <a href="https://github.com/MagisterUnivers/TeamName-project/tree/dev"
+      >Link to repository</a
+    >
+  </li>
 </ul>
 <br />
 <br />
@@ -63,7 +97,7 @@
 <ul>
   <li>Git bash</li>
   <li>Copy the code</li>
-  <li>cd ~/Desktop/just-for-fun</li>
+  <li>cd ~/Desktop/TeamName-project</li>
   <li>Install the dependencies</li>
   <li>Copy the code</li>
   <li>npm install</li>
@@ -91,7 +125,7 @@
 <ul>
   <li>
     npm run start: Starts the development server on
-    http://localhost:3000/
+    http://localhost:3000/TeamName-project/
   </li>
   <li>npm run build: Builds the application for production.</li>
   <li>npm run lint:js: Runs the linter to check for code quality issues</li>
@@ -118,8 +152,33 @@
 <br />
 <br />
 <p>
- The main functionality and purpose of the application is to create
-    systems for storing pending tasks (task manager). It is necessary to do minimal filtering and field validation. You also need to implement the ability to delete/edit tasks.
+  The main functionality and purpose of the application is to create an
+  authorization / registration system. The database must also be connected in
+  order for the user to be stored in it. Various checks must be implemented so
+  that the same users cannot be registered.
+</p>
+<br />
+<br />
+<p>
+  A database of cocktails should be created. They must be able to be added/taken
+  from the database. It should be possible to add cocktail recipes to favorites.
+  Each profile (account) should have its favorites. Recipes created by other
+  users should be visible to other users (shown / included in the general
+  database of recipes).
+</p>
+<br />
+<br />
+<p>
+  Add the ability to add your recipes, with different recipes, photos,
+  descriptions. Add mechanism for "Popular" recipes. Implement a component that
+  would show 4 of the popular recipes.
+</p>
+<br />
+<br />
+<p>
+  Bind any interactions either to the redux or to the backend. Bind all the
+  necessary components to the database and the state. Use the latest
+  technologies (hooks, es6+, code cleanup and beauty)
 </p>
 <br />
 <br />
@@ -133,7 +192,7 @@
 <br />
 <br />
 <p>
-  This project was created for practise purpose. Created an own experience for more
-  comfortable using of the application. Well writted code, components - based,
+  This project was created for practise purpose. Created an own backend for more
+  comfortable using of the application. Super reusable code, components - based,
   pretty structure.
 </p>
